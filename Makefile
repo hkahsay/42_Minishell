@@ -1,23 +1,23 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: vgejno <vgejno@student.42.fr>              +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/02/23 11:19:05 by vgejno            #+#    #+#              #
-#    Updated: 2023/02/23 12:07:14 by vgejno           ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
 
 NAME = minishell
+
 CC = gcc
-FLAG = -Wall -Werror -Wextra
+
+FLAG = -Wall -Werror -Wextra -g
+
 RLIB = /Users/$(USER)/.brew/Cellar/readline/8.2.1/lib -lreadline
+
 RINC = .brew/Cellar/readline/8.2.1/include/readline
+
 RM = rm -f
 
-SRCS = main.c
+
+SRCS = src/main.c \
+	src/token.c \
+	src/utils.c \
+	src/init.c \
+
+
 
 OBJS = ${SRCS:.c=.o}
 
