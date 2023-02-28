@@ -1,66 +1,83 @@
 #include"../minishell.h"
-
+                                                                                                                                                                #include"../minishell.h"
 t_list	*init_token(void)
 {
 	t_list	*token;
 
-	token = malloc(sizeof(t_list));
+	token = malloc(sizeof(t_list) + 1);
 	if (!token)
 		return (0);
-	token->id_token = 0;
-	token->class = NULL;
-	token->str = NULL;
+	token->id_token = 1;
+	token->content = NULL;
 	token->next = NULL;
 	return (token);
 }
 
-t_cmd	*init_cmd(void)
+t_list	*create_token(char *content, int id)
 {
-	t_cmd	*cmd;
+	t_list	*token;
 
-	cmd = malloc(sizeof(t_cmd));
-	if (!cmd)
-		return (0);
-	cmd->content = NULL;
-	cmd->next = NULL;
-	return (cmd);
+	token = init_token();
+	id = token->id_token;
+	token->content = classification(token, content, id);
+	return (0);
 }
 
-t_word	*init_word(char *content, int id)
+char	*classification(t_list *token, char *content, int id)
 {
-	t_word	*word;
+	if (id == WORD)
+		token->content = word_token(content);
+	else if (id == REDIR_OUT)
+		token->content = NULL;
+	else if (id == REDIR_IN)
+		token->content = NULL;
+	else if (id == REDIR_APPEND)
+		token->content = NULL;
+	else if (id == HERE_DOC)
+		token->content = NULL;
+	else if (id == PIPE)
+		token->content = NULL;
+	return (0);
+}
 
-	word = malloc(sizeof(t_word));
-	if (!word)
-		return (0);
-	word->content = content;
-	word->id = id;
-	word->next = NULL;
+int is_word(char *str)
+{
+	int	i;
+	int	word;
+
+	i = 0;
+	word = 0;
+	while (str[i])
+	{
+		if (is_space(str[i]))
+			return (word);
+		else
+		{
+			word++;
+			i++;
+		}
+	}
 	return (word);
 }
 
-t_blank	*white_space(char *content, int id)
+char	*word_token(char *word)
 {
-	t_blank	*space;
+	int		i;
+	int		n;
+	char	*dest;
+	char	**line;
 
-	space = malloc(sizeof(t_blank));
-	if (!space)
+	i = 0;
+	i = is_word(word);
+	line = ft_split(word, '|');
+	printf("%s\n", line[0]);
+	if (!word)
 		return (0);
-	space->content = content;
-	space->id = id;
-	space->next = NULL;
-	return (space);
-}
-
-t_arg	*args(char *content, int id)
-{
-	t_arg	*arg;
-
-	arg = malloc(sizeof(t_arg));
-	if (!arg)
-		return (0);
-	arg->content = content;
-	arg->id = id;
-	arg->next = NULL;
-	return (arg);
+	n = ft_strlen(word);
+	while (word[i] && i < n)
+	{
+		dest = strndup(word, n);
+		i++;
+	}
+	return (dest);
 }

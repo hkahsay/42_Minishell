@@ -3,7 +3,7 @@ NAME = minishell
 
 CC = gcc
 
-FLAG = -Wall -Werror -Wextra -g
+FLAG = -Wall -Werror -Wextra -g -fsanitize=address
 
 RLIB = /Users/$(USER)/.brew/Cellar/readline/8.2.1/lib -lreadline
 
@@ -16,6 +16,7 @@ SRCS = src/main.c \
 	src/token.c \
 	src/utils.c \
 	src/init.c \
+	src/check.c \
 
 
 

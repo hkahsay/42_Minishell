@@ -6,7 +6,7 @@
 /*   By: hkahsay <hkahsay@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:15:44 by hkahsay           #+#    #+#             */
-/*   Updated: 2023/02/27 15:00:19 by hkahsay          ###   ########.fr       */
+/*   Updated: 2023/02/28 17:55:24 by hkahsay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,35 +24,19 @@
 # include <readline/history.h>
 
 # define WORD 1
-# define SPACE 2
-# define SINGLE_QUOTE 3
-# define DOUBLE_QUOTE 4
-# define REDIR_OUT 5
-# define REDIR_IN 6
-# define REDIR_APPEND 7
-# define HERE_DOC 8
-# define PIPE 9
+# define REDIR_OUT 2
+# define REDIR_IN 3
+# define REDIR_APPEND 4
+# define HERE_DOC 5
+# define PIPE 6
 
 typedef struct s_list
 {
 	int				id_token;
-	// int				id_word;
-	void			*class;
+	char			*content;
 	struct s_list	*next;
-	char			*str;
-	char			field;
-	char			exp_field;
-	struct s_cmd	*cmd;
-}	t_list;
 
-typedef struct s_cmd
-{
-	pid_t				process_id;
-	char				*content;
-	int					redir_out;
-	int					redir_in;
-	struct s_cmd		*next;
-}	t_cmd;
+}	t_list;
 
 typedef struct s_prompt
 {
@@ -60,26 +44,6 @@ typedef struct s_prompt
 	char		*str;
 }	t_prompt;
 
-typedef struct s_word
-{
-	int				id;
-	char			*content;
-	struct s_word	*next;
-}t_word;
-
-typedef struct s_blank
-{
-	int				id;
-	char			*content;
-	struct s_blank	*next;
-}t_blank;
-
-typedef struct s_arg
-{
-	int				id;
-	char			*content;
-	struct s_arg	*next;
-}t_arg;
 // typedef int(*t_builtin_ptr)(t_llist *, t_info *);
 
 // typedef struct s_info
@@ -95,14 +59,18 @@ typedef struct s_arg
 // }t_info;
 
 t_list	*init_token(void);
-t_cmd	*init_cmd(void);
-t_word	*init_word(char *content, int id);
-t_blank	*white_space(char *content, int id);
-t_arg	*args(char *content, int id);
 t_list	*create_token(char *content, int id);
 void	prompt(char	*line);
 int		ft_strlen(char *str);
 void	ft_putstr_fd(char *str, int fd);
+char	*classification(t_list *token, char *content, int id);
+char	*word_token(char *word);
+int		is_word(char *str);
+t_list	*create_token(char *content, int id);
+int	is_space(char c);
+char	**ft_split(char *s, char c);
+
+
 
 
 #endif
