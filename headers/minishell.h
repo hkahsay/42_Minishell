@@ -1,4 +1,3 @@
-
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
@@ -8,13 +7,28 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <fcntl.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <sys/types.h>
 # include <sys/wait.h>
+# include <sys/uio.h>
 # include "../libft/libft.h"
 
-// typedef int(*t_builtin_ptr)(t_llist *, t_info *);
+# define WORD 1
+# define REDIR_OUT 2
+# define REDIR_IN 3
+# define REDIR_APPEND 4
+# define HERE_DOC 5
+# define PIPE 6
+
+typedef struct s_list
+{
+	int				id_token;
+	char			*content;
+	struct s_list	*next;
+
+}	t_list;
 
 typedef struct s_info
 {
@@ -28,13 +42,13 @@ typedef struct s_info
 	
 }t_info;
 
-typedef struct s_list
-{
-	void			*key;
-	void			*value;
-	struct s_list	*prev;
-	struct s_list	*next;
-}t_list;
+// typedef struct s_list
+// {
+// 	void			*key;
+// 	void			*value;
+// 	struct s_list	*prev;
+// 	struct s_list	*next;
+// }t_list;
 
 typedef struct s_envnode
 {
@@ -44,9 +58,33 @@ typedef struct s_envnode
 	struct s_envnode *next;
 } t_envnode;
 
-/*my environment*/
-t_envnode *dublicate_env(char **envp);
-t_envnode *create_my_envvar_node(char *key, char *value, int i);
+typedef struct s_prompt
+{
+	int			nbr_elm;
+	char		*str;
+}	t_prompt;
+
+/*copy into my environment*/
+t_envnode	*dublicate_env(char **envp);
+t_envnode	*create_my_envvar_node(char *key, char *value, int i);
+void		free_myenvp(t_envnode *head);
+
+void	prompt(char	*line); //t_envnode *my_envp, 
+
+t_list	*init_token(void);
+t_list	*create_token(char *content, int id);
+
+// int		ft_strlen(char *str);
+// void	ft_putstr_fd(char *str, int fd);
+// char	*classification(t_list *token, char *content, int id);
+// char	*word_token(char *word);
+// int		is_word(const char *str);
+// int	is_space(char c);
+// char	**ft_split(const char *s, char c);
+// int	ft_strlen(const char *str);
+// char	*ft_substr(char const *s, unsigned int start, size_t len);
+
+// typedef int(*t_builtin_ptr)(t_llist *, t_info *);
 
 //init minishell
 //void	init_minishell();

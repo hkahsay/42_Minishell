@@ -6,7 +6,7 @@
 #    By: vgejno <vgejno@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/09 16:28:58 by vgejno            #+#    #+#              #
-#    Updated: 2021/12/23 19:39:27 by vgejno           ###   ########.fr        #
+#    Updated: 2023/03/10 18:51:11 by vgejno           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRCS = ft_putchar_fd.c \
  		ft_isascii.c \
  		ft_isdigit.c \
  		ft_isprint.c \
+		ft_isspace.c \
  		ft_itoa.c \
  		ft_memchr.c \
  		ft_memcmp.c \
