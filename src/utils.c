@@ -1,6 +1,13 @@
 #include"../minishell.h"
 
-int	ft_strlen(char *str)
+int	is_space(char c)
+{
+	if (c == 32 || (c >= 9 && c <= 13))
+		return (1);
+	return (0);
+}
+
+int	ft_strlen(const char *str)
 {
 	int	i;
 
@@ -19,7 +26,6 @@ void	ft_putstr_fd(char *str, int fd)
 	i = ft_strlen(str);
 	write(fd, str, i);
 }
-
 
 static int	ft_count(char const *s, char c)
 {
@@ -44,7 +50,7 @@ static int	ft_count(char const *s, char c)
 	return (word);
 }
 
-static char	*ft_str_size(char *str, int start, int end)
+static char	*ft_str_size(const char *str, int start, int end)
 {
 	char	*dst;
 	int		i;
@@ -57,12 +63,12 @@ static char	*ft_str_size(char *str, int start, int end)
 	return (dst);
 }
 
-char	**ft_split(char *s, char c)
+char	**ft_split(const char *s, char c)
 {
 	int		i;
 	int		j;
-	int			temp;
-	char		**split;
+	int		temp;
+	char	**split;
 
 	if (!s)
 		return (NULL);
@@ -84,4 +90,27 @@ char	**ft_split(char *s, char c)
 	}
 	split[j] = 0;
 	return (split);
+}
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	size_t	i;
+	char	*dst;
+
+	if (!s)
+		return (0);
+	if (start > ((unsigned int)ft_strlen(s)))
+		return (strdup(""));
+	i = ft_strlen(s) - start;
+	if (len > i)
+		len = i;
+	else if (len < i)
+		i = len;
+	else if (i < 0)
+		i = 0;
+	dst = (char *)malloc(sizeof(*s) * (len + 1));
+	if (!dst)
+		return (0);
+	strlcpy(dst, s + start, i + 1);
+	return (dst);
 }

@@ -3,7 +3,8 @@ NAME = minishell
 
 CC = gcc
 
-FLAG = -Wall -Werror -Wextra -g -fsanitize=address
+
+FLAG = -Wall -Werror -Wextra -g #-fsanitize=address
 
 RLIB = /Users/$(USER)/.brew/Cellar/readline/8.2.1/lib -lreadline
 
@@ -24,8 +25,8 @@ OBJS = ${SRCS:.c=.o}
 
 all: ${NAME}
 
-${NAME}: ${OBJS}
-	${CC} ${FLAG} -L ${RLIB} ${OBJS} -o ${NAME}
+${NAME}: 	${OBJS}
+			${CC} ${FLAG} -L ${RLIB} ${OBJS} -o ${NAME}
 
 %.o : %.c
 	${CC} ${FLAG} -I ${RINC} -c $^ -o $@
@@ -35,6 +36,7 @@ clean:
 	
 fclean: clean
 	${RM} ${NAME}
+
 	
 re: fclean all
 

@@ -40,7 +40,7 @@ char	*classification(t_list *token, char *content, int id)
 	return (0);
 }
 
-int is_word(char *str)
+int	is_word(const char *str)
 {
 	int	i;
 	int	word;
@@ -69,12 +69,17 @@ char	*word_token(char *word)
 
 	i = 0;
 	i = is_word(word);
-	line = ft_split(word, '|');
-	printf("%s\n", line[0]);
+	line = ft_split(word, ' ');
+	printf("lint: %s\n", line[0]);
+	// while (line)
+	// {
+	// 	printf("lint: %s\n", line[i]);
+	// 	i++;
+	// }
 	if (!word)
 		return (0);
 	n = ft_strlen(word);
-	while (word[i] && i < n)
+	while (line)
 	{
 		dest = strndup(word, n);
 		i++;

@@ -1,18 +1,5 @@
 #include "../minishell.h"
 
-			// add_history(str);
-		// if (str)
-int	main(void)
-{
-	char	*line;
-
-	line = NULL;
-	while (1)
-	{
-		prompt(line);
-		// exit (0);
-	}
-}
 
 void	prompt(char	*line)
 {
@@ -37,4 +24,15 @@ void	prompt(char	*line)
 	}
 	else
 		free(line);
+}
+
+int	main(void)
+{
+	char	*line;
+
+	line = NULL;
+	while (1)
+	{
+		prompt(line);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: hkahsay <hkahsay@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 12:15:44 by hkahsay           #+#    #+#             */
-/*   Updated: 2023/02/28 17:55:24 by hkahsay          ###   ########.fr       */
+/*   Updated: 2023/03/10 12:16:24 by hkahsay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,18 @@ typedef struct s_prompt
 t_list	*init_token(void);
 t_list	*create_token(char *content, int id);
 void	prompt(char	*line);
-int		ft_strlen(char *str);
+// int		ft_strlen(char *str);
 void	ft_putstr_fd(char *str, int fd);
 char	*classification(t_list *token, char *content, int id);
 char	*word_token(char *word);
-int		is_word(char *str);
+int		is_word(const char *str);
 t_list	*create_token(char *content, int id);
 int	is_space(char c);
-char	**ft_split(char *s, char c);
+char	**ft_split(const char *s, char c);
+int	ft_strlen(const char *str);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+
+
 
 
 
