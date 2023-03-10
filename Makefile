@@ -29,6 +29,8 @@ SRCS = ${DIR_SRCS}/main.c
 DIR_OBJS = ./objs
 OBJS = ${addprefix ${DIR_OBJS}/, ${notdir ${SRCS:.c=.o}}}
 
+DFILES = ${addprefix ${DIR_OBJS}/, ${notdir ${SRCS:.c=.d}}}
+
 vpath %.c ${DIR_SRCS}
 
 all: ${NAME}
@@ -38,14 +40,15 @@ ${NAME}: ${OBJS}
 	${CC} ${FLAGS} ${OBJS} ${RLIB} ${LIBFT} -o ${NAME}
 
 ${DIR_OBJS}/%.o : %.c | ${DIR_OBJS}
-	${CC} ${FLAGS} -I ${RINC} -I ${DIR_INCS} -o $@ -c $^ 
+	${CC} ${FLAGS} -I ${RINC} -I ${DIR_INCS} -o $@ -c $^ -MD
+include ${wildcard *.d}	
 
 ${DIR_OBJS}:
 	mkdir -p ${DIR_OBJS}
 
 clean:
 	${MAKE} clean -C libft
-	${RM} ${DIR_OBJS}
+	${RM} ${DIR_OBJS} ${DFILES}
 	
 fclean: clean
 	${MAKE} fclean -C libft
