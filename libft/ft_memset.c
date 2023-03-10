@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minishell.h                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vgejno <vgejno@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/23 11:29:01 by vgejno            #+#    #+#             */
-/*   Updated: 2023/02/23 11:47:58 by vgejno           ###   ########.fr       */
+/*   Created: 2021/10/27 19:55:26 by vgejno            #+#    #+#             */
+/*   Updated: 2021/12/21 17:04:13 by vgejno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef		MINISHELL_H
-# define	MINISHELL_H
+#include "libft.h"
 
-# include <stdio.h>
-# include <readline/readline.h>
-# include <readline/history.h>
+void	*ft_memset(void *str, int c, size_t len)
+{
+	unsigned char	*ptr;
 
-#endif
+	ptr = (unsigned char *)str;
+	while (len > 0)
+	{
+		*ptr = (unsigned char)c;
+		ptr++;
+		len--;
+	}
+	return (str);
+}

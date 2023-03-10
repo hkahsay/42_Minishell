@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vgejno <vgejno@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/23 11:28:22 by vgejno            #+#    #+#             */
-/*   Updated: 2023/02/23 11:33:17 by vgejno           ###   ########.fr       */
+/*   Created: 2021/11/09 20:02:19 by vgejno            #+#    #+#             */
+/*   Updated: 2021/12/21 17:22:58 by vgejno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-int	main()
+int	ft_toupper(int c)
 {
-	char *str;
-	
-	while((str = readline("prompt> ")))
-		printf("%s\n", str);
+	if (c >= 'a' && c <= 'z')
+		return (c - 32);
+	else
+		return (c);
 }
