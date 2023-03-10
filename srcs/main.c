@@ -51,6 +51,7 @@ t_envnode *dublicate_env(char **envp) // fnct returns a starting address of the 
 	
 	int i = 0;
 	int j = 0;
+	//hello from Nicole
 	while (envp[i])
 	{
 		j = 0;
