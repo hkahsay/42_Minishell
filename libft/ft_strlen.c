@@ -6,12 +6,15 @@
 /*   By: vgejno <vgejno@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 11:29:01 by vgejno            #+#    #+#             */
-/*   Updated: 2023/03/09 11:13:54 by vgejno           ###   ########.fr       */
+/*   Updated: 2023/03/09 11:21:40 by vgejno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef		MINISHELL_H
-# define	MINISHELL_H
+#include "libft.h"
+
+size_t	ft_strlen(const char *str)
+{
+	size_t	i;
 
 	i = 0;
 	while (str[i] != 0)
