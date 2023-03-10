@@ -6,20 +6,15 @@
 /*   By: vgejno <vgejno@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 11:29:01 by vgejno            #+#    #+#             */
-/*   Updated: 2023/03/09 11:21:40 by vgejno           ###   ########.fr       */
+/*   Updated: 2023/03/10 17:36:39 by vgejno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef		MINISHELL_H
+# define	MINISHELL_H
 
-size_t	ft_strlen(const char *str)
-{
-	size_t	i;
+# include <stdio.h>
+# include <readline/readline.h>
+# include <readline/history.h>
 
-	i = 0;
-	while (str[i] != 0)
-	{
-		i++;
-	}
-	return (i);
-}
+#endif

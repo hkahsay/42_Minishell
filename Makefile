@@ -1,4 +1,15 @@
-# << COMPILATION SETTINGS >> #
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: vgejno <vgejno@student.42.fr>              +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/02/23 11:19:05 by vgejno            #+#    #+#              #
+#    Updated: 2023/03/10 17:33:20 by vgejno           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = minishell
 
 SANITIZE = -fsanitize=address 
@@ -29,14 +40,29 @@ SRCS = ${DIR_SRCS}/main.c
 DIR_OBJS = ./objs
 OBJS = ${addprefix ${DIR_OBJS}/, ${notdir ${SRCS:.c=.o}}}
 
-DFILES = ${addprefix ${DIR_OBJS}/, ${notdir ${SRCS:.c=.d}}}
+
+SRCS = src/main.c \
+	src/token.c \
+	src/utils.c \
+	src/init.c \
+	src/check.c \
+
+
+
+DFILES = src/${addprefix ${DIR_OBJS}/, ${notdir ${SRCS:.c \
+	src/token.c \
+	src/utils.c \
+	src/init.c \
+	src/check.c \
+
+=.d}}}
 
 vpath %.c ${DIR_SRCS}
 
 all: ${NAME}
 
-${NAME}: ${OBJS}
-	${MAKE} -C libft
+${NAME}: 	${OBJS}
+			${MAKE} -C libft
 	${CC} ${FLAGS} ${OBJS} ${RLIB} ${LIBFT} -o ${NAME}
 
 ${DIR_OBJS}/%.o : %.c | ${DIR_OBJS}
@@ -53,6 +79,7 @@ clean:
 fclean: clean
 	${MAKE} fclean -C libft
 	${RM} ${NAME}
+
 	
 re: fclean all
 
