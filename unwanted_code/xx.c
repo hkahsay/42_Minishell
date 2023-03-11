@@ -8,6 +8,26 @@ typedef struct s_cmd
 	struct s_cmd		*next;
 }	t_cmd;
 
+int	is_word(const char *str)
+{
+	int	i;
+	int	word;
+
+	i = 0;
+	word = 0;
+	while (str[i])
+	{
+		if (ft_isspace(str[i]))
+			return (word);
+		else
+		{
+			word++;
+			i++;
+		}
+	}
+	return (word);
+}
+
 t_cmd	*init_cmd(void)
 {
 	t_cmd	*cmd;
@@ -58,3 +78,21 @@ t_arg	*args(char *content, int id)
 	arg->next = NULL;
 	return (arg);
 }
+
+// char	*classification(t_list *token, char *content, int id)
+// {
+// 	// if (id == WORD)
+// 	// 	token->content = word_token(content);
+// 	else if (id == REDIR_OUT)
+// 		token->content = NULL;
+// 	else if (id == REDIR_IN)
+// 		token->content = NULL;
+// 	else if (id == REDIR_APPEND)
+// 		token->content = NULL;
+// 	else if (id == HERE_DOC)
+// 		token->content = NULL;
+// 	else if (id == PIPE)
+// 		token->content = NULL;
+// 	printf("token classification OK!\n");	
+// 	return (0);
+// }

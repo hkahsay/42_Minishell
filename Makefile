@@ -6,7 +6,7 @@
 #    By: vgejno <vgejno@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/23 11:19:05 by vgejno            #+#    #+#              #
-#    Updated: 2023/03/10 19:35:33 by vgejno           ###   ########.fr        #
+#    Updated: 2023/03/11 22:07:44 by vgejno           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,8 +42,9 @@ OBJS = ${addprefix ${DIR_OBJS}/, ${notdir ${SRCS:.c=.o}}}
 
 
 SRCS =	srcs/main.c \
-		srcs/my_envp.c \
-		srcs/init.c \
+		srcs/01_my_envp.c \
+		srcs/02_token.c \
+		srsc/03_split_line.c \
 
 DFILES = src/${addprefix ${DIR_OBJS}/, ${notdir ${SRCS:.c=.d}}}
 

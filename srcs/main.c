@@ -3,12 +3,13 @@
 void	prompt(char	*line) //t_envnode *my_envp, 
 {
 	t_list	*token;
-	int		index;
+	// int		index;
 	int		fd;
 
 	line = readline ("minishell_VH>>");
 	printf ("prompt head OK!\n");
-	index = getpid();
+	printf ("line to sent to tokeniser: %s\n", line);
+	// index = getpid();
 	if (!line)
 	{
 		printf("exit\n");
@@ -16,7 +17,7 @@ void	prompt(char	*line) //t_envnode *my_envp,
 	}
 	if (ft_strlen(line) > 0)
 	{
-		token = create_token(line, index);
+		token = create_list_token(line); //, index
 		add_history(line);
 		fd = open("history.log", O_CREAT | O_WRONLY | O_APPEND, 0777);
 		ft_putstr_fd(line, fd);
@@ -24,19 +25,6 @@ void	prompt(char	*line) //t_envnode *my_envp,
 	}
 	else
 		free(line);
-}
-
-static void print_my_envp(t_envnode *temp)
-{
-	int i = 0;
-
-	while (temp)
-	{
-		printf("LIST: %s=%s\n", temp->key, temp->value);
-		temp = temp->next;
-		i++;
-	}
-	printf("%d\n", i);
 }
 
 int main(int argc, char **argv, char **envp)

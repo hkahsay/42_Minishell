@@ -22,10 +22,24 @@
 # define HERE_DOC 5
 # define PIPE 6
 
+typedef struct s_envnode
+{
+	char *key;
+	char *value;
+	struct s_envnode *prev;
+	struct s_envnode *next;
+} t_envnode;
+
+typedef struct s_prompt
+{
+	int			nbr_elm;
+	char		*str;
+}	t_prompt;
+
 typedef struct s_list
 {
-	int				id_token;
 	char			*content;
+	int				id_token;
 	struct s_list	*next;
 
 }	t_list;
@@ -50,30 +64,20 @@ typedef struct s_info
 // 	struct s_list	*next;
 // }t_list;
 
-typedef struct s_envnode
-{
-	char *key;
-	char *value;
-	struct s_envnode *prev;
-	struct s_envnode *next;
-} t_envnode;
-
-typedef struct s_prompt
-{
-	int			nbr_elm;
-	char		*str;
-}	t_prompt;
-
 /*copy into my environment*/
 t_envnode	*dublicate_env(char **envp);
 t_envnode	*create_my_envvar_node(char *key, char *value, int i);
 void		free_myenvp(t_envnode *head);
 
+void print_my_envp(t_envnode *temp);
+
 void	prompt(char	*line); //t_envnode *my_envp, 
 
-t_list	*init_token(void);
-t_list	*create_token(char *content, int id);
+t_list	*create_list_token(char *line); //, int id
+char	**split_line(char const *s, char c);
 
+// t_list	*init_token(char *line);
+int	classification(t_list *token, char *line);
 // int		ft_strlen(char *str);
 // void	ft_putstr_fd(char *str, int fd);
 // char	*classification(t_list *token, char *content, int id);

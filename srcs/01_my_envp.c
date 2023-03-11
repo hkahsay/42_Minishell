@@ -1,5 +1,19 @@
 #include "../headers/minishell.h"
 
+void print_my_envp(t_envnode *temp)
+{
+	int i = 0;
+
+	while (temp)
+	{
+		printf("LIST: %s=%s\n", temp->key, temp->value);
+		temp = temp->next;
+		i++;
+	}
+	printf("%d\n", i);
+}
+
+
 void free_myenvp(t_envnode *head)
 {
 	t_envnode *temp;
