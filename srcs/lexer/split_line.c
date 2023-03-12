@@ -1,4 +1,4 @@
-#include "../headers/minishell.h"
+#include "../../headers/minishell.h"
 
 static int	ft_nbrwords(const char *s, char c)
 {

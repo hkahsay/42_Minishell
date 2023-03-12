@@ -6,7 +6,7 @@
 #    By: vgejno <vgejno@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/23 11:19:05 by vgejno            #+#    #+#              #
-#    Updated: 2023/03/11 22:07:44 by vgejno           ###   ########.fr        #
+#    Updated: 2023/03/12 15:47:22 by vgejno           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ RM = rm -rf
 
 # << SOURCES >> #
 DIR_SRCS = ./srcs
+DIR_SRCS += ./srcs/lexer
 SRCS = ${DIR_SRCS}/main.c
 #SRCS += ${DIR_SRCS}/..
 
@@ -42,11 +43,12 @@ OBJS = ${addprefix ${DIR_OBJS}/, ${notdir ${SRCS:.c=.o}}}
 
 
 SRCS =	srcs/main.c \
-		srcs/01_my_envp.c \
-		srcs/02_token.c \
-		srsc/03_split_line.c \
+		srcs/lexer/my_envp.c \
+		srcs/lexer/token.c \
+		srsc/lexer/split_line.c \
+		srsc/lexer/utils_lexer.c \
 
-DFILES = src/${addprefix ${DIR_OBJS}/, ${notdir ${SRCS:.c=.d}}}
+DFILES = srcs/${addprefix ${DIR_OBJS}/, ${notdir ${SRCS:.c=.d}}}
 
 vpath %.c ${DIR_SRCS}
 

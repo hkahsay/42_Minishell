@@ -19,7 +19,7 @@
 # define REDIR_OUT 2
 # define REDIR_IN 3
 # define REDIR_APPEND 4
-# define HERE_DOC 5
+# define HEREDOC 5
 # define PIPE 6
 
 typedef struct s_envnode
@@ -74,6 +74,8 @@ void print_my_envp(t_envnode *temp);
 void	prompt(char	*line); //t_envnode *my_envp, 
 
 t_list	*create_list_token(char *line); //, int id
+
+char	*epur_str(char *str);
 char	**split_line(char const *s, char c);
 
 // t_list	*init_token(char *line);
