@@ -21,6 +21,8 @@
 # define REDIR_APPEND 4
 # define HEREDOC 5
 # define PIPE 6
+# define EXP_FIELD 7
+# define FIELD 8
 
 typedef struct s_envnode
 {

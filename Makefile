@@ -6,7 +6,7 @@
 #    By: vgejno <vgejno@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/23 11:19:05 by vgejno            #+#    #+#              #
-#    Updated: 2023/03/12 15:47:22 by vgejno           ###   ########.fr        #
+#    Updated: 2023/03/13 18:57:27 by vgejno           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,8 @@ SRCS =	srcs/main.c \
 		srcs/lexer/token.c \
 		srsc/lexer/split_line.c \
 		srsc/lexer/utils_lexer.c \
+		srcs/lexer/quotes.c \
+		srcs/lexer/redirects.c \
 
 DFILES = srcs/${addprefix ${DIR_OBJS}/, ${notdir ${SRCS:.c=.d}}}
 

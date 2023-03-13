@@ -5,10 +5,11 @@ void	prompt(char	*line) //t_envnode *my_envp,
 	t_list	*token;
 	// int		index;
 	int		fd;
+	char *epline;
 
 	line = readline ("minishell_VH>>");
-	printf ("prompt head OK!\n");
-	printf ("line to sent to tokeniser: %s\n", line);
+	// printf ("prompt head OK!\n");
+	// printf ("line to sent to tokeniser: %s\n", line);
 	// index = getpid();
 	if (!line)
 	{
@@ -17,7 +18,11 @@ void	prompt(char	*line) //t_envnode *my_envp,
 	}
 	if (ft_strlen(line) > 0)
 	{
-		token = create_list_token(line); //, index
+		epline = ft_strdup(epur_str(line));
+		if (!epline)
+			return ;
+		// printf("epured_line: %s\n", epline);
+		token = create_list_token(epline); //, index
 		add_history(line);
 		fd = open("history.log", O_CREAT | O_WRONLY | O_APPEND, 0777);
 		ft_putstr_fd(line, fd);
