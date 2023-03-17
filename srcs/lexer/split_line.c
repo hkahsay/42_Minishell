@@ -1,83 +1,83 @@
 #include "../../headers/minishell.h"
 
-static int	ft_nbrwords(const char *s, char c)
+int ft_word_len(char *str)
 {
-	size_t	i;
-	size_t	nbr;
+   int len;
 
-	nbr = 0;
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] == c)
-			i++;
-		else
-		{
-			nbr++;
-			while (s[i] != c && s[i] != 0)
-				i++;
-		}
-	}
-	return (nbr);
+   len = 0;
+   while (*str != '\0' && *str != ' ' && *str != '\t' && *str != '\n')
+   {
+       str++;
+       len++;
+   }
+   return (len);
 }
 
-static char	*ft_writewords(const char *s, char c)
+char *ft_fill_word(char *str)
 {
-	size_t	i;
-	char	*word;
+   int i;
+   int word_len;
+   char    *word;
 
-	i = 0;
-	while (*s && *s == c)
-		s++;
-	while (s[i] && s[i] != c)
-		i++;
-	word = malloc(sizeof(char) * (i + 1));
-	if (!word)
-		return (NULL);
-	i = 0;
-	while (s[i] && s[i] != c)
-	{
-		word[i] = s[i];
-		i++;
-	}
-	word[i] = '\0';
-	return (word);
+   i = 0;
+   word_len = ft_word_len(str);
+   word = malloc(sizeof(char) * (word_len + 1));
+   word[word_len] = '\0';
+   while (i < word_len)
+   {
+       word[i] = str[i];
+       i++;
+   }
+   return (word);
 }
 
-static void	ft_free_words(size_t i, char **ptr)
+void    ft_fill_array(char *str, char **array)
 {
-	while (i > 0)
-	{
-		free(ptr[i - 1]);
-		i--;
-	}
-	free(ptr);
+   int word_count;
+
+   word_count = 0;
+   while (*str == ' ' || *str == '\t' || *str == '\n')
+       str++;
+   while (*str != '\0')
+   {
+       array[word_count] = ft_fill_word(str);
+       word_count++;
+       while (*str != '\0' && *str != ' ' && *str != '\t' && *str != '\n')
+           str++;
+       while (*str == ' ' || *str == '\t' || *str == '\n')
+           str++;
+   }
 }
 
-char	**split_line(char const *s, char c)
+int ft_count_words(char *str)
 {
-	char	**ptr_words;
-	size_t	i;
-	size_t	words;
+   int count;
 
-	if (!s)
-		return (NULL);
-	words = ft_nbrwords(s, c);
-	ptr_words = malloc (sizeof(char *) * (words + 1));
-	if (!ptr_words)
-		return (NULL);
-	i = 0;
-	while (i < words)
+   count = 0;
+   while (*str == ' ' || *str == '\t' || *str == '\n')
+       str++;
+   while (*str != '\0')
+   {
+       count++;
+       while (*str != '\0' && *str != ' ' && *str != '\t' && *str != '\n')
+           str++;
+       while (*str == ' ' || *str == '\t' || *str == '\n')
+           str++;
+   }
+   return (count);
+}
+
+char    **ft_split(char *str, char *set)
+{
+   int word_count;
+   char **array;
+
+	while (*str != '\'' || *str != '"')
 	{
-		while (*s && *s == c)
-			s++;
-		ptr_words[i] = ft_writewords(s, c);
-		if (!ptr_words[i])
-			ft_free_words(i, ptr_words);
-		while (*s && *s != c)
-			s++;
-		i++;
+		word_count = ft_count_words(str);
+		array = malloc(sizeof(char *) * (word_count + 1));
+		array[word_count] = 0;
+		ft_fill_array(str, array);
 	}
-	ptr_words[i] = NULL;
-	return (ptr_words);
+   return (array);
 }

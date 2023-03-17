@@ -16,13 +16,32 @@
 # include "../libft/libft.h"
 
 # define WORD 1
-# define REDIR_OUT 2
-# define REDIR_IN 3
-# define REDIR_APPEND 4
-# define HEREDOC 5
-# define PIPE 6
+# define REDIR_OUT_STR ">"
+# define REDIR_IN_STR "<"
+# define REDIR_OUT_APPEND_STR ">>"
+# define HEREDOC_STR "<<"
+# define PIPE_STR "|"
 # define EXP_FIELD 7
 # define FIELD 8
+
+//tokens
+typedef enum	e_toktype
+{
+	TOK_ERROR,
+	TOK_WORD,
+	QUOTE,
+	TOK_REDIR_OUT,
+	TOK_REDIR_IN,
+	TOK_REDIR_APPEND,
+	TOK_HEREDOC,
+	TOK_PIPE
+}	t_toktype;
+
+typedef struct s_stringln
+{
+	char	*str;
+	size_t	len;
+}	t_stringln;
 
 typedef struct s_envnode
 {
@@ -74,8 +93,13 @@ void		free_myenvp(t_envnode *head);
 void print_my_envp(t_envnode *temp);
 
 void	prompt(char	*line); //t_envnode *my_envp, 
+t_stringln	*ft_strdup_stringln(const char *str);
 
-t_list	*create_list_token(char *line); //, int id
+char    **ft_split_line(char *str);
+
+t_list	*create_list_token(char  *epline); //, int id
+t_list *init_token_redirect(char *epline, int *i);
+t_list	*init_token(t_list	*token);
 
 char	*epur_str(char *str);
 char	**split_line(char const *s, char c);

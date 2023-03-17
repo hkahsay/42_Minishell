@@ -2,12 +2,14 @@
 
 void	prompt(char	*line) //t_envnode *my_envp, 
 {
-	t_list	*token;
+	// t_list		*token;
+	// t_stringln	*epline;
 	// int		index;
 	int		fd;
-	char *epline;
+	// char *epline;
+	char **test_line;
 
-	line = readline ("minishell_VH>>");
+	line = readline ("minishell_VH>> 😜 ");
 	// printf ("prompt head OK!\n");
 	// printf ("line to sent to tokeniser: %s\n", line);
 	// index = getpid();
@@ -18,11 +20,12 @@ void	prompt(char	*line) //t_envnode *my_envp,
 	}
 	if (ft_strlen(line) > 0)
 	{
-		epline = ft_strdup(epur_str(line));
-		if (!epline)
-			return ;
-		// printf("epured_line: %s\n", epline);
-		token = create_list_token(epline); //, index
+		// epline = ft_strdup(line);
+		// if (!epline)
+		// 	return ;
+		// printf("epured_line: %s\n", epline->str);
+		// token = create_list_token(line); //, index
+		test_line = ft_split_line(line);
 		add_history(line);
 		fd = open("history.log", O_CREAT | O_WRONLY | O_APPEND, 0777);
 		ft_putstr_fd(line, fd);

@@ -1,13 +1,13 @@
 #include "../../headers/minishell.h"
 
-// static t_list	*token_heredoc(t_list *token)
-// {
-// 	if (!token)
-// 		return (0);
-// 	token->content = "<<";
-// 	token->id_token = 5;
-// 	return (token);
-// }
+static t_list	*token_heredoc(t_list *token)
+{
+	if (!token)
+		return (0);
+	token->content = "<<";
+	token->id_token = 5;
+	return (token);
+}
 
 // static t_list	*token_singlequote(t_list *new, char *str)
 // {
@@ -27,7 +27,7 @@
 // 	return (new);	
 // }
 
-static t_list	*token_simple_redirect(char c, t_list *token)
+static void	*token_simple_redirect(char c, t_list *token)
 {
 	if (c == '>')
 	{
@@ -38,19 +38,21 @@ static t_list	*token_simple_redirect(char c, t_list *token)
 	else if (c == '<')
 	{
 		token->content = "<";
-		printf("<: %s\n", token->content);
+		printf("token->content <: %s\n", token->content);
 		token->id_token = 3;
+		printf("token->id_token <: %d\n", token->id_token);
 	}
 	else if (c == '|')
 	{
 		token->content = "|";
-		printf("<: %s\n", token->content);
+		printf("|: %s\n", token->content);
 		token->id_token = 6;
 	}
-	return (token);
+	return (0);
+	// return (token);
 }
 
-static t_list *init_token_redirect(char *line, int *i)
+t_list *init_token_redirect(char *epline, int *i)
 {
 	t_list	*new;
 
@@ -58,41 +60,35 @@ static t_list *init_token_redirect(char *line, int *i)
 	new = init_token(new);
 	if (!new)
 		return (0);
-	if (line[*i])
-	{
-		if ((line[*i] == '>' && (line[*i + 1] != '>' || line[*i + 1] == '\0')))
+	// if (epline->str[*i])
+	// {
+	  	if ((epline[*i] == '>' && (epline[*i + 1] != '>' || epline[*i + 1] == '\0')))
 		{
-			token_simple_redirect(line[*i], new);
+			token_simple_redirect(epline[*i], new);
 			*i += 1;	
 		}
-		else if ((line[*i] == '<' && (line[*(i + 1)] != '<' || line[*i + 1] == '\0')))
+		else if ((epline[*i] == '<' && (epline[*i + 1] != '<' || epline[*i + 1] == '\0')))
 		{
-			token_simple_redirect(line[*i], new);
+			token_simple_redirect(epline[*i], new);
 			*i += 1;	
 		}
-		else if ((line[*i] == '|' && (line[*i + 1] != '|' || line[*i + 1] == '\0')))
+		else if ((epline[*i] == '|' && (epline[*i + 1] != '|' || epline[*i + 1] == '\0')))
 		{
-			token_simple_redirect(line[*i], new);
-			*i += 1;	
+			token_simple_redirect(epline[*i], new);
+			 *i += 1;	
 		}
-		else if (line[*i] == '<' && line[*i + 1] == '<')
+		else if (epline[*i] == '<' && epline[*i + 1] == '<')
 		{
 			token_heredoc(new);
-			printf("<<: %s\n", new->content);
+			// printf("<<: %s\n", new->content);
 			*i += 2;
 		}
-		else if (line[*i] == '>' && line[*i + 1] == '>')
-		{
-			token_redir_append(new);
-			printf(">>: %s\n", new->content);
-			*i += 2;
-		}
-		else if (line[*i] == '|' && line[*i + 1] == '|')
+		else if (epline[*i] == '|' && epline[*i + 1] == '|')
 		{
 			printf("||: %s\n", "Fake Error message, logical operator doesn't have to be managed");
 			return (0);
 		}
-		
-	}
+		// *i += 1;
+
 	return (new);
 }
