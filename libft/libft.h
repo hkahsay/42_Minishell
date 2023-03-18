@@ -6,14 +6,16 @@
 /*   By: vgejno <vgejno@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 18:55:36 by vgejno            #+#    #+#             */
-/*   Updated: 2023/03/17 12:30:09 by vgejno           ###   ########.fr       */
+/*   Updated: 2023/03/17 17:22:12 by vgejno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdio.h>
 
 int		ft_atoi(const char *str);
 void	ft_bzero(void *str, size_t n);

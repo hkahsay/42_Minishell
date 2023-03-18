@@ -1,235 +1,274 @@
 #include "../../headers/minishell.h"
 
-# define OPEN 1
-# define CLOSED 0
+// # define OPEN 1
+// # define CLOSED 0
 
-// static int	ft_strchr(const char	*s, int c)
+// static int ft_wordlen(char *input_str)
 // {
-// 	size_t	i;
+//     int i = 0;
 
-// 	i = 0;
-// 	while (s[i])
-// 	{
-// 		if (s[i] == (char)c)
-// 		{
-// 			return (1);
-// 		}
-// 		i++;
-// 	}
-// 	if (c == 0)
-// 		return (0);
-// 	return (0);
+//     while (input_str[i] != '\0' && input_str[i] != ' ' && input_str[i] != '\t' && input_str[i] != '\n')
+//         ++i;
+//     return (i);
 // }
 
-static int ft_wordlen(char *str)
+// static char    *word_dupe(char *input_str)
+// {
+//     int i = 0;
+//     int len = ft_wordlen(input_str);
+//     char *word = malloc(sizeof(char) * (len + 1));
+
+//     word[len] = '\0';
+//     while (i < len)
+//     {
+//         word[i] = input_str[i];
+//         ++i;
+//     }
+//     return (word);
+// }
+
+// static void    fill_words(char **array, char *input_str)
+// {
+//     int word_index = 0;
+
+//     while (*input_str == ' ' || *input_str == '\t' || *input_str == '\n')
+//         ++input_str;
+//     while (*input_str != '\0')
+//     {
+//         array[word_index] = word_dupe(input_str);
+//         ++word_index;
+//         while (*input_str != '\0' && *input_str != ' ' && *input_str != '\t' && *input_str != '\n')
+//             ++input_str;
+//         while (*input_str == ' ' || *input_str == '\t' || *input_str == '\n')
+//             ++input_str;
+//     }
+// }
+
+// static int     count_words(char *input_str, char *q)
+// {
+//     int word_count = 0;
+// 	int	word_quote_count = 0;
+//     int quote_status = CLOSED;
+
+//     while (*input_str == ' ' || *input_str == '\t' || *input_str == '\n')
+// 		input_str++;
+//     while (*input_str != '\0')
+//     {
+//         ++word_count;
+//         while (*input_str != '\0' && *input_str != ' ' && *input_str != '\t' && *input_str != '\n')
+//         {
+// 			if ((ft_strncmp(input_str, q, ft_strlen(q)) == 0 && quote_status == CLOSED)) // && *(input_str + 1) != '\0'
+//             {
+//                 quote_status = OPEN;
+// 				input_str++;
+//                 while ((ft_strncmp(input_str, q, ft_strlen(q)) != 0))
+//                     input_str++;
+//             }
+//             if ((ft_strncmp(input_str, q, ft_strlen(q)) == 0 && quote_status == OPEN))
+//             {
+//                 quote_status = CLOSED;
+//                 word_quote_count++;
+//                 input_str++;
+//                 break ;
+//             }
+// 			else
+// 				input_str++;
+// 		}
+//         if (quote_status == OPEN && (*input_str == ' ' || *input_str == '\t' || *input_str == '\n'))
+//         {
+//             while ((*input_str == ' ' || *input_str == '\t' || *input_str == '\n'))
+//                 input_str++;
+//             if ((ft_strncmp(input_str, q, ft_strlen(q)) == 0 && quote_status == OPEN))
+//             {
+//                 quote_status = CLOSED;
+//                 word_quote_count++;
+//                 input_str++;
+//                 break ;
+//             }
+//             input_str++;
+//         }
+//         while (*input_str != '\0' && *input_str != ' ' && *input_str != '\t' && *input_str != '\n')
+//         {
+//             input_str++;
+//         }
+//         while ((*input_str == ' ' || *input_str == '\t' || *input_str == '\n'))
+//             input_str++;
+// 	}
+// 	if (quote_status == OPEN && *input_str == '\0')
+//     {
+//         printf("error");
+//         return (-1);
+//     }
+//     return (word_count);
+// }
+
+// char    **ft_split_line(char *input_str)
+// {
+//     int     word_count;
+//     char    **array;
+// 	char *quote = "\"";
+
+//     word_count = count_words(input_str, quote);
+//     array = malloc(sizeof(char *) * (word_count + 1));
+
+//     array[word_count] = 0;
+//     fill_words(array, input_str);
+//     int i = 0;
+//     while (array[i])
+//     {
+//         printf("%s\n", array[i++]);
+//     }
+//     return (array);
+// }
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define OPEN 1
+#define CLOSED 0
+
+static int ft_wordlen(char *input_str, char *delimiters)
 {
     int i = 0;
 
-    while (str[i] != '\0' && str[i] != ' ' && str[i] != '\t' && str[i] != '\n')
+    while (input_str[i] != '\0' && !strchr(delimiters, input_str[i]))
         ++i;
     return (i);
 }
 
-static char    *word_dupe(char *str)
+static char *word_dupe(char *input_str, char *delimiters)
 {
     int i = 0;
-    int len = ft_wordlen(str);
+    int len = ft_wordlen(input_str, delimiters);
     char *word = malloc(sizeof(char) * (len + 1));
 
     word[len] = '\0';
     while (i < len)
     {
-        word[i] = str[i];
+        word[i] = input_str[i];
         ++i;
     }
     return (word);
 }
 
-static void    fill_words(char **array, char *str)
+static t_token *new_token(char *value, t_toktype type)
 {
-    int word_index = 0;
+    t_token *token = malloc(sizeof(t_token));
+    token->value = value;
+    token->type = type;
+    token->next = NULL;
+    return (token);
+}
 
-    while (*str == ' ' || *str == '\t' || *str == '\n')
-        ++str;
-    while (*str != '\0')
+static void add_token(t_token **head, char *value, t_toktype type)
+{
+    t_token *token = new_token(value, type);
+
+    if (*head == NULL)
     {
-        array[word_index] = word_dupe(str);
-        ++word_index;
-        while (*str != '\0' && *str != ' ' && *str != '\t' && *str != '\n')
-            ++str;
-        while (*str == ' ' || *str == '\t' || *str == '\n')
-            ++str;
+        *head = token;
+    }
+    else
+    {
+        t_token *current = *head;
+        while (current->next != NULL)
+        {
+            current = current->next;
+        }
+        current->next = token;
     }
 }
 
-static int     count_words(char *str, char *q)
+static void fill_words(t_token **head, char *input_str, char *delimiters)
 {
-    int num_words = 0;
-	int	pair_quote = 0;
-    int flag_quote = 0;
-    // char *str = p;
-    while (*str == ' ' || *str == '\t' || *str == '\n')
-        {
-            printf("\nnum_words: %d\n", num_words);
-			printf("\n01:flag_quote: %d *str: %c\n", flag_quote, *str);
-			while (*str != '\0' && *str != ' ' && *str != '\t' && *str != '\n') // && *str != q
-			{
-
-				printf("\n02:flag_quote: %d *str: %c\n", flag_quote, *str);
-				//case 1
-				if (!(strncmp(str, q, 1) && flag_quote == CLOSED)) //if she found " and flag 0
-				{
-					flag_quote = OPEN;
-					printf("\n03:found open quote: %d *str: %c\n", flag_quote, *str);
-					str++;
-					while (*str && (strncmp(str, q, 1))) //continue without " found
-						str++;		
-					if (!(strncmp(str, q, 1)  && flag_quote == OPEN)) //if she found " and flag 1
-					{
-						flag_quote = CLOSED;
-						printf("\n8:found closed quote: %d *str: %c\n", flag_quote, *str);
-						pair_quote++;
-						str++;
-						// break ;
-					}
-            		}
-				//case 2
-				if (!(strncmp(str, q, 1) && flag_quote == OPEN))
-				{
-					flag_quote = CLOSED;
-					printf("\n04:found closed quote: %d *str: %c\n", flag_quote, *str);
-					pair_quote++;
-					str++;
-					// break ;
-				}
-				else
-					str++;
-			}
-			str++;
-		}
-    while (*str != '\0')
+    while (*input_str != '\0')
     {
-        printf("\nnum_words: %d\n", num_words);
-		printf("\n1:flag_quote: %d *str: %c\n", flag_quote, *str);
-        while (*str != '\0' && *str != ' ' && *str != '\t' && *str != '\n') // && *str != q
+        while (*input_str != '\0' && strchr(delimiters, *input_str))
+            ++input_str;
+        if (*input_str != '\0')
         {
-
-            printf("\n2:flag_quote: %d *str: %c\n", flag_quote, *str);
-			//case 1
-			if (!(strncmp(str, q, 1) && flag_quote == CLOSED)) //if she found " and flag 0
-            {
-                flag_quote = OPEN;
-				printf("\n3:found open quote: %d *str: %c\n", flag_quote, *str);
-				str++;
-                while (*str && (strncmp(str, q, 1))) //continue without " found
-					str++;
-				if (!(strncmp(str, q, 1) && flag_quote == OPEN)) //if she found " and flag 1
-				{
-					flag_quote = CLOSED;
-					printf("\n3:found closed quote: %d *str: %c\n", flag_quote, *str);
-					pair_quote++;
-					str++;
-					// break ;
-				}
-            }
-			//case 2
-            if (!(strncmp(str, q, 1) && flag_quote == OPEN))
-            {
-                flag_quote = CLOSED;
-                printf("\n4:found closed quote: %d *str: %c\n", flag_quote, *str);
-                pair_quote++;
-				str++;
-				// break ;
-            }
-			else
-				str++;
-		}
-        while (*str == ' ' || *str == '\t' || *str == '\n')
-        {
-            printf("\nnum_words: %d\n", num_words);
-			printf("\n5:flag_quote: %d *str: %c\n", flag_quote, *str);
-			while (*str != '\0' && *str != ' ' && *str != '\t' && *str != '\n') // && *str != q
-			{
-
-				printf("\n6:flag_quote: %d *str: %c\n", flag_quote, *str);
-				//case 1
-				if (!(strncmp(str, q, 1) && flag_quote == CLOSED)) //if she found " and flag 0
-				{
-					flag_quote = OPEN;
-					printf("\n7:found open quote: %d *str: %c\n", flag_quote, *str);
-					str++;
-					while (*str && (strncmp(str, q, 1))) //continue without " found
-						str++;		
-					if (!(strncmp(str, q, 1)  && flag_quote == OPEN)) //if she found " and flag 1
-					{
-						flag_quote = CLOSED;
-						printf("\n8:found closed quote: %d *str: %c\n", flag_quote, *str);
-						pair_quote++;
-						str++;
-						// break ;
-					}
-            		}
-				//case 2
-				if (!(strncmp(str, q, 1) && flag_quote == OPEN))
-				{
-					flag_quote = CLOSED;
-					printf("\n3:found closed quote: %d *str: %c\n", flag_quote, *str);
-					pair_quote++;
-					str++;
-					// break ;
-				}
-				else
-					str++;
-			}
-			str++;
-		}
-		++num_words;
-	}
-
-    printf("final num_words: %d\n", num_words);
-	printf("\npair_quote: %d\n", pair_quote);
-	printf("flag_quote: %d\n", flag_quote);
-	if (flag_quote == OPEN)
-		printf("error");
-    return (num_words);
+            add_token(head, word_dupe(input_str, delimiters), TOK_WORD);
+            input_str += ft_wordlen(input_str, delimiters);
+        }
+    }
 }
 
-char    **ft_split_line(char *str)
+void print_tokens(t_token *token_list)
 {
-    int     num_words;
-    char    **array;
-	char *quote = "\"";
+    t_token *current = token_list;
 
-    num_words = count_words(str, quote);
-    array = malloc(sizeof(char *) * (num_words + 1));
-
-    array[num_words] = 0;
-    fill_words(array, str);
-    return (array);
+    while (current != NULL)
+    {
+        printf("Type: %d, Token: %s\n", current->type, current->token);
+        current = current->next;
+    }
 }
 
-// int  main(int ac, char **av)
+t_token *ft_split_line(char *input_str, char *delimiters)
+{
+    t_token *head = NULL;
+    t_token *print;
+
+    print = head;
+
+    fill_words(&head, input_str, delimiters);
+    print_tokens(print);
+    return (head);
+}
+
+// In your case, you can define the delimiters using the #define statements you've provided. You can modify the fill_words function to take in an array of t_toktype values instead of a string array for the delimiters. Here's an example of how you can modify the fill_words function:
+
+// c
+// Copy code
+// static void fill_words(t_token **head, char *input_str, t_toktype *delimiters)
 // {
-// 	int i = 0;
-// 	int	j = 0;
-// 	char **array;
+//     int word_index = 0;
 
-// 	if(ac < 2)
-// 	{
-// 		return(1);
-// 	}
-
-// 	while (i < ac)
-// 	{
-// 		array = ft_split(av[i]);
-// 		while (array[j])
-// 		{
-// 			printf("%s\n", array[j]);
-// 			j++;
-// 		}
-// 		i++;
-// 	}
-	
-// 	return (0);
-	
+//     while (*input_str != '\0')
+//     {
+//         while (*input_str != '\0' && is_delimiter(*input_str, delimiters))
+//             ++input_str;
+//         if (*input_str != '\0')
+//         {
+//             char *word = word_dupe(input_str, delimiters);
+//             t_token *new_token = create_token(word, get_token_type(word, delimiters));
+//             add_token(head, new_token);
+//             input_str += ft_wordlen(input_str, delimiters);
+//         }
+//     }
 // }
+// Here, the is_delimiter function is used to check if the current character is a delimiter or not. You can define it as follows:
+
+// c
+// Copy code
+// static int is_delimiter(char c, t_toktype *delimiters)
+// {
+//     while (*delimiters != 0)
+//     {
+//         if (get_token_type(&c, delimiters) != TOK_ERROR)
+//             return 1;
+//         delimiters++;
+//     }
+//     return 0;
+// }
+// You can then define the delimiters as an array of t_toktype values like this:
+
+// c
+// Copy code
+// t_toktype delimiters[] = {
+//     TOK_REDIR_OUT,
+//     TOK_REDIR_IN,
+//     TOK_REDIR_APPEND,
+//     TOK_HEREDOC,
+//     TOK_PIPE,
+//     0
+// };
+// And call the ft_split_line function like this:
+
+// c
+// Copy code
+// t_token *head = NULL;
+// ft_split_line(line, delimiters, &head);
+// print_token_list(head);
+// This should print out the list of tokens to the console.

@@ -37,6 +37,24 @@ typedef enum	e_toktype
 	TOK_PIPE
 }	t_toktype;
 
+char *delimiters[] = {
+    " ",
+    TOK_REDIR_OUT_STR,
+    TOK_REDIR_IN_STR,
+    TOK_REDIR_APPEND_STR,
+    TOK_HEREDOC_STR,
+    TOK_PIPE_STR,
+    NULL
+};
+
+typedef struct s_token
+{
+    char *value;
+    t_toktype type;
+    struct s_token *next;
+} t_token;
+
+
 typedef struct s_stringln
 {
 	char	*str;
@@ -95,7 +113,7 @@ void print_my_envp(t_envnode *temp);
 void	prompt(char	*line); //t_envnode *my_envp, 
 t_stringln	*ft_strdup_stringln(const char *str);
 
-char    **ft_split_line(char *str);
+t_token    **ft_split_line(char *str);
 
 t_list	*create_list_token(char  *epline); //, int id
 t_list *init_token_redirect(char *epline, int *i);

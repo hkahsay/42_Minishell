@@ -7,7 +7,7 @@ void	prompt(char	*line) //t_envnode *my_envp,
 	// int		index;
 	int		fd;
 	// char *epline;
-	char **test_line;
+	t_token *test_line;
 
 	line = readline ("minishell_VH>> 😜 ");
 	// printf ("prompt head OK!\n");
@@ -25,7 +25,7 @@ void	prompt(char	*line) //t_envnode *my_envp,
 		// 	return ;
 		// printf("epured_line: %s\n", epline->str);
 		// token = create_list_token(line); //, index
-		test_line = ft_split_line(line);
+		test_line = ft_split_line(line, );
 		add_history(line);
 		fd = open("history.log", O_CREAT | O_WRONLY | O_APPEND, 0777);
 		ft_putstr_fd(line, fd);
