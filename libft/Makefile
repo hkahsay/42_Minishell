@@ -6,7 +6,7 @@
 #    By: vgejno <vgejno@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/09 16:28:58 by vgejno            #+#    #+#              #
-#    Updated: 2023/03/17 12:32:08 by vgejno           ###   ########.fr        #
+#    Updated: 2023/03/20 18:45:26 by vgejno           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,8 +45,8 @@ SRCS = ft_putchar_fd.c \
 		ft_substr.c \
  		ft_tolower.c \
  		ft_toupper.c \
- 		# ft_strchr.c \
- 		# ft_strtrim.c \
+ 		ft_strchr.c \
+ 		ft_strtrim.c \
  		
 
 OBJS = ${SRCS:.c=.o}

@@ -3,7 +3,7 @@
 
 void	prompt(char	*line)
 {
-	t_list	*token;
+	t_token	*token;
 	int		index;
 	int		fd;
 

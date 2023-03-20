@@ -264,3 +264,202 @@ echo "bash" "bu"
    echo   "bash"
 echo "bu"
 echo "bi" bi
+echo "bla"
+echo coucou "bla"
+echo "bla"
+echo
+echo bla
+echo "bla"
+"echo"
+echo    "bla"
+echo "bla"
+   echo "bla"
+echo bla
+echo "bla"
+echo bla
+echo "bla"
+echo "bla"
+"bla"
+la la
+"la" "la"
+ma ma
+ma ma
+la la
+"ca" ba
+"ca" "ba"
+"ca" "bla"
+"ca"    "bla"
+  "ca"    "bla"
+"ba" "no"
+ba va
+"ba" va
+ca va
+ca va
+ca va
+ba "bu"
+ca va
+cfd vbf
+"ca" "va"
+"ca" "va"
+"ca" "va"
+ca va
+"ca" "va"
+ca va
+"ca" "va"
+echo "ca" "va"
+ca va
+"ca" "va"
+ca va
+"ca" "va"
+ca va
+ca va
+ca va
+ca va
+ca va
+ca va
+bu do
+cav va
+ec ch
+|<<
+cv
+|
+>
+|
+bcwjvew
+fjehr
+ifhr
+iwfjqe
+bcsh
+vuyfo
+ukfuly
+oi3h4 3j4i <<
+ns jdwio 
+|
+>
+<<
+|
+|
+>>
+|
+>>
+|
+|
+|
+>
+>>
+>>
+<<
+>>>
+>
+>>
+>|
+|
+|  >
+|   >
+|   >
+|  >
+|  >
+|  >
+|  <  >
+>> |
+>> > <<<
+>>>
+<<<
+<< <
+<<<
+>>>
+> >
+<<
+| <
+<<
+| >
+>>
+>>
+>>
+>>
+   |  >>>
+>>>
+>>>
+> bh
+>>>
+bceh cej
+cb cshd
+b iu giu
+bc cs
+bdwk jw
+vuu yuyo
+ckkwe hcduiw
+vg bh
+ni fr
+bhj lk
+bjcsd bcds
+bc ecw
+< bh
+>> < | bn
+<< vg > hj | ji
+cd cd
+vg>d
+vb>j
+vg vb
+vg sd
+bh sd
+nb xs
+nj sd
+bn kl
+bh ds
+<< <<
+< <
+>> <
+>>>
+bh bh
+>>
+>
+>>
+<<
+vg
+bh sd
+>> nj
+bh >> lk
+bh bh
+kl nm
+lk ds
+bh ds
+>>
+hj ds
+bh ds
+lk re
+kl sd
+lk re
+nk ds
+lk fd
+gd sd
+lk fd
+jk ds
+>> <
+kw dwe
+kl df
+>> bn
+vb er
+lk fd
+lk fd
+lk fd
+kj ds
+bh cd
+bh cd
+nj fd
+lk fd
+mkl ds
+kj ds
+>> hu
+<<
+<< >>
+> << |
+>>>
+>>>
+>>>
+>> >
+>> test
+echo "$HOME"
+echo "$HOME">>test.txt
+echo "$HOME">>test.txt|cat|ls
+echo "bnm" | dek2 jl << dje

@@ -1,12 +1,12 @@
 #include "../../headers/minishell.h"
 
-t_list	*init_token(t_list	*token)
+t_token	*init_token(t_token	*token)
 {
-	token = malloc(sizeof(t_list) * 1);
+	token = malloc(sizeof(t_token) * 1);
 	if (!token)
 		return (0);
 	token->content = NULL;
-	token->id_token = 0;
+	token->id = 0;
 	token->next = NULL;
 	return (token);
 }
@@ -20,12 +20,12 @@ static int get_token_len(char *token)
 }
 
 
-t_list	*create_list_token(char *line) //, int id no reason for id, it prints always the same id
+t_token	*create_list_token(char *line) //, int id no reason for id, it prints always the same id
 {
-	t_list	*token;
-	t_list	*head;
-	t_list	*temp;
-	// t_list	*temp1;
+	t_token	*token;
+	t_token	*head;
+	t_token	*temp;
+	// t_token	*temp1;
 	int		i;
 
 	i = 0;

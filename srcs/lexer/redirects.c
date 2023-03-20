@@ -1,60 +1,60 @@
 #include "../../headers/minishell.h"
 
-static t_list	*token_heredoc(t_list *token)
+static t_token	*token_heredoc(t_token *token)
 {
 	if (!token)
 		return (0);
 	token->content = "<<";
-	token->id_token = 5;
+	token->id = 5;
 	return (token);
 }
 
-// static t_list	*token_singlequote(t_list *new, char *str)
+// static t_token	*token_singlequote(t_token *new, char *str)
 // {
 // 	if (!new)
 // 		return (0);
 // 	new->content = strdup(str);
-// 	new->id_token = 8;
+// 	new->id = 8;
 // 	return (new);	
 // }
 
-// static t_list	*token_doublequote(t_list *new, char *str)
+// static t_token	*token_doublequote(t_token *new, char *str)
 // {
 // 	if (!new)
 // 		return (0);
 // 	new->content = strdup(str);
-// 	new->id_token = 7;
+// 	new->id = 7;
 // 	return (new);	
 // }
 
-static void	*token_simple_redirect(char c, t_list *token)
+static void	*token_simple_redirect(char c, t_token *token)
 {
 	if (c == '>')
 	{
 		token->content = ">"; //not sur if need a content
 		printf(">: %s\n", token->content);
-		token->id_token = 2;
+		token->id = 2;
 	}
 	else if (c == '<')
 	{
 		token->content = "<";
 		printf("token->content <: %s\n", token->content);
-		token->id_token = 3;
-		printf("token->id_token <: %d\n", token->id_token);
+		token->id = 3;
+		printf("token->id <: %d\n", token->id);
 	}
 	else if (c == '|')
 	{
 		token->content = "|";
 		printf("|: %s\n", token->content);
-		token->id_token = 6;
+		token->id = 6;
 	}
 	return (0);
 	// return (token);
 }
 
-t_list *init_token_redirect(char *epline, int *i)
+t_token *init_token_redirect(char *epline, int *i)
 {
-	t_list	*new;
+	t_token	*new;
 
 	new = NULL;
 	new = init_token(new);

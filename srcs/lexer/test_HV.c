@@ -1,178 +1,42 @@
 #include "../../headers/minishell.h"
 
-// # define OPEN 1
-// # define CLOSED 0
-
-// static int ft_wordlen(char *input_str)
-// {
-//     int i = 0;
-
-//     while (input_str[i] != '\0' && input_str[i] != ' ' && input_str[i] != '\t' && input_str[i] != '\n')
-//         ++i;
-//     return (i);
-// }
-
-// static char    *word_dupe(char *input_str)
-// {
-//     int i = 0;
-//     int len = ft_wordlen(input_str);
-//     char *word = malloc(sizeof(char) * (len + 1));
-
-//     word[len] = '\0';
-//     while (i < len)
-//     {
-//         word[i] = input_str[i];
-//         ++i;
-//     }
-//     return (word);
-// }
-
-// static void    fill_words(char **array, char *input_str)
-// {
-//     int word_index = 0;
-
-//     while (*input_str == ' ' || *input_str == '\t' || *input_str == '\n')
-//         ++input_str;
-//     while (*input_str != '\0')
-//     {
-//         array[word_index] = word_dupe(input_str);
-//         ++word_index;
-//         while (*input_str != '\0' && *input_str != ' ' && *input_str != '\t' && *input_str != '\n')
-//             ++input_str;
-//         while (*input_str == ' ' || *input_str == '\t' || *input_str == '\n')
-//             ++input_str;
-//     }
-// }
-
-// static int     count_words(char *input_str, char *q)
-// {
-//     int word_count = 0;
-// 	int	word_quote_count = 0;
-//     int quote_status = CLOSED;
-
-//     while (*input_str == ' ' || *input_str == '\t' || *input_str == '\n')
-// 		input_str++;
-//     while (*input_str != '\0')
-//     {
-//         ++word_count;
-//         while (*input_str != '\0' && *input_str != ' ' && *input_str != '\t' && *input_str != '\n')
-//         {
-// 			if ((ft_strncmp(input_str, q, ft_strlen(q)) == 0 && quote_status == CLOSED)) // && *(input_str + 1) != '\0'
-//             {
-//                 quote_status = OPEN;
-// 				input_str++;
-//                 while ((ft_strncmp(input_str, q, ft_strlen(q)) != 0))
-//                     input_str++;
-//             }
-//             if ((ft_strncmp(input_str, q, ft_strlen(q)) == 0 && quote_status == OPEN))
-//             {
-//                 quote_status = CLOSED;
-//                 word_quote_count++;
-//                 input_str++;
-//                 break ;
-//             }
-// 			else
-// 				input_str++;
-// 		}
-//         if (quote_status == OPEN && (*input_str == ' ' || *input_str == '\t' || *input_str == '\n'))
-//         {
-//             while ((*input_str == ' ' || *input_str == '\t' || *input_str == '\n'))
-//                 input_str++;
-//             if ((ft_strncmp(input_str, q, ft_strlen(q)) == 0 && quote_status == OPEN))
-//             {
-//                 quote_status = CLOSED;
-//                 word_quote_count++;
-//                 input_str++;
-//                 break ;
-//             }
-//             input_str++;
-//         }
-//         while (*input_str != '\0' && *input_str != ' ' && *input_str != '\t' && *input_str != '\n')
-//         {
-//             input_str++;
-//         }
-//         while ((*input_str == ' ' || *input_str == '\t' || *input_str == '\n'))
-//             input_str++;
-// 	}
-// 	if (quote_status == OPEN && *input_str == '\0')
-//     {
-//         printf("error");
-//         return (-1);
-//     }
-//     return (word_count);
-// }
-
-// char    **ft_split_line(char *input_str)
-// {
-//     int     word_count;
-//     char    **array;
-// 	char *quote = "\"";
-
-//     word_count = count_words(input_str, quote);
-//     array = malloc(sizeof(char *) * (word_count + 1));
-
-//     array[word_count] = 0;
-//     fill_words(array, input_str);
-//     int i = 0;
-//     while (array[i])
-//     {
-//         printf("%s\n", array[i++]);
-//     }
-//     return (array);
-// }
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-#define OPEN 1
-#define CLOSED 0
-
-static int ft_wordlen(char *input_str, char *delimiters)
+char    *skip_spaces(char *str)
 {
-    int i = 0;
-
-    while (input_str[i] != '\0' && !strchr(delimiters, input_str[i]))
-        ++i;
-    return (i);
+    while (*str && ft_isspace(*str))
+        str++;
+	printf(PURPLE "Spaces skipped\n" RS);
+    return(str);  
 }
 
-static char *word_dupe(char *input_str, char *delimiters)
+static t_token *new_token(char *content, t_toktype type)
 {
-    int i = 0;
-    int len = ft_wordlen(input_str, delimiters);
-    char *word = malloc(sizeof(char) * (len + 1));
+    t_token *new_token;
 
-    word[len] = '\0';
-    while (i < len)
-    {
-        word[i] = input_str[i];
-        ++i;
-    }
-    return (word);
+    new_token = malloc(sizeof(t_token));
+    if (!new_token)
+        return (NULL);
+    new_token->content = ft_strdup(content);
+    printf("new_token->content: %s\n", new_token->content);
+    new_token->id = type;
+    printf("new_token->id: %d\n", new_token->id);
+    new_token->next = NULL;
+    return (new_token);
 }
 
-static t_token *new_token(char *value, t_toktype type)
+void add_token(t_token **head, char *content, t_toktype type)
 {
-    t_token *token = malloc(sizeof(t_token));
-    token->value = value;
-    token->type = type;
-    token->next = NULL;
-    return (token);
-}
+    t_token *token = new_token(content, type);
 
-static void add_token(t_token **head, char *value, t_toktype type)
-{
-    t_token *token = new_token(value, type);
-
+	// if (!token)
+	// 	return (0);
     if (*head == NULL)
     {
         *head = token;
     }
     else
     {
-        t_token *current = *head;
-        while (current->next != NULL)
+		t_token *current = *head;
+		while (current->next != NULL)
         {
             current = current->next;
         }
@@ -180,95 +44,212 @@ static void add_token(t_token **head, char *value, t_toktype type)
     }
 }
 
-static void fill_words(t_token **head, char *input_str, char *delimiters)
-{
-    while (*input_str != '\0')
-    {
-        while (*input_str != '\0' && strchr(delimiters, *input_str))
-            ++input_str;
-        if (*input_str != '\0')
-        {
-            add_token(head, word_dupe(input_str, delimiters), TOK_WORD);
-            input_str += ft_wordlen(input_str, delimiters);
-        }
-    }
-}
-
-void print_tokens(t_token *token_list)
-{
-    t_token *current = token_list;
-
-    while (current != NULL)
-    {
-        printf("Type: %d, Token: %s\n", current->type, current->token);
-        current = current->next;
-    }
-}
-
-t_token *ft_split_line(char *input_str, char *delimiters)
-{
-    t_token *head = NULL;
-    t_token *print;
-
-    print = head;
-
-    fill_words(&head, input_str, delimiters);
-    print_tokens(print);
-    return (head);
-}
-
-// In your case, you can define the delimiters using the #define statements you've provided. You can modify the fill_words function to take in an array of t_toktype values instead of a string array for the delimiters. Here's an example of how you can modify the fill_words function:
-
-// c
-// Copy code
-// static void fill_words(t_token **head, char *input_str, t_toktype *delimiters)
+// static void check_delim(char *p, t_delim *delim, t_token *head)
 // {
-//     int word_index = 0;
-
-//     while (*input_str != '\0')
-//     {
-//         while (*input_str != '\0' && is_delimiter(*input_str, delimiters))
-//             ++input_str;
-//         if (*input_str != '\0')
-//         {
-//             char *word = word_dupe(input_str, delimiters);
-//             t_token *new_token = create_token(word, get_token_type(word, delimiters));
-//             add_token(head, new_token);
-//             input_str += ft_wordlen(input_str, delimiters);
-//         }
-//     }
+// 	if (*p == *delim->delim_str && strncmp(p, delim->delim_str, delim->delim_len) == 0) //(delim->delim_len == 1 || 
+// 	{
+// 		add_token(&head, delim->delim_str, delim->delim_type);
+// 		printf(R "delimiter found: %s %d %d\n" RS, delim->delim_str, delim->delim_len, delim->delim_type);
+// 		printf("Token added\n");
+// 		if (p && ft_strlen(p) > (size_t)delim->delim_len)
+// 		{
+// 			printf("ft_strlen(p): %zu\n", ft_strlen(p));
+// 			printf("(size_t)delim->delim_len: %zu\n", (size_t)delim->delim_len);
+// 			p = p + delim->delim_len;
+// 			printf("3 str &p and p: %p %s\n", p, p);
+// 		}
+// 		else
+// 		{
+// 			printf("Out of loop OK\n");
+// 			b;
+// 		}		
+// 	}
+//     return (0);
 // }
-// Here, the is_delimiter function is used to check if the current character is a delimiter or not. You can define it as follows:
 
-// c
-// Copy code
-// static int is_delimiter(char c, t_toktype *delimiters)
-// {
-//     while (*delimiters != 0)
-//     {
-//         if (get_token_type(&c, delimiters) != TOK_ERROR)
-//             return 1;
-//         delimiters++;
-//     }
-//     return 0;
-// }
-// You can then define the delimiters as an array of t_toktype values like this:
+static int	get_wordlen(char *p)
+{
+	int	len = 0;
+	// char *str;
 
-// c
-// Copy code
-// t_toktype delimiters[] = {
-//     TOK_REDIR_OUT,
-//     TOK_REDIR_IN,
-//     TOK_REDIR_APPEND,
-//     TOK_HEREDOC,
-//     TOK_PIPE,
-//     0
-// };
-// And call the ft_split_line function like this:
+	// str = p;
+	// printf(LC "*get_word *str before loop: %c\n" RS, *str);
+	while (p && *p) //important order
+	{
+		if (ft_isspace(*p) || *p == '>' || *p == '<' || *p == '|')
+		{
+			// printf(R "*get_word I found space or delimiter in word!\n" RS);
+			// printf(LC "*get_word *str now loop: %c\n" RS, *str);
+			return (len);
+		}
+		printf(LC "*get_word *word inside loop: %c\n" RS, *p);
+		len++;
+		p++;
+	}
+	printf(LC "*get_word *str after loop: %c\n" RS, *p);
+	return (len);
+}
 
-// c
-// Copy code
-// t_token *head = NULL;
-// ft_split_line(line, delimiters, &head);
-// print_token_list(head);
-// This should print out the list of tokens to the console.
+static const char * special_char = "><|\"'";
+static int	is_special_char(char c)
+{
+	if ((c == '>' || c == '<' || c == '|' || c == '"'))
+		return (1);
+	return (0);
+}
+
+t_token    *interp(char *input_str)
+{
+    char *p;
+	// char *word;
+    t_token *token;
+    t_token *head;
+    t_delim *delim;
+    unsigned long i = 0;
+	t_delim delimiters[] = {
+    {">>", 2, TOK_REDIR_OUT_APPEND},
+    {"<<", 2, TOK_HEREDOC},
+	{">", 1, TOK_REDIR_OUT},
+    {"<", 1, TOK_REDIR_IN},
+    {"|", 1, TOK_PIPE}
+	// {NULL, 0, TOK_ERROR}
+	};
+
+	// delim = (t_delim *) &(delimiters[0]);
+	// printf("delimiters[0]: %s %d %d\n", delim->delim_str, delim->delim_len, delim->delim_type);
+    token = NULL;
+    head = NULL;
+    p = input_str;
+    init_token(token);
+	printf("Token init OK\n");
+	printf("p before loop: %s\n", p);
+    while (p && *p)
+    {
+		i = 0;
+		delim = delimiters;
+        p = skip_spaces(p);
+		printf(GREEN "str p: %s\n" RS, p);
+        if (!*p)
+            break;
+        // p is not a space nor end of string
+		if (*p == '>' || *p == '<' || *p == '|')
+		{
+			while (delim->delim_str && (i < sizeof(delimiters) / sizeof(t_delim))) // 
+			{
+				// check_delim(p, delim, head);
+				if (*p == *delim->delim_str && (delim->delim_len == 1 || strncmp(p, delim->delim_str, delim->delim_len) == 0)) // 
+				{
+					add_token(&head, delim->delim_str, delim->delim_type);
+					printf(R "delimiter found: %s %d %d\n" RS, delim->delim_str, delim->delim_len, delim->delim_type);
+					printf("Token added\n");
+					printf(YELLOW "ft_strlen(input_str): %zu\n" RS, ft_strlen(input_str));
+					printf(OR "ft_strlen(p): %zu\n" RS, ft_strlen(p));
+					if (ft_strlen(p) - (size_t)delim->delim_len >= 0) //ft_strlen(input_str) - 
+					{
+						printf("ft_strlen(p): %zu\n", ft_strlen(p));
+						printf("(size_t)delim->delim_len: %zu\n", (size_t)delim->delim_len);
+						p = p + (delim->delim_len);
+						printf("3 str &p and p: %p %c\n", p, *p);
+						// if (strncmp(p, delim->delim_str, delim->delim_len) != 0)
+							break;		
+					}
+					else
+					{
+						printf(OL "Out of delimiters loop OK\n" RS);
+						break;
+					}		
+				}
+				++delim;
+				printf("delimiters[++]: %s %d %d\n", delim->delim_str, delim->delim_len, delim->delim_type);
+				i++;
+				if (delim->delim_str == NULL && i < sizeof(delimiters) / sizeof(t_delim))
+					break;
+			}
+		}
+		else
+		{
+			while (!ft_isspace(*p))
+			{
+				// char *word = get_word(p);
+				// int	len = get_wordlen(p);
+				// printf("returned word %s\n", word);
+				printf(LBLUE "ft_strlen(p): %zu\n" RS, ft_strlen(p));
+				// printf(LBLUE "ft_strlen(word): %zu\n" RS, ft_strlen(word));
+				add_token(&head, ft_substr(p, 0, get_wordlen(p)), TOK_WORD);
+				printf("*p before p + wordlen: %c\n", *p);
+				// break;
+				// if (ft_strlen(p) - ft_strlen(word) >= 0)
+				// {
+				p = p + get_wordlen(p);
+				printf("*p after p + wordlen: %c\n", *p);
+				// 	printf("*p in word loop: %c\n", *p);
+				// 	printf(OL "Out of word loop OK\n" RS);
+					break ;
+				// }
+				// else
+				// {
+				// 	printf(OL "Out of word loop OK\n" RS);
+			}
+		}
+        // else
+        //     // make word
+        // // make a token, add to list
+		printf(NAVY "p before p++: %s\n" RS, p);
+		if (p && *p != '\0')
+		{
+			//p++;
+			printf(NAVY "p after p++: %s\n" RS, p);
+		}
+		else
+		{
+			print_token(head);
+			return (head);
+		}
+				
+		// printf("p after p++: %s\n", p);
+    }
+	print_token(head);
+    return(head);
+}
+
+
+        
+        // printf("str p after check_delim: %s\n", p);
+
+        // if (strncmp(p, "<<", 2) == 0)
+        //     // make token type <<
+        //     // add to the list
+        //     // push p right after the token
+        // else if (strncmp(p, ">>", 2) == 0)
+        //     //
+        // else if (*p == '>')
+        // else if (*p == '|')
+        //     // make pipe token
+        // else if (*p == '|"')
+        //     // 
+
+				// else
+		// {
+		// 	word = p;
+		// 	printf(LC "*word before loop: %c\n" RS, *word);
+		// 	int	start = 0;
+		// 	while (*word)
+		// 	{
+		// 		if (ft_isspace(*word) || *word == '>' || *word == '<' || *word == '|')
+		// 			break;
+		// 		printf(LC "*word inside loop: %c\n" RS, *word);
+		// 		word++;
+		// 	}
+		// 	word++;
+		// 	printf(LC "*word after loop: %c\n" RS, *word);
+		// 	printf(LBLUE "ft_strlen(word): %zu\n" RS, ft_strlen(word));
+		// 	add_token(&head, ft_substr(p, start, ft_strlen((word))), TOK_WORD);
+		// 	if (ft_strlen(p) - ft_strlen(word) >= 0)
+		// 	{
+		// 		p = p + ft_strlen(word);
+		// 		break;
+		// 	}
+
+		// }
+
+      

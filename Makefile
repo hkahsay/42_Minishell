@@ -6,7 +6,7 @@
 #    By: vgejno <vgejno@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/23 11:19:05 by vgejno            #+#    #+#              #
-#    Updated: 2023/03/17 12:24:58 by vgejno           ###   ########.fr        #
+#    Updated: 2023/03/20 13:29:28 by vgejno           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ OBJS = ${addprefix ${DIR_OBJS}/, ${notdir ${SRCS:.c=.o}}}
 SRCS =	srcs/main.c \
 		srcs/lexer/my_envp.c \
 		srcs/lexer/test_HV.c \
-		# srcs/lexer/token_new.c \
+		srcs/lexer/token.c \
 		# srsc/lexer/split_line.c \
 		# srsc/lexer/utils_lexer.c \
 		# srcs/lexer/quotes.c \

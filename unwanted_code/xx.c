@@ -79,7 +79,7 @@ t_arg	*args(char *content, int id)
 	return (arg);
 }
 
-// char	*classification(t_list *token, char *content, int id)
+// char	*classification(t_token *token, char *content, int id)
 // {
 // 	// if (id == WORD)
 // 	// 	token->content = word_token(content);
