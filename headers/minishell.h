@@ -51,7 +51,8 @@ typedef enum	e_toktype
 	TOK_REDIR_IN,
 	TOK_REDIR_OUT_APPEND,
 	TOK_HEREDOC,
-	TOK_PIPE
+	TOK_PIPE,
+	TOK_ERRQUOTE
 	// TOK_UNKNOWN = 9
 }	t_toktype;
 
@@ -61,6 +62,13 @@ typedef	struct s_delim
 	int			delim_len;
 	t_toktype	delim_type;
 } t_delim;
+
+typedef	struct s_quote
+{
+	char		*quote_str;
+	int			quote_len;
+	t_toktype	quote_type;
+} t_quote;
 
 // //define the delimiters as an array of t_toktype values
 // t_delim delimiters[] = {
@@ -133,9 +141,17 @@ void	prompt(char	*line); //t_envnode *my_envp,
 
 // t_token    **ft_split_line(char *str);
 
+//LEXER
+char    *skip_spaces(char *str);
+int	is_quote(char c);
+int	get_wordlen(char *p);
 // t_token	*create_list_token(char  *epline); //, int id
 // t_token *init_token_redirect(char *epline, int *i);
+
+//TOKEN
 t_token	*init_token(t_token	*token);
+t_token *new_token(char *content, t_toktype type);
+void add_token(t_token **head, char *content, t_toktype type);
 void print_token(t_token *temp);
 
 t_token    *interp(char *input_str);
