@@ -1,6 +1,18 @@
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
+# include <stdio.h>
+# include <string.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <fcntl.h>
+# include <readline/readline.h>
+# include <readline/history.h>
+# include <sys/types.h>
+# include <sys/wait.h>
+# include <sys/uio.h>
+# include "../libft/libft.h"
+
 # define WHITE      "\033[38;2;255;255;255m"
 # define BLACK      "\033[38;2;0;0;0m"
 # define R        "\033[38;2;255;0;0m"
@@ -27,26 +39,18 @@
 # define RS      "\033[0m"
 # define clear() printf("\033[H\033[J");
 
-# include <stdio.h>
-# include <string.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <fcntl.h>
-# include <readline/readline.h>
-# include <readline/history.h>
-# include <sys/types.h>
-# include <sys/wait.h>
-# include <sys/uio.h>
-# include "../libft/libft.h"
-
 //MACROS
+
+# define CLOSED 0
+# define OPEN 1
+
 // //assigning integer value to tokens = enumeration
 typedef enum	e_toktype
 {
 	TOK_ERROR,
 	TOK_WORD,
-	TOK_DQUOTE,
-	TOK_SQUOTE,
+	TOK_D_QUOTE,
+	TOK_S_QUOTE,
 	TOK_REDIR_OUT,
 	TOK_REDIR_IN,
 	TOK_REDIR_OUT_APPEND,
@@ -142,19 +146,22 @@ void	prompt(char	*line); //t_envnode *my_envp,
 // t_token    **ft_split_line(char *str);
 
 //LEXER
+t_token    *interp(char *input_str);
 char    *skip_spaces(char *str);
-int	is_quote(char c);
-int	get_wordlen(char *p);
+char *check_delim(char **p, t_token **head);
+int	is_delim_char(char c);
 // t_token	*create_list_token(char  *epline); //, int id
 // t_token *init_token_redirect(char *epline, int *i);
+char *check_quotes(char **p, t_token **head);
+int	is_quote(char c);
+int eval_quote_type(char *q);
+int	get_wordlen(char *p);
 
 //TOKEN
 t_token	*init_token(t_token	*token);
 t_token *new_token(char *content, t_toktype type);
 void add_token(t_token **head, char *content, t_toktype type);
 void print_token(t_token *temp);
-
-t_token    *interp(char *input_str);
 void add_token(t_token **head, char *content, t_toktype type);
 char    *skip_spaces(char *str);
 // t_token *ft_split_line(t_token *head, char *input_str, t_toktype *delimiters);
