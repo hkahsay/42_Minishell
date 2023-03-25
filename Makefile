@@ -6,7 +6,7 @@
 #    By: vgejno <vgejno@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/23 11:19:05 by vgejno            #+#    #+#              #
-#    Updated: 2023/03/22 20:54:05 by vgejno           ###   ########.fr        #
+#    Updated: 2023/03/25 17:03:41 by vgejno           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,8 @@ RM = rm -rf
 # << SOURCES >> #
 DIR_SRCS = ./srcs
 DIR_SRCS += ./srcs/lexer
+DIR_SRCS += ./srcs/parser
+#DIR_SRCS += ./srcs/parser
 SRCS = ${DIR_SRCS}/main.c
 #SRCS += ${DIR_SRCS}/..
 
@@ -49,6 +51,8 @@ SRCS =	srcs/main.c \
 		srcs/lexer/interp_quotes.c \
 		srcs/lexer/interp_word.c \
 		srcs/lexer/token.c \
+		srcs/parser/parse.c \
+		
 		
 
 DFILES = srcs/${addprefix ${DIR_OBJS}/, ${notdir ${SRCS:.c=.d}}}

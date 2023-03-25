@@ -5,14 +5,14 @@ void print_token(t_token *temp)
 {
 	int i = 0;
 
-	printf("i: %d\n", i);
+	// printf("i: %d\n", i);
 	while (temp)
 	{
-		printf("TOKEN: %s=%d\n", temp->content, temp->id);
+		printf(MAR "TOKEN: %s=%d\n" RS, temp->content, temp->id);
 		temp = temp->next;
 		i++;
 	}
-	printf("%d\n", i);
+	// printf("%d\n", i);
 }
 
 void add_token(t_token **head, char *content, t_toktype type)

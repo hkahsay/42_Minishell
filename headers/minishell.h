@@ -23,7 +23,7 @@
 # define MAGENTA    "\033[38;2;255;0;255m"
 # define SILVER     "\033[38;2;192;192;192m"
 # define GRAY       "\033[38;2;128;128;128m"
-# define MAROON     "\033[38;2;128;0;0m"
+# define MAR     "\033[38;2;128;0;0m"
 # define OL      "\033[38;2;128;128;0m"
 # define GREEN      "\033[38;2;0;128;0m"
 # define PURPLE     "\033[38;2;128;0;128m"
@@ -39,7 +39,23 @@
 # define RS      "\033[0m"
 # define clear() printf("\033[H\033[J");
 
-//MACROS
+//-------------------MY_ENV-----------------------
+
+typedef struct s_envnode
+{
+	char *key;
+	char *value;
+	struct s_envnode *prev;
+	struct s_envnode *next;
+} t_envnode;
+
+typedef struct s_prompt
+{
+	int			nbr_elm;
+	char		*str;
+}	t_prompt;
+
+//-------------------LEXER------------------------
 
 # define CLOSED 0
 # define OPEN 1
@@ -93,25 +109,26 @@ typedef struct s_token
 	struct s_token	*next;
 }	t_token;
 
-typedef struct s_stringln
-{
-	char	*str;
-	size_t	len;
-}	t_stringln;
+//-------------------PARSER------------------------------
 
-typedef struct s_envnode
+typedef struct s_cmd_redir
 {
-	char *key;
-	char *value;
-	struct s_envnode *prev;
-	struct s_envnode *next;
-} t_envnode;
+	int					type;
+	char				*str;
+	struct s_redir		*next;
+}  t_cmd_redir;
 
-typedef struct s_prompt
+typedef struct s_cmd_node
 {
-	int			nbr_elm;
-	char		*str;
-}	t_prompt;
+	char			**cmd_args;
+	t_cmd_redir		*cmd_redir;
+} t_cmd_node;
+
+typedef struct	s_pipeline
+{
+	int			cmd_index;
+	t_cmd_node	*cmd_node;
+} t_pipeline;
 
 typedef struct s_info
 {
@@ -125,27 +142,24 @@ typedef struct s_info
 	
 }t_info;
 
-// typedef struct s_token
+// typedef struct s_stringln
 // {
-// 	void			*key;
-// 	void			*value;
-// 	struct s_token	*prev;
-// 	struct s_token	*next;
-// }t_token;
+// 	char	*str;
+// 	size_t	len;
+// }	t_stringln;
 
-/*copy into my environment*/
+
+/*MY_ENV*/
 t_envnode	*dublicate_env(char **envp);
 t_envnode	*create_my_envvar_node(char *key, char *value, int i);
 void		free_myenvp(t_envnode *head);
 
 void print_my_envp(t_envnode *temp);
 
+/*PROMPT*/
 void	prompt(char	*line); //t_envnode *my_envp, 
-// t_stringln	*ft_strdup_stringln(const char *str);
 
-// t_token    **ft_split_line(char *str);
-
-//LEXER
+/*LEXER*/
 t_token    *interp(char *input_str);
 char    *skip_spaces(char *str);
 char *check_delim(char **p, t_token **head);
@@ -157,28 +171,18 @@ int	is_quote(char c);
 int eval_quote_type(char *q);
 int	get_wordlen(char *p);
 
-//TOKEN
+/*TOKEN*/
 t_token	*init_token(t_token	*token);
 t_token *new_token(char *content, t_toktype type);
 void add_token(t_token **head, char *content, t_toktype type);
 void print_token(t_token *temp);
-void add_token(t_token **head, char *content, t_toktype type);
-char    *skip_spaces(char *str);
-// t_token *ft_split_line(t_token *head, char *input_str, t_toktype *delimiters);
 // void	print_tokens(t_token *token_list);
 
-// t_token	*init_token(char *line);
-// int	classification(t_token *token, char *line);
-// int		ft_strlen(char *str);
-// void	ft_putstr_fd(char *str, int fd);
-// char	*classification(t_token *token, char *content, int id);
-// char	*word_token(char *word);
-// int		is_word(const char *str);
-// int	is_space(char c);
-// char	**ft_split(const char *s, char c);
-// int	ft_strlen(const char *str);
-// char	*ft_substr(char const *s, unsigned int start, size_t len);
-
+/*PARSER*/
+void	parse(t_token *head);
+// t_cmd	*tok_parser(char *input);
+// t_parser	*init_parser(t_parser *parse);
+// char	*new_parser(t_parser *parse, char *line);
 // typedef int(*t_builtin_ptr)(t_llist *, t_info *);
 
 //init minishell
