@@ -111,23 +111,31 @@ typedef struct s_token
 
 //-------------------PARSER------------------------------
 
-typedef struct s_cmd_redir
+typedef struct s_redir_args
 {
-	int					type;
-	char				*str;
-	struct s_redir		*next;
-}  t_cmd_redir;
+	int						type;
+	char					*args;
+	struct s_redir_args		*next;
+}  t_redir_args;
 
-typedef struct s_cmd_node
+// typedef struct s_redir
+// {
+// 	int						type;
+// 	char					*args;
+// 	struct s_redir		*next;
+// }  t_redir;
+
+
+typedef struct s_cmd
 {
-	char			**cmd_args;
-	t_cmd_redir		*cmd_redir;
-} t_cmd_node;
+	t_redir_args	*cmd_args;
+	t_redir_args	*cmd_redir;
+} t_cmd;
 
 typedef struct	s_pipeline
 {
 	int			cmd_index;
-	t_cmd_node	*cmd_node;
+	t_cmd	*cmd_node;
 } t_pipeline;
 
 typedef struct s_info
@@ -179,7 +187,7 @@ void print_token(t_token *temp);
 // void	print_tokens(t_token *token_list);
 
 /*PARSER*/
-void	parse(t_token *head);
+t_cmd	*parse(t_token *head);
 // t_cmd	*tok_parser(char *input);
 // t_parser	*init_parser(t_parser *parse);
 // char	*new_parser(t_parser *parse, char *line);
@@ -187,5 +195,7 @@ void	parse(t_token *head);
 
 //init minishell
 //void	init_minishell();
+/*EXECUTER*/
+void execute(t_cmd *cmd);
 
 #endif
