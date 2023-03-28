@@ -2,7 +2,7 @@
 
 void execute(t_cmd *cmd)
 {
-	if (cmd->cmd_args->args)
+	if (cmd && cmd->cmd_args && cmd->cmd_args->args)
 	{
 		while (cmd->cmd_args->next)
 		{

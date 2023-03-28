@@ -37,7 +37,7 @@ t_token    *interp(char *input_str)
 		}
     }
 	// print_token(head);
-	parse(head);
+	// parse(head);
     return(head);
 }
 

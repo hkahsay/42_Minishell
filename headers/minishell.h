@@ -114,7 +114,8 @@ typedef struct s_token
 typedef struct s_redir_args
 {
 	int						type;
-	char					*args;
+	char					*file;
+	int						close_fd;
 	struct s_redir_args		*next;
 }  t_redir_args;
 
@@ -128,14 +129,16 @@ typedef struct s_redir_args
 
 typedef struct s_cmd
 {
-	t_redir_args	*cmd_args;
-	t_redir_args	*cmd_redir;
+	t_redir_args	*cmd_args;  // linked list of command arguments
+	t_redir_args	*cmd_redir;  // linked list of redirections
+	struct s_cmd	*next; // pointer to the next command in a pipeline
 } t_cmd;
 
 typedef struct	s_pipeline
 {
-	int			cmd_index;
-	t_cmd	*cmd_node;
+	int					cmd_index;
+	t_cmd				*cmd_node;
+	struct s_pipeline	*next;
 } t_pipeline;
 
 typedef struct s_info
