@@ -111,14 +111,6 @@ typedef struct s_token
 
 //-------------------PARSER------------------------------
 
-typedef struct s_redir_args
-{
-	int						type;
-	char					*file;
-	int						close_fd;
-	struct s_redir_args		*next;
-}  t_redir_args;
-
 // typedef struct s_redir
 // {
 // 	int						type;
@@ -126,18 +118,27 @@ typedef struct s_redir_args
 // 	struct s_redir		*next;
 // }  t_redir;
 
+typedef struct s_word_redir_list
+{
+	int							type;
+	char						*file;
+	int							close_fd;
+	struct s_word_redir_list	*next;
+}  t_word_redir_list;
 
 typedef struct s_cmd
 {
-	t_redir_args	*cmd_args;  // linked list of command arguments
-	t_redir_args	*cmd_redir;  // linked list of redirections
+	// char 			*cmd_name;
+	t_word_redir_list	*cmd_word_node;  // linked list of command arguments
+	t_word_redir_list	*cmd_redir_node;  // linked list of redirections
 	struct s_cmd	*next; // pointer to the next command in a pipeline
 } t_cmd;
 
 typedef struct	s_pipeline
 {
-	int					cmd_index;
-	t_cmd				*cmd_node;
+	int					pipeline_index;
+	t_cmd				*pipeline_node;
+	// t_cmd				*cmd_tail; //pointer to the last command in the pipeline
 	struct s_pipeline	*next;
 } t_pipeline;
 
@@ -171,7 +172,7 @@ void print_my_envp(t_envnode *temp);
 void	prompt(char	*line); //t_envnode *my_envp, 
 
 /*LEXER*/
-t_token    *interp(char *input_str);
+void    interp(char *line);
 char    *skip_spaces(char *str);
 char *check_delim(char **p, t_token **head);
 int	is_delim_char(char c);
@@ -184,21 +185,29 @@ int	get_wordlen(char *p);
 
 /*TOKEN*/
 t_token	*init_token(t_token	*token);
-t_token *new_token(char *content, t_toktype type);
-void add_token(t_token **head, char *content, t_toktype type);
-void print_token(t_token *temp);
+t_token	*new_token(char *content, t_toktype type);
+void	add_token(t_token **head, char *content, t_toktype type);
+void	free_token_list(t_token *tokens);
 // void	print_tokens(t_token *token_list);
 
 /*PARSER*/
-t_cmd	*parse(t_token *head);
+void	*parse(t_token **token_head);
 // t_cmd	*tok_parser(char *input);
 // t_parser	*init_parser(t_parser *parse);
 // char	*new_parser(t_parser *parse, char *line);
 // typedef int(*t_builtin_ptr)(t_llist *, t_info *);
 
+/*PRINT*/
+void	print_token(t_token *temp);
+void	print_cmd(t_cmd *cmd);
+void	print_pipeline(t_pipeline *pipeline);
 //init minishell
 //void	init_minishell();
 /*EXECUTER*/
-void execute(t_cmd *cmd);
+// void execute(t_cmd *cmd);
+void	execute(t_pipeline *pipeline);
+
+/*FREE*/
+void	free_token_list(t_token *tokens);
 
 #endif

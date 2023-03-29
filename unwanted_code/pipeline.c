@@ -197,29 +197,33 @@ t_cmd *split_tokens_into_cmds(t_token **tokens)
 //     return first_cmd;
 // }
 
-/*This function takes a pointer to a pointer to the head of the token list, and returns a pointer to the head of the resulting command list. It works by iterating through the token list and adding each token to the appropriate command's argument or redirection list, creating new commands as necessary. It also updates the token list pointer to point to the next unparsed token.
+/*This function takes a pointer to a pointer to the head of the token list,
+ and returns a pointer to the head of the resulting command list. 
+ It works by iterating through the token list and adding each token to 
+ the appropriate command's argument or redirection list, creating new commands as necessary. 
+ It also updates the token list pointer to point to the next unparsed token.
+
+split_tokens_into_cmds function will create several t_cmd linked lists, 
+where each list represents a command with its arguments and redirections. 
+The function will return the first t_cmd node of the first linked list, 
+and it will modify the tokens argument to remove the tokens that were already processed into t_cmd nodes.
+
+After calling split_tokens_into_cmds, you can iterate over the linked list of t_cmd nodes a
+nd execute each command separately, or you can group multiple t_cmd nodes into a t_pipeline node 
+to execute them together in a pipeline.
 
 
 
 
-V G
-and it will create several lists?
-Yes, split_tokens_into_cmds function will create several t_cmd linked lists, where each list represents a command with its arguments and redirections. The function will return the first t_cmd node of the first linked list, and it will modify the tokens argument to remove the tokens that were already processed into t_cmd nodes.
+t_pipeline is not a linked list, but rather a single node that represents a pipeline. 
+A pipeline is a sequence of one or more commands separated by pipe symbols (|).
 
-After calling split_tokens_into_cmds, you can iterate over the linked list of t_cmd nodes and execute each command separately, or you can group multiple t_cmd nodes into a t_pipeline node to execute them together in a pipeline.
+The t_pipeline struct contains a cmd_index integer, which represents the position of the current command within the pipeline, 
+and a cmd_node pointer, which points to the t_cmd node that represents the current command.
 
-
-
-
-V G
-is t_pipeline a list too
-t_pipeline is not a linked list, but rather a single node that represents a pipeline. A pipeline is a sequence of one or more commands separated by pipe symbols (|).
-
-The t_pipeline struct contains a cmd_index integer, which represents the position of the current command within the pipeline, and a cmd_node pointer, which points to the t_cmd node that represents the current command.
-
-You can use a linked list of t_pipeline nodes to represent a list of pipelines, where each node in the linked list represents a pipeline. You can then execute each pipeline separately, or group multiple pipelines into a t_job node to execute them together in a job.
-
-
+You can use a linked list of t_pipeline nodes to represent a list of pipelines, 
+where each node in the linked list represents a pipeline. You can then execute each pipeline separately, 
+or group multiple pipelines into a t_job node to execute them together in a job.
 */
 
 

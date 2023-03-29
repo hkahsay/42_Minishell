@@ -161,14 +161,7 @@ t_cmd	*parse(t_token *head)
 	return (pipeline_head);
 }
 
-void interp(char *line)
-{
-	t_token	*token_head;
 
-	token_head = lexer(line);
-	if (token_head)
-		parse(&token_head);
-}
 
 /*
 typedef struct	s_redir_args

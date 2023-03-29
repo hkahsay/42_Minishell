@@ -3,14 +3,14 @@
 void	prompt(char	*line) //t_envnode *my_envp, 
 {
 	int		fd;
-	t_token *token_head;
-	t_cmd	*cmd;
-	t_pipeline *pipeline;
+	// t_token *token_head;
+	// t_cmd	*cmd;
+	// t_pipeline *pipeline;
 
 
-	token_head = NULL;
-	cmd = NULL;
-	pipeline = NULL;
+	// token_head = NULL;
+	// cmd = NULL;
+	// pipeline = NULL;
 	line = readline ("minishell_VH>> 😜 ");
 	// index = getpid();
 	if (!line)
@@ -21,7 +21,8 @@ void	prompt(char	*line) //t_envnode *my_envp,
 	if (ft_strlen(line) > 0)
 	{
 		printf("propmt line: %s\n", line);
-		token_head = interp(line);
+		interp(line);
+		// token_head = interp(line);
 		// args = eval_token(head);
 		// while (head)
 		// {
@@ -29,10 +30,9 @@ void	prompt(char	*line) //t_envnode *my_envp,
 		// 	head = head->next;
 		// }
 		// head = head->next;
-		cmd = parse(&token_head);
-		pipeline = split_cmds_into_pipeline(cmd);
+		// cmd = parse(token_head);
+		// pipeline = split_cmds_into_pipeline(cmd);
 		// execute_pipeline(pipeline);
-		free_token_list(token_head);
 		printf("OK head is back\n");
 		add_history(line);
 		fd = open("history.log", O_CREAT | O_WRONLY | O_APPEND, 0777);

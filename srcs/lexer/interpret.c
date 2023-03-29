@@ -1,6 +1,6 @@
 #include "../../headers/minishell.h"
 
-t_token    *interp(char *input_str)
+t_token    *lexer(char *input_str)
 {
     char *p;
     t_token *token;
@@ -41,5 +41,15 @@ t_token    *interp(char *input_str)
     return(head);
 }
 
+void interp(char *line)
+{
+	t_token	*token_head;
 
+	token_head = lexer(line);
+	if (token_head)
+	{
+		parse(&token_head);
+		free_token_list(token_head);
+	}
+}
       
