@@ -1,9 +1,10 @@
 #include "../../headers/minishell.h"
 
-void execute(t_pipeline *pipeline)
+void execute(t_cmd *cmd) //t_pipeline *pipeline
 {
-
-	print_pipeline(pipeline);
+	printf(R "EXECUTE: " RS);
+	print_cmd(cmd);
+	// print_pipeline(pipeline);
 	// if (cmd && cmd->cmd_args && cmd->cmd_args->file)
 	// {
 	// 	while (cmd->cmd_args->next)

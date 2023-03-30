@@ -118,29 +118,29 @@ typedef struct s_token
 // 	struct s_redir		*next;
 // }  t_redir;
 
-typedef struct s_word_redir_list
+typedef struct s_wr_node
 {
-	int							type;
-	char						*file;
-	int							close_fd;
-	struct s_word_redir_list	*next;
-}  t_word_redir_list;
+	int					type;
+	char				*file;
+	int					close_fd;
+	struct s_wr_node	*next;
+}  t_wr_node;
 
 typedef struct s_cmd
 {
 	// char 			*cmd_name;
-	t_word_redir_list	*cmd_word_node;  // linked list of command arguments
-	t_word_redir_list	*cmd_redir_node;  // linked list of redirections
+	t_wr_node		*cmd_wnode;  // linked list of command arguments
+	t_wr_node		*cmd_rnode;  // linked list of redirections
 	struct s_cmd	*next; // pointer to the next command in a pipeline
 } t_cmd;
 
-typedef struct	s_pipeline
+typedef struct	s_pline
 {
-	int					pipeline_index;
-	t_cmd				*pipeline_node;
-	// t_cmd				*cmd_tail; //pointer to the last command in the pipeline
-	struct s_pipeline	*next;
-} t_pipeline;
+	int				pline_index;
+	t_cmd			*pline_cmd_node;
+	// t_cmd		*cmd_tail; //pointer to the last command in the pipeline
+	struct s_pline	*next;
+} t_pline;
 
 typedef struct s_info
 {
@@ -197,15 +197,23 @@ void	*parse(t_token **token_head);
 // char	*new_parser(t_parser *parse, char *line);
 // typedef int(*t_builtin_ptr)(t_llist *, t_info *);
 
+/*INIT_PARSE*/
+t_cmd		*init_cmd(void);
+t_wr_node	*init_wr_node(t_wr_node *new_wr_node);
+
+/*ADD WNODE*/
+t_wr_node	*add_w_to_cmd_wnode(t_token **head, t_cmd **cmd, t_wr_node **head_wnode, int id, char *word);
+
 /*PRINT*/
 void	print_token(t_token *temp);
 void	print_cmd(t_cmd *cmd);
-void	print_pipeline(t_pipeline *pipeline);
+void	print_wr_node(t_cmd *cmd, t_wr_node *cmd_wnode);
+// void	print_pipeline(t_pipeline *pipeline);
 //init minishell
 //void	init_minishell();
 /*EXECUTER*/
-// void execute(t_cmd *cmd);
-void	execute(t_pipeline *pipeline);
+void execute(t_cmd *cmd);
+// void	execute(t_pipeline *pipeline);
 
 /*FREE*/
 void	free_token_list(t_token *tokens);
