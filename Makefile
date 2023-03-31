@@ -6,7 +6,7 @@
 #    By: vgejno <vgejno@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/23 11:19:05 by vgejno            #+#    #+#              #
-#    Updated: 2023/03/30 19:22:09 by vgejno           ###   ########.fr        #
+#    Updated: 2023/03/31 19:02:06 by vgejno           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,12 +51,14 @@ SRCS =	srcs/main.c \
 		srsc/lexer/interp_delim.c \
 		srcs/lexer/interp_quotes.c \
 		srcs/lexer/interp_word.c \
+		srcs/lexer/interp_space.c \
 		srcs/lexer/token.c \
 		srcs/parser/parse.c \
 		srcs/parser/init_parse.c \
 		srcs/parser/add_wnode.c \
 		srcs/parser/print.c \
 		srcs/parser/free_token.c \
+		srcs/parser/dollar.c \
 		srcs/executer/execute.c \
 		
 		

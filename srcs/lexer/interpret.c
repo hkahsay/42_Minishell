@@ -5,13 +5,17 @@ t_token    *lexer(char *input_str)
     char *p;
     t_token *token;
     t_token *head;
+	char	*space;
 
     token = NULL;
     head = NULL;
     p = input_str;
+	space = " ";
     init_token(token);
     while (p && *p)
     {
+		if (ft_isspace(*p))
+			add_token(&head, space, TOK_SPACE);	
 		p = skip_spaces(p);
 		if (!*p)
 			break;
@@ -21,10 +25,7 @@ t_token    *lexer(char *input_str)
 		{
 			check_quotes(&p, &head);
 			if (*p == '\0')
-			{
-				print_token(head);
 			 	return (head);
-			}
 		}
 		else
 		{

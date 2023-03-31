@@ -72,6 +72,7 @@ typedef enum	e_toktype
 	TOK_REDIR_OUT_APPEND,
 	TOK_HEREDOC,
 	TOK_PIPE,
+	TOK_SPACE,
 	TOK_ERRQUOTE
 	// TOK_UNKNOWN = 9
 }	t_toktype;
@@ -203,6 +204,7 @@ t_wr_node	*init_wr_node(t_wr_node *new_wr_node);
 
 /*ADD WNODE*/
 t_wr_node	*add_w_to_cmd_wnode(t_token **head, t_cmd **cmd, t_wr_node **head_wnode, int id, char *word);
+t_wr_node	*fill_wr_node(t_wr_node **wr_node, int id, char *word);
 
 /*PRINT*/
 void	print_token(t_token *temp);
