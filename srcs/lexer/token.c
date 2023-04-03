@@ -15,6 +15,18 @@ void print_token(t_token *temp)
 	// printf("%d\n", i);
 }
 
+t_token *last_token(t_token *token_list)
+{
+	t_token	*curr;
+
+	if (token_list == NULL)
+		return (NULL);
+	curr = token_list;
+	while (curr->next != NULL)
+		curr = curr->next;
+	return (curr);	
+}
+
 t_token *new_token(char *content, t_toktype type)
 {
     t_token *new_token;

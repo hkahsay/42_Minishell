@@ -85,33 +85,34 @@ t_wr_node	*fill_wr_node(t_wr_node **wr_node, int id, char *word)
 // 	// sleep(100000);
 // 	interpret_dollar(head, &clean_word);
 // 	return (*head);
-	// new_wnode = init_wr_node(new_wnode);
-	// if (id == TOK_D_QUOTE)
+// 	new_wnode = init_wr_node(new_wnode);
+// 	if (id == TOK_D_QUOTE)
 	
-	// dollar_split(clean_word);
+// 	dollar_split(clean_word);
 
-	// new_wnode = fill_wr_node(&new_wnode, id, ft_strtrim(word, s_quote));
+// 	new_wnode = fill_wr_node(&new_wnode, id, ft_strtrim(word, s_quote));
 	
-	// if (!new_wnode)
-	// 	return (NULL);
-	// if (*head_wnode == NULL)
-	// 	*head_wnode = new_wnode;
-	// else
-	// {
-	// 	temp = *head_wnode;
-	// 	while (temp->next)
-	// 		temp = temp->next;	
-	// 	temp->next = new_wnode;
-	// }
-	// return (*head_wnode);
+// 	if (!new_wnode)
+// 		return (NULL);
+// 	if (*head_wnode == NULL)
+// 		*head_wnode = new_wnode;
+// 	else
+// 	{
+// 		temp = *head_wnode;
+// 		while (temp->next)
+// 			temp = temp->next;	
+// 		temp->next = new_wnode;
+// 	}
+// 	return (*head_wnode);
 // }
 
-static void	eval_token(t_token **tok_head, t_cmd **cmd, t_cmd **cmd_pline_tail)
+static void	eval_token(t_token **tok_head, t_cmd **cmd, t_cmd **cmd_pline_tail, t_envnode *mini_env)
 {
 	printf("1\n");
 	printf("TOK_WORD %p %s %d\n", (*tok_head)->content, (*tok_head)->content, (*tok_head)->id);
 	print_cmd(*cmd);
 	print_cmd(*cmd_pline_tail);
+	print_mini_envp(mini_env);
 
 	t_wr_node	*wr_node = NULL;
 	// t_token		*ptr_tok_head = NULL;
@@ -120,25 +121,26 @@ static void	eval_token(t_token **tok_head, t_cmd **cmd, t_cmd **cmd_pline_tail)
 	// tok_head = tok_head;
 	while ((*tok_head) && (t_toktype)((*tok_head)->id) != TOK_PIPE)
 	{
-		if ((*tok_head)->id == TOK_WORD || (*tok_head)->id == TOK_D_QUOTE || (*tok_head)->id == TOK_S_QUOTE)
+		if ((*tok_head)->id == TOK_WORD || (*tok_head)->id == TOK_S_QUOTE || (*tok_head)->id == TOK_D_QUOTE)
 		{
-			while ((*tok_head) && ((*tok_head)->id == TOK_WORD || (*tok_head)->id == TOK_D_QUOTE || (*tok_head)->id == TOK_S_QUOTE))
+			while ((*tok_head) && ((*tok_head)->id == TOK_WORD || (*tok_head)->id == TOK_D_QUOTE || (*tok_head)->id == TOK_S_QUOTE || (*tok_head)->id == TOK_SPACE))
 			{
-				if ((*tok_head)->id == TOK_WORD || (*tok_head)->id == TOK_S_QUOTE || (*tok_head)->id == TOK_D_QUOTE)
+				if ((*tok_head)->id == TOK_WORD || (*tok_head)->id == TOK_D_QUOTE)
 				{
 					printf("4a\n");
-					(*cmd)->cmd_wnode = add_w_to_cmd_wnode(&(*tok_head), cmd, &(*cmd)->cmd_wnode, (*tok_head)->id, (*tok_head)->content);
+					(*cmd)->cmd_wnode = check_$_add_w_to_cmd_wnode(&(*tok_head), cmd, &(*cmd)->cmd_wnode, (*tok_head)->id, (*tok_head)->content);
 					// tok_head = tok_head->next;
 					// *tok_head = (*tok_head)->next;
 					printf(BLUE "rentree, new_token head:\n");
 					print_token(*tok_head);
+					print_cmd(*cmd);
 					printf(RS);
 				}
-				// else if ((*tok_head)->id == TOK_S_QUOTE)
-				// {
-				// 	printf("4b\n");
-				// 	(*cmd)->cmd_wnode = strip_s_quote_add(&(*tok_head), &(*cmd)->cmd_wnode, (*tok_head)->id, (*tok_head)->content);
-				// }
+				else if ((*tok_head)->id == TOK_S_QUOTE)
+				{
+					printf("4b\n");
+					(*cmd)->cmd_wnode = add_w_to_cmd_wnode(&(*tok_head), cmd, &(*cmd)->cmd_wnode, (*tok_head)->id, (*tok_head)->content);
+				}
 				// else if ((*tok_head)->id == TOK_D_QUOTE)
 				// {
 				// 	printf("4c\n");
@@ -152,7 +154,7 @@ static void	eval_token(t_token **tok_head, t_cmd **cmd, t_cmd **cmd_pline_tail)
 					printf("4d\n");
 					// (*cmd)->cmd_rnode = add_r_to_cmd_rnode(&(*cmd)->cmd_wnode, tok_head->id, tok_head->content);
 				}
-				printf("4d\n");
+				printf("4e\n");
 				*tok_head = (*tok_head)->next;
 			}
 		}
@@ -170,7 +172,7 @@ static void	eval_token(t_token **tok_head, t_cmd **cmd, t_cmd **cmd_pline_tail)
 	}
 }
 
-void	*parse(t_token **tok_head)
+void	*parse(t_token **tok_head, t_envnode *mini_env)
 {
 	t_cmd	*cmd;
 	t_token *tok_temp;
@@ -190,7 +192,7 @@ void	*parse(t_token **tok_head)
 		if (tok_temp->id != TOK_PIPE)
 		{
 			
-			eval_token(&tok_temp, &cmd, cmd_pline_tail);
+			eval_token(&tok_temp, &cmd, cmd_pline_tail, mini_env);
 			printf(R "ok\n" RS);
 			// tok_temp = tok_temp->next;
 		}

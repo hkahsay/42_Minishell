@@ -1,6 +1,6 @@
 #include "../headers/minishell.h"
 
-void	prompt(char	*line) //t_envnode *my_envp, 
+void	prompt(char	*line, t_envnode *mini_env) //t_envnode *my_envp, 
 {
 	int		fd;
 	// t_token *token_head;
@@ -21,7 +21,7 @@ void	prompt(char	*line) //t_envnode *my_envp,
 	if (ft_strlen(line) > 0)
 	{
 		printf("propmt line: %s\n", line);
-		interp(line);
+		interp(line, mini_env);
 		// token_head = interp(line);
 		// args = eval_token(head);
 		// while (head)
@@ -45,31 +45,13 @@ void	prompt(char	*line) //t_envnode *my_envp,
 		free(line);
 }
 
-// t_token	*lexer(char *line);
-
-// t_token	*interp(char *line)
-// {
-// 	t_token	*token_head;
-
-// 	token_head = lexer(line);
-// 	if (token_head)
-// 		parse(&token_head);
-// 	return (token_head);
-// }
-
-/*t_token *tokens = tokenize_input(input_string);
-t_cmd *cmds = split_tokens_into_cmds(&tokens);
-t_pipeline *pipeline = split_cmds_into_pipeline(cmds);
-
-free_token_list(tokens);*/
-
 int main(int argc, char **argv, char **envp)
 {
 	(void)argv;
 	char	*line;
-	t_envnode *my_envp;
+	t_envnode *mini_envp;
 	line = NULL;
-	my_envp = NULL;
+	mini_envp = NULL;
 	t_envnode *temp = NULL;
 
 	if (argc != 1 || !argv || !envp)
@@ -77,16 +59,16 @@ int main(int argc, char **argv, char **envp)
 		printf("Error arguments\n");
 		return (-1);
 	}
-	my_envp = dublicate_env(envp);
-	if (!my_envp)
+	mini_envp = dublicate_env(envp);
+	if (!mini_envp)
 	{
 		printf("Failed to create my_environment list\n");
 		return (1);
 	}
-	temp = my_envp;
-	print_my_envp(temp);
+	temp = mini_envp;
+	print_mini_envp(temp);
 	while (1)
-		prompt(line); //my_envp, 
-	free_myenvp(my_envp);	
+		prompt(line, mini_envp); //my_envp, 
+	free_mini_envp(mini_envp);	
 	return (0);
 }

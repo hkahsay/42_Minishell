@@ -1,6 +1,6 @@
 #include "../../headers/minishell.h"
 
-void print_my_envp(t_envnode *temp)
+void print_mini_envp(t_envnode *temp)
 {
 	int i = 0;
 
@@ -14,7 +14,7 @@ void print_my_envp(t_envnode *temp)
 }
 
 
-void free_myenvp(t_envnode *head)
+void free_mini_envp(t_envnode *head)
 {
 	t_envnode *temp;
 
@@ -28,7 +28,7 @@ void free_myenvp(t_envnode *head)
 	}
 }
 
-t_envnode *create_my_envvar_node(char *key, char *value, int i)
+t_envnode *create_mini_envvar_node(char *key, char *value) //, int i
 {
 	t_envnode *my_node = NULL;
 
@@ -50,7 +50,7 @@ t_envnode *create_my_envvar_node(char *key, char *value, int i)
 	}
 	my_node->prev = NULL;
 	my_node->next = NULL;
-	printf("nodes %d OK %s = %s\n", i, my_node->key, my_node->value);
+	// printf("nodes %d OK %s = %s\n", i, my_node->key, my_node->value);
 	return (my_node);
 }
 
@@ -71,17 +71,17 @@ t_envnode *dublicate_env(char **envp) // fnct returns a starting address of the 
 		j = 0;
 		while (envp[i][j] != '=')
 			j++;
-		printf("j avant '=': %d\n", j);
+		// printf("j avant '=': %d\n", j);
 		key = ft_substr(envp[i], 0, j);
-		printf("%s\n", key);
+		// printf("%s\n", key);
 		value = ft_substr(envp[i], (j + 1), ft_strlen(envp[i]));
-		printf("%s\n", value);
+		// printf("%s\n", value);
 		// envp_var = ft_split(envp[i], '=');
 		// key = ft_strdup(envp_var[0]);
 		// value = ft_strdup(envp_var[1]);
 		// printf("%d %s %s\n", (envp_lines + 1), key, value);
-		node = create_my_envvar_node(key, value, i);
-		printf("Node %d OK\n", i);
+		node = create_mini_envvar_node(key, value); //, i
+		// printf("Node %d OK\n", i);
 		// usleep(100000000);
 		if (!node)
 			return (NULL);

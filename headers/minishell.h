@@ -53,6 +53,7 @@ typedef struct s_prompt
 {
 	int			nbr_elm;
 	char		*str;
+	// t_envnode	*m_env;
 }	t_prompt;
 
 //-------------------LEXER------------------------
@@ -143,11 +144,13 @@ typedef struct	s_pline
 	struct s_pline	*next;
 } t_pline;
 
+//-------------------INFO------------------------------
+
 typedef struct s_info
 {
 	// t_builtin_ptr	builtin[7];
 	char			reserved_words[7]; //builtins
-	char			**mini_envp;
+	// char			**mini_envp;
 	struct s_token	*envp_list;
 	char			envp_flag;
 	char			exit_flag;
@@ -161,19 +164,18 @@ typedef struct s_info
 // 	size_t	len;
 // }	t_stringln;
 
-
-/*MY_ENV*/
-t_envnode	*dublicate_env(char **envp);
-t_envnode	*create_my_envvar_node(char *key, char *value, int i);
-void		free_myenvp(t_envnode *head);
-
-void print_my_envp(t_envnode *temp);
-
 /*PROMPT*/
-void	prompt(char	*line); //t_envnode *my_envp, 
+void	prompt(char	*line, t_envnode *mini_env); //t_envnode *my_envp, 
+
+/*MINI_ENV*/
+t_envnode	*dublicate_env(char **envp);
+t_envnode	*create_mini_envvar_node(char *key, char *value); //, int i
+void		free_mini_envp(t_envnode *head);
+
+void print_mini_envp(t_envnode *temp);
 
 /*LEXER*/
-void    interp(char *line);
+void    interp(char *line, t_envnode *mini_env);
 char    *skip_spaces(char *str);
 char *check_delim(char **p, t_token **head);
 int	is_delim_char(char c);
@@ -183,16 +185,20 @@ char *check_quotes(char **p, t_token **head);
 int	is_quote(char c);
 int eval_quote_type(char *q);
 int	get_wordlen(char *p);
+t_token    *expand_token_list(t_token *token_head, t_envnode *mini_env); //
+size_t	ft_strcspn(const char *str, const char *charset);
+char	*ft_strncpy(char *dest, const char *src, size_t n);
 
 /*TOKEN*/
 t_token	*init_token(t_token	*token);
 t_token	*new_token(char *content, t_toktype type);
+t_token *last_token(t_token *token_list);
 void	add_token(t_token **head, char *content, t_toktype type);
 void	free_token_list(t_token *tokens);
 // void	print_tokens(t_token *token_list);
 
 /*PARSER*/
-void	*parse(t_token **token_head);
+void	*parse(t_token **token_head, t_envnode *mini_env);
 // t_cmd	*tok_parser(char *input);
 // t_parser	*init_parser(t_parser *parse);
 // char	*new_parser(t_parser *parse, char *line);
@@ -201,9 +207,11 @@ void	*parse(t_token **token_head);
 /*INIT_PARSE*/
 t_cmd		*init_cmd(void);
 t_wr_node	*init_wr_node(t_wr_node *new_wr_node);
+char *strndup(const char *str, size_t n);
 
 /*ADD WNODE*/
 t_wr_node	*add_w_to_cmd_wnode(t_token **head, t_cmd **cmd, t_wr_node **head_wnode, int id, char *word);
+t_wr_node	*check_$_add_w_to_cmd_wnode(t_token **head, t_cmd **cmd, t_wr_node **head_wnode, int id, char *word);
 t_wr_node	*fill_wr_node(t_wr_node **wr_node, int id, char *word);
 
 /*PRINT*/

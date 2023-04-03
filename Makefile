@@ -6,7 +6,7 @@
 #    By: vgejno <vgejno@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/23 11:19:05 by vgejno            #+#    #+#              #
-#    Updated: 2023/03/31 19:02:06 by vgejno           ###   ########.fr        #
+#    Updated: 2023/04/02 17:26:09 by vgejno           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ RM = rm -rf
 
 # << SOURCES >> #
 DIR_SRCS = ./srcs
+DIR_SRCS += ./srcs/mini_env
 DIR_SRCS += ./srcs/lexer
 DIR_SRCS += ./srcs/parser
 DIR_SRCS += ./srcs/executor
@@ -46,19 +47,20 @@ OBJS = ${addprefix ${DIR_OBJS}/, ${notdir ${SRCS:.c=.o}}}
 
 
 SRCS =	srcs/main.c \
-		srcs/lexer/my_envp.c \
+		srcs/mini_envp/mini_envp.c \
 		srcs/lexer/interpret.c \
 		srsc/lexer/interp_delim.c \
 		srcs/lexer/interp_quotes.c \
 		srcs/lexer/interp_word.c \
 		srcs/lexer/interp_space.c \
 		srcs/lexer/token.c \
+		srcs/lexer/token_expand.c \
+		srcs/lexer/token_utils.c \
 		srcs/parser/parse.c \
 		srcs/parser/init_parse.c \
 		srcs/parser/add_wnode.c \
 		srcs/parser/print.c \
 		srcs/parser/free_token.c \
-		srcs/parser/dollar.c \
 		srcs/executer/execute.c \
 		
 		

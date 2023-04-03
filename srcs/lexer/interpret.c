@@ -5,7 +5,7 @@ t_token    *lexer(char *input_str)
     char *p;
     t_token *token;
     t_token *head;
-	char	*space;
+	char	*space; //*space?
 
     token = NULL;
     head = NULL;
@@ -42,15 +42,30 @@ t_token    *lexer(char *input_str)
     return(head);
 }
 
-void interp(char *line)
+void interp(char *line, t_envnode *mini_env)
 {
 	t_token	*token_head;
+	// t_token	*token_exp_head;
 
 	token_head = lexer(line);
+	if (!token_head)
+		return ;
+	print_token(token_head);	
+	// token_exp_head = expand_token_list(token_head, mini_env);
+	// if (!token_exp_head)
+		// return ;
+	print_token(token_head);		
+	// free_token_list(token_head);
 	if (token_head)
 	{
-		parse(&token_head);
+		parse(&token_head, mini_env);
 		free_token_list(token_head);
 	}
+	// if (token_exp_head)
+	// {
+	// 	parse(&token_exp_head);
+	// 	free_token_list(token_exp_head);
+	// }
+	// return (0);
 }
       
