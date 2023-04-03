@@ -128,7 +128,7 @@ static void	eval_token(t_token **tok_head, t_cmd **cmd, t_cmd **cmd_pline_tail, 
 				if ((*tok_head)->id == TOK_WORD || (*tok_head)->id == TOK_D_QUOTE)
 				{
 					printf("4a\n");
-					(*cmd)->cmd_wnode = check_$_add_w_to_cmd_wnode(&(*tok_head), cmd, &(*cmd)->cmd_wnode, (*tok_head)->id, (*tok_head)->content);
+					(*cmd)->cmd_wnode = check_$_add_w_to_cmd_wnode(&(*tok_head), cmd, &(*cmd)->cmd_wnode, (*tok_head)->id, (*tok_head)->content, mini_env);
 					// tok_head = tok_head->next;
 					// *tok_head = (*tok_head)->next;
 					printf(BLUE "rentree, new_token head:\n");

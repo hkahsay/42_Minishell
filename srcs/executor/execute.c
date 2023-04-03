@@ -30,4 +30,4 @@ void execute(t_cmd *cmd) //t_pipeline *pipeline
 //        return (1 + ft_list_size(begin_list->next));
 // }
 
-ft_strlen(cmd->cmd_wnode->file);
+// ft_strlen(cmd->cmd_wnode->file);

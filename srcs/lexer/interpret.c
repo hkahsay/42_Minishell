@@ -50,7 +50,7 @@ void interp(char *line, t_envnode *mini_env)
 	token_head = lexer(line);
 	if (!token_head)
 		return ;
-	print_token(token_head);	
+	// print_token(token_head);	
 	// token_exp_head = expand_token_list(token_head, mini_env);
 	// if (!token_exp_head)
 		// return ;
@@ -59,7 +59,7 @@ void interp(char *line, t_envnode *mini_env)
 	if (token_head)
 	{
 		parse(&token_head, mini_env);
-		free_token_list(token_head);
+		// free_token_list(token_head);
 	}
 	// if (token_exp_head)
 	// {

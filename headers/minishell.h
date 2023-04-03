@@ -211,7 +211,7 @@ char *strndup(const char *str, size_t n);
 
 /*ADD WNODE*/
 t_wr_node	*add_w_to_cmd_wnode(t_token **head, t_cmd **cmd, t_wr_node **head_wnode, int id, char *word);
-t_wr_node	*check_$_add_w_to_cmd_wnode(t_token **head, t_cmd **cmd, t_wr_node **head_wnode, int id, char *word);
+t_wr_node	*check_$_add_w_to_cmd_wnode(t_token **head, t_cmd **cmd, t_wr_node **head_wnode, int id, char *word, t_envnode *mini_env);
 t_wr_node	*fill_wr_node(t_wr_node **wr_node, int id, char *word);
 
 /*PRINT*/

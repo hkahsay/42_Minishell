@@ -879,3 +879,25 @@ cd fg cd$HOME$PAGER
 'cd'
 cd fg
 sd 'cd'
+cd df
+$HOME
+$HOME
+$HOME
+$HOME
+echo $HOME
+echo cd$HOME$PAGER
+cd df
+$HOME
+$HOME
+$USER
+$USER$HOME
+cd$HOME
+'cd'
+'sdf csd'
+cd fg
+cd$HOME
+cd fg hg
+$HOME
+cd&HOME
+cd$HOME
+cd$HOME$PAGER
