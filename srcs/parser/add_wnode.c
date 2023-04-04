@@ -120,7 +120,7 @@ t_wr_node	*check_$_add_w_to_cmd_wnode(t_token **head, t_cmd **cmd, t_wr_node **h
 		t_quote = ft_strtrim(word, d_quote);
 		printf(R "Trimmed d_quote: %s\n" RS, t_quote);
 		new_exp_token = expand_token_list(exp_token_head, mini_env);
-		new_wnode = fill_wr_node(&new_wnode, new_exp_token->id, new_exp_token->content);
+		new_wnode = fill_wr_node(&new_wnode, id, new_exp_token->content);
 	}
 		// new_wnode = fill_wr_node(&new_wnode, id, ft_strtrim(check_$(word), s_quote));
 	if (id == TOK_WORD)

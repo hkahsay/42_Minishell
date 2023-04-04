@@ -22,6 +22,9 @@ void	prompt(char	*line, t_envnode *mini_env) //t_envnode *my_envp,
 	{
 		printf("propmt line: %s\n", line);
 		interp(line, mini_env);
+		ft_cd(built, my_envp);
+		mini_pwd2(my_envp);
+		ft_echo(cmd);
 		// token_head = interp(line);
 		// args = eval_token(head);
 		// while (head)

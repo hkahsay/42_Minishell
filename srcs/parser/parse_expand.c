@@ -2,82 +2,24 @@
 
 static char	*mini_getenv(char *var_name, int var_len, t_envnode *mini_env)
 {
-	t_envnode	*temp;
-	char		*empty;
+	t_envnode *mini_env_temp;
 
-	temp = mini_env;
-	empty = "";
+	mini_env_temp = mini_env;
 	printf(R "HELLO mini_getenv\n");
-	print_mini_envp(temp);
+	print_mini_envp(mini_env_temp);
 	printf(BLUE "var_name in mini_getenv %s\n" RS, var_name);
-	while(temp)
+	while(mini_env_temp)
 	{
 		printf(R "in while loop mini_getenv\n");
-		if (ft_strncmp(var_name, temp->key, var_len) == 0)
+		if (ft_strncmp(var_name, mini_env_temp->key, var_len) == 0)
 		{
-			printf(GREEN "FOUND var_name: %s\n temp->key: %s\n temp->value: %s\n" RS, var_name, temp->key, temp->value);
-			return (temp->value);
+			printf(GREEN "FOUND var_name %s mini_env->key %s mini_env->value: %s\n" RS, var_name, mini_env->key, mini_env->value);
+			return (mini_env_temp->value);
 		}
-		temp = temp->next;
+		mini_env_temp = mini_env_temp->next;
 	}
-	return (empty);
+	return (NULL);
 }
-
-// t_list  *sort_list(t_list* lst, int (*cmp)(int, int))
-// {
-//    t_list  *new;
-
-//    new = lst;
-//    while(lst->next != NULL)
-//    {
-//        if (((*cmp)(lst->data, lst->next->data)) == 0)
-//        {
-//            lst->data = lst->data ^ lst->next->data;
-//            lst->next->data = lst->data ^ lst->next->data;
-//            lst->data = lst->data ^ lst->next->data;
-//            lst = new;
-//        }
-//        else
-//            lst = lst->next;
-//    }
-//    lst = new;
-//    return (lst);
-// }
-
-// int ascending(int a, int b)
-// {
-//  return (a <= b);
-// }
-
-
-// int	get_$wordlen(char *s)
-// {
-// 	while (s && *s)
-// 	{
-// 		if 
-// 	}
-// }
-
-// char	*mini_getenv(char *var, char **envp, int n)
-// {
-// 	int	i;
-// 	int	n2;
-
-// 	i = 0;
-// 	if (n < 0)
-// 		n = ft_strlen(var);
-// 	while (!ft_strchr(var, '=') && envp && envp[i])
-// 	{
-// 		n2 = n;
-// 		if (n2 < ft_strchr_i(envp[i], '='))
-// 			n2 = ft_strchr_i(envp[i], '=');
-// 		if (!ft_strncmp(envp[i], var, n2))
-// 			return (ft_substr(envp[i], n2 + 1, ft_strlen(envp[i])));
-// 		i++;
-// 	}
-// 	return (NULL);
-// }
-
 
 static char	*expand_token(char **content, int id, t_envnode *mini_env) //t_token **curr, 
 {
@@ -168,15 +110,6 @@ static char	*expand_token(char **content, int id, t_envnode *mini_env) //t_token
 				printf("s after s + ft_strlen(r) + ft_strlen(p): %s\n", s);
 				return (expand_token((&s), id, mini_env));
 			}
-			// printf(GREEN "3\n" RS);
-			// // if (p == '\0')
-			// // 	return (p);
-			// if (*p && !ft_strchr(p, '$'))
-			// 	p++;
-			// if (*p && ft_strchr(p, '$'))
-			// 	p--;
-			// p = expand_token(&p, mini_env);
-			
 		}
 
 	}

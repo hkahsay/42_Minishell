@@ -6,7 +6,7 @@
 #    By: vgejno <vgejno@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/23 11:19:05 by vgejno            #+#    #+#              #
-#    Updated: 2023/04/02 17:26:09 by vgejno           ###   ########.fr        #
+#    Updated: 2023/04/04 13:20:23 by vgejno           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ DIR_SRCS = ./srcs
 DIR_SRCS += ./srcs/mini_env
 DIR_SRCS += ./srcs/lexer
 DIR_SRCS += ./srcs/parser
+DIR_SRCS += ./srcs/built_in
 DIR_SRCS += ./srcs/executor
 #DIR_SRCS += ./srcs/parser
 SRCS = ${DIR_SRCS}/main.c
@@ -54,14 +55,21 @@ SRCS =	srcs/main.c \
 		srcs/lexer/interp_word.c \
 		srcs/lexer/interp_space.c \
 		srcs/lexer/token.c \
-		srcs/lexer/token_expand.c \
 		srcs/lexer/token_utils.c \
 		srcs/parser/parse.c \
 		srcs/parser/init_parse.c \
+		srcs/lexer/parse_expand.c \
 		srcs/parser/add_wnode.c \
 		srcs/parser/print.c \
 		srcs/parser/free_token.c \
 		srcs/executer/execute.c \
+		srcs/built_in/pwd.c \
+		srcs/built_in/cd.c \
+		srcs/built_in/utils.c \
+		srcs/built_in/echo.c \
+		srcs/built_in/export.c \
+		# srcs/built_in/unset.c \
+		# srcs/built_in/builtin.c \
 		
 		
 

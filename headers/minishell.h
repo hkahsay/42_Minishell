@@ -144,6 +144,15 @@ typedef struct	s_pline
 	struct s_pline	*next;
 } t_pline;
 
+//---------------built-in----------------
+# define PWD 1
+# define CD 2
+# define CMD_ECHO 3
+# define UNSET 4
+# define EXPORT 5
+# define ENV 6
+# define EXIT 7
+
 //-------------------INFO------------------------------
 
 typedef struct s_info
@@ -171,6 +180,9 @@ void	prompt(char	*line, t_envnode *mini_env); //t_envnode *my_envp,
 t_envnode	*dublicate_env(char **envp);
 t_envnode	*create_mini_envvar_node(char *key, char *value); //, int i
 void		free_mini_envp(t_envnode *head);
+void 		update_env_var(char *key, char *value);
+void		ft_add_envlist(t_envnode *new_node, t_envnode **env);
+int			ft_setenv(char *name, char *value, t_envnode **env);
 
 void print_mini_envp(t_envnode *temp);
 
@@ -214,6 +226,12 @@ t_wr_node	*add_w_to_cmd_wnode(t_token **head, t_cmd **cmd, t_wr_node **head_wnod
 t_wr_node	*check_$_add_w_to_cmd_wnode(t_token **head, t_cmd **cmd, t_wr_node **head_wnode, int id, char *word, t_envnode *mini_env);
 t_wr_node	*fill_wr_node(t_wr_node **wr_node, int id, char *word);
 
+//-----------built_in-----------------
+int			mini_pwd2(t_envnode *env_list);
+// int is_builtins(t_cmd   *cmd);
+int			ft_cd(t_cmd *cmd, t_envnode *env_list);
+int			export(t_cmd *cmd, t_envnode *env_var);
+
 /*PRINT*/
 void	print_token(t_token *temp);
 void	print_cmd(t_cmd *cmd);
@@ -221,6 +239,7 @@ void	print_wr_node(t_cmd *cmd, t_wr_node *cmd_wnode);
 // void	print_pipeline(t_pipeline *pipeline);
 //init minishell
 //void	init_minishell();
+
 /*EXECUTER*/
 void execute(t_cmd *cmd);
 // void	execute(t_pipeline *pipeline);
