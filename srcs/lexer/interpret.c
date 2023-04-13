@@ -46,19 +46,28 @@ void interp(char *line, t_envnode *mini_env)
 {
 	t_token	*token_head;
 	// t_token	*token_exp_head;
+	// t_token	*token_merge;
 
 	token_head = lexer(line);
 	if (!token_head)
 		return ;
-	// print_token(token_head);	
-	// token_exp_head = expand_token_list(token_head, mini_env);
-	// if (!token_exp_head)
-		// return ;
-	print_token(token_head);		
+	print_token(token_head);	
+	// t_token	*token_exp_head;	
+	// free_token_list(token_head);	
+	expand_token_list(&token_head, mini_env); //token_exp_head = 
+	if (!token_head)
+		return ;
+	printf(GREEN "token_head\n" RS);
+	print_token(token_head);
+	// token_merge = token_exp_head;
+	merge_tokens(&token_head);	//token_merge = 
 	// free_token_list(token_head);
+	delete_tok_spaces(&token_head);
+	printf(GREEN "returned delete_tok_spaces\n" RS);
+	handle_input_error(&token_head);
 	if (token_head)
 	{
-		parse(&token_head, mini_env);
+		parse(&token_head, mini_env); //, mini_env
 		// free_token_list(token_head);
 	}
 	// if (token_exp_head)
@@ -66,6 +75,5 @@ void interp(char *line, t_envnode *mini_env)
 	// 	parse(&token_exp_head);
 	// 	free_token_list(token_exp_head);
 	// }
-	// return (0);
 }
       
