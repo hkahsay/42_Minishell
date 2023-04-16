@@ -3,16 +3,22 @@
 int is_builtin(char **cmd, t_envnode *env_var)
 {
 	t_builtin builtin_cmds[] = {
-		{"pwd", &ft_pwd},
-		{"cd", &ft_cd},
-		{"echo", &ft_echo},
+		{"pwd", &ft_pwd}, //PWD
+		{"PWD", &ft_pwd},
+		{"cd", &ft_cd}, //CD
+		{"CD", &ft_cd},
+		{"echo", &ft_echo}, //ECHO
+		{"ECHO", &ft_echo},
 		{"unset", &ft_unset},
 		{"export", &ft_export},
-		{"env", &ft_env},
+		{"env", &ft_env}, //ENV
+		{"ENV", &ft_env},
 		{"exit", &ft_exit},
 		{NULL, NULL}
 	};
 	size_t i = 0;
+	if (ft_strset(cmd[0], "><"))
+		return (-1);
 	while (builtin_cmds[i].name != NULL && i < sizeof(builtin_cmds) / sizeof(t_builtin))
 	{
 		// printf("1. s[%zu] %s\n", i, builtin_cmds[i].name);

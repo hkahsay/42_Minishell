@@ -1,4 +1,4 @@
-#include "../../headers/minishell.h"      
+#include "../../headers/minishell.h"
 
 t_envnode	*envdup(t_envnode *prev, t_envnode **mini_env)
 {
@@ -155,7 +155,7 @@ int ft_export(char **cmd_args, t_envnode **mini_env)
 	if (cmd_args[1] == NULL && mini_env)
 	{ // export
 		if (!ft_export_noargs(mini_env, cmd_args, new_env_var))
-			return (-1);																																																																																																																																																																																																																																																																																																																																																																																													
+			return (-1);
 	}
 	if (cmd_args[1] && ft_strchr(cmd_args[1], '=')) //ft_strchr(const char	*s, int c)
 	{ // export with key and value
@@ -166,7 +166,7 @@ int ft_export(char **cmd_args, t_envnode **mini_env)
 	{ // export with key, without value
 		if (!fuck_only_key(mini_env, cmd_args))
 			return (-1);
-		
+
 		// printf("cmd_argher: %c\n", cmd_args[1][i]);
 		// new_key = ft_strdup(cmd_args[1]);
 		// new_env_var = find_env_var(new_key, mini_env);

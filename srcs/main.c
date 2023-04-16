@@ -20,7 +20,7 @@ void	prompt(char	*line, t_envnode *mini_env) //t_envnode *my_envp,
 	}
 	if (ft_strlen(line) > 0)
 	{
-		printf("propmt line: %s\n", line);
+		// printf("propmt line: %s\n", line);
 		add_history(line);
 		fd = open("history.log", O_CREAT | O_WRONLY | O_APPEND, 0777);
 		ft_putstr_fd(line, fd);
@@ -37,13 +37,14 @@ void	prompt(char	*line, t_envnode *mini_env) //t_envnode *my_envp,
 
 int main(int argc, char **argv, char **envp)
 {
-	(void)argv;
-	char	*line;
-	t_envnode *mini_envp;
+	char		*line;
+	t_envnode	*mini_envp;
+	// t_mini		*mini;
+	// t_envnode *temp;
+
 	line = NULL;
 	mini_envp = NULL;
-	t_envnode *temp = NULL;
-
+	// temp = NULL;
 	if (argc != 1 || !argv || !envp)
 	{
 		printf("Error arguments\n");
@@ -55,11 +56,12 @@ int main(int argc, char **argv, char **envp)
 		printf("Failed to create my_environment list\n");
 		return (1);
 	}
-	temp = mini_envp;
-	print_mini_envp(temp);
+	// temp = mini_envp;
+	// print_mini_envp(temp);
 	while (1)
 		prompt(line, mini_envp); //my_envp,
-	free_mini_envp(mini_envp);
+	// free_mini_envp(mini_envp);
+	// my_free_all(t_malloc **head);
 	return (0);
 }
 

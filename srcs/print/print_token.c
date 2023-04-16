@@ -14,17 +14,6 @@ void print_token(t_token *temp)
 	// printf("%d\n", i);
 }
 
-void	print_tok_cmd_list(t_token **tok_cmd_list)
-{
-	int i = 0;
-	while (tok_cmd_list[i] != NULL)
-	{
-		printf(GREEN "PIPE Command [%d] token list: " RS, i);
-		print_token_list(tok_cmd_list[i]);
-		i++;
-	}
-}
-
 void	print_token_list(t_token *token_list)
 {
 	while (token_list != NULL)
@@ -50,28 +39,24 @@ void	print_cmd_list1(t_token **cmd_list)
 	}
 }
 
-void	print_cmd_list(t_cmd *cmd_list)
+void	print_tok_cmd_list(t_token **tok_cmd_list)
 {
 	int i = 0;
-	while (cmd_list != NULL)
+	while (tok_cmd_list[i] != NULL)
 	{
-		printf("Command %d:\n", i);
-		printf("Command word:\n");
-		print_token_list(cmd_list->cmd_word);
-		printf("Redirections:\n");
-		print_token_list(cmd_list->cmd_red);
-		cmd_list = cmd_list->next;
+		printf(GREEN "PIPE Command [%d] token list: " RS, i);
+		print_token_list(tok_cmd_list[i]);
 		i++;
 	}
 }
 
-void	print_array(char **array)
-{
-	int	i = 0;
+// void	print_array(char **array)
+// {
+// 	int	i = 0;
 
-	while (array[i])
-	{
-		printf(OR "ARRAY PRINTING %s\n" RS, array[i]);
-		i++;
-	}
-}
+// 	while (array[i])
+// 	{
+// 		printf(OR "ARRAY PRINTING %s\n" RS, array[i]);
+// 		i++;
+// 	}
+// }

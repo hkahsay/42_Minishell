@@ -4,10 +4,10 @@ t_envnode *create_mini_envvar_node(char *key, char *value, char *content)//, int
 {
 	t_envnode *my_node = NULL;
 
+	// my_node = init_envnode();
 	my_node = malloc(sizeof(t_envnode) * 1);
 	if (!my_node)
 		return (NULL);
-	// printf("&new_env_var %p\n", new_env_var);
 	my_node->key = ft_strdup(key);
 	if (!my_node->key)
 	{

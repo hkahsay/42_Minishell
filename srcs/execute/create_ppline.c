@@ -12,47 +12,48 @@
 //     return size;
 // }
 
-// 
+//
 
-t_pmd	*create_array(t_cmd **cmd_head, int cmd_n)
-{
-	// t_pmd	**pmd;
-	// int		i;
-
-	// i = 0;
-	// pmd = init_pmd(void);
-	// while (cmd_head[i] && i < cmd_n)
-	// {
-	// 	pmd[i] =
-	// }
-// t_pmd	*create_pmd(t_cmd *cmd_list)
+// char	**mini_env_to_array(t_envnode	*mini_env)
 // {
+// 	char	**mini_env_array;
+
+
+// }
+
+t_ppline	*create_ppline_array(t_cmd **cmd_head, int cmd_n, char	**mini_env_arr)
+{
 	(void)cmd_n;
-	t_pmd	*pmd = NULL;
-	t_pmd	*new_pmd = NULL;
-	t_pmd	*pmd_tail = NULL;
+	t_ppline	*ppline = NULL;
+	t_ppline	*new_ppline = NULL;
+	t_ppline	*ppline_tail = NULL;
 	t_cmd	*cmd_ptr = *cmd_head;
 	int		cmd_index = 0;
 
 	while (cmd_ptr != NULL)
 	{
 		// allocate memory for the new pipeline element
-		new_pmd = (t_pmd *)malloc(sizeof(t_pmd));
-		if (new_pmd == NULL)
+		new_ppline = (t_ppline *)malloc(sizeof(t_ppline));
+		if (new_ppline == NULL)
 		{
 			// handle memory allocation error
 			return NULL;
 		}
 
+		// new_mini = init_mini();
 		// initialize the new pipeline element
-		new_pmd->cmd = NULL;
-		new_pmd->pmd_cmd = NULL;
-		new_pmd->pmd_index = cmd_index;
-		new_pmd->infile = -1;
-		new_pmd->heredoc = 0;
-		new_pmd->hdoc_fd[0] = -1;
-		new_pmd->hdoc_fd[1] = -1;
-		new_pmd->next = NULL;
+		new_ppline->pp_first_cmd = NULL;
+		new_ppline->pp_first_cmd_path = NULL;
+		new_ppline->ppline_cmd = NULL;
+		new_ppline->ppline_env = mini_env_arr;
+		new_ppline->ppline_idx = cmd_index;
+		new_ppline->infile = -1;
+		new_ppline->outfile = -1;
+		new_ppline->heredoc = 0;
+		new_ppline->hdoc_fd[0] = -1;
+		new_ppline->hdoc_fd[1] = -1;
+		new_ppline->exit_status = 0;
+		new_ppline->next = NULL;
 
 		// count the number of arguments in a command
 		t_token *word_ptr = cmd_ptr->cmd_word;
@@ -63,11 +64,11 @@ t_pmd	*create_array(t_cmd **cmd_head, int cmd_n)
 			word_ptr = word_ptr->next;
 		}
 
-		new_pmd->pmd_cmd = (char **)malloc(sizeof(char *) * (arg_count + 1));
-		if (new_pmd->pmd_cmd == NULL)
+		new_ppline->ppline_cmd = (char **)malloc(sizeof(char *) * (arg_count + 1));
+		if (new_ppline->ppline_cmd == NULL)
 		{
 			// handle memory allocation error
-			free(new_pmd);
+			free(new_ppline);
 			return NULL;
 		}
 
@@ -75,63 +76,45 @@ t_pmd	*create_array(t_cmd **cmd_head, int cmd_n)
 		int i = 0;
 		while (word_ptr != NULL)
 		{
-			new_pmd->pmd_cmd[i] = strdup(word_ptr->content);
-			if (new_pmd->pmd_cmd[i] == NULL)
+			new_ppline->ppline_cmd[i] = strdup(word_ptr->content);
+			if (new_ppline->ppline_cmd[i] == NULL)
 			{
 				// handle memory allocation error
 				for (int j = 0; j < i; j++)
-					free(new_pmd->pmd_cmd[j]);
-				free(new_pmd->pmd_cmd);
-				free(new_pmd);
+					free(new_ppline->ppline_cmd[j]);
+				free(new_ppline->ppline_cmd);
+				free(new_ppline);
 				return NULL;
 			}
 			i++;
 			word_ptr = word_ptr->next;
 		}
-		new_pmd->pmd_cmd[i] = NULL;
+		new_ppline->ppline_cmd[i] = NULL;
 
 		// set the command string to the first argument
 		if (i > 0)
-			new_pmd->cmd = strdup(new_pmd->pmd_cmd[0]);
+			new_ppline->pp_first_cmd = strdup(new_ppline->ppline_cmd[0]);
 
 		// add the new pipeline element to the list
-		if (pmd == NULL)
+		if (ppline == NULL)
 		{
-			pmd = new_pmd;
-			pmd_tail = new_pmd;
+			ppline = new_ppline;
+			ppline_tail = new_ppline;
 		}
 		else
 		{
-			pmd_tail->next = new_pmd;
-			pmd_tail = new_pmd;
+			ppline_tail->next = new_ppline;
+			ppline_tail = new_ppline;
 		}
 
 		// move to the next command in the pipeline
 		cmd_ptr = cmd_ptr->next;
 		cmd_n++;
 	}
-	print_pmd_list(pmd);
-	return pmd;
+	print_ppline_list(ppline);
+	return (ppline);
 }
 
-void print_pmd_list(t_pmd *pmd_list)
-{
-    t_pmd *current = pmd_list;
-    while (current != NULL) {
-        printf("Command: %s\n", current->cmd);
-        printf("Command arguments:\n");
-        for (int i = 0; current->pmd_cmd[i] != NULL; i++) {
-            printf("%s\n", current->pmd_cmd[i]);
-        }
-        printf("Redirections:\n");
-        printf("Input file: %d\n", current->infile);
-        printf("Heredoc: %d\n", current->heredoc);
-        printf("Heredoc FDs: %d %d\n", current->hdoc_fd[0], current->hdoc_fd[1]);
-        printf("\n");
-
-        current = current->next;
-    }
-}
 
 
 // char    **create_array(t_cmd **cmd_head)

@@ -52,6 +52,22 @@ size_t	ft_strcspn(const char *str, const char *charset)
 	return (count);
 }
 
+int	ft_strset(const char *s1, char *s2)
+{
+	int				i;
+
+	i = 0;
+	if (!s1 || !s2)
+		return (-1);
+	while (s1 && s2)
+	{
+		if (ft_strchr(s1, *s2))
+			return (1);
+		s2++;
+	}
+	return (0);
+}
+
 // char *strndup(const char *str, size_t n) {
 //     char *copy;
 
@@ -86,18 +102,3 @@ size_t	ft_strcspn(const char *str, const char *charset)
 // }
 
 // //fnct from example
-// int	ft_strchars_i(const char *s, char *set)
-// {
-// 	int				i;
-
-// 	i = 0;
-// 	if (!s)
-// 		return (-1);
-// 	while (s[i] != '\0')
-// 	{
-// 		if (ft_strchr(set, s[i]))
-// 			return (i);
-// 		i++;
-// 	}
-// 	return (-1);
-// }	
