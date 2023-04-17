@@ -100,10 +100,11 @@ typedef struct s_builtin
 typedef struct	s_ppline
 {
 	char			*pp_first_cmd;
-	char			*pp_first_cmd_path;
+	// char			*pp_first_cmd_path;
 	char			**ppline_cmd;
 	char			**ppline_env;
-	int				ppline_idx;
+	// int				ppline_idx;
+	int				red_status;
 	int				infile;
 	int				outfile;
 	int				heredoc;

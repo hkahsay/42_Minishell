@@ -119,7 +119,7 @@ void		print_token_list(t_token *token_list);
 void		print_tok_cmd_list(t_token **tok_pp_list);
 
 void		print_cmd_list(t_cmd *cmd_list);
-void		print_ppline_list(t_ppline *ppline_list);
+void		print_ppline_list(t_ppline *ppline_list, int ppline_idx);
 void 		print_mini_envp(t_envnode *temp);
 void 		print_ex_envp(t_envnode *temp);
 void		print_ex_sorted_envp(t_envnode *mini_env, char **cmd_arg);
@@ -133,10 +133,14 @@ void		printf_mini_env_array(char **mini_env_array);
 
 /*EXECUTER*/
 int			execute(t_cmd *cmd, int cmd_num, t_envnode *mini_env);
+t_ppline	*ft_new_ppline(void); //t_cmd **cmd_head, 
 t_ppline	*create_ppline_array(t_cmd **cmd_head, int cmd_n, char	**mini_env_arr);
 // void		execute(t_token **tok_cmd, t_envnode *mini_env);
 // void		execute1(t_pline *pline, t_envnode *mini_env);
 // void	execute(t_pipeline *pipeline);
+
+int			ft_bool_strcspn(const char *str, const char *charset);
+void print_one_ppline(t_ppline *ppline);
 
 /*ERROR*/
 void		handle_input_error(t_token **token_head);

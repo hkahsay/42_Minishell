@@ -52,17 +52,51 @@ size_t	ft_strcspn(const char *str, const char *charset)
 	return (count);
 }
 
+int	ft_bool_strcspn(const char *str, const char *charset)
+{
+	const char *p;
+	const char *q;
+	// size_t count;
+
+	p = str;
+	// count = 0;
+	while (*p != '\0')
+	{
+		q = charset;
+		while (*q != '\0')
+		{
+			if (*p == *q)
+				return (1);
+			q++;
+		}
+		p++;
+		// count++;
+	}
+	return (0);
+}
+
 int	ft_strset(const char *s1, char *s2)
 {
 	int				i;
 
 	i = 0;
+	printf("s1 %s\n", s1);
+	printf("s2 %s\n", s2);
 	if (!s1 || !s2)
+	{
+		printf("no s1 || s2\n");
 		return (-1);
+	}
 	while (s1 && s2)
 	{
-		if (ft_strchr(s1, *s2))
+		printf("*s1 %c\n", *s1);
+		printf("*s2 %c\n", *s2);
+		if (ft_strchr(s1, (int)(*s2)))
+		{
+			printf("*s1 %c\n", *s1);
+			printf("*s2 %c\n", *s2);
 			return (1);
+		}
 		s2++;
 	}
 	return (0);

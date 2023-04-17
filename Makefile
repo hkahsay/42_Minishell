@@ -6,7 +6,7 @@
 #    By: vgejno <vgejno@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/23 11:19:05 by vgejno            #+#    #+#              #
-#    Updated: 2023/04/16 22:44:03 by vgejno           ###   ########.fr        #
+#    Updated: 2023/04/17 18:11:03 by vgejno           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,7 +91,7 @@ SRCS =	srcs/main.c \
 		srcs/print/print_token.c \
 		srcs/print/print_cmd.c \
 		srcs/print/print_env.c \
-		srcs/print/print_mini.c \
+		srcs/print/print_ppline.c \
 		srcs/error/error_exit.c \
 		srcs/error/error_input.c \
 		srcs/free/free_token.c \

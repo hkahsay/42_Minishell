@@ -21,7 +21,7 @@ static t_cmd	*parse_commands(t_token **tok_head, int	cmd_num)
 		while (tok_h->next && tok_h->id != TOK_PIPE)
 		{
 			// printf(R "NO PIPE: " RS);
-			printf(R "%s\n" RS, tok_h->content);
+			// printf(R "%s\n" RS, tok_h->content);
 			tok_h = tok_h->next;
 			if (tok_h->id == TOK_PIPE)
 				break ;
