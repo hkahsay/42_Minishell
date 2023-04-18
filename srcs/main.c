@@ -1,5 +1,8 @@
 #include "../headers/minishell.h"
 
+int	g_status = 0;
+
+
 void	prompt(char	*line, t_envnode *mini_env) //t_envnode *my_envp,
 {
 	int		fd;
@@ -11,12 +14,19 @@ void	prompt(char	*line, t_envnode *mini_env) //t_envnode *my_envp,
 	// token_head = NULL;
 	// cmd = NULL;
 	// pipeline = NULL;
+	struct termios saved;
+
+	if (tcgetattr(STDIN_FILENO, &saved) == -1) 
+    	perror("tcgetattr"); // handle error and return or exit as appropriate
+	ter_attr_handler(saved);
 	line = readline (GREEN "minishell_VH>> " RS);
+	tcsetattr(STDIN_FILENO, TCSAFLUSH, &saved);
 	// index = getpid();
 	if (!line)
 	{
-		printf("exit\n");
+		printf("exit\n");	
 		free(line);
+		return ;
 	}
 	if (ft_strlen(line) > 0)
 	{
@@ -39,12 +49,16 @@ int main(int argc, char **argv, char **envp)
 {
 	char		*line;
 	t_envnode	*mini_envp;
+	struct termios	saved;
+
 	// t_mini		*mini;
 	// t_envnode *temp;
 
 	line = NULL;
 	mini_envp = NULL;
 	// temp = NULL;
+	if (tcgetattr(STDIN_FILENO, &saved) == -1) 
+    	perror("tcgetattr"); // handle error and return or exit as appropriate
 	if (argc != 1 || !argv || !envp)
 	{
 		printf("Error arguments\n");
@@ -59,7 +73,10 @@ int main(int argc, char **argv, char **envp)
 	// temp = mini_envp;
 	// print_mini_envp(temp);
 	while (1)
+	{
+		sig_handlers();
 		prompt(line, mini_envp); //my_envp,
+	}
 	// free_mini_envp(mini_envp);
 	// my_free_all(t_malloc **head);
 	return (0);

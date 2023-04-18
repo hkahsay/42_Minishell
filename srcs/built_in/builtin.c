@@ -17,8 +17,11 @@ int is_builtin(char **cmd, t_envnode *env_var)
 		{NULL, NULL}
 	};
 	size_t i = 0;
-	if (ft_strset(cmd[0], "><"))
+	if (ft_bool_strcspn(cmd[0], "><"))
+	{
+		printf("found red\n");
 		return (-1);
+	}
 	while (builtin_cmds[i].name != NULL && i < sizeof(builtin_cmds) / sizeof(t_builtin))
 	{
 		// printf("1. s[%zu] %s\n", i, builtin_cmds[i].name);

@@ -61,24 +61,24 @@ static int	search_path(t_ppline *ppline, char **mini_env_array, char **cmd_path)
 // 	return (0);
 // }
 
-static int	prepare_redir(t_cmd **cmd, t_ppline **ppline)
-{
-	printf(YELLOW "PREPARE_redir: printing cmd_list\n ");
-	// print_cmd(cmd);
-	print_cmd_list(*cmd);
-	printf(RS);
-	(void)ppline;
-	while (*cmd)
-	{
-		if ((*cmd)->cmd_red->id == TOK_REDIR_IN || (*cmd)->cmd_red->id == TOK_REDIR_OUT ||
-			(*cmd)->cmd_red->id == TOK_REDIR_OUT_APPEND || (*cmd)->cmd_red->id == TOK_HEREDOC)
-			printf(ORS "prepare_redir\n"RS);
-		// else
-		// 	return (0);	
-		(*cmd) = (*cmd)->next;	
-	}
-	return (0);
-}
+// static int	prepare_redir(t_cmd **cmd, t_ppline **ppline)
+// {
+// 	printf(YELLOW "PREPARE_redir: printing cmd_list\n ");
+// 	// print_cmd(cmd);
+// 	print_cmd_list(*cmd);
+// 	printf(RS);
+// 	(void)ppline;
+// 	while (*cmd)
+// 	{
+// 		if ((*cmd)->cmd_red->id == TOK_REDIR_IN || (*cmd)->cmd_red->id == TOK_REDIR_OUT ||
+// 			(*cmd)->cmd_red->id == TOK_REDIR_OUT_APPEND || (*cmd)->cmd_red->id == TOK_HEREDOC)
+// 			printf(ORS "prepare_redir\n"RS);
+// 		// else
+// 		// 	return (0);	
+// 		(*cmd) = (*cmd)->next;	
+// 	}
+// 	return (0);
+// }
 
 int execute(t_cmd *cmd, int cmd_num, t_envnode *mini_env)
 {
@@ -88,18 +88,22 @@ int execute(t_cmd *cmd, int cmd_num, t_envnode *mini_env)
 	cmd_path = NULL;
 	// mini = init_mini();
 
-	printf(R "EXECUTE: printing cmd_list");
+	printf(R "EXECUTE: printing cmd_list\n" RS);
 	// print_cmd(cmd);
 	print_cmd_list(cmd);
-	printf(RS);
 	mini_env_arr = ft_mini_env_array(mini_env, ft_mini_env_size(mini_env));
 	// printf_mini_env_array(mini_env_array);
 	ppline = create_ppline_array(&cmd, cmd_num, mini_env_arr); //, mini_env_arr
-	prepare_redir(&cmd, &ppline);
+	// prepare_redir(&cmd, &ppline);
 	printf(PURPLE"EXECUTE: printing ppline_list\n");
-	print_ppline_list(ppline);
 	printf(RS);
-	if (is_builtin(ppline->ppline_cmd, mini_env) == -1) //ppline->ppline_env
+	// while (ppline)
+	// {
+	// 	if (cmd[0] && !cmd[1])
+
+	// }
+	printf(ORS "ppline->ppline_cmd[0] %s\n", ppline->ppline_cmd[0]);
+	if (is_builtin(&ppline->ppline_cmd[0], mini_env) == -1) //ppline->ppline_env
 	{
 		printf("NOT builtin\n");
 		if (!(search_path(ppline, mini_env_arr, &cmd_path)))

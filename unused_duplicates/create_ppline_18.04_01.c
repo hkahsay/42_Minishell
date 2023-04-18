@@ -10,7 +10,6 @@ t_ppline	*ft_new_ppline(void) //t_cmd **cmd_ptr,
 	new_ppline->ppline_cmd = NULL;
 	new_ppline->ppline_env = NULL;
 	// new_ppline->ppline_idx = cmd_index;
-	new_ppline->red_status = 0;
 	new_ppline->infile = -1;
 	new_ppline->outfile = -1;
 	new_ppline->heredoc = 0;
@@ -38,92 +37,12 @@ static int	ft_count_args_cmd_word(t_token *ptr_cmd_word)
 	return (arg_count);
 }
 
-static void	*ft_handle_redir_out(t_ppline **new_ppline, t_token **ptr_cmd_red)
+static void	*ft_handle_redir(t_ppline **new_ppline, t_token *ptr_cmd_red)
 {
+	(void)new_ppline;
 	(void)ptr_cmd_red;
-	(void)new_ppline;
-	printf("redir_append\n");
-	return (0);
-}
-
-static void	*ft_handle_redir_append(t_ppline **new_ppline, t_token **ptr_cmd_red)
-{
-	(void)ptr_cmd_red;
-	(void)new_ppline;
-	printf("redir_out\n");
-	return (0);
-}
-
-static void	*ft_handle_redir_in(t_ppline **new_ppline, t_token **ptr_cmd_red)
-{
-	(void)new_ppline;
-	printf("redir_in\n");
-	int	fd_out;
-
-	fd_out = -1;
-	if ((*ptr_cmd_red)->id == TOK_REDIR_IN)
-	{
-		fd_out = open((*ptr_cmd_red)->content, O_WRONLY | O_CREAT | O_TRUNC, 0644);
-		(*new_ppline)->outfile = fd_out;
-		if ((*new_ppline)->outfile < 0)
-		{
-			perror("open");
-			exit(-1); //EXIT_FAILURE
-		}
-		dup2((*new_ppline)->outfile, STDOUT_FILENO);
-		close((*new_ppline)->outfile);
-		execve((*new_ppline)->pp_first_cmd, (*new_ppline)->ppline_cmd, (*new_ppline)->ppline_env);
-		perror("execve");
-		exit(-1); //EXIT_FAILURE
-	}
-	return (0);
-}
-
-static void	*ft_handle_heredoc(t_ppline **new_ppline, t_token **ptr_cmd_red)
-{
-	(void)ptr_cmd_red;
-	(void)new_ppline;
-	printf("heredoc\n");
-	return (0);
-}
-
-static int	ft_handle_redir_all(t_ppline **new_ppline, t_token *ptr_cmd_red)
-{
 	printf("redir\n");
-	(void)new_ppline;
-	t_token *red_ptr;
-	// (void)ptr_cmd_red;
-	red_ptr = ptr_cmd_red;
-	if (red_ptr->id == TOK_REDIR_OUT)
-	{
-		ft_handle_redir_out(new_ppline, &ptr_cmd_red);
-		return (1);
-	}
-	if (red_ptr->id == TOK_REDIR_OUT_APPEND)
-	{
-		ft_handle_redir_append(new_ppline, &ptr_cmd_red);
-		return (1);
-	}
-	if (red_ptr->id == TOK_REDIR_IN)
-	{
-		ft_handle_redir_in(new_ppline, &ptr_cmd_red);
-		return (1);
-	}
-	if (red_ptr->id == TOK_HEREDOC)
-	{
-		ft_handle_heredoc(new_ppline, &ptr_cmd_red);			
-		return (1);
-	}
 	return (0);
-}
-
-static void	free_ppline(t_ppline **new_ppline, int *i)
-{
-	for (int j = 0; j < *i; j++)
-		free((*new_ppline)->ppline_cmd[j]);
-	free((*new_ppline)->ppline_cmd);
-	free((*new_ppline));
-	// return (0);
 }
 
 static void	*ft_handle_word(t_ppline **new_ppline, t_token *cmd_word)
@@ -149,7 +68,12 @@ static void	*ft_handle_word(t_ppline **new_ppline, t_token *cmd_word)
 		printf(LBLUE "new_ppline->ppline_cmd[%d]: %s\n" RS, i, (*new_ppline)->ppline_cmd[i]);
 		if ((*new_ppline)->ppline_cmd[i] == NULL)
 		{
-			free_ppline(new_ppline, &i);
+			// handle memory allocation error
+			for (int j = 0; j < i; j++)
+				free((*new_ppline)->ppline_cmd[j]);
+			free((*new_ppline)->ppline_cmd);
+			free((*new_ppline));
+			return NULL;
 		}
 		i++;
 		word_ptr = word_ptr->next;
@@ -194,11 +118,49 @@ t_ppline	*create_ppline_array(t_cmd **cmd_head, int cmd_n, char	**mini_env_arr)
 		if (cmd_ptr->cmd_word)
 		{
 			ft_handle_word(&new_ppline, cmd_ptr->cmd_word);
+			// new_ppline->ppline_cmd = (char **)malloc(sizeof(char *) * (ft_count_args_cmd_word(cmd_ptr->cmd_word) + 1));
+			// if (new_ppline->ppline_cmd == NULL)
+			// {
+			// 	free(new_ppline);
+			// 	return NULL;
+			// }
+			// t_token *word_ptr = cmd_ptr->cmd_word;
+			// i = 0;
+			// while (word_ptr != NULL && i < ft_count_args_cmd_word(cmd_ptr->cmd_word))
+			// {
+			// 	printf(BLUE "word_ptr->content: %s\n" RS, word_ptr->content);
+			// 	new_ppline->ppline_cmd[i] = strdup(word_ptr->content);
+			// 	printf(LBLUE "new_ppline->ppline_cmd[%d]: %s\n" RS, i, new_ppline->ppline_cmd[i]);
+			// 	if (new_ppline->ppline_cmd[i] == NULL)
+			// 	{
+			// 		// handle memory allocation error
+			// 		for (int j = 0; j < i; j++)
+			// 			free(new_ppline->ppline_cmd[j]);
+			// 		free(new_ppline->ppline_cmd);
+			// 		free(new_ppline);
+			// 		return NULL;
+			// 	}
+			// 	i++;
+			// 	word_ptr = word_ptr->next;
+			// }
+			// printf("i: %d\n", i);
+			// new_ppline->ppline_cmd[i] = NULL;
+			// if (i > 0)
+			// {
+			// 	new_ppline->pp_first_cmd = strdup(new_ppline->ppline_cmd[0]);
+			// 	// printf(ORS "i > 0 create ppline->ppline_cmd[0] %s\n", ppline->ppline_cmd[0]);
+			// }
+			// if (i == 1)
+			// {
+			// 	new_ppline->pp_first_cmd = strdup(new_ppline->ppline_cmd[0]);
+			// 	printf(ORS "i == 1 create ppline->ppline_cmd[0] %s\n", ppline->ppline_cmd[0]);
+			// 	// break;
+			// }
+
 		}
 		if (cmd_ptr->cmd_red)
 		{
-			if (ft_handle_redir_all(&new_ppline, cmd_ptr->cmd_red))
-				new_ppline->red_status = 1;
+			ft_handle_redir(&new_ppline, cmd_ptr->cmd_red);
 		}
 		if (ppline == NULL)
 		{
@@ -210,7 +172,10 @@ t_ppline	*create_ppline_array(t_cmd **cmd_head, int cmd_n, char	**mini_env_arr)
 			ppline_tail->next = new_ppline;
 			ppline_tail = new_ppline;
 		}
+
+		// move to the next command in the pipeline
 		cmd_ptr = cmd_ptr->next;
+		// cmd_n++;
 	}
 	printf(YELS "CREATE PPLINE: printing ppline_list\n" RS);
 	print_ppline_list(ppline, cmd_n);

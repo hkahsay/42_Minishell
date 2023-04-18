@@ -6,7 +6,7 @@
 #    By: vgejno <vgejno@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/23 11:19:05 by vgejno            #+#    #+#              #
-#    Updated: 2023/04/16 22:44:03 by vgejno           ###   ########.fr        #
+#    Updated: 2023/04/18 11:46:15 by vgejno           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ RM = rm -rf
 
 # << SOURCES >> #
 DIR_SRCS = ./srcs
+DIR_SRCS += ./srcs/sig_handler
 DIR_SRCS += ./srcs/init
 DIR_SRCS += ./srcs/mini_env
 DIR_SRCS += ./srcs/lexer
@@ -54,6 +55,7 @@ DIR_OBJS = ./objs
 OBJS = ${addprefix ${DIR_OBJS}/, ${notdir ${SRCS:.c=.o}}}
 
 SRCS =	srcs/main.c \
+		srcs/sig_handler/signal_handler.c \
 		srcs/init/envnode_init.c \
 		srcs/init/token_init.c \
 		srcs/init/parse_init.c \
@@ -91,7 +93,7 @@ SRCS =	srcs/main.c \
 		srcs/print/print_token.c \
 		srcs/print/print_cmd.c \
 		srcs/print/print_env.c \
-		srcs/print/print_mini.c \
+		srcs/print/print_ppline.c \
 		srcs/error/error_exit.c \
 		srcs/error/error_input.c \
 		srcs/free/free_token.c \
