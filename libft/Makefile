@@ -6,7 +6,7 @@
 #    By: vgejno <vgejno@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/09 16:28:58 by vgejno            #+#    #+#              #
-#    Updated: 2023/03/10 18:51:11 by vgejno           ###   ########.fr        #
+#    Updated: 2023/03/20 18:45:26 by vgejno           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,8 +32,7 @@ SRCS = ft_putchar_fd.c \
  		ft_putendl_fd.c \
  		ft_putnbr_fd.c \
  		ft_split.c \
- 		ft_strchr.c \
- 		ft_strdup.c \
+		ft_strdup.c \
  		ft_striteri.c \
  		ft_strjoin.c \
  		ft_strlcat.c \
@@ -43,10 +42,12 @@ SRCS = ft_putchar_fd.c \
  		ft_strncmp.c \
  		ft_strnstr.c \
  		ft_strrchr.c \
- 		ft_strtrim.c \
- 		ft_substr.c \
+		ft_substr.c \
  		ft_tolower.c \
- 		ft_toupper.c
+ 		ft_toupper.c \
+ 		ft_strchr.c \
+ 		ft_strtrim.c \
+ 		
 
 OBJS = ${SRCS:.c=.o}
 

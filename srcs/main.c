@@ -1,74 +1,98 @@
 #include "../headers/minishell.h"
 
-void	prompt(char	*line) //t_envnode *my_envp, 
-{
-	t_list	*token;
-	int		index;
-	int		fd;
+int	g_status = 0;
 
-	line = readline ("minishell_VH>>");
-	printf ("prompt head OK!\n");
-	index = getpid();
+
+void	prompt(char	*line, t_envnode *mini_env) //t_envnode *my_envp,
+{
+	int		fd;
+	// t_token *token_head;
+	// t_cmd	*cmd;
+	// t_pipeline *pipeline;
+
+
+	// token_head = NULL;
+	// cmd = NULL;
+	// pipeline = NULL;
+	struct termios saved;
+
+	if (tcgetattr(STDIN_FILENO, &saved) == -1) 
+    	perror("tcgetattr"); // handle error and return or exit as appropriate
+	ter_attr_handler(saved);
+	line = readline (GREEN "minishell_VH>> " RS);
+	tcsetattr(STDIN_FILENO, TCSAFLUSH, &saved);
+	// index = getpid();
 	if (!line)
 	{
-		printf("exit\n");
+		printf("exit\n");	
 		free(line);
+		return ;
 	}
 	if (ft_strlen(line) > 0)
 	{
-		token = create_token(line, index);
+		// printf("propmt line: %s\n", line);
 		add_history(line);
 		fd = open("history.log", O_CREAT | O_WRONLY | O_APPEND, 0777);
 		ft_putstr_fd(line, fd);
 		ft_putstr_fd("\n", fd);
+		close(fd);
+		interp(line, mini_env);
+		printf("OK head is back\n");
+		// cmd = parse(line, cmd);
+
 	}
 	else
 		free(line);
 }
 
-static void print_my_envp(t_envnode *temp)
-{
-	int i = 0;
-
-	while (temp)
-	{
-		printf("LIST: %s=%s\n", temp->key, temp->value);
-		temp = temp->next;
-		i++;
-	}
-	printf("%d\n", i);
-}
-
 int main(int argc, char **argv, char **envp)
 {
-	// printf("MINISHELL\n");
-	// int i = -1;
-	// while (envp[++i])
-	// 	printf("%s\n", envp[i]);
-	// printf("%d\n", i);
+	char		*line;
+	t_envnode	*mini_envp;
+	struct termios	saved;
 
-	(void)argv;
-	char	*line;
-	t_envnode *my_envp;
+	// t_mini		*mini;
+	// t_envnode *temp;
+
 	line = NULL;
-	my_envp = NULL;
-	t_envnode *temp = NULL;
-
+	mini_envp = NULL;
+	// temp = NULL;
+	if (tcgetattr(STDIN_FILENO, &saved) == -1) 
+    	perror("tcgetattr"); // handle error and return or exit as appropriate
 	if (argc != 1 || !argv || !envp)
 	{
 		printf("Error arguments\n");
 		return (-1);
 	}
-	my_envp = dublicate_env(envp);
-	if (!my_envp)
+	mini_envp = duplicate_env(envp);
+	if (!mini_envp)
 	{
 		printf("Failed to create my_environment list\n");
 		return (1);
 	}
-	temp = my_envp;
-	print_my_envp(temp);
+	// temp = mini_envp;
+	// print_mini_envp(temp);
 	while (1)
-		prompt(line); //my_envp, 
-	free_myenvp(my_envp);	
+	{
+		sig_handlers();
+		prompt(line, mini_envp); //my_envp,
+	}
+	// free_mini_envp(mini_envp);
+	// my_free_all(t_malloc **head);
 	return (0);
 }
+
+		// ft_cd(built, my_envp);
+		// mini_pwd2(my_envp);
+		// ft_echo(cmd);
+		// token_head = interp(line);
+		// args = eval_token(head);
+		// while (head)
+		// {
+		// 	printf("Head content main: %s\n", head->content);
+		// 	head = head->next;
+		// }
+		// head = head->next;
+		// cmd = parse(token_head);
+		// pipeline = split_cmds_into_pipeline(cmd);
+		// execute_pipeline(pipeline);
