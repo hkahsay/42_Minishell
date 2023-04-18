@@ -6,7 +6,7 @@
 #    By: vgejno <vgejno@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/23 11:19:05 by vgejno            #+#    #+#              #
-#    Updated: 2023/04/18 11:46:15 by vgejno           ###   ########.fr        #
+#    Updated: 2023/04/18 16:32:25 by vgejno           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,6 @@ SRCS =	srcs/main.c \
 		srcs/init/envnode_init.c \
 		srcs/init/token_init.c \
 		srcs/init/parse_init.c \
-		srcs/init/pmd_init.c \
 		srcs/mini_env/free_mini_env.c \
 		srcs/mini_env/env_util.c \
 		srcs/mini_env/create_envnode.c \
@@ -80,7 +79,15 @@ SRCS =	srcs/main.c \
 		srcs/parser/parse_utils.c \
 		srcs/execute/execute.c \
 		srcs/execute/execute_utils.c \
-		srcs/execute/create_ppline.c \
+		srcs/execute/ppline_build.c \
+		srcs/execute/ppline_new.c \
+		srcs/execute/cmd_path.c \
+		srcs/execute/cmd_redir_all.c \
+		srcs/execute/cmd_redir_in.c \
+		srcs/execute/cmd_redir_out.c \
+		srcs/execute/cmd_redir_append.c \
+		srcs/execute/cmd_hdoc.c \
+		srcs/execute/cmd_word.c \
 		srcs/built_in/builtin.c \
 		srcs/built_in/builtin_utils.c \
 		srcs/built_in/cd.c \

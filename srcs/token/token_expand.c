@@ -50,7 +50,6 @@ char	*expand_token(char **content, t_envnode *mini_env)
 		else
 			p++;
 	}
-	// expanded_content = ft_strjoin_free(expanded_content, *content);
 	return (ft_strjoin_free(expanded_content, *content));
 }
 
@@ -60,8 +59,6 @@ void    *expand_token_list(t_token **token_head, t_envnode *mini_env)
 	char	*exp_content;
 	char	*d_trimmed;
 	char	*s_trimmed;
-	// char	*d_quote;
-	// char	*s_quote;
 
 	curr = *token_head;
 	// d_quote = "\"";
@@ -93,11 +90,3 @@ void    *expand_token_list(t_token **token_head, t_envnode *mini_env)
 	}
 	return (*token_head);
 }
-
-// if (curr->next && curr->next->next && (curr->id == TOK_REDIR_OUT || curr->id == TOK_REDIR_IN ||
-// 	curr->id == TOK_REDIR_OUT_APPEND	|| curr->id == TOK_HEREDOC) &&
-// 	(curr->next->id == TOK_WORD || curr->next->id == TOK_D_QUOTE || curr->next->id == TOK_S_QUOTE))
-// {
-// 	printf(R"REDIR\n" RS);
-// 	curr = curr->next->next;
-// }

@@ -34,7 +34,7 @@ void	ter_attr_handler(struct termios save);
 t_envnode	*init_envnode(void);
 t_token		*init_token(t_token	*token);
 t_cmd		*init_cmd(void);
-t_ppline		*init_ppline(void);
+t_ppline	*init_ppline(void);
 
 //void	init_minishell();
 
@@ -145,7 +145,22 @@ void		printf_mini_env_array(char **mini_env_array);
 /*EXECUTER*/
 int			execute(t_cmd *cmd, int cmd_num, t_envnode *mini_env);
 t_ppline	*ft_new_ppline(void); //t_cmd **cmd_head, 
-t_ppline	*create_ppline_array(t_cmd **cmd_head, int cmd_n, char	**mini_env_arr);
+t_ppline	*build_ppline_array(t_cmd **cmd_head, int cmd_n, char	**mini_env_arr);
+void		execute_cmd(t_ppline *ppline, char **mini_env_array, char **cmd_path);
+
+int			search_path(t_ppline *ppline, char **mini_env_array, char **cmd_path);
+char		*find_path(char **mini_env_array);
+
+void		*ft_handle_word(t_ppline **new_ppline, t_token *cmd_word);
+int			ft_count_args_cmd_word(t_token *ptr_cmd_word);
+int			ft_handle_redir_all(t_ppline **new_ppline, t_token *ptr_cmd_red);
+void		*ft_handle_heredoc(t_ppline **new_ppline, t_token **ptr_cmd_red);
+void		*ft_handle_redir_in(t_ppline **new_ppline, t_token **ptr_cmd_red);
+void		*ft_handle_redir_append(t_ppline **new_ppline, t_token **ptr_cmd_red);
+void		*ft_handle_redir_out(t_ppline **new_ppline, t_token **ptr_cmd_red);
+
+void		free_ppline(t_ppline **new_ppline, int *i);
+
 // void		execute(t_token **tok_cmd, t_envnode *mini_env);
 // void		execute1(t_pline *pline, t_envnode *mini_env);
 // void	execute(t_pipeline *pipeline);
