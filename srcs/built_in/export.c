@@ -73,10 +73,10 @@ static int export_only_key(t_envnode **mini_env, char **cmd_args)
 {
 	char	*new_key;
 	char	*new_value;
-	int		i;
+	// int		i;
 	t_envnode *new_env_var; //new_env_var = NULL;
 
-	i = 0;
+	// i = 0;
 	new_key = ft_strdup(cmd_args[1]);
 	new_env_var = find_env_var(new_key, mini_env);
 	// printf(GREEN"there is != sign\n"RS);

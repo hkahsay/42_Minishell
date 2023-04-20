@@ -57,3 +57,4 @@ void	*ft_handle_word(t_ppline **new_ppline, t_token *cmd_word)
 	}
 	return (0);
 }
+

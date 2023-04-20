@@ -18,12 +18,14 @@ void print_ppline_list(t_ppline *ppline, int ppline_idx)
 			printf("%s\n", current->ppline_cmd[i]);
 			i++;
 		}
-		// printf_mini_env_array(current->ppline_env);
-		printf("Redirections: %d\n", current->red_status);
-		printf("Input file: %d\n", current->infile);
-		printf("Output file: %d\n", current->outfile);
-		printf("Heredoc: %d\n", current->heredoc);
-		printf("Heredoc FDs: %d %d\n", current->hdoc_fd[0], current->hdoc_fd[1]);
+		printf("PPline_index: %d\n", current->ppline_idx);
+		// print_mini_env_array(current->pp_arr_env);
+		// print_mini_envp(current->pp_list_env);
+		printf("Redirections: %d\n", current->pp_red_status);
+		printf("Input file: %d\n", current->pp_infile);
+		printf("Output file: %d\n", current->pp_outfile);
+		printf("Heredoc: %d\n", current->pp_heredoc);
+		printf("Heredoc FDs: %d %d\n", current->pp_hdoc_fd[0], current->pp_hdoc_fd[1]);
 		printf("\n");
 
 		current = current->next;

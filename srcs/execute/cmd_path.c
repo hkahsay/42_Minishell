@@ -7,14 +7,14 @@ char	*find_path(char **mini_env_array)
 	return (*mini_env_array + 5);
 }
 
-int	search_path(t_ppline *ppline, char **mini_env_array, char **cmd_path)
+int	search_path(t_ppline *ppline, char **cmd_path) //, char **mini_env_array
 {
 	char	**path_array;
 	int		i;
 	char	*temp;
 
 	i = 0;
-	*cmd_path = find_path(mini_env_array);
+	*cmd_path = find_path(ppline->pp_arr_env);
 	path_array = ft_split(*cmd_path, ':');
 	i = 0;
 	while (path_array[i])
