@@ -3,6 +3,7 @@
 int execute(t_cmd *cmd, int cmd_num, t_envnode *mini_env)
 {
 	t_ppline	*ppline;
+	// long		pid;
 	// char		*cmd_path;
 	// char		**mini_env_arr;
 
@@ -18,6 +19,9 @@ int execute(t_cmd *cmd, int cmd_num, t_envnode *mini_env)
 	printf(ORS "EXECUTE: ppline->pp_first_cmd %s\n" RS, ppline->pp_first_cmd);
 	printf(ORS "EXECUTE: ppline->ppline_cmd[0] %s\n" RS, ppline->ppline_cmd[0]);
 	printf(ORS "EXECUTE: ppline->ppline_cmd[1] %s\n\n" RS, ppline->ppline_cmd[1]);
+	// pid = fork();
+	// if (pid < 0)
+	// 	exit_prog(EXIT_FAILURE);
 	if (ppline && ppline->ppline_cmd)
 	{
 		if (ppline->ppline_idx == 1) //&& !ppline->ppline_cmd[1])

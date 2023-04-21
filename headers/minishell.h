@@ -110,7 +110,7 @@ int			ft_list_size(t_cmd *node);
 void		ft_token_list_addback(t_token **head, t_token *new);
 
 //-----------built_in-----------------
-int			ft_builtin(char *first_cmd);
+int			check_if_builtin(char *first_cmd);
 int			is_builtin(char **cmd, t_envnode *env_var);
 int			ft_pwd(char **args, t_envnode **env_var);
 int			ft_cd(char **args, t_envnode **env_var);
@@ -133,7 +133,7 @@ void		print_tok_cmd_list(t_token **tok_pp_list);
 void		print_cmd_list(t_cmd *cmd_list);
 void 		print_mini_envp(t_envnode *temp);
 void 		print_ex_envp(t_envnode *temp);
-void		print_ex_sorted_envp(t_envnode *mini_env, char **cmd_arg);
+void		print_ex_sorted_envp(t_envnode *mini_env); //, char **cmd_arg
 void		print_mini_env_array(char **mini_env_array);
 // void		print_cmd(t_cmd *cmd);
 // void		print_cmd_list1(t_token **cmd_list);
