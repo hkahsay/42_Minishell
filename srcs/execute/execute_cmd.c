@@ -14,6 +14,7 @@ static int	execute_single_red(t_ppline *ppline, char *cmd_path) //
 	if (ft_builtin(ppline->pp_first_cmd))
 	{
 		printf("Builtin\n");
+		// if ()
 		dup2((ppline)->pp_outfile, STDOUT_FILENO);
 		close((ppline)->pp_outfile);
 		is_builtin(&ppline->ppline_cmd[0], ppline->pp_list_env);
@@ -46,7 +47,8 @@ int	execute_single_cmd(t_ppline *ppline) //, char **mini_env_arr, char **cmd_pat
 
 	cmd_path = NULL;
 	// exit_code = 0;
-	printf(GGREEN "Execution single_cmd\n" RS);
+	printf(PURPLE "Execution single_cmd\n" RS);
+	printf(PURPLE "Execution single_cmd pp_red_status: %d\n" RS, ppline->pp_red_status);
 	if (ppline->pp_red_status == 0)
 	{
 		if (is_builtin(&ppline->ppline_cmd[0], ppline->pp_list_env) == -1) //ppline->ppline_env
