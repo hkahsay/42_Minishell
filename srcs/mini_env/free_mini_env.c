@@ -37,9 +37,8 @@ t_envnode *create_fuck(char *key)//, int i
 	return (my_node);
 }
 
-t_envnode *duplicate_env(char **envp) // fnct returns a starting address of the linked list env
+t_envnode *duplicate_env(char **envp)
 {
-	// char **envp_var;
 	char *key;
 	char *value;
 	char *content;

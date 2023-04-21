@@ -20,9 +20,6 @@ void	*merge_tokens(t_token **token_head)
 			curr->content = merged;
 			// printf(PURPLE "TOKEN after merge: %s=%d\n" RS, curr->content, curr->id);
 			curr->id = TOK_WORD;
-			// if (!merged)
-			// {
-			// printf("if merged OK\n");
 			if (curr->next)
 			{
 				// curr = curr->next;
@@ -36,7 +33,6 @@ void	*merge_tokens(t_token **token_head)
 		else
 			curr = curr->next;	
 	}
-	// return (*token_head);
 	// printf("returning merged OK\n");
 	return (NULL);
 }

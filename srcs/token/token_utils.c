@@ -77,9 +77,9 @@ int	ft_bool_strcspn(const char *str, const char *charset)
 
 int	ft_strset(const char *s1, char *s2)
 {
-	int				i;
+	// int				i;
 
-	i = 0;
+	// i = 0;
 	printf("s1 %s\n", s1);
 	printf("s2 %s\n", s2);
 	if (!s1 || !s2)
