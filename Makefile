@@ -1,27 +1,15 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: hkahsay <hkahsay@student.42.fr>            +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/02/23 11:19:05 by vgejno            #+#    #+#              #
-#    Updated: 2023/04/21 15:13:31 by hkahsay          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME = minishell
 
-SANITIZE = #-fsanitize=address
+SANITIZE = -fsanitize=address
 CC = gcc
 FLAGS = -Wall -Werror -Wextra
 FLAGS += -g
 FLAGS += ${SANITIZE}
 
-RLIB = -L/Users/$(USER)/.brew/Cellar/readline/8.2.1/lib -lreadline
+RLIB = -L/opt/homebrew/Cellar/readline/8.2.1/lib -lreadline
+#RLIB = -L/Users/$(USER)/.brew/Cellar/readline/8.2.1/lib -lreadline
 RINC = -I.brew/Cellar/readline/8.2.1/include/readline
 LIBFT = libft/libft.a
-#RLIB = -L/opt/homebrew/Cellar/readline/8.2.1/lib -lreadline
 
 # << HEADERS >> #
 #DIR_SRCS = ./srsc
@@ -59,7 +47,6 @@ SRCS =	srcs/main.c \
 		srcs/init/envnode_init.c \
 		srcs/init/token_init.c \
 		srcs/init/parse_init.c \
-		srcs/init/pmd_init.c \
 		srcs/mini_env/free_mini_env.c \
 		srcs/mini_env/env_util.c \
 		srcs/mini_env/create_envnode.c \
@@ -79,8 +66,17 @@ SRCS =	srcs/main.c \
 		srcs/parser/parse_cmd.c \
 		srcs/parser/parse_utils.c \
 		srcs/execute/execute.c \
+		srcs/execute/execute_cmd.c \
 		srcs/execute/execute_utils.c \
-		srcs/execute/create_ppline.c \
+		srcs/execute/ppline_build.c \
+		srcs/execute/ppline_new.c \
+		srcs/execute/cmd_path.c \
+		srcs/execute/cmd_redir_all.c \
+		srcs/execute/cmd_redir_in.c \
+		srcs/execute/cmd_redir_out.c \
+		srcs/execute/cmd_redir_append.c \
+		srcs/execute/cmd_hdoc.c \
+		srcs/execute/cmd_word.c \
 		srcs/built_in/builtin.c \
 		srcs/built_in/builtin_utils.c \
 		srcs/built_in/cd.c \
@@ -97,7 +93,6 @@ SRCS =	srcs/main.c \
 		srcs/error/error_exit.c \
 		srcs/error/error_input.c \
 		srcs/free/free_token.c \
-		# srcs/free/my_my_malloc.c \
 
 DFILES = srcs/${addprefix ${DIR_OBJS}/, ${notdir ${SRCS:.c=.d}}}
 

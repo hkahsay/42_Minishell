@@ -6,7 +6,7 @@
 #    By: hkahsay <hkahsay@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/09 16:28:58 by vgejno            #+#    #+#              #
-#    Updated: 2023/04/19 17:15:04 by hkahsay          ###   ########.fr        #
+#    Updated: 2023/04/21 18:22:42 by hkahsay          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,11 +78,9 @@ all: $(NAME)
 $(NAME): ${OBJS}
 	ar rcs $@ $^
 
-bonus: ${OBJS_BONUS}
-	ar rcs ${NAME} $^
-
 %.o : %.c
 	${CC} ${CFLAGS} -o $@ -c $<
+
 clean:
 	${RM} ${OBJS}
 

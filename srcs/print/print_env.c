@@ -38,7 +38,7 @@ void print_ex_sorted_envp(t_envnode *mini_env) //, char **cmd_arg
 	printf("%d\n", i);
 }
 
-void	printf_mini_env_array(char **mini_env_array)
+void	print_mini_env_array(char **mini_env_array)
 {
 	int	i;
 

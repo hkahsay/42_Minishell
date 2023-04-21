@@ -15,7 +15,6 @@ t_envnode *find_env_var(char *key, t_envnode **current_dir)
 	return NULL;
 }
 
-/* Helper function to update an environment variable by key */
 void update_env_var(char* key, char* value)
 {
 	t_envnode *var;
@@ -35,32 +34,27 @@ void ft_add_envlist(t_envnode *new_node, t_envnode **env)
 {
 	t_envnode *curr_node = *env;
 
-	printf(R"NEW node %s\n" RS, new_node->key);
-	// If the list is empty, set the new node as the head of the list
+	// printf(R"NEW node %s\n" RS, new_node->key);
 	if (curr_node == NULL)
 	{
 		*env = new_node;
 		return;
 	}
-
-	// Traverse the list until the end is reached
 	while (curr_node->next != NULL)
 	{
 		curr_node = curr_node->next;
 	}
-
-	// Add the new node to the end of the list
 	curr_node->next = new_node;
-	printf(R"NEW node %s\n" RS, new_node->key);
+	// printf(R"NEW node %s\n" RS, new_node->key);
 }
 
 void ft_envnode_sort(t_envnode **mini_env)
 {
-	int sorted = 0; // flag to indicate if list is sorted
+	int sorted;
 	t_envnode *current;
-	// t_envnode *next;
 	t_envnode  temp;
 
+	sorted = 0;
 	while (!sorted)
 	{
 		sorted = 1; // assume the list is sorted initially

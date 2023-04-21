@@ -6,7 +6,7 @@
 /*   By: hkahsay <hkahsay@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 18:55:36 by vgejno            #+#    #+#             */
-/*   Updated: 2023/04/19 17:27:23 by hkahsay          ###   ########.fr       */
+/*   Updated: 2023/04/21 18:08:38 by hkahsay          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,19 +67,10 @@ void	ft_lstiter(t_list *lst, void (*f) (void *));
 t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstnew(void *content);
 int		ft_lstsize(t_list *lst);
-/*MY_my_malloc*/
-// static t_list	**wrgetter(void);
 void	*my_malloc(unsigned long size);
-int	my_free(void *ptr);
-int    ft_putstr(char *str);
-void ft_putchar(char c);
-
+int		my_free(void *ptr);
+int		ft_putstr(char *str);
+void	ft_putchar(char c);
 void	destroy_all(void);
-
-
-
-
-
-
 
 #endif

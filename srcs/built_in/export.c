@@ -1,45 +1,25 @@
-
 #include "../../headers/minishell.h"
+
 t_envnode	*envdup(t_envnode *prev, t_envnode **mini_env)
 {
 	t_envnode	*node;
 
 	if (!(*mini_env))
-	{
-		// printf(BLUE"1\n"RS);
 		return (NULL);
-	}
 	node = create_mini_envvar_node((*mini_env)->key, (*mini_env)->value, (*mini_env)->content);
-	// printf(BLUE"2\n"RS);
 	if (!node)
-	{
-		// printf(BLUE"3\n"RS);
 		return (NULL);
-	}
-	printf(BLUE"4\n"RS);
 	node->prev = prev;
-	printf(BLUE"5\n"RS);
 	if ((*mini_env)->next)
 	{
-		// printf(BLUE"6\n"RS);
 		node->next = envdup(node, &(*mini_env)->next);
-		// printf(BLUE"7\n"RS);
 		if (!node->next)
 		{
-			printf(BLUE"8\n"RS);
-			// printf(OR"OK\n"RS);
 			while (node->prev)
-			{
-				// printf(BLUE"9\n"RS);
 				node = node->prev;
-			}
-			printf(BLUE"10\n"RS);
-			// free_mini_envp(node);
 			return (NULL);
 		}
-		// printf(BLUE"11\n"RS);
 	}
-	printf(BLUE"12\n"RS);
 	return (node);
 }
 
@@ -65,7 +45,7 @@ static int	ft_export_noargs(t_envnode **mini_env, t_envnode *new_env) //, char *
 		return (0);
 }
 
-static int export(t_envnode **mini_env, char **cmd_args)
+static int export_key_value(t_envnode **mini_env, char **cmd_args)
 {
 	char	*new_key;
 	char	*new_value;
@@ -103,7 +83,7 @@ static int export(t_envnode **mini_env, char **cmd_args)
 	return (0);
 }
 
-static int only_key(t_envnode **mini_env, char **cmd_args)
+static int export_key(t_envnode **mini_env, char **cmd_args)
 {
 	char	*new_key;
 	char	*new_value;
@@ -157,12 +137,12 @@ int ft_export(char **cmd_args, t_envnode **mini_env)
 	{
 		if (cmd_args[k] && ft_strchr(cmd_args[k], '=')) //ft_strchr(const char	*s, int c)
 		{ // export with key and value
-			if (!export(mini_env, &cmd_args[k]))
+			if (!export_key_value(mini_env, &cmd_args[k]))
 				return (-1);
 		}
 		if (cmd_args[k] && !ft_strchr(cmd_args[k], '='))
 		{ // export with key, without value
-			if (!only_key(mini_env, &cmd_args[k]))
+			if (!export_key(mini_env, &cmd_args[k]))
 				return (-1);
 
 			// printf(R"print all cmd_args and return new prompt\n"RS);

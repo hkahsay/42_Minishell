@@ -22,7 +22,7 @@ void	print_token_list(t_token *token_list)
 			break;
 		if (token_list->id == TOK_ERROR)
 			break;	
-		printf(OR "%s " RS, token_list->content);
+		printf(YELS "%s " RS, token_list->content);
 		token_list = token_list->next;
 	}
 	printf("\n");

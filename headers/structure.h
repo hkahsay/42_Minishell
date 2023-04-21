@@ -1,6 +1,7 @@
 #ifndef STRUCTURE_H
 # define STRUCTURE_H
 
+int	g_exit_status;
 //-------------------MY_ENV-----------------------
 
 typedef struct s_envnode
@@ -102,15 +103,16 @@ typedef struct	s_ppline
 	char			*pp_first_cmd;
 	// char			*pp_first_cmd_path;
 	char			**ppline_cmd;
-	char			**ppline_env;
-	// int				ppline_idx;
-	int				red_status;
-	int				infile;
-	int				outfile;
-	int				heredoc;
-	int				hdoc_fd[2];
-	int				exit_status;
-	// t_my_malloc		*my_malloc_head;
+	char			**pp_arr_env;
+	int				ppline_idx;
+	int				pp_red_status;
+	int				pp_infile;
+	int				pp_outfile;
+	int				pp_heredoc;
+	int				pp_hdoc_fd[2];
+	int				pp_exit;
+	// t_malloc		*malloc_head;
+	t_envnode		*pp_list_env;
 	struct s_ppline	*next;
 } t_ppline;
 

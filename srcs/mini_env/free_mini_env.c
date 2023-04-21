@@ -15,31 +15,8 @@ void free_mini_envp(t_envnode *head)
 	}
 }
 
-// t_envnode *create_fuck(char *key)//, int i
-// {
-// 	t_envnode *my_node = NULL;
-
-// 	my_node = my_malloc(sizeof(t_envnode) * 1);
-// 	if (!my_node)
-// 		return (NULL);
-// 	// printf("&new_env_var %p\n", new_env_var);
-// 	my_node->key = ft_strdup(key);
-// 	my_node->value = NULL;
-// 	my_node->content = ft_strdup(key);
-// 	if (!my_node->key)
-// 	{
-// 		// free(my_node);
-// 		return (NULL);
-// 	}
-// 	my_node->prev = NULL;
-// 	my_node->next = NULL;
-// 	// printf("nodes OK %s = %s\n", my_node->key, my_node->value);
-// 	return (my_node);
-// }
-
-t_envnode *duplicate_env(char **envp) // fnct returns a starting address of the linked list env
+t_envnode *duplicate_env(char **envp)
 {
-	// char **envp_var;
 	char *key;
 	char *value;
 	char *content;

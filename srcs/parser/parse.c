@@ -27,7 +27,7 @@ static t_cmd	*parse_commands(t_token **tok_head, int	cmd_num)
 				break ;
 		}
 		if (tok_h->id == TOK_PIPE)
-			tok_h = tok_h->next;			
+			tok_h = tok_h->next;
 		i++;
 	}
 	// printf("NBR of cmds in cmd_list: %d\n", i);
@@ -39,11 +39,11 @@ static t_cmd	*parse_commands(t_token **tok_head, int	cmd_num)
 
 void	*parse(t_token **token_head, t_envnode *mini_env)
 {
-	int	list_size;
+	// int	list_size;
 	int	cmd_num;
 	t_cmd *cmd_list;
 
-	list_size = ft_token_list_size(token_head);
+	// list_size = ft_token_list_size(token_head);
 	// printf("list_size %d\n", list_size);
 	cmd_num = ft_count_pipes(token_head) + 1;
 	// printf("cmd_index %d\n", cmd_num);
