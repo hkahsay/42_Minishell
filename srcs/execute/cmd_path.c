@@ -21,7 +21,7 @@ int	search_path(t_ppline *ppline, char **cmd_path) //, char **mini_env_array
 	{
 		temp = ft_strjoin(path_array[i], "/");
 		*cmd_path = ft_strjoin(temp, ppline->ppline_cmd[0]);
-		free(temp);
+		my_free(temp);
 		if (!access(*cmd_path, F_OK))
 			return (-1);
 		i++;

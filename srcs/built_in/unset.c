@@ -6,13 +6,21 @@ int	ft_unset(char **args, t_envnode **mini_env)
 	char    *res;
 
 	i = 1;
+	// (*mini_env)->content = my_malloc(sizeof(t_envnode) + 1);
+	// (*mini_env)->content = ft_strjoin((*mini_env)->key, (*mini_env)->value);
+	// printf("my content: %s\n", args[0]);
 	if (args[i] == NULL)
 		return(0);
 	while (args[i])
 	{
 		res = check_if_in_env(*mini_env, args[i]);
-		if (res == NULL)
+		if (res != NULL)
+		{
+			printf("1\n");
+			printf("args[i]1 %s\n", args[i]);
+			// return (0);
 			remove_from_list(*mini_env, args[i]);
+		}
 		i++;
 	}
 	return (0);
@@ -41,11 +49,11 @@ void	remove_from_list(t_envnode *mini_env, char *key)
 	if( curr && !ft_strncmp(curr->key, key, len + 1))
 	{
 		temp->next = curr->next;
-		free (curr->key);
-		free (curr->value);
+		my_free (curr->key);
+		my_free (curr->value);
 		curr->key = NULL;
 		curr->value = NULL;
-		free (curr);
+		my_free (curr);
 		curr = NULL;
 	}
 	else
@@ -61,14 +69,15 @@ int	delete_first_node(t_envnode **head, t_envnode *curr, char *key)
 	}
 	if (ft_strcmp(curr->key, key) == 0)
 	{
+		printf("are we here\n");
 		curr = *head;
 		(*head) = (*head)->next;
-		// printf("curr->next->key------ %s\n", curr->next->key);
-		// printf("head------ %s\n", (*head)->key);
+		printf("curr->next->key------ %s\n", curr->next->key);
+		printf("head------ %s\n", (*head)->key);
 
-		// free(curr->key);
-		// free(curr->value);
-		// free(curr);
+		// my_free(curr->key);
+		// my_free(curr->value);
+		// my_free(curr);
 		// printf("3\n");
 		return(1);
 	}

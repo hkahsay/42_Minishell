@@ -6,7 +6,7 @@
 /*   By: vgejno <vgejno@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/19 20:34:32 by vgejno            #+#    #+#             */
-/*   Updated: 2023/04/17 20:47:49 by vgejno           ###   ########.fr       */
+/*   Updated: 2023/04/21 17:33:50 by vgejno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static char	*ft_writewords(const char *s, char c)
 		s++;
 	while (s[i] && s[i] != c)
 		i++;
-	word = malloc(sizeof(char) * (i + 1));
+	word = my_malloc(sizeof(char) * (i + 1));
 	if (!word)
 		return (NULL);
 	i = 0;
@@ -60,10 +60,10 @@ static void	ft_free_words(size_t i, char **ptr)
 {
 	while (i > 0)
 	{
-		free(ptr[i - 1]);
+		my_free(ptr[i - 1]);
 		i--;
 	}
-	free(ptr);
+	my_free(ptr);
 }
 
 char	**ft_split(char const *s, char c)
@@ -75,7 +75,7 @@ char	**ft_split(char const *s, char c)
 	if (!s)
 		return (NULL);
 	words = ft_nbrwords(s, c);
-	ptr_words = malloc (sizeof(char *) * (words + 1));
+	ptr_words = my_malloc (sizeof(char *) * (words + 1));
 	if (!ptr_words)
 		return (NULL);
 	i = 0;

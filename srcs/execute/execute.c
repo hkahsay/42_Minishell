@@ -36,20 +36,3 @@ int execute(t_cmd *cmd, int cmd_num, t_envnode *mini_env)
 	// echo_ctrl_on();
 	return (0);
 }
-
-	// if (ppline->pp_first_cmd && ppline->ppline_idx == 1 && ppline->pp_red_status == 0) //&& !ppline->ppline_cmd[1])
-	// {
-	// 	if (is_builtin(&ppline->ppline_cmd[0], mini_env) == -1) //ppline->ppline_env
-	// 	{
-	// 		printf("NOT builtin\n");
-	// 		if (!(search_path(ppline, mini_env_arr, &cmd_path)))
-	// 		{
-	// 			printf("NO PATH\n");
-	// 			return (-1);
-	// 		}
-	// 		printf(PURPLE "cmd_path: %s\n" RS, cmd_path);
-	// 		// execute_one_cmd(ppline, mini_env_arr, &cmd_path);
-	// 		execute_cmd(ppline, mini_env_arr); //return (execute_cmd(mini, &cmd, mini_env));
-	// 	}
-	// 	return (0);
-	// }

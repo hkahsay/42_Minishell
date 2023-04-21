@@ -18,8 +18,8 @@ void *delete_tok_spaces(t_token **token_head)
 				*token_head = curr->next;
 			temp = curr;
 			curr = curr->next;
-			free(temp->content);
-			free(temp);
+			my_free(temp->content);
+			my_free(temp);
 		}
 		else
 		{

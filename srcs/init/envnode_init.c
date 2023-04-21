@@ -4,7 +4,7 @@
 // {
 // 	t_envnode *env_node;
 
-// 	env_node = malloc(sizeof(t_envnode) * 1);
+// 	env_node = my_malloc(sizeof(t_envnode) * 1);
 // 	if (env_node != NULL)
 // 		ft_memset(env_node, 0, sizeof(t_envnode));
 // 	return (env_node);
@@ -14,7 +14,7 @@
 // {
 // 	void	*ptr;
 
-// 	ptr = malloc(count * size);
+// 	ptr = my_malloc(count * size);
 // 	if (ptr == NULL)
 // 		return (ptr);
 // 	ft_bzero(ptr, size * count);

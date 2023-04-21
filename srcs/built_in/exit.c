@@ -5,17 +5,19 @@
 	int	i;
 
 	i = 0;
+	(void)mini_env;
 	if (args != NULL)
 	{
 		i = ft_atoi(*args);
-		printf("exit\n");
+		// free_mini_envp(*mini_env);
 		// free(mini_env);
+		destroy_all();
 		exit (i);
 	}
 	else
 	{
-		printf("exit\n");
-		free(mini_env);
+		// free(mini_env);
+		destroy_all();
 		// exit (g_status);
 	}
 	return (0);

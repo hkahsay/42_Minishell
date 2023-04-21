@@ -22,7 +22,7 @@ char	**ft_mini_env_array(t_envnode *mini_env, int size)
 	int		i;
 
 	i = 0;
-	mini_env_array = (char **)malloc(sizeof(char *) * (size + 1));
+	mini_env_array = (char **)my_malloc(sizeof(char *) * (size + 1));
 	mini_env_array[size] = NULL;
 	while (mini_env && mini_env_array[i] && i < size)
 	{

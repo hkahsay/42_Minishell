@@ -10,7 +10,7 @@ static t_cmd	*parse_commands(t_token **tok_head, int	cmd_num)
 	tok_h = *tok_head;
 	i = 0;
 	// print_token(*tok_head);
-	tok_cmd_list = malloc(sizeof(t_token *) * (cmd_num + 1));
+	tok_cmd_list = my_malloc(sizeof(t_token *) * (cmd_num + 1));
 	if (!tok_cmd_list)
 		return (0);
 	tok_cmd_list[cmd_num] = 0;
@@ -33,7 +33,7 @@ static t_cmd	*parse_commands(t_token **tok_head, int	cmd_num)
 	// printf("NBR of cmds in cmd_list: %d\n", i);
 	// print_tok_cmd_list(tok_cmd_list);
 	cmd_list = build_cmd_list(tok_cmd_list);
-	free(tok_cmd_list);
+	my_free(tok_cmd_list);
 	return (cmd_list);
 }
 

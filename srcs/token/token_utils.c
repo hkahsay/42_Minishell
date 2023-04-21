@@ -19,7 +19,7 @@ char	*ft_strjoin_free(char *s1, char *s2)
 		result = ft_strdup(s1 ? s1 : s2);
 	else
 	{
-		result = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+		result = (char *)my_malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 		if (!result)
 			return (NULL);
 		ft_strlcpy(result, s1, ft_strlen(s1) + 1);
@@ -109,7 +109,7 @@ int	ft_strset(const char *s1, char *s2)
 //     size_t len = strlen(str);
 
 //     /* Allocate memory for the copy */
-//     copy = malloc(n + 1);
+//     copy = my_malloc(n + 1);
 
 //     /* Copy the string */
 //     strncpy(copy, str, n);

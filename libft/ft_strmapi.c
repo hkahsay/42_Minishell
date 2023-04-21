@@ -6,7 +6,7 @@
 /*   By: vgejno <vgejno@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/21 13:43:17 by vgejno            #+#    #+#             */
-/*   Updated: 2021/12/23 19:58:14 by vgejno           ###   ########.fr       */
+/*   Updated: 2023/04/21 17:13:34 by vgejno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	if (!s || !f)
 		return (NULL);
 	len = ft_strlen(s);
-	ptr = (char *)malloc(sizeof(char) * (len + 1));
+	ptr = (char *)my_malloc(sizeof(char) * (len + 1));
 	if (!ptr)
 		return (NULL);
 	while (s[i])

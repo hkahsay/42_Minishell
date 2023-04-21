@@ -8,33 +8,11 @@ void free_mini_envp(t_envnode *head)
 	{
 		temp = head;
 		head = head->next;
-		free(temp->key);
-		free(temp->value);
-		free(temp->content);
-		free(temp);
+		my_free(temp->key);
+		my_free(temp->value);
+		my_free(temp->content);
+		my_free(temp);
 	}
-}
-
-t_envnode *create_fuck(char *key)//, int i
-{
-	t_envnode *my_node = NULL;
-
-	my_node = malloc(sizeof(t_envnode) * 1);
-	if (!my_node)
-		return (NULL);
-	// printf("&new_env_var %p\n", new_env_var);
-	my_node->key = ft_strdup(key);
-	my_node->value = NULL;
-	my_node->content = ft_strdup(key);
-	if (!my_node->key)
-	{
-		// free(my_node);
-		return (NULL);
-	}
-	my_node->prev = NULL;
-	my_node->next = NULL;
-	// printf("nodes OK %s = %s\n", my_node->key, my_node->value);
-	return (my_node);
 }
 
 t_envnode *duplicate_env(char **envp)
@@ -78,8 +56,9 @@ t_envnode *duplicate_env(char **envp)
 			node->prev = temp;
 			temp = node;
 		}
-		// free(key);
-		// free(value);
+		my_free(key);
+		my_free(value);
+		my_free(content);
 		i++;
 	}
 	// printf("envp[i] i: %d\n", i);

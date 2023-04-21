@@ -2,7 +2,7 @@
 
 int	ft_cd(char **args, t_envnode **mini_env)
 {
-	char cwd[1024];
+	char cwd[4096];
 
 	t_envnode	*env_var = NULL;
 	if (!args[1])

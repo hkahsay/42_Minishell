@@ -2,7 +2,7 @@
 
 t_token	*init_token(t_token	*token)
 {
-	token = malloc(sizeof(t_token) * 1);
+	token = my_malloc(sizeof(t_token) * 1);
 	if (!token)
 		return (0);
 	token->content = NULL;

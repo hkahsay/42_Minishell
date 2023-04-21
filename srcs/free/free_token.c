@@ -10,8 +10,8 @@ void	free_token_list(t_token *tokens)
 	while (cur != NULL)
 	{
 		next = cur->next;
-		free(cur->content);
-		free(cur);
+		my_free(cur->content);
+		my_free(cur);
 		cur = next;
 	}
 }

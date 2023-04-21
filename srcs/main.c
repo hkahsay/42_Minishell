@@ -25,7 +25,10 @@ void	prompt(char	*line, t_envnode *mini_env) //t_envnode *my_envp,
 	if (!line)
 	{
 		printf("exit\n");	
-		free(line);
+		// free(line);
+		destroy_all();
+		// free_mini_envp(mini_env);
+		exit(0);
 		return ;
 	}
 	if (ft_strlen(line) > 0)
@@ -42,7 +45,7 @@ void	prompt(char	*line, t_envnode *mini_env) //t_envnode *my_envp,
 
 	}
 	else
-		free(line);
+		my_free(line);
 }
 
 int main(int argc, char **argv, char **envp)

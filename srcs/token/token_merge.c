@@ -24,10 +24,10 @@ void	*merge_tokens(t_token **token_head)
 			{
 				// curr = curr->next;
 				temp = curr->next;
-				// free(curr->next);
+				// my_free(curr->next);
 				curr->next = temp->next;
-				free(temp->content);
-				free(temp);
+				my_free(temp->content);
+				my_free(temp);
 			}			
 		}
 		else

@@ -6,7 +6,7 @@
 /*   By: vgejno <vgejno@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 17:56:02 by vgejno            #+#    #+#             */
-/*   Updated: 2021/12/23 18:57:28 by vgejno           ###   ########.fr       */
+/*   Updated: 2023/04/21 17:13:11 by vgejno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static char	*ft_malloc(char *s, int n)
 	int		i;
 
 	i = -1;
-	ret = (char *)malloc(n + 1);
+	ret = (char *)my_malloc(n + 1);
 	if (!ret)
 		return (0);
 	while (s[++i])

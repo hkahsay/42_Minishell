@@ -93,7 +93,6 @@ SRCS =	srcs/main.c \
 		srcs/error/error_exit.c \
 		srcs/error/error_input.c \
 		srcs/free/free_token.c \
-		srcs/free/my_malloc.c \
 
 DFILES = srcs/${addprefix ${DIR_OBJS}/, ${notdir ${SRCS:.c=.d}}}
 

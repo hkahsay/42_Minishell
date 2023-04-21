@@ -6,7 +6,7 @@
 /*   By: vgejno <vgejno@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 15:59:50 by vgejno            #+#    #+#             */
-/*   Updated: 2021/12/21 17:21:59 by vgejno           ###   ########.fr       */
+/*   Updated: 2023/04/21 17:13:38 by vgejno           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_strtrim(const char *s, const char *set)
 	j = ft_strlen(s);
 	while (j > i && ft_strchr(set, s[j - 1]))
 		j--;
-	ptr = (char *)malloc(j - i + 1);
+	ptr = (char *)my_malloc(j - i + 1);
 	if (!ptr)
 		return (0);
 	n = 0;
