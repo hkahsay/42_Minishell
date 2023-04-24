@@ -117,7 +117,8 @@ static int export_key(t_envnode **mini_env, char **cmd_args)
 	return (0);
 }
 
-int ft_export(char **cmd_args, t_envnode **mini_env)
+// int ft_export(char **cmd_args, t_envnode **mini_env)
+int ft_export(t_ppline **ppline) //char **cmd_args, t_envnode **mini_env
 {
 	// char	*new_key;
 	// char	*new_value;
@@ -143,6 +144,30 @@ int ft_export(char **cmd_args, t_envnode **mini_env)
 		if (cmd_args[k] && !ft_strchr(cmd_args[k], '='))
 		{ // export with key, without value
 			if (!export_key(mini_env, &cmd_args[k]))
+    t_envnode *new_env_var;
+	t_envnode *cur_env_var;
+	// t_cmd	*cmds = NULL;
+	// int	len = 0;
+	// i = 0;
+	new_env_var = NULL;
+	cur_env_var = (*ppline)->pp_list_env;
+	int	k = 1;
+	if ((*ppline)->ppline_cmd[1] == NULL && cur_env_var)
+	{ // export
+		if (!ft_export_noargs(&cur_env_var, new_env_var)) //&cmd_args[k],
+			return (-1);
+		return (0);
+	}
+	while ((*ppline)->ppline_cmd[k])
+	{
+		if ((*ppline)->ppline_cmd[k] && ft_strchr((*ppline)->ppline_cmd[k], '=')) //ft_strchr(const char	*s, int c)
+		{ // export with key and value
+			if (!export_key_value(&cur_env_var, &(*ppline)->ppline_cmd[k]))
+				return (-1);
+		}
+		if ((*ppline)->ppline_cmd[k] && !ft_strchr((*ppline)->ppline_cmd[k], '='))
+		{ // export with key, without value
+			if (!export_key(&cur_env_var, &(*ppline)->ppline_cmd[k]))
 				return (-1);
 
 			// printf(R"print all cmd_args and return new prompt\n"RS);
@@ -150,6 +175,7 @@ int ft_export(char **cmd_args, t_envnode **mini_env)
 		k++;
 	}
 	
+
     return (0);
 }
 

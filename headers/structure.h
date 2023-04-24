@@ -83,20 +83,17 @@ typedef struct s_cmd
 
 //-------------------EXECUTER------------------------------
 
-typedef int (*builtin_func)(char **, t_envnode **);
+// typedef int (*builtin_func)(char **, t_envnode **);
+typedef struct s_ppline t_ppline;
+
+typedef int (*builtin_func)(t_ppline **); //, t_envnode **
 
 typedef struct s_builtin
 {
     const char		*name;
     builtin_func	func;
+	// t_ppline *ppline;
 } t_builtin;
-
-// typedef struct	s_base
-// {
-// 	t_envnode		*mini_env;
-// 	t_malloc		*malloc_head;
-
-// }	t_base;
 
 typedef struct	s_ppline
 {
@@ -105,19 +102,28 @@ typedef struct	s_ppline
 	char			**ppline_cmd;
 	char			**pp_arr_env;
 	int				ppline_idx;
+	int				pp_pid;
 	int				pp_red_status;
 	int				pp_infile;
 	int				pp_outfile;
 	int				pp_heredoc;
 	int				pp_hdoc_fd[2];
-	struct termios 	saved;
 	int				pp_exit;
 	// t_malloc		*malloc_head;
 	t_envnode		*pp_list_env;
+	t_builtin		*builtin;
 	struct s_ppline	*next;
 } t_ppline;
 
 #endif
+// typedef struct	s_base
+// {
+// 	t_envnode		*mini_env;
+
+// 	t_malloc		*malloc_head;
+
+// }	t_base;
+
 //-------------------INFO------------------------------
 
 // typedef struct s_tok_io
