@@ -110,6 +110,7 @@ typedef struct	s_ppline
 	int				pp_outfile;
 	int				pp_heredoc;
 	int				pp_hdoc_fd[2];
+	struct termios 	saved;
 	int				pp_exit;
 	// t_malloc		*malloc_head;
 	t_envnode		*pp_list_env;
