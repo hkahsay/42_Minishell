@@ -1,27 +1,50 @@
 #include"../../headers/minishell.h"
 
-int ft_echo(char **args, t_envnode **env_var)
+int ft_echo(t_ppline **ppline) //char **args, t_envnode **env_var
 {
 	int i;
-	(void)env_var;
+	// (void)env_var;
 	i = 1;
 
 	// close(STDOUT_FILENO);
 	// dup2((ppline)->pp_outfile, STDOUT_FILENO);
-	if (args[i] && ft_strcmp(args[i], "-n") == 0)
+	if ((*ppline)->ppline_cmd[i] && ft_strcmp((*ppline)->ppline_cmd[i], "-n") == 0)
 		i++;
-	while (args[i])
+	while ((*ppline)->ppline_cmd[i])
 	{
-		ft_putstr_fd(args[i], STDOUT_FILENO);
-		if (args[i + 1])
+		ft_putstr_fd((*ppline)->ppline_cmd[i], STDOUT_FILENO);
+		if ((*ppline)->ppline_cmd[i + 1])
 			ft_putchar_fd(' ', STDOUT_FILENO);
 		i++;
 	}
-	if (args[1] && ft_strcmp(args[1], "-n") != 0)
+	if ((*ppline)->ppline_cmd[1] && ft_strcmp((*ppline)->ppline_cmd[1], "-n") != 0)
 		ft_putchar_fd('\n', STDOUT_FILENO);
 	// printf("ft_echo\n");
 	return 0;
 }
+
+// int ft_echo(char **args, t_envnode **env_var)
+// {
+// 	int i;
+// 	(void)env_var;
+// 	i = 1;
+
+// 	// close(STDOUT_FILENO);
+// 	// dup2((ppline)->pp_outfile, STDOUT_FILENO);
+// 	if (args[i] && ft_strcmp(args[i], "-n") == 0)
+// 		i++;
+// 	while (args[i])
+// 	{
+// 		ft_putstr_fd(args[i], STDOUT_FILENO);
+// 		if (args[i + 1])
+// 			ft_putchar_fd(' ', STDOUT_FILENO);
+// 		i++;
+// 	}
+// 	if (args[1] && ft_strcmp(args[1], "-n") != 0)
+// 		ft_putchar_fd('\n', STDOUT_FILENO);
+// 	// printf("ft_echo\n");
+// 	return 0;
+// }
 
 // void	ft_putchar_fd(char c)
 // {

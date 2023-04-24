@@ -1,6 +1,6 @@
 #include"../../headers/minishell.h"
 
-int	ft_unset(char **args, t_envnode **mini_env)
+int	ft_unset(t_ppline **ppline)
 {
 	int i;
 	char    *res;
@@ -9,17 +9,17 @@ int	ft_unset(char **args, t_envnode **mini_env)
 	// (*mini_env)->content = my_malloc(sizeof(t_envnode) + 1);
 	// (*mini_env)->content = ft_strjoin((*mini_env)->key, (*mini_env)->value);
 	// printf("my content: %s\n", args[0]);
-	if (args[i] == NULL)
+	if ((*ppline)->ppline_cmd[i] == NULL)
 		return(0);
-	while (args[i])
+	while ((*ppline)->ppline_cmd[i])
 	{
-		res = check_if_in_env(*mini_env, args[i]);
+		res = check_if_in_env((*ppline)->pp_list_env, (*ppline)->ppline_cmd[i]);
 		if (res != NULL)
 		{
 			printf("1\n");
-			printf("args[i]1 %s\n", args[i]);
+			printf("(*ppline)->ppline_cmd[i]1 %s\n", (*ppline)->ppline_cmd[i]);
 			// return (0);
-			remove_from_list(*mini_env, args[i]);
+			remove_from_list((*ppline)->pp_list_env, (*ppline)->ppline_cmd[i]);
 		}
 		i++;
 	}

@@ -5,19 +5,21 @@
 // path because it is a multiple of the typical filesystem
 //block size (e.g., 512 or 1024 bytes), and it is a power of two.
 
-int ft_pwd(char **args, t_envnode **mini_env)
+int ft_pwd(t_ppline **ppline) //char **args, t_envnode **mini_env
 {
 	t_envnode	*curr_var;
 	char		*cwd;
+	t_envnode	*env_var;
 
+	env_var = NULL;
 	cwd = getcwd(NULL, 0);
-	curr_var = *mini_env;
-	if (args[1])
+	curr_var = (*ppline)->pp_list_env;
+	if ((*ppline)->ppline_cmd[1])
 	{
 		printf("too many arguments\n");
 		exit(0);
 	}
-	while(curr_var != 0 && args[1] == 0 )
+	while(curr_var != 0 && (*ppline)->ppline_cmd[1] == 0 )
 	{
 		// printf("b %s\n", curr_var->value);
 		if (ft_strcmp(curr_var->key, "pwd") == 0 || ft_strcmp(curr_var->key, "PWD") == 0)

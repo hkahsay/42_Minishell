@@ -1,5 +1,13 @@
 #include "../../headers/minishell.h"
 
+void	close_fd(t_ppline *ppline)
+{
+	if (ppline->pp_outfile != 1)
+		close(ppline->pp_outfile);
+	if (ppline->pp_infile != 0)
+		close(ppline->pp_infile);
+}
+
 int execute(t_cmd *cmd, int cmd_num, t_envnode *mini_env)
 {
 	t_ppline	*ppline;
@@ -24,16 +32,13 @@ int execute(t_cmd *cmd, int cmd_num, t_envnode *mini_env)
 	// 	exit_prog(EXIT_FAILURE);
 	if (ppline && ppline->ppline_cmd)
 	{
-		if (ppline->ppline_idx == 1) //&& !ppline->ppline_cmd[1])
+		if (ppline->ppline_idx == 1 && ppline->pp_red_status == 0) //&& !ppline->ppline_cmd[1])
 			ppline->pp_exit = execute_single_cmd(ppline); //, mini_env_arr, &cmd_path
 		else
 			ppline->pp_exit = execute_multi_cmd(ppline); //, mini_env_arr //return (execute_cmd(mini, &cmd, mini_env));
 	}
 	// printf(R "ppline->pp_exit: %d\n" RS, ppline->pp_exit);
-	if (ppline->pp_outfile != 1)
-		close(ppline->pp_outfile);
-	if (ppline->pp_infile != 0)
-		close(ppline->pp_infile);
+	close_fd(ppline);
 	g_exit_status = ppline->pp_exit;
 
 	// signals_at_start();
