@@ -9,7 +9,8 @@ t_ppline	*ft_new_ppline(void) //t_cmd **cmd_ptr,
 	new_ppline->pp_first_cmd = NULL;
 	new_ppline->ppline_cmd = NULL;
 	new_ppline->ppline_env = NULL;
-	// new_ppline->ppline_idx = cmd_index;
+	new_ppline->ppline_idx = 0;
+	new_ppline->pp_pid = 0;
 	new_ppline->red_status = 0;
 	new_ppline->infile = -1;
 	new_ppline->outfile = -1;

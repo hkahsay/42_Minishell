@@ -8,6 +8,7 @@
 # include <errno.h>
 # include <fcntl.h>
 # include <signal.h>
+# include <sys/ioctl.h>
 #include <termios.h>
 #include <dirent.h>
 # include <readline/readline.h>
@@ -111,14 +112,14 @@ void		ft_token_list_addback(t_token **head, t_token *new);
 
 //-----------built_in-----------------
 int			check_if_builtin(char *first_cmd);
-int			is_builtin(char **cmd, t_envnode *env_var);
-int			ft_pwd(char **args, t_envnode **env_var);
-int			ft_cd(char **args, t_envnode **env_var);
-int			ft_echo(char **args, t_envnode **env_var);
-int			ft_unset(char **args, t_envnode **env_var);
-int			ft_export(char **cmd_args, t_envnode **mini_env);
-int			ft_env(char **args, t_envnode **env_var);
-int			ft_exit(char **args, t_envnode **env_var);
+int			execute_builtin(t_ppline **ppline);
+int			ft_pwd(t_ppline **ppline);
+int			ft_cd(t_ppline **ppline);
+int			ft_echo(t_ppline **ppline);
+int			ft_unset(t_ppline **ppline);
+int			ft_export(t_ppline **ppline);
+int			ft_env(t_ppline **ppline);
+int			ft_exit(t_ppline **ppline);
 // typedef int(*t_builtin_ptr)(t_llist *, t_info *);
 // int			mini_pwd2(t_envnode *env_list);
 
@@ -159,6 +160,8 @@ void		*ft_handle_heredoc(t_ppline **new_ppline, t_token **ptr_cmd_red);
 void		*ft_handle_redir_in(t_ppline **new_ppline, t_token **ptr_cmd_red);
 void		*ft_handle_redir_append(t_ppline **new_ppline, t_token **ptr_cmd_red);
 void		*ft_handle_redir_out(t_ppline **new_ppline, t_token **ptr_cmd_red);
+void		close_fd(t_ppline *ppline);
+void			wait_status(t_ppline *ppline);
 
 void		free_ppline(t_ppline **new_ppline, int *i);
 
