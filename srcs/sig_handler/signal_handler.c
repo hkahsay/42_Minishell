@@ -40,6 +40,7 @@ void	sigint_handler(int	sig_num)
 		rl_replace_line("", 0);
 		rl_on_new_line();
 		rl_redisplay();
+		g_exit_status = 1;
 	}
 }
 
