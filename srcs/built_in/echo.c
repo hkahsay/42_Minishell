@@ -63,7 +63,8 @@ int ft_echo(t_ppline **ppline) //char **args, t_envnode **env_var
 	if (find_flag((*ppline)->ppline_cmd[1]) == 0)
 		flag_n = 1;
 	printf("flag_n: %d\n", flag_n);	
-	exit_status = print_and_return(ppline, flag_echo, flag_n);	
+	exit_status = print_and_return(ppline, flag_echo, flag_n);
+	printf(R "ECHO exit_status: %d\n" RS, exit_status);	
 	return (exit_status);
 }
 
@@ -79,14 +80,14 @@ int	print_and_return(t_ppline **ppline, int flag_echo, int flag_n)
 			printf("flag_n: %d\n", flag_n);	
 			// g_exit_status = 0;
 			write(1, "\n", 1);
-			return (0); //g_exit_status
+			return (EXIT_SUCCESS); //g_exit_status
 		}
 		if (flag_n == 1)
 		{
 			if (!(*ppline)->ppline_cmd[i + 2])
 			{
 				// g_exit_status = 0;
-				return (0); //g_exit_status
+				return (EXIT_SUCCESS); //g_exit_status
 			}
 			else
 			{
@@ -116,6 +117,6 @@ int	print_and_return(t_ppline **ppline, int flag_echo, int flag_n)
 			}
 			ft_putchar_fd('\n', STDOUT_FILENO);
 		}
-	return (0); //g_exit_status
+	return (EXIT_SUCCESS); //g_exit_status
 }
 

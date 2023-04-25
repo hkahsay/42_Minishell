@@ -158,39 +158,39 @@
 // 		msg_error("dup2", 0); //strerror(errno)
 // }
 
-// int	execute_single_builtin(t_ppline *ppline) //, char **mini_env_arr, char **cmd_path
-// {
-// 	// char	*cmd_path;
-// 	int		exit_status;
-// 	// int		stdin_dup;
-// 	// int		stdout_dup;
+int	execute_single_builtin(t_ppline *ppline) //, char **mini_env_arr, char **cmd_path
+{
+	// char	*cmd_path;
+	int		exit_status;
+	// int		stdin_dup;
+	// int		stdout_dup;
 
-// 	exit_status = 0;
-// 	// cmd_path = NULL;
-// 	// exit_code = 0;
-// 	// printf(ORS "Execution builtin_red\n" RS);
-// 	// printf("CMD: %s\n", (ppline)->pp_first_cmd);
-// 	// if //(red_ptr->id == TOK_REDIR_OUT)
-// 	// printf("PP_outfile: %d\n", (ppline)->pp_outfile);
-// 	// printf("PP_infile: %d\n", (ppline)->pp_infile);
+	exit_status = 0;
+	// cmd_path = NULL;
+	// exit_code = 0;
+	// printf(ORS "Execution builtin_red\n" RS);
+	// printf("CMD: %s\n", (ppline)->pp_first_cmd);
+	// if //(red_ptr->id == TOK_REDIR_OUT)
+	// printf("PP_outfile: %d\n", (ppline)->pp_outfile);
+	// printf("PP_infile: %d\n", (ppline)->pp_infile);
 
-// 	printf(YELLOW "Execution single_builtin\n" RS);
-// 	printf(YELLOW "pp_red_status: %d\n" RS, ppline->pp_red_status);
-// 	// ppline->pp_builtin_status = 1;
-// 	// dup_fd(&stdin_dup, &stdout_dup);
-// 	// if (!ppline->ppline_cmd)
-// 		exit_status = execute_builtin(&ppline);
-// 	// if (ppline->pp_red_status == 0)
-// 	// {
-// 	// 	reinstall_fd(stdin_dup, stdout_dup);
-// 	// 	return (1);
-// 	// }
-// 	// exit_status = execute_builtin(&ppline);
-// 	// reinstall_fd(stdin_dup, stdout_dup);
-// 	// ppline->pp_builtin_status = 0;
-// 	printf(R "exit_status: %d\n" RS, exit_status);
-// 	return (exit_status);
-// }
+	printf(YELLOW "Execution single_builtin\n" RS);
+	printf(YELLOW "pp_red_status: %d\n" RS, ppline->pp_red_status);
+	// ppline->pp_builtin_status = 1;
+	// dup_fd(&stdin_dup, &stdout_dup);
+	// if (!ppline->ppline_cmd)
+		exit_status = execute_builtin(&ppline);
+	// if (ppline->pp_red_status == 0)
+	// {
+	// 	reinstall_fd(stdin_dup, stdout_dup);
+	// 	return (1);
+	// }
+	// exit_status = execute_builtin(&ppline);
+	// reinstall_fd(stdin_dup, stdout_dup);
+	// ppline->pp_builtin_status = 0;
+	printf(R "exit_status: %d\n" RS, exit_status);
+	return (exit_status);
+}
 	// if (ppline->pp_red_status == 1)
 	// {
 

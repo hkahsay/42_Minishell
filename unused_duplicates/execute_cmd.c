@@ -140,20 +140,20 @@
 // 	return (0);
 // }
 
-int	execute_single_cmd(t_ppline *ppline) //, char **mini_env_arr, char **cmd_path
-{
-	char	*cmd_path;
-	// int		exit_code;
+// int	execute_single_cmd(t_ppline *ppline) //, char **mini_env_arr, char **cmd_path
+// {
+// 	char	*cmd_path;
+// 	// int		exit_code;
 
-	cmd_path = NULL;
-	// exit_code = 0;
-	printf(PURPLE "Execution single_cmd\n" RS);
-	printf(PURPLE "Execution single_cmd pp_red_status: %d\n" RS, ppline->pp_red_status);
-	signal(SIGINT, sig_quit_handler);
-	signal(SIGQUIT, sig_quit_handler);
-	if (ppline->pp_red_status == 0)
-	{
-		execute_builtin(&ppline);
+// 	cmd_path = NULL;
+// 	// exit_code = 0;
+// 	printf(PURPLE "Execution single_cmd\n" RS);
+// 	printf(PURPLE "Execution single_cmd pp_red_status: %d\n" RS, ppline->pp_red_status);
+// 	signal(SIGINT, sig_quit_handler);
+// 	signal(SIGQUIT, sig_quit_handler);
+// 	if (ppline->pp_red_status == 0)
+// 	{
+// 		execute_builtin(&ppline);
 		// if (execute_builtin(&ppline) == -1) //->ppline_cmd[0], ppline->pp_list_env
 		// {
 		// 	printf("NOT builtin\n");
@@ -166,16 +166,16 @@ int	execute_single_cmd(t_ppline *ppline) //, char **mini_env_arr, char **cmd_pat
 					// execute_one_cmd(ppline, mini_env_arr, &cmd_path);
 		// execute_cmd(ppline, mini_env_arr); //return (execute_cmd(mini, &cmd, mini_env));
 			// execute_single_red(ppline, cmd_path);
-		// }
-	}
-	// else if (ppline->pp_red_status == 1)
-	// 	execute_single_red(ppline, cmd_path);
-	// else
-	// 	execute_multi_cmd(ppline);
-	// else if (execve(cmd_path, ppline->ppline_cmd, ppline->pp_arr_env) == -1)
-	// 	msg_error(ft_strjoin(ppline->ppline_cmd[0], " : command not found\n"), 127);
-	return (0);
-}
+// 		// }
+// 	}
+// 	// else if (ppline->pp_red_status == 1)
+// 	// 	execute_single_red(ppline, cmd_path);
+// 	// else
+// 	// 	execute_multi_cmd(ppline);
+// 	// else if (execve(cmd_path, ppline->ppline_cmd, ppline->pp_arr_env) == -1)
+// 	// 	msg_error(ft_strjoin(ppline->ppline_cmd[0], " : command not found\n"), 127);
+// 	return (0);
+// }
 
 // static int	execute_single_red(t_ppline *ppline, char *cmd_path) //
 // {

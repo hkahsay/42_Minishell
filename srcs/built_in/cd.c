@@ -47,7 +47,7 @@ static int change_directory(char *dir, t_ppline *ppline)
     if (chdir(dir) == -1)
     {
         fprintf(stderr, "cd: %s: %s\n", dir, strerror(errno));
-        return (-1);
+        return (EXIT_FAILURE);
     }
     pwd = ppline->pp_list_env;
     while (pwd != NULL)
@@ -55,12 +55,12 @@ static int change_directory(char *dir, t_ppline *ppline)
         if (strcmp(pwd->key, "PWD") == 0)
         {
             ft_setenv("OLDPWD", pwd->value, pwd->content, &ppline->pp_list_env);
-            break;
+            break ;
         }
         pwd = pwd->next;
     }
     ft_setenv("PWD", dir, pwd->content, &ppline->pp_list_env);
-    return (0);
+    return (EXIT_SUCCESS);
 }
 
 // Change directory to the previous directory
@@ -78,12 +78,12 @@ static int change_to_previous_directory(t_ppline *ppline)
     if (oldpwd == NULL) 
     {
         fprintf(stderr, "cd: OLDPWD not set\n");
-        return (-1);
+        return (EXIT_FAILURE);
     }
     if (change_directory(oldpwd->value, ppline) == -1)
         return (-1);
     printf("%s\n", oldpwd->value);
-    return 0;
+    return (EXIT_SUCCESS);
 }
 
 // Change the current working directory
@@ -93,13 +93,13 @@ int ft_cd(t_ppline **ppline)
 
     dir = NULL;
     if (!is_home_set(*ppline))
-        return -1;
+        return (-1);
     dir = get_directory(*ppline);
     if (dir == NULL)
     {
         msg_error(dir, 0);
         // fprintf(stderr, "cd: directory not found\n");
-        return -1;
+        return (EXIT_FAILURE);
     }
     if (strcmp(dir, "-") == 0)
         return (change_to_previous_directory(*ppline));

@@ -24,11 +24,15 @@ void print_ppline_list(t_ppline *ppline, int ppline_idx)
 		printf("Redirections: %d\n", current->pp_red_status);
 		printf("Input file: %d\n", current->pp_infile);
 		printf("Output file: %d\n", current->pp_outfile);
-		printf("Heredoc: %d\n", current->pp_heredoc);
-		printf("Heredoc FDs: %d %d\n", current->pp_hdoc_fd[0], current->pp_hdoc_fd[1]);
+		printf("Heredoc: %d\n", current->pp_heredoc_fd);
+		printf("EXIT_status: %d\n", current->pp_exit);
+		// printf("Heredoc FDs: %d %d\n", current->pp_hdoc_fd[0], current->pp_hdoc_fd[1]);
 		printf("\n");
+		// if (current->next)
+		// {
 
 		current = current->next;
 		ppline_idx--;
+	// 	}
 	}
 }

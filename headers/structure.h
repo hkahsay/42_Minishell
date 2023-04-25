@@ -108,7 +108,7 @@ typedef struct	s_ppline
 	int				pp_red_status;
 	int				pp_infile;
 	int				pp_outfile;
-	int				pp_heredoc_fd;
+	int				pp_heredoc_fd[2];
 	int				pp_append_fd;
 	int				pp_exit;
 	// t_malloc		*malloc_head;

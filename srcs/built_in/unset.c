@@ -23,7 +23,7 @@ int	ft_unset(t_ppline **ppline)
 		}
 		i++;
 	}
-	return (0);
+	return (EXIT_SUCCESS);
 }
 
 
