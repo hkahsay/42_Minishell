@@ -12,7 +12,8 @@ t_envnode *find_env_var(char *key, t_envnode **current_dir)
 			return current;
 		current = current->next;
 	}
-	return NULL;
+
+	return (NULL);
 }
 
 void update_env_var(char* key, char* value)
@@ -64,7 +65,6 @@ void ft_envnode_sort(t_envnode **mini_env)
 		{
 			if (ft_strcmp(current->content, current->next->content) > 0) //current->key, current->next->key
 			{
-				printf(R"sorteddd \n" RS);
 				temp.key = ft_strdup(current->key);
 				temp.value = ft_strdup(current->value);
 				temp.content = ft_strdup(current->content);
@@ -92,7 +92,7 @@ void ft_envnode_sort(t_envnode **mini_env)
     // printf("DECLARE -X %s = %s\n", current->key, current->value);
 }
 
-// int ft_setenv(char *name, char *value, char *content, t_envnode **env)
+// int ft_setenv(char *key, char *value, char *content, t_envnode **env)
 // {
 //     t_envnode *var = find_env_var(name, env);
 

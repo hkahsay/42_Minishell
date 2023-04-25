@@ -1,6 +1,6 @@
 NAME = minishell
 
-SANITIZE = -fsanitize=address
+SANITIZE = #-fsanitize=address
 CC = gcc
 FLAGS = -Wall -Werror -Wextra
 FLAGS += -g
@@ -93,7 +93,10 @@ SRCS =	srcs/main.c \
 		srcs/print/print_ppline.c \
 		srcs/error/error_exit.c \
 		srcs/error/error_input.c \
+		srcs/error/ft_error.c \
 		srcs/free/free_token.c \
+		# srcs/sig_handler/signal_handler2.c \
+
 
 DFILES = srcs/${addprefix ${DIR_OBJS}/, ${notdir ${SRCS:.c=.d}}}
 

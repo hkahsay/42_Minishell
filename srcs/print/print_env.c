@@ -18,7 +18,6 @@ void print_mini_envp(t_envnode *temp)
 
 void print_ex_sorted_envp(t_envnode *mini_env) //, char **cmd_arg
 {
-	printf("SORTED\n");
 	int i = 0;
 	// (void)cmd_arg;
 

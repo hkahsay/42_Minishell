@@ -22,3 +22,13 @@ int ft_setenv(char *name, char *value, char *content, t_envnode **env)
     }
     return (0);  // Success
 }
+
+int	home_not_set(char *home, char *pwd)
+{
+	if (home == NULL || pwd == NULL)
+	{
+		printf("Home is not set\n");
+		return (0);
+	}
+	return (-1);
+}
