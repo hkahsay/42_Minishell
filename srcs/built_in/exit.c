@@ -9,16 +9,15 @@
 	if ((*ppline)->ppline_cmd != NULL)
 	{
 		i = ft_atoi(*(*ppline)->ppline_cmd);
-		// free_mini_envp(*mini_env);
-		// free(mini_env);
+		printf("exit\n");
 		destroy_all();
 		exit (i);
 	}
 	else
 	{
-		// free(mini_env);
+		printf("exit\n");
 		destroy_all();
-		// exit (g_status);
+		exit (g_exit_status);
 	}
 	return (0);
 	}
