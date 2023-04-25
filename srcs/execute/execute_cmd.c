@@ -149,8 +149,7 @@ int	execute_single_cmd(t_ppline *ppline) //, char **mini_env_arr, char **cmd_pat
 	// exit_code = 0;
 	printf(PURPLE "Execution single_cmd\n" RS);
 	printf(PURPLE "Execution single_cmd pp_red_status: %d\n" RS, ppline->pp_red_status);
-	signal(SIGINT, sig_quit_handler);
-	signal(SIGQUIT, sig_quit_handler);
+
 	if (ppline->pp_red_status == 0)
 	{
 		execute_builtin(&ppline);

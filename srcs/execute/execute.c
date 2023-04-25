@@ -30,6 +30,8 @@ int execute(t_cmd *cmd, int cmd_num, t_envnode *mini_env)
 	// pid = fork();
 	// if (pid < 0)
 	// 	exit_prog(EXIT_FAILURE);
+	signal(SIGINT, sig_quit_handler);
+	signal(SIGQUIT, sig_quit_handler);
 	if (ppline && ppline->ppline_cmd)
 	{
 		if (ppline->ppline_idx == 1 && ppline->pp_red_status == 0) //&& !ppline->ppline_cmd[1])
