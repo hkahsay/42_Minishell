@@ -67,7 +67,8 @@ int execute_builtin(t_ppline **ppline) //char **cmd, t_envnode *env_var
 		i++;
 	}
 	// printf("3. not builtin %s\n", cmd[0]);
-	return (-1);
+	// assert(0);
+	return (1);
 }
 
 // int is_builtin(char **cmd, t_envnode *env_var) //char **cmd, t_envnode *env_var
