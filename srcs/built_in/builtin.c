@@ -6,7 +6,6 @@ int	check_if_builtin(char *first_cmd)
 		{"pwd", &ft_pwd}, //PWD
 		{"PWD", &ft_pwd},
 		{"cd", &ft_cd}, //CD
-		{"CD", &ft_cd},
 		{"echo", &ft_echo}, //ECHO
 		{"ECHO", &ft_echo},
 		{"unset", &ft_unset},
@@ -36,7 +35,6 @@ int execute_builtin(t_ppline **ppline) //char **cmd, t_envnode *env_var
 		{"pwd", &ft_pwd}, //PWD
 		{"PWD", &ft_pwd},
 		{"cd", &ft_cd}, //CD
-		{"CD", &ft_cd},
 		{"echo", &ft_echo}, //ECHO
 		{"ECHO", &ft_echo},
 		{"unset", &ft_unset},

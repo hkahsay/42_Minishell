@@ -21,7 +21,7 @@
 # include "constants.h"
 
 /*PROMPT*/
-void		prompt(char	*line, t_envnode *mini_env);
+void		prompt(char	*line, struct termios *saved, t_envnode *mini_env);
 
 /*----------------------signals-----------------*/
 void 	sig_handlers(void);
@@ -29,7 +29,8 @@ void	sigint_handler(int	sig_num);
 void	sig_quit_handler(int sig_num);
 void	sig_do_nothing(int sig_num);
 void	rl_replace_line(const char *text, int clear_undo);
-void	ter_attr_handler(struct termios save);
+void	ter_attr_handler(struct termios *save);
+void	handle_signal(struct termios *saved);
 
 /*INIT*/
 t_envnode	*init_envnode(void);
@@ -46,7 +47,9 @@ void 		update_env_var(char *key, char *value);
 void		ft_add_envlist(t_envnode *new_node, t_envnode **env);
 int 		ft_setenv(char *name, char *value, char *content, t_envnode **env);
 t_envnode	*find_env_var(char *key, t_envnode **current_dir);
+char *find_env_var2(char *key, t_envnode **current_dir);
 void		ft_envnode_sort(t_envnode **mini_env);
+int	home_not_set(char *home, char *pwd);
 t_envnode	*create_fuck(char *key);
 t_envnode	*ft_join_env(t_envnode **mini_env);
 // t_envnode	*create_mini_envvar_node(char *key, char *value);
@@ -120,6 +123,15 @@ int			ft_unset(t_ppline **ppline);
 int			ft_export(t_ppline **ppline);
 int			ft_env(t_ppline **ppline);
 int			ft_exit(t_ppline **ppline);
+int	get_dir(char *arg, char *home, t_ppline **ppline);
+t_envnode	*export_no_cmd(t_envnode **mini_env);
+
+int	find_flag(char *cmd);
+// int	print_and_return(t_ppline **ppline, int i, int option);
+int	print_and_return(t_ppline **ppline, int flag_echo, int flag_n);
+int	ft_error_print(char **arg);
+
+
 // typedef int(*t_builtin_ptr)(t_llist *, t_info *);
 // int			mini_pwd2(t_envnode *env_list);
 
@@ -161,7 +173,7 @@ void		*ft_handle_redir_in(t_ppline **new_ppline, t_token **ptr_cmd_red);
 void		*ft_handle_redir_append(t_ppline **new_ppline, t_token **ptr_cmd_red);
 void		*ft_handle_redir_out(t_ppline **new_ppline, t_token **ptr_cmd_red);
 void		close_fd(t_ppline *ppline);
-void			wait_status(t_ppline *ppline);
+void		wait_status(t_ppline *ppline);
 
 void		free_ppline(t_ppline **new_ppline, int *i);
 
