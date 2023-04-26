@@ -9,9 +9,9 @@ int ft_pwd(t_ppline **ppline) //char **args, t_envnode **mini_env
 {
 	t_envnode	*curr_var;
 	char		*cwd;
-	t_envnode	*env_var;
+	// t_envnode	*env_var;
 
-	env_var = NULL;
+	// env_var = NULL;
 	cwd = getcwd(NULL, 0);
 	curr_var = (*ppline)->pp_list_env;
 	// if ((*ppline)->ppline_cmd[1])
@@ -27,7 +27,7 @@ int ft_pwd(t_ppline **ppline) //char **args, t_envnode **mini_env
 			if(ft_strcmp(curr_var->value, cwd) == 0)
 			{
 				printf("%s\n", curr_var->value);
-				return (0);
+				return (1);
 			}
 			else
 			{
@@ -39,7 +39,7 @@ int ft_pwd(t_ppline **ppline) //char **args, t_envnode **mini_env
 		}
 		curr_var = curr_var->next;
 	}
-	return 0;
+	return (EXIT_SUCCESS);
 }
 
 t_envnode	*envdup(t_envnode *prev, t_envnode **mini_env)

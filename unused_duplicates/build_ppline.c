@@ -11,9 +11,12 @@ t_ppline	*ft_new_ppline(void) //t_cmd **cmd_ptr,
 	new_ppline->ppline_env = NULL;
 	new_ppline->ppline_idx = 0;
 	new_ppline->pp_pid = 0;
-	new_ppline->red_status = 0;
-	new_ppline->infile = -1;
-	new_ppline->outfile = -1;
+	new_ppline->pp_builtin_status = 0
+	new_ppline->pp_red_status = 0;
+	new_ppline->pp_pipe[0] = -1;
+	new_ppline->pp_pipe[1] = -1;
+	new_ppline->pp_infile = -1;
+	new_ppline->pp_outfile = -1;
 	new_ppline->heredoc = 0;
 	new_ppline->hdoc_fd[0] = -1;
 	new_ppline->hdoc_fd[1] = -1;
@@ -191,6 +194,7 @@ t_ppline	*create_ppline_array(t_cmd **cmd_head, int cmd_n, char	**mini_env_arr)
 		new_ppline = ft_new_ppline();
 		if (new_ppline == NULL)
 			return NULL;
+		// init_pipe(&ppline);
 		new_ppline->ppline_env = mini_env_arr;
 		if (cmd_ptr->cmd_word)
 		{
