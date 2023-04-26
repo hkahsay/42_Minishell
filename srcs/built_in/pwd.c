@@ -9,9 +9,9 @@ int ft_pwd(t_ppline **ppline) //char **args, t_envnode **mini_env
 {
 	t_envnode	*curr_var;
 	char		*cwd;
-	t_envnode	*env_var;
+	//t_envnode	*env_var;
 
-	env_var = NULL;
+	//env_var = NULL;
 	cwd = getcwd(NULL, 0);
 	curr_var = (*ppline)->pp_list_env;
 	// if ((*ppline)->ppline_cmd[1])
