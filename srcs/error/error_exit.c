@@ -11,17 +11,43 @@
 // 	return (0);
 // }
 
+// void	msg_error(char *error, int errnum)
+// {
+// 	if (error)
+// 	{
+// 		ft_putstr_fd(error, STDERR_FILENO);
+// 	}
+// 	else
+// 	{
+// 		ft_putstr_fd(strerror(errnum), STDERR_FILENO);
+// 		ft_putchar_fd('\n', STDERR_FILENO);
+// 	}
+// 	exit(errnum);
+// }
+
 void	msg_error(char *error, int errnum)
 {
 	if (error)
 	{
 		ft_putstr_fd(error, STDERR_FILENO);
+		ft_putchar_fd('\n', STDERR_FILENO);
+		// printf("errno: %d\n", errno);
+		exit(EXIT_FAILURE);
 	}
 	else
 	{
 		ft_putstr_fd(strerror(errnum), STDERR_FILENO);
 		ft_putchar_fd('\n', STDERR_FILENO);
+		// printf("errno: %d/n", errno);
 	}
+
+	// print the exit status to STDERR
+	ft_putstr_fd("Exit status: ", STDERR_FILENO);
+	ft_putnbr_fd(errnum, STDERR_FILENO);
+	ft_putchar_fd('\n', STDERR_FILENO);
+	// printf("errno: %d\n", errno);
+
+
 	exit(errnum);
 }
 

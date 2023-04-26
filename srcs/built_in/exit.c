@@ -1,7 +1,7 @@
 #include"../../headers/minishell.h"
 
-	int ft_exit(t_ppline **ppline) //char **args, t_envnode **mini_env
-	{
+int ft_exit(t_ppline **ppline) //char **args, t_envnode **mini_env
+{
 	int	i;
 
 	i = 0;
@@ -28,4 +28,4 @@
 		exit (g_exit_status);
 	}
 	return (0);
-	}
+}

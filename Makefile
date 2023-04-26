@@ -73,7 +73,7 @@ SRCS =	srcs/main.c \
 		srcs/parser/parse_cmd.c \
 		srcs/parser/parse_utils.c \
 		srcs/execute/execute.c \
-		srcs/execute/execute_cmd.c \
+		srcs/execute/exec_single_builtin.c \
 		srcs/execute/execute_multiple.c \
 		srcs/execute/execute_utils.c \
 		srcs/execute/ppline_build.c \
