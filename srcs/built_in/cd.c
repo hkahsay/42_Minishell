@@ -46,6 +46,7 @@ static int change_directory(char *dir, t_ppline *ppline)
     pwd = NULL;
     if (chdir(dir) == -1)
     {
+        ft_putstr_fd("minishell: ", STDERR_FILENO);
         fprintf(stderr, "cd: %s: %s\n", dir, strerror(errno));
         return (EXIT_FAILURE);
     }
@@ -97,6 +98,7 @@ int ft_cd(t_ppline **ppline)
     dir = get_directory(*ppline);
     if (dir == NULL)
     {
+        ft_putstr_fd("minishell: ", STDERR_FILENO);
         msg_error(dir, 0);
         // fprintf(stderr, "cd: directory not found\n");
         return (EXIT_FAILURE);

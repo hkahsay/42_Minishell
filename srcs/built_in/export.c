@@ -42,11 +42,11 @@ static int	export_key(t_envnode **mini_env, char **cmd_args)
 {
 	char		*new_key;
 	char		*new_value;
-	int			i;
+	// int			i;
 	t_envnode	*new_env_var;
 	char		*new_content;
 
-	i = 0;
+	// i = 0;
 	new_env_var = NULL;
 	new_content = *cmd_args;
 	new_key = ft_strdup(new_content);

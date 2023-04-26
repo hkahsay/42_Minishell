@@ -53,7 +53,7 @@
 // 	{
 // 		if (pipe(pp_curr->pp_pipe) == -1)
 // 			return (-1); //quit prog
-// 		pp_curr->pp_pipe[1] = 
+// 		pp_curr->pp_pipe[1] =
 // 	}
 // }
 
@@ -132,10 +132,11 @@ static void	wait_child(t_ppline *ppline)
 		{
 			waitpid(pp_curr->pp_pid, &exit_status, 0);
 			if (WIFEXITED(exit_status))
-				g_exit_status = WEXITSTATUS(exit_status);
+				pp_curr->pp_exit = WEXITSTATUS(exit_status);
 		}
 		pp_curr = pp_curr->next;
 	}
+	g_exit_status = pp_curr->pp_exit;
 }
 
 void	init_pipe(t_ppline **ppline)
@@ -150,41 +151,42 @@ void	init_pipe(t_ppline **ppline)
 		if (pipe(pp_curr->pp_pipe) == -1)
 			 msg_error("Failed to create pipe", errno);
 		printf(LBLUE "	Init_pipe OK\n" RS);
-		pp_curr->pp_pipe[0] = STDIN_FILENO; 
+		pp_curr->pp_pipe[0] = STDIN_FILENO;
 		pp_curr->pp_pipe[1] = STDOUT_FILENO;
 		if (pp_curr->next)
 			pp_curr = pp_curr->next;
 		else
-			break ;	
+			break ;
 		pp_curr->ppline_idx--;
 	}
 	if (pp_curr)
 		pp_curr->pp_infile = STDIN_FILENO;
-	printf(LBLUE "Exit init_pipe OK\n\n" RS);	
+	printf(LBLUE "Exit init_pipe OK\n\n" RS);
 }
 
-static void	close_pipe(t_ppline *ppline)
-{
-	printf(LIME "Close pipe\n" RS);
-	t_ppline	*pp_curr;
+// static void	close_pipe(t_ppline *ppline)
+// {
+// 	printf(LIME "Close pipe\n" RS);
+// 	t_ppline	*pp_curr;
 
-	pp_curr = ppline;
-	while (pp_curr)
-	{
-		if (pp_curr->pp_pipe[0] > 2)
-			close(pp_curr->pp_pipe[0]);
-		if (pp_curr->pp_pipe[1] > 2)
-			close(pp_curr->pp_pipe[1]);
-		if (pp_curr->next)
-			pp_curr = pp_curr->next;
-		else
-			break ;
-	}			
-}
+// 	pp_curr = ppline;
+// 	while (pp_curr)
+// 	{
+// 		if (pp_curr->pp_pipe[0] > 2)
+// 			close(pp_curr->pp_pipe[0]);
+// 		if (pp_curr->pp_pipe[1] > 2)
+// 			close(pp_curr->pp_pipe[1]);
+// 		if (pp_curr->next)
+// 			pp_curr = pp_curr->next;
+// 		else
+// 			break ;
+// 	}
+// }
 
 static int	execute_cmd(t_ppline *ppline)
 {
 	char	*cmd_path;
+	// char	*msg;
 // 	int		exit_status;
 
 	cmd_path = NULL;
@@ -192,12 +194,15 @@ static int	execute_cmd(t_ppline *ppline)
 	printf(PURPLE "Execute cmd\n" RS);
 	if (!(search_path(ppline, &cmd_path))) //, mini_env_arr //
 	{
-		printf(R "NO PATH\n" RS);
-		return (-1);
+		g_exit_status = 127;
+		ft_putstr_fd("minishell: ", STDERR_FILENO);
+		msg_error(ft_strjoin(ppline->pp_first_cmd, ": command not found"), errno);
+		// printf(R "NO PATH\n" RS);
+		// return (-1);
 	}
 	printf(PURPLE "cmd_path: %s\n" RS, cmd_path);
 	execve(cmd_path, (ppline)->ppline_cmd, (ppline)->pp_arr_env);
-	perror("Juliette erreur");
+	msg_error("error execution: ", errno);
 	exit(-1); //EXIT_FAILURE
 }
 
@@ -220,33 +225,58 @@ int	execute_multi_cmd(t_ppline *ppline) //, char **mini_env_arr
 	{
 		printf("PP_pipe[0] in the loop: %d\n", (pp_curr)->pp_pipe[0]);
 		printf("PP_pipe[1] in the loop: %d\n", (pp_curr)->pp_pipe[1]);
-		pp_curr->pp_pid = fork();	
-		if (pp_curr->pp_pid == 0)
+		pp_curr->pp_pid = fork();
+		if (pp_curr->pp_pid == -1)
 		{
-			if (pp_curr->pp_infile > 2)
-			{
-				dup2(pp_curr->pp_infile, STDIN_FILENO);
-				printf("PP_infile after dup2: %d\n", (pp_curr)->pp_infile);
-			}
-			if (pp_curr->pp_outfile > 2)
-			{
-				dup2(pp_curr->pp_outfile, STDOUT_FILENO);
-				printf("PP_outfile after dup2: %d\n", (pp_curr)->pp_outfile);
-			}
-			close_pipe(ppline);
+			perror("fork");
+			exit(EXIT_FAILURE);
+		}
+		else if (pp_curr->pp_pid == 0)
+		{
+			// printf("PP_pipe[0] in the loop: %d\n", (pp_curr)->pp_pipe[0]);
+			// printf("PP_pipe[1] in the loop: %d\n", (pp_curr)->pp_pipe[1]);
+			dup2(pp_curr->pp_pipe[1], STDOUT_FILENO);
+			close(pp_curr->pp_pipe[1]);
+			printf("PP_pipe[0] close(pp_curr->pp_pipe[1]): %d\n", (pp_curr)->pp_pipe[0]);
+			printf("PP_pipe[1] close(pp_curr->pp_pipe[1]): %d\n", (pp_curr)->pp_pipe[1]);
+			dup2(pp_curr->pp_pipe[0], STDIN_FILENO);
+			printf("PP_pipe[0] dup2(pp_curr->pp_pipe[0], STDIN_FILENO): %d\n", (pp_curr)->pp_pipe[0]);
+			printf("PP_pipe[1] dup2(pp_curr->pp_pipe[0], STDIN_FILENO): %d\n", (pp_curr)->pp_pipe[1]);
+			close(pp_curr->pp_pipe[0]);
+			printf("PP_pipe[0] close(pp_curr->pp_pipe[0]): %d\n", (pp_curr)->pp_pipe[0]);
+			printf("PP_pipe[1] close(pp_curr->pp_pipe[0]): %d\n", (pp_curr)->pp_pipe[1]);
+			// if (pp_curr->pp_infile > 2)
+			// {
+			// 	dup2(pp_curr->pp_infile, STDIN_FILENO);
+			// 	printf("PP_infile after dup2: %d\n", (pp_curr)->pp_infile);
+			// }
+			// if (pp_curr->pp_pipe[1] > 2)
+			// {
+			// 	dup2(pp_curr->pp_outfile, STDOUT_FILENO);
+			// 	printf("PP_outfile after dup2: %d\n", (pp_curr)->pp_outfile);
+			// }
+			// close_pipe(ppline);
 			if (execute_builtin(&ppline) == 1) //->ppline_cmd[0], ppline->pp_list_env
 			{
 				printf(GGREEN "\nExecution multi cmd no builtin\n\n" RS);
 				execute_cmd(ppline);
 			}
 		}
+		else
+		{
+			close(pp_curr->pp_pipe[0]);
+			char *heredoc_text = readline("heredoc> ");
+			write(ppline->pp_pipe[1], heredoc_text, ft_strlen(heredoc_text));
+			free(heredoc_text);
+			close(ppline->pp_pipe[1]);
+		}
 		if (pp_curr->next)
 			pp_curr = pp_curr->next;
 		else
 			break ;
 	}
-	close_pipe(ppline);
-	wait_child(ppline);	
+	// close_pipe(ppline);
+	wait_child(ppline);
 	return (0);
 }
 
@@ -275,13 +305,16 @@ void execute(t_cmd *cmd, int cmd_num, t_envnode *mini_env)
 	printf(ORS "EXECUTE: ppline->pp_first_cmd %s\n" RS, ppline->pp_first_cmd);
 	printf(ORS "EXECUTE: ppline->ppline_cmd[0] %s\n" RS, ppline->ppline_cmd[0]);
 	printf(ORS "EXECUTE: ppline->ppline_cmd[1] %s\n\n" RS, ppline->ppline_cmd[1]);
-	// signal(SIGINT, sig_quit_handler);
-	// signal(SIGQUIT, sig_quit_handler);
+
+	//cmd + D is not working, after 2 times yes
+
+	signal(SIGINT, sig_quit_handler);
+	signal(SIGQUIT, sig_quit_handler);
 	if (ppline->ppline_idx == 1 && check_if_builtin(ppline->pp_first_cmd))
 	{
 		ppline->pp_exit = execute_single_builtin(ppline);
 		return ;
-	}	
+	}
 	else
 		ppline->pp_exit = execute_multi_cmd(ppline);
 }

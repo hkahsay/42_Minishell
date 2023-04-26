@@ -123,13 +123,13 @@ int			ft_unset(t_ppline **ppline);
 int			ft_export(t_ppline **ppline);
 int			ft_env(t_ppline **ppline);
 int			ft_exit(t_ppline **ppline);
-int	get_dir(char *arg, char *home, t_ppline **ppline);
+int			get_dir(char *arg, char *home, t_ppline **ppline);
 t_envnode	*export_no_cmd(t_envnode **mini_env);
 
-int	find_flag(char *cmd);
+int			find_flag(char *cmd);
 // int	print_and_return(t_ppline **ppline, int i, int option);
-int	print_and_return(t_ppline **ppline, int flag_echo, int flag_n);
-int	ft_error_print(char **arg);
+int			print_and_return(t_ppline **ppline, int flag_echo, int flag_n);
+int			ft_error_print(char **arg);
 
 
 // typedef int(*t_builtin_ptr)(t_llist *, t_info *);
