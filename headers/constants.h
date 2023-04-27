@@ -12,6 +12,7 @@
 # define BLUE		"\033[38;2;0;80;255m"
 # define MBLUE		"\033[38;2;58;62;92m"
 # define LBLUE		"\033[38;2;135;206;250m"
+# define LB			"\033[38;2;0;255;246m"
 # define NAVY		"\033[38;2;0;0;128m"
 # define DB			"\033[38;2;0;0;139m"
 # define GCYAN		"\033[38;2;0;164;114m"
@@ -27,6 +28,7 @@
 # define LIME		"\033[38;2;0;255;0m"
 # define YELLOW		"\033[38;2;255;255;0m"
 # define YELS		"\033[38;2;250;151;30m"
+# define GOLD		"\033[38;5;166m"
 # define LC			"\033[38;2;224;255;255m"
 
 # define RS			"\033[0m"

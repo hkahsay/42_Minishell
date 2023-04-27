@@ -76,7 +76,7 @@ int	ft_export(t_ppline **ppline)
 	{
 		if (!ft_export_noargs(&(*ppline)->pp_list_env, new_env_var))
 			return (-1);
-		return (1);
+		return (EXIT_SUCCESS);
 	}
 	while ((*ppline)->ppline_cmd[++k])
 	{

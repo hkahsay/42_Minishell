@@ -18,7 +18,7 @@ int	ft_mini_env_size(t_envnode *mini_env_head)
 
 char	**ft_mini_env_array(t_envnode *mini_env, int size)
 {
-	printf(LIME "ft_mini_env_array\n" RS);
+	// printf(LIME "ft_mini_env_array\n" RS);
 	char	**mini_env_array;
 	int		i;
 	t_envnode	*cur = mini_env;

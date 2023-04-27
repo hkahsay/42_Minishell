@@ -11,6 +11,7 @@ void	free_ppline(t_ppline **new_ppline, int *i)
 
 t_ppline	*build_ppline_array(t_cmd **cmd_head, int cmd_n, t_envnode *mini_env)
 {
+	printf(OL "\nbuild_ppline_array\n");
 	t_ppline	*ppline = NULL;
 	t_ppline	*new_ppline = NULL;
 	t_ppline	*ppline_tail = NULL;
@@ -36,13 +37,16 @@ t_ppline	*build_ppline_array(t_cmd **cmd_head, int cmd_n, t_envnode *mini_env)
 		new_ppline->ppline_idx = pp_idx;
 		if (cmd_ptr->cmd_word)
 		{
+			printf(OL "build_ppline_array: cmd_word\n");
 			ft_handle_word(&new_ppline, cmd_ptr->cmd_word);
 		}
 		if (cmd_ptr->cmd_red)
 		{
+			printf(OL "build_ppline_array: redir_all\n");
 			if (ft_handle_redir_all(&new_ppline, cmd_ptr->cmd_red))
 				new_ppline->pp_red_status = 1;
 		}
+		printf(OL "\nbuild_ppline list\n\n");
 		if (ppline == NULL)
 		{
 			ppline = new_ppline;

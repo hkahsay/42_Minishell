@@ -32,9 +32,9 @@ void	*ft_handle_word(t_ppline **new_ppline, t_token *cmd_word)
 	i = 0;
 	while (word_ptr != NULL && i < ft_count_args_cmd_word(cmd_word))
 	{
-		// printf(BLUE "word_ptr->content: %s\n" RS, word_ptr->content);
+		printf(BLUE "word_ptr->content: %s\n" RS, word_ptr->content);
 		(*new_ppline)->ppline_cmd[i] = strdup(word_ptr->content);
-		// printf(LBLUE "new_ppline->ppline_cmd[%d]: %s\n" RS, i, (*new_ppline)->ppline_cmd[i]);
+		printf(LBLUE "new_ppline->ppline_cmd[%d]: %s\n" RS, i, (*new_ppline)->ppline_cmd[i]);
 		if ((*new_ppline)->ppline_cmd[i] == NULL)
 		{
 			free_ppline(new_ppline, &i);
@@ -42,12 +42,12 @@ void	*ft_handle_word(t_ppline **new_ppline, t_token *cmd_word)
 		i++;
 		word_ptr = word_ptr->next;
 	}
-	// printf("i: %d\n", i);
+	printf("i: %d\n", i);
 	(*new_ppline)->ppline_cmd[i] = NULL;
 	if (i > 0)
 	{
 		(*new_ppline)->pp_first_cmd = strdup((*new_ppline)->ppline_cmd[0]);
-		// printf(ORS "i > 0 create ppline->ppline_cmd[0] %s\n", ppline->ppline_cmd[0]);
+		printf(ORS "i > 0 create ppline->ppline_cmd[0] %s\n", (*new_ppline)->ppline_cmd[0]);
 	}
 	if (i == 1)
 	{
