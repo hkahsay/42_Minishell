@@ -1,36 +1,77 @@
 #include "../../headers/minishell.h"
 
-// void	close_fd(t_ppline *ppline)
-// {
-// 	// if (ppline->pp_outfile != 1)
-// 	// 	close(ppline->pp_outfile);
-// 	// if (ppline->pp_infile != 0)
-// 	// 	close(ppline->pp_infile);
-// }
+void	*init_pipe(t_ppline **ppline) //, int *num_pipes
+{
+	t_ppline *pp_curr;
+	int		fd[2];
 
-// static int	fd_close(int *fd)
-// {
-// 	int	i;
+	pp_curr = *ppline;
+	printf(LBLUE "\nEnter init_pipe OK\n" RS);
+	while (pp_curr->next)
+	{
+		if (pipe(fd) == -1)
+			 msg_error("Failed to create pipe", errno);
+		// printf(LBLUE "	Init_pipe OK\n" RS);
+		if (pp_curr->pp_outfile == 0)
+			pp_curr->pp_outfile = fd[1];
+		else
+			close(fd[1]);
+		if (pp_curr->next->pp_infile == 0)
+			pp_curr->next->pp_infile = fd[0];
+		else
+			close(fd[0]);
+		// if (pp_curr->next)
+		pp_curr = pp_curr->next;
+	}
+	if (pp_curr->pp_outfile == 0)
+		pp_curr->pp_outfile = STDOUT_FILENO;
+	// printf(LBLUE "num_pipes: %d\n" RS, *num_pipes);
+	printf(LBLUE "Exit init_pipe OK\n\n" RS);
+	return (0);
+}
 
-// 	i = 0;
-// 	if (*fd != -1)
-// 	{
-// 		i = close(*fd);
-// 		if (i == -1)
-// 			error("close", strerror(errno));
-// 		*fd = -1;
-// 	}
-// 	return (i);
-// }
+int	execute_path_cmd(t_ppline *ppline)
+{
+	char	*cmd_path;
+	pid_t	kid_pid;
+	// char	*msg;
+// 	int		exit_status;
+
+	cmd_path = NULL;
+	printf(PURPLE "cmd_path: %s\n" RS, cmd_path);
+	printf(PURPLE "Execute cmd\n" RS);
+	kid_pid = fork();
+	if (kid_pid == 0)
+	{
+		if (!(search_path(ppline, &cmd_path))) //, mini_env_arr //
+		{
+			g_exit_status = 127;
+			ft_putstr_fd("minishell: ", STDERR_FILENO);
+			msg_error(ft_strjoin(ppline->pp_first_cmd, ": command not found"), errno);
+			// printf(R "NO PATH\n" RS);
+			// return (-1);
+		}
+		printf(PURPLE "cmd_path: %s\n" RS, cmd_path);
+		execve(cmd_path, (ppline)->ppline_cmd, (ppline)->pp_arr_env);
+		msg_error("error execution: ", errno);
+		// exit(-1); //EXIT_FAILURE
+	}
+	else
+		waitpid(kid_pid, &(ppline->pp_exit), 0);
+	if (WIFEXITED(ppline->pp_exit))	
+		ppline->pp_exit = WEXITSTATUS(ppline->pp_exit);
+	return (1);	
+}
 
 // static void	close_all_fd(t_ppline *ppline)
 // {
-// 	ppline	*pp_curr;
+// 	t_ppline	*pp_curr;
 
+// 	pp_curr = ppline;
 // 	while (ppline)
 // 	{
-// 		pp_curr = ppline;
-// 		close_fd(&pp_curr->pp_pipe[0]);
+// 		if ()
+// 		close_fd(&pp_curr->pp_infile[0]);
 // 		close_fd(&pp_curr->pp_pipe[1]);
 // 		if (pp_curr->pp_id == TOK_REDIR_IN)
 // 			close_fd(&ppline->pp_infile);
@@ -38,61 +79,73 @@
 // 			close_fd(&ppline->pp_outfile);
 // 		if (pp_curr->pp_id == TOK_HEREDOC)
 // 			close_fd(&ppline->pp_heredoc_fd);
-// 		if (pp_curr->pp_id == TOK_APPEND)
+// 		if (pp_curr->pp_id == TOK_REDIR_OUT_APPEND)
 // 			close_fd(&ppline->pp_append_fd);
-// 		ppline->ppline->next;
+// 		ppline = ppline->next;
 // 	}
 // }
 
-// void	init_pipe(t_ppline **ppline)
-// {
-// 	t_ppline *pp_curr;
+static void	close_fds(t_ppline **ppline)
+{
+	t_ppline	*pp_curr;
 
-// 	pp_curr = *ppline;
-// 	while (pp_curr)
-// 	{
-// 		if (pipe(pp_curr->pp_pipe) == -1)
-// 			return (-1); //quit prog
-// 		pp_curr->pp_pipe[1] =
-// 	}
-// }
+	pp_curr = *ppline;
+	while (pp_curr)
+	{
+		if (pp_curr->pp_outfile > 2)
+			close(pp_curr->pp_outfile);
+		if (pp_curr->pp_infile > 2)
+			close(pp_curr->pp_infile);
+		pp_curr = pp_curr->next;	
+	}
+}
 
+int	execute_kid(t_ppline *ppline)
+{
+	printf(YELLOW "Execution kid\n" RS);
+	int	stdin_clone;
+	int	stdout_clone;
 
-// static int	wait_status(pid_t *pid)
-// {
-// 	int	status;
+	stdin_clone = dup(STDIN_FILENO);
+	stdout_clone = dup(STDOUT_FILENO);
+	if (ppline->pp_infile > 2)
+		dup2(ppline->pp_infile, STDIN_FILENO);
+	if (ppline->pp_outfile > 2)
+		dup2(ppline->pp_outfile, STDOUT_FILENO);	
+	close_fds(&ppline);
+	if (check_if_builtin(ppline->pp_first_cmd) == 0)
+	{
+		printf(YELLOW "Execution kid builtin_cmd\n" RS);
+		ppline->pp_exit = execute_builtin(&ppline); //execute_single_builtin(ppline)
+		exit(0);
+		return (ppline->pp_exit);
+	}
+	else
+	{
+		printf(YELLOW "Execution kid no_builtin path_cmd\n" RS);
+		if (!execute_path_cmd(ppline))
+			msg_error("error executing path_cmd: ", errno);
+	}
+	// close_fds(&ppline);
+	exit(0);
+	return (EXIT_SUCCESS);
+}
 
-// 	*pid = waitpid(-1,  &status, WUNTRACED);
-// 	if (WIFSTOPPED(status))
-// 		return (WSTOPSIG(status));
-// 	if (WIFSIGNALED(g_exit_status))
-// 		return (WTERMSIG(status));
-// 	if (WIFEXITED(g_exit_status))
-// 		return (WEXITSTATUS(status));
-// 	assert (0);
-// 	return (0);
-// }
+void	wait_execution(t_ppline **ppline)
+{
+	// int		res;
+	// pid_t	pid;
+	t_ppline	*pp_curr;
 
-// static void	init_pid(t_ppline *ppline_cmd, pid_t pid)
-// {
-// 	while (ppline->ppline_cmd)
-// 	{
-// 		if (ppline->pp_pid == pid)
-// 		{
-// 			ppline->pp_pid = -1;
-// 			return ;
-// 		}
-// 	}
-// 	assert (0);
-// }
-
-// int	wait_execution(t_ppline **ppline_cmd)
-// {
-// 	int		res;
-// 	pid_t	pid;
-
-// 	res = 1;
-// 	close_all_redir(&ppline);
+	// res = 1;
+	pp_curr = *ppline;
+	close_fds(ppline);
+	while (pp_curr)
+	{
+		waitpid(pp_curr->pp_pid, &(pp_curr->pp_exit), 0);
+		pp_curr = pp_curr->next;
+	}
+}
 // 	while (ppline->ppline_cmd && ppline_idx > 0)
 // 	{
 // 		// ppline->pp_exit = wait_pid(&ppline->pp_pid);
@@ -107,198 +160,43 @@
 // 	return (g_exit_status);
 // }
 
-// int	command_not_found(t_cmd *curr, char **envp)
-// {
-// 	if (execve(curr->tab[0], curr->tab, envp) == -1)
-// 	{
-// 		printf("command not found\n");
-// 		g_exit_status = 127;
-// 		return (-1);
-// 	}
-// 	return (0);
-// }
-
-
-static void	wait_child(t_ppline *ppline)
-{
-	printf(LIME "Wait child\n" RS);
-	t_ppline	*pp_curr;
-	int			exit_status;
-
-	pp_curr = ppline;
-	while (pp_curr)
-	{
-		if (pp_curr->pp_pid > 0)
-		{
-			waitpid(pp_curr->pp_pid, &exit_status, 0);
-			if (WIFEXITED(exit_status))
-				pp_curr->pp_exit = WEXITSTATUS(exit_status);
-		}
-		pp_curr = pp_curr->next;
-	}
-	g_exit_status = pp_curr->pp_exit;
-}
-
-void	init_pipe(t_ppline **ppline)
-{
-	t_ppline *pp_curr;
-
-	pp_curr = *ppline;
-	pp_curr->pp_outfile = STDOUT_FILENO;
-	printf(LBLUE "\nEnter init_pipe OK\n" RS);
-	while (pp_curr && 1 > pp_curr->ppline_idx)
-	{
-		if (pipe(pp_curr->pp_pipe) == -1)
-			 msg_error("Failed to create pipe", errno);
-		printf(LBLUE "	Init_pipe OK\n" RS);
-		pp_curr->pp_pipe[0] = STDIN_FILENO;
-		pp_curr->pp_pipe[1] = STDOUT_FILENO;
-		if (pp_curr->next)
-			pp_curr = pp_curr->next;
-		else
-			break ;
-		pp_curr->ppline_idx--;
-	}
-	if (pp_curr)
-		pp_curr->pp_infile = STDIN_FILENO;
-	printf(LBLUE "Exit init_pipe OK\n\n" RS);
-}
-
-// static void	close_pipe(t_ppline *ppline)
-// {
-// 	printf(LIME "Close pipe\n" RS);
-// 	t_ppline	*pp_curr;
-
-// 	pp_curr = ppline;
-// 	while (pp_curr)
-// 	{
-// 		if (pp_curr->pp_pipe[0] > 2)
-// 			close(pp_curr->pp_pipe[0]);
-// 		if (pp_curr->pp_pipe[1] > 2)
-// 			close(pp_curr->pp_pipe[1]);
-// 		if (pp_curr->next)
-// 			pp_curr = pp_curr->next;
-// 		else
-// 			break ;
-// 	}
-// }
-
-static int	execute_cmd(t_ppline *ppline)
-{
-	char	*cmd_path;
-	// char	*msg;
-// 	int		exit_status;
-
-	cmd_path = NULL;
-	printf(PURPLE "cmd_path: %s\n" RS, cmd_path);
-	printf(PURPLE "Execute cmd\n" RS);
-	if (!(search_path(ppline, &cmd_path))) //, mini_env_arr //
-	{
-		g_exit_status = 127;
-		ft_putstr_fd("minishell: ", STDERR_FILENO);
-		msg_error(ft_strjoin(ppline->pp_first_cmd, ": command not found"), errno);
-		// printf(R "NO PATH\n" RS);
-		// return (-1);
-	}
-	printf(PURPLE "cmd_path: %s\n" RS, cmd_path);
-	execve(cmd_path, (ppline)->ppline_cmd, (ppline)->pp_arr_env);
-	msg_error("error execution: ", errno);
-	exit(-1); //EXIT_FAILURE
-}
-
-
 int	execute_multi_cmd(t_ppline *ppline) //, char **mini_env_arr
 {
 	printf(GGREEN "Execution multi cmd\n" RS);
 	t_ppline	*pp_curr;
-// 	char	*cmd_path;
-// // 	int		exit_status;
+	// int			num_pipes;
+	// pid_t		pp_pid;
 
-// 	cmd_path = NULL;
+	// num_pipes = ppline->ppline_idx - 1;
 	pp_curr = ppline;
-	init_pipe(&ppline);
-	printf("PP_infile: %d\n", (pp_curr)->pp_infile);
-	printf("PP_outfile: %d\n", (pp_curr)->pp_outfile);
-	printf("PP_pipe[0]: %d\n", (pp_curr)->pp_pipe[0]);
-	printf("PP_pipe[1]: %d\n", (pp_curr)->pp_pipe[1]);
-	while (pp_curr)
+
+	// printf(GGREEN "num_pipes: %d\n" RS, num_pipes);
+	init_pipe(&pp_curr); //init_pipe(&ppline, &num_pipes);
+	printf(GGREEN "Retour after init_pipe Execution multi cmd\n" RS);
+	while (pp_curr) // && num_pipes > 0
 	{
-		printf("PP_pipe[0] in the loop: %d\n", (pp_curr)->pp_pipe[0]);
-		printf("PP_pipe[1] in the loop: %d\n", (pp_curr)->pp_pipe[1]);
+		printf(GGREEN "Enter while loop multi cmd\n" RS);
+		if (pp_curr->pp_infile < 0 || pp_curr->pp_outfile < 0)
+		{
+			pp_curr = pp_curr->next;
+			continue ;
+		}
 		pp_curr->pp_pid = fork();
 		if (pp_curr->pp_pid == -1)
-		{
-			perror("fork");
-			exit(EXIT_FAILURE);
-		}
-		else if (pp_curr->pp_pid == 0)
-		{
-			// printf("PP_pipe[0] in the loop: %d\n", (pp_curr)->pp_pipe[0]);
-			// printf("PP_pipe[1] in the loop: %d\n", (pp_curr)->pp_pipe[1]);
-			dup2(pp_curr->pp_pipe[1], STDOUT_FILENO);
-			close(pp_curr->pp_pipe[1]);
-			printf("PP_pipe[0] close(pp_curr->pp_pipe[1]): %d\n", (pp_curr)->pp_pipe[0]);
-			printf("PP_pipe[1] close(pp_curr->pp_pipe[1]): %d\n", (pp_curr)->pp_pipe[1]);
-			dup2(pp_curr->pp_pipe[0], STDIN_FILENO);
-			printf("PP_pipe[0] dup2(pp_curr->pp_pipe[0], STDIN_FILENO): %d\n", (pp_curr)->pp_pipe[0]);
-			printf("PP_pipe[1] dup2(pp_curr->pp_pipe[0], STDIN_FILENO): %d\n", (pp_curr)->pp_pipe[1]);
-			close(pp_curr->pp_pipe[0]);
-			printf("PP_pipe[0] close(pp_curr->pp_pipe[0]): %d\n", (pp_curr)->pp_pipe[0]);
-			printf("PP_pipe[1] close(pp_curr->pp_pipe[0]): %d\n", (pp_curr)->pp_pipe[1]);
-			// if (pp_curr->pp_infile > 2)
-			// {
-			// 	dup2(pp_curr->pp_infile, STDIN_FILENO);
-			// 	printf("PP_infile after dup2: %d\n", (pp_curr)->pp_infile);
-			// }
-			// if (pp_curr->pp_pipe[1] > 2)
-			// {
-			// 	dup2(pp_curr->pp_outfile, STDOUT_FILENO);
-			// 	printf("PP_outfile after dup2: %d\n", (pp_curr)->pp_outfile);
-			// }
-			// close_pipe(ppline);
-			if (execute_builtin(&ppline) == 1) //->ppline_cmd[0], ppline->pp_list_env
-			{
-				printf(GGREEN "\nExecution multi cmd no builtin\n\n" RS);
-				execute_cmd(ppline);
-			}
-		}
-		else
-		{
-			close(pp_curr->pp_pipe[0]);
-			char *heredoc_text = readline("heredoc> ");
-			write(ppline->pp_pipe[1], heredoc_text, ft_strlen(heredoc_text));
-			free(heredoc_text);
-			close(ppline->pp_pipe[1]);
-		}
-		if (pp_curr->next)
-			pp_curr = pp_curr->next;
-		else
-			break ;
+			msg_error("error redir: ", errno);
+		if (pp_curr->pp_pid == 0) //child
+			execute_kid(pp_curr);	
+		pp_curr = pp_curr->next;
 	}
-	// close_pipe(ppline);
-	wait_child(ppline);
-	return (0);
-}
-
-int	execute_single_builtin(t_ppline *ppline) //, char **mini_env_arr, char **cmd_path
-{
-	int		exit_status;
-
-	exit_status = 0;
-
-	printf(YELLOW "Execution single_builtin\n" RS);
-	printf(YELLOW "pp_red_status: %d\n" RS, ppline->pp_red_status);
-
-	exit_status = execute_builtin(&ppline);
-	printf(R "exit_status: %d\n" RS, exit_status);
-	return (exit_status);
+	wait_execution(&pp_curr);
+	return (EXIT_SUCCESS);
 }
 
 void execute(t_cmd *cmd, int cmd_num, t_envnode *mini_env)
 {
 	t_ppline	*ppline;
 
-	printf(R "EXECUTE: printing cmd_list\n" RS);
+	printf(GGREEN "EXECUTE: printing cmd_list\n" RS);
 	print_cmd_list(cmd);
 	ppline = build_ppline_array(&cmd, cmd_num, mini_env);
 
@@ -310,21 +208,49 @@ void execute(t_cmd *cmd, int cmd_num, t_envnode *mini_env)
 
 	signal(SIGINT, sig_quit_handler);
 	signal(SIGQUIT, sig_quit_handler);
-	if (ppline->ppline_idx == 1 && check_if_builtin(ppline->pp_first_cmd))
+	if (ppline->ppline_idx == 1 && ppline->pp_red_status == 0 && check_if_builtin(ppline->pp_first_cmd) == 0)
 	{
-		ppline->pp_exit = execute_single_builtin(ppline);
+		printf(R "EXECUTE: execute_single_builtin\n" RS);
+		ppline->pp_exit = execute_builtin(&ppline); //have to be assured, if...
+		printf(LB "\ng_exit_status: %d\n" RS, g_exit_status);
 		return ;
 	}
 	else
 		ppline->pp_exit = execute_multi_cmd(ppline);
+	// g_exit_status = ppline->pp_exit;
+	// printf(LB "\ng_exit_status: %d\n\n" RS, g_exit_status);
+	// // free(ppline->pp_exit);
+	// ppline->pp_exit = 0;
 }
 
 
-	// wait_execution(&ppline);
-	// printf(R "ppline->pp_exit: %d\n" RS, ppline->pp_exit);
-	// close_fd(ppline);
-	// g_exit_status = ppline->pp_exit;
+		// if (pipe(pp_curr->pp_pipe) == -1) //num_pipes > 0 && 
+		// 	msg_error("error redir: ", errno);
+		// pp_pid = fork();
+		// if (pp_pid == -1)
+		// 	msg_error("error redir: ", errno);
+		// else if (pp_pid == 0) //child
+		// {
+		// 	dup2(pp_curr->pp_pipe[0], STDIN_FILENO);
+		// 	close(pp_curr->pp_pipe[0]);
+		// 	close(pp_curr->pp_pipe[1]);
+		// 	if (execute_pipe_cmd(ppline) == -1)
+		// 		msg_error("execution pipe_cmd: ", errno);
+		// }
+		// else //parent
+		// {
+		// 	close(pp_curr->pp_pipe[0]);
 
-	// signals_at_start();
-	// echo_ctrl_on();
-	// return (0);
+		// 	if (waitpid(pp_pid, &pp_curr->pp_exit, 0) == -1)
+		// 		msg_error("waitpid: ", errno);
+		// 	if (WIFEXITED(pp_curr->pp_exit))
+		// 		pp_curr->pp_exit = WEXITSTATUS(pp_curr->pp_exit);
+		// }
+		// if (pp_curr->next)
+	
+		// num_pipes++;
+	// }
+// 	printf("PP_outfile: %d\n", (pp_curr)->pp_outfile);
+// 	printf("PP_infile: %d\n", (pp_curr)->pp_infile);
+// 	// init_pipe(&ppline, &num_pipes);
+// 	printf(GGREEN "NUMBER pipes returned: %d\n" RS, num_pipes);

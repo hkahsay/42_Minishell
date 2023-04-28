@@ -47,9 +47,9 @@ void 		update_env_var(char *key, char *value);
 void		ft_add_envlist(t_envnode *new_node, t_envnode **env);
 int 		ft_setenv(char *name, char *value, char *content, t_envnode **env);
 t_envnode	*find_env_var(char *key, t_envnode **current_dir);
-char *find_env_var2(char *key, t_envnode **current_dir);
+char		*find_env_var2(char *key, t_envnode **current_dir);
 void		ft_envnode_sort(t_envnode **mini_env);
-int	home_not_set(char *home, char *pwd);
+int			home_not_set(char *home, char *pwd);
 t_envnode	*create_fuck(char *key);
 t_envnode	*ft_join_env(t_envnode **mini_env);
 // t_envnode	*create_mini_envvar_node(char *key, char *value);
@@ -156,11 +156,16 @@ void		print_mini_env_array(char **mini_env_array);
 // void 		print_ex_no_value(t_envnode *mini_env);
 
 /*EXECUTER*/
-void			execute(t_cmd *cmd, int cmd_num, t_envnode *mini_env);
 t_ppline	*ft_new_ppline(void); //t_cmd **cmd_head,
 t_ppline	*build_ppline_array(t_cmd **cmd_head, int cmd_n, t_envnode *mini_env);
+
+void		execute(t_cmd *cmd, int cmd_num, t_envnode *mini_env);
 int			execute_single_builtin(t_ppline *ppline); //, char **mini_env_arr, char **cmd_path , char *cmd_path
 int			execute_multi_cmd(t_ppline *ppline); //, char **mini_env_arr , char *cmd_path
+int			execute_kid(t_ppline *ppline);
+int			execute_path_cmd(t_ppline *ppline);
+int			execute_heredoc(t_ppline *ppline);
+void		wait_execution(t_ppline **ppline);
 
 int			search_path(t_ppline *ppline, char **cmd_path); //, char **mini_env_array
 char		*find_path(char **mini_env_array);
@@ -168,13 +173,13 @@ char		*find_path(char **mini_env_array);
 void		*ft_handle_word(t_ppline **new_ppline, t_token *cmd_word);
 int			ft_count_args_cmd_word(t_token *ptr_cmd_word);
 int			ft_handle_redir_all(t_ppline **new_ppline, t_token *ptr_cmd_red);
-void		*ft_handle_heredoc(t_ppline **new_ppline, t_token **ptr_cmd_red);
-void		*ft_handle_redir_in(t_ppline **new_ppline, t_token **ptr_cmd_red);
-void		*ft_handle_redir_append(t_ppline **new_ppline, t_token **ptr_cmd_red);
-void		*ft_handle_redir_out(t_ppline **new_ppline, t_token **ptr_cmd_red);
+int			ft_handle_heredoc(t_ppline **new_ppline, t_token **ptr_cmd_red);
+int			ft_handle_redir_in(t_ppline **new_ppline, t_token **ptr_cmd_red);
+int			ft_handle_redir_append(t_ppline **new_ppline, t_token **ptr_cmd_red);
+int			ft_handle_redir_out(t_ppline **new_ppline, t_token **ptr_cmd_red);
 
-void		init_pipe(t_ppline **ppline);
-void		close_fd(t_ppline *ppline);
+void		*init_pipe(t_ppline **ppline); //, int *num_pipes
+void		close_fd(t_ppline **ppline);
 void		wait_status(t_ppline *ppline);
 
 void		free_ppline(t_ppline **new_ppline, int *i);

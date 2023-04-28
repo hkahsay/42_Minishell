@@ -2,6 +2,7 @@
 
 int	check_if_builtin(char *first_cmd)
 {
+	// printf("1 first_cmd %s\n", first_cmd);
 	t_builtin builtin_cmds[] = {
 		{"pwd", &ft_pwd}, //PWD
 		{"PWD", &ft_pwd},
@@ -18,15 +19,20 @@ int	check_if_builtin(char *first_cmd)
 	size_t i;
 
 	i = 0;
-	if (strcmp(builtin_cmds[2].name, first_cmd) == 0 || strcmp(builtin_cmds[3].name, first_cmd) == 0
-		|| strcmp(builtin_cmds[6].name, first_cmd) == 0)
-		return (2);
-	if (strcmp(builtin_cmds[i].name, first_cmd) == 0)
+	// if (strcmp(builtin_cmds[2].name, first_cmd) == 0 || strcmp(builtin_cmds[3].name, first_cmd) == 0
+	// 	|| strcmp(builtin_cmds[6].name, first_cmd) == 0)
+	// 	return (2);
+	while (builtin_cmds[i].name != NULL)
 	{
-		// printf("2\n");
-		return (1);
+		// printf("2 builtin_cmds[%zu].name %s\n", i, builtin_cmds[i].name);
+		if (strcmp(builtin_cmds[i].name, first_cmd) == 0)
+		// {
+			// printf("2\n");
+			return (EXIT_SUCCESS);
+		// }
+		i++;
 	}
-	return (EXIT_SUCCESS);
+	return (EXIT_FAILURE);
 }
 
 int execute_builtin(t_ppline **ppline) //char **cmd, t_envnode *env_var

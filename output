@@ -1,0 +1,20 @@
+[0m[38;2;255;255;0mExecution kid no_builtin path_cmd
+[0m[38;2;128;0;128mcmd_path: (null)
+[0m[38;2;128;0;128mExecute cmd
+[0m[38;2;192;192;192mSearch path
+[0m[38;2;192;192;192mFind path
+[0m[38;2;255;0;0m*cmd_path: /Users/vgejno/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki:/Library/Apple/usr/bin:/Users/vgejno/.brew/bin
+[0m[38;2;128;0;128mcmd_path: /bin/ls
+Makefile
+README.md
+headers
+history.log
+libft
+minishell
+objs
+output
+srcs
+test.c
+test_copy.c
+unused_duplicates
+[0m

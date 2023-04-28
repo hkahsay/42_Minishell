@@ -108,6 +108,8 @@ typedef struct	s_ppline
 	int				pp_red_status;
 	int				pp_infile;
 	int				pp_outfile;
+	int				pp_heredoc_status;
+	char			*pp_heredoc_eof;
 	int				pp_heredoc_fd[2];
 	int				pp_append_fd;
 	int				pp_exit;
