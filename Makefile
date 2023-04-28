@@ -6,9 +6,16 @@ FLAGS = -Wall -Werror -Wextra
 FLAGS += -g
 FLAGS += ${SANITIZE}
 
-# RLIB = -L/opt/homebrew/Cellar/readline/8.2.1/lib -lreadline
-RLIB = -L/Users/$(USER)/.brew/Cellar/readline/8.2.1/lib -lreadline
-RINC = -I.brew/Cellar/readline/8.2.1/include/readline
+#RLIB = -L/opt/homebrew/Cellar/readline/8.2.1/lib -lreadline
+# RLIB = -L/Users/$(USER)/.brew/Cellar/readline/8.2.1/lib -lreadline
+# RINC = -I.brew/Cellar/readline/8.2.1/include/readline
+RLIB = -L$(HOME)/.brew/opt/readline/lib -lreadline
+RINC = -I$(HOME)/.brew/opt/readline/include
+
+ifeq ($(shell echo $(USER)), mac)
+	RLIB = -L/usr/local/Cellar/readline/8.2.1/lib -lreadline
+	RINC = -I/usr/local/Cellar/readline/8.2.1/include
+endif
 LIBFT = libft/libft.a
 
 # << HEADERS >> #
