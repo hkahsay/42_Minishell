@@ -4,7 +4,7 @@ void	ft_strdel(char **as)
 {
 	if (as && *as)
 	{
-		free(*as);
+		my_free(*as);
 		*as = NULL;
 	}
 }
@@ -26,6 +26,7 @@ char	*ft_strjoin_free(char *s1, char *s2)
 		ft_strlcat(result, s2, ft_strlen(s1) + ft_strlen(s2) + 1);
 	}
 	ft_strdel(&s1);
+	my_free(result);
 	return (result);
 }
 

@@ -6,6 +6,7 @@ void	*merge_tokens(t_token **token_head)
 	// print_token(*token_head);
 	t_token	*curr;
 	t_token	*temp = NULL;
+	char 	*merged;
 
 	curr = *token_head;
 	while (curr != NULL)
@@ -13,7 +14,7 @@ void	*merge_tokens(t_token **token_head)
 		if (curr->next && (curr->id == TOK_WORD || curr->id == TOK_D_QUOTE || curr->id == TOK_S_QUOTE) &&
 				(curr->next->id == TOK_WORD || curr->next->id == TOK_D_QUOTE || curr->next->id == TOK_S_QUOTE))
 		{
-			char *merged = ft_strjoin(curr->content, curr->next->content);
+			merged = ft_strjoin(curr->content, curr->next->content);
 			if (!merged)
 				return (NULL);
 			// printf(PURPLE "TOKEN before merge: %s=%d\n" RS, curr->content, curr->id);
