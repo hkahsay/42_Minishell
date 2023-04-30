@@ -91,13 +91,17 @@ int	print_and_return(t_ppline **ppline, int flag_echo, int flag_n)
 			}
 			else
 			{
+				printf("i = i + 2\n");
 				i = i + 2;
 				// ft_putstr_fd((*ppline)->ppline_cmd[i + 2], STDOUT_FILENO);
 				// if ((*ppline)->ppline_cmd[i + 1])
 				// 	ft_putchar_fd(' ', STDOUT_FILENO);
 				while ((*ppline)->ppline_cmd[i])
 				{
-					// while ()
+					// if (ft_strncmp((*ppline)->ppline_cmd[i], "$?", 2) == 0)
+					// {
+					// 	ft_putnbr_fd(g_exit_status, STDOUT_FILENO);
+					// }
 					ft_putstr_fd((*ppline)->ppline_cmd[i], STDOUT_FILENO);
 					if ((*ppline)->ppline_cmd[i + 1])
 						ft_putchar_fd(' ', STDOUT_FILENO);
@@ -107,12 +111,25 @@ int	print_and_return(t_ppline **ppline, int flag_echo, int flag_n)
 		}
 		else
 		{
+			printf("i = 1\n");
 			i = 1;
 			while ((*ppline)->ppline_cmd[i])
 			{
+				printf(ORS "ECHO: ppline->ppline_cmd[0] %s\n" RS, (*ppline)->ppline_cmd[0]);
+				printf(ORS "ECHO: ppline->ppline_cmd[1] %s\n\n" RS, (*ppline)->ppline_cmd[1]);
+				if (ft_strncmp((*ppline)->ppline_cmd[i], "$?", 2) == 0)
+				{
+					printf(R "ECHO$? (*ppline)->pp_exit: %d\n" RS, (*ppline)->pp_exit);
+					printf(R "ECHO$? g_exit_status: %d\n" RS, g_exit_status);
+					ft_putnbr_fd(g_exit_status, STDOUT_FILENO);
+					ft_putchar_fd('\n', STDOUT_FILENO);
+					return (EXIT_SUCCESS);
+				}
 				ft_putstr_fd((*ppline)->ppline_cmd[i], STDOUT_FILENO);
 				if ((*ppline)->ppline_cmd[i + 1])
+				{
 					ft_putchar_fd(' ', STDOUT_FILENO);
+				}
 				i++;
 			}
 			ft_putchar_fd('\n', STDOUT_FILENO);

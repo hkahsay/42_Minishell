@@ -120,31 +120,3 @@ typedef struct	s_ppline
 } t_ppline;
 
 #endif
-// typedef struct	s_base
-// {
-// 	t_envnode		*mini_env;
-
-// 	t_malloc		*malloc_head;
-
-// }	t_base;
-
-//-------------------INFO------------------------------
-
-// typedef struct s_tok_io
-// {
-// 	t_envnode		*mini_envp;
-// 	t_prompt		*prompt;
-// 	t_token			*token;
-// 	t_token			**tok_pp_li;
-// 	t_cmd			*cmd;
-// 	int				cmd_num;
-	// t_builtin_ptr	builtin[7];
-	// char			reserved_words[7]; //builtins
-	// char			**mini_envp;
-	// struct s_token	*envp_list;
-	// char			envp_flag;
-	// char			exit_flag;
-	// int				status;
-
-// }t_tok_io;
-

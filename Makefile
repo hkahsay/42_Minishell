@@ -76,6 +76,7 @@ SRCS =	srcs/main.c \
 		srcs/built_in/unset.c \
 		srcs/execute/ppline_build.c \
 		srcs/execute/ppline_new.c \
+		srcs/execute/ppline_utils.c \
 		srcs/execute/cmd_word.c \
 		srcs/execute/cmd_redir_all.c \
 		srcs/execute/cmd_redir_in.c \
@@ -83,10 +84,11 @@ SRCS =	srcs/main.c \
 		srcs/execute/cmd_redir_append.c \
 		srcs/execute/cmd_heredoc.c \
 		srcs/execute/cmd_find_path.c \
+		srcs/execute/init_pipes.c \
 		srcs/execute/execute.c \
-		srcs/execute/exec_single_builtin.c \
 		srcs/execute/execute_heredoc.c \
 		srcs/execute/execute_multiple.c \
+		srcs/execute/execute_kid.c \
 		srcs/execute/execute_utils.c \
 		srcs/print/print_token.c \
 		srcs/print/print_cmd.c \

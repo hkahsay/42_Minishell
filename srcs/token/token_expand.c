@@ -33,19 +33,29 @@ char	*expand_token(char **content, t_envnode *mini_env)
 		if (*p == '$' && p[1])
 		{
 			prefix = ft_substr(*content, 0, p - *content);
+			printf(LB "EXPAND: prefix %s\n" RS, prefix);
 			var_len = ft_strcspn(p + 1, " $;|&><\n");
 			var_name = ft_substr(p + 1, 0, var_len);
+			printf(LB "EXPAND: var_name %s\n" RS, var_name);
 			var_value = mini_getenv(var_name, var_len, mini_env);
+			printf(LB "EXPAND: var_value %s\n" RS, var_value);
 			if (!var_value)
 				var_value = "";
 			ft_strdel(&var_name);
 			expanded_content = ft_strjoin_free(expanded_content, prefix);
+			printf(LB "EXPAND: expanded_content %s\n" RS, expanded_content);
 			expanded_content = ft_strjoin_free(expanded_content, var_value);
+			printf(LB "EXPAND: expanded_content %s\n" RS, expanded_content);
 			*content = p + var_len + 1;
+			printf(LB "EXPAND: *content %s\n" RS, *content);
 			ft_strdel(&prefix);
 			if (*content == p + 1)
+			{
 				expanded_content = ft_strjoin_free(expanded_content, "$");
+				printf(LB "EXPAND: expanded_content %s\n" RS, expanded_content);
+			}
 			p = *content;
+			printf(LB "EXPAND: p %s\n" RS, p);
 		}
 		else
 			p++;
@@ -74,8 +84,15 @@ void    *expand_token_list(t_token **token_head, t_envnode *mini_env)
 				curr->content = d_trimmed;
 				curr->id = TOK_D_QUOTE;
 			}
-			exp_content = expand_token(&curr->content, mini_env);
-			curr->content = ft_strdup(exp_content);
+			// printf(LB "EXPAND_TOKEN_LIST: curr->content %s\n" RS, curr->content);
+			if (ft_strncmp(curr->content, "$?", 2) != 0)
+			{
+				exp_content = expand_token(&curr->content, mini_env);
+				curr->content = ft_strdup(exp_content);
+			}
+			// if (ft_strncmp(curr->content, "$?", 2) == 0)
+			// 	exp_content = curr->content;
+			// printf(LB "EXPAND_TOKEN_LIST: curr->content %s\n" RS, curr->content);
 			if (exp_content == NULL)
 				return (NULL);
 		}
