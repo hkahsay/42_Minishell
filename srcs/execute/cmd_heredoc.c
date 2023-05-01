@@ -38,3 +38,7 @@ int ft_handle_heredoc(t_ppline **new_ppline, t_token **ptr_cmd_red)
 		// execve((*new_ppline)->pp_first_cmd, (*new_ppline)->ppline_cmd, (*new_ppline)->ppline_env);
 		// perror("Juliette erreur");
 		// exit(-1); //EXIT_FAILURE
+
+
+    // Execute heredoc input in a shell
+

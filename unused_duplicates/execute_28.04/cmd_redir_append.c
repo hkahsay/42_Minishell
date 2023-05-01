@@ -8,7 +8,7 @@ int ft_handle_redir_append(t_ppline **new_ppline, t_token **ptr_cmd_red)
 	int	fd_out;
 	int	i = 0;
 
-	fd_out = 0;
+	fd_out = -1;
 	printf("(*ptr_cmd_red)->id: %d\n", (*ptr_cmd_red)->id);
 	if ((*ptr_cmd_red)->id == TOK_REDIR_OUT_APPEND)
 	{
@@ -19,7 +19,7 @@ int ft_handle_redir_append(t_ppline **new_ppline, t_token **ptr_cmd_red)
 			printf("%s\n", (*new_ppline)->ppline_cmd[i]);
 			i++;
 		}
-		fd_out = open((*ptr_cmd_red)->next->content, O_WRONLY | O_CREAT | O_APPEND, 0777);
+		fd_out = open((*ptr_cmd_red)->next->content, O_WRONLY | O_CREAT | O_APPEND, 0666);
 		if (!fd_out)
 			msg_error("open file", errno);
 	}

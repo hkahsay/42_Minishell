@@ -6,7 +6,7 @@ int ft_handle_redir_out(t_ppline **new_ppline, t_token **ptr_cmd_red)
 	int	fd_out;
 	int	i = 0;
 
-	fd_out = 1;
+	fd_out = -1;
 	if ((*ptr_cmd_red)->id == TOK_REDIR_OUT)
 	{
 		printf("CMD: %s\n", (*new_ppline)->pp_first_cmd);
@@ -17,7 +17,7 @@ int ft_handle_redir_out(t_ppline **new_ppline, t_token **ptr_cmd_red)
 			i++;
 		}
 		printf("Outfile name: %s\n", (*ptr_cmd_red)->next->content);
-		fd_out = open((*ptr_cmd_red)->next->content, O_WRONLY | O_CREAT | O_TRUNC, 0777);
+		fd_out = open((*ptr_cmd_red)->next->content, O_WRONLY | O_CREAT | O_TRUNC, 0666);
 		if (!fd_out)
 			msg_error("open file", errno);
 	}

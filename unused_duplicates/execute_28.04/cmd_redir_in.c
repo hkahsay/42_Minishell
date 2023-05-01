@@ -8,7 +8,7 @@ int ft_handle_redir_in(t_ppline **new_ppline, t_token **ptr_cmd_red)
 	int	fd_in;
 	int	i = 0;
 
-	fd_in = 0;
+	fd_in = -1;
 	if ((*ptr_cmd_red)->id == TOK_REDIR_IN)
 	{
 		printf("CMD: %s\n", (*new_ppline)->pp_first_cmd);
@@ -19,7 +19,7 @@ int ft_handle_redir_in(t_ppline **new_ppline, t_token **ptr_cmd_red)
 			i++;
 		}
 		printf("Infile name: %s\n", (*ptr_cmd_red)->next->content);
-		fd_in = open((*ptr_cmd_red)->next->content, O_RDONLY, 0777);
+		fd_in = open((*ptr_cmd_red)->next->content, O_RDONLY);
 		if (!fd_in)
 			msg_error("open file", errno);
 	}

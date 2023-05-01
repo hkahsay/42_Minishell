@@ -1,40 +1,62 @@
 #include "../../headers/minishell.h"
 
-int	ft_handle_heredoc(t_ppline **new_ppline, t_token **ptr_cmd_red)
-{
-	printf(LBLUE "\nheredoc\n\n");
-	// (void)ptr_cmd_red;
-	// (void)new_ppline;
-	int pipefd[2];
-    pid_t pid;
-	int	i = 0;
+// int	execute_heredoc(t_ppline *ppline) //, t_token **ptr_cmd_red
+// {
+// 	printf(LBLUE "\nheredoc\n\n");
+// 	// (void)ptr_cmd_red;
+// 	// (void)new_ppline;
+// 	int pipefd[2];
+//     pid_t pid = 0;
+// 	char *heredoc_text;
+// 	int status;
+// 	int	i = 0;
 
-	if ((*ptr_cmd_red)->id == TOK_HEREDOC)
-	{
-		printf("CMD: %s\n", (*new_ppline)->pp_first_cmd);
-		printf("Command arguments:\n");
-		while ((*new_ppline)->ppline_cmd[i] != NULL)
-		{
-			printf("%s\n", (*new_ppline)->ppline_cmd[i]);
-			i++;
-		}
-		printf("EOF: %s\n", (*ptr_cmd_red)->next->content);
-		if (pipe(pipefd) == -1)
-			msg_error("open file", errno);
-		else if (pid == 0)
-		{
-			close(pipefd[1]);
-			dup2(pipefd[0], STDIN_FILENO);
-			close(pipefd[0]);
+// 	if ((ppline)->pp_heredoc_status == 1)
+// 	{
+// 		printf("CMD: %s\n", (ppline)->pp_first_cmd);
+// 		printf("Command arguments:\n");
+// 		while ((ppline)->ppline_cmd[i] != NULL)
+// 		{
+// 			printf("%s\n", (ppline)->ppline_cmd[i]);
+// 			i++;
+// 		}
+// 		printf("EOF: %s\n", (ppline)->pp_heredoc_eof);
+// 		if (pipe(pipefd) == -1)
+// 			msg_error("open file", errno);
+// 		else if (pid == 0) //kid process
+// 		{
+// 			close(pipefd[1]);
+// 			dup2(pipefd[0], STDIN_FILENO);
+// 			close(pipefd[0]);
+// 			if (execute_pipe_cmd(ppline) == -1)
+// 				msg_error("execution pipe_cmd: ", errno);
+// 		}
+// 		else //parent process
+// 		{
+// 			close(pipefd[0]);
+// 			heredoc_text = readline("heredoc> ");
+// 			write(pipefd[1], heredoc_text, ft_strlen(heredoc_text));
+// 			free(heredoc_text);
+// 			close(pipefd[1]);
+// 			if (waitpid(pid, &status, 0) == -1)
+// 				msg_error("waitpid", errno);
+// 			if (WIFEXITED(status))
+// 				(ppline)->pp_exit = WEXITSTATUS(status);
+// 		}
 
-		}	
+// 	}	
+// 	// else
+// 	// 	return (0);
+// 	(ppline)->pp_heredoc_status = 0;
+// 	return (1);
+// }
 
-	}	
-	else
-		return (0);
-	(*new_ppline)->pp_heredoc_status == 0;
-	return (1);
-}
+
+
+
+
+
+
 
 // void handle_heredoc(t_ppline *ppline) {
 //     if (ppline->pp_heredoc) {
