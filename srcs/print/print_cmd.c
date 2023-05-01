@@ -6,8 +6,10 @@ void	print_cmd_list(t_cmd *cmd_list)
 	while (cmd_list != NULL)
 	{
 		printf("Command [%d]:\n", i);
+		printf(YELS "%s\n" RS, cmd_list->cmd_word->content);
 		printf("Command word:\n");
-		print_token_list(cmd_list->cmd_word);
+		if (cmd_list->next)
+			print_token_list(cmd_list->next->cmd_word);
 		printf("Redirections:\n");
 		print_token_list(cmd_list->cmd_red);
 		cmd_list = cmd_list->next;

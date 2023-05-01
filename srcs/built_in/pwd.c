@@ -27,7 +27,7 @@ int ft_pwd(t_ppline **ppline) //char **args, t_envnode **mini_env
 			if(ft_strcmp(curr_var->value, cwd) == 0)
 			{
 				printf("%s\n", curr_var->value);
-				return (1);
+				return (EXIT_SUCCESS);
 			}
 			else
 			{
