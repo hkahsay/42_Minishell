@@ -72,19 +72,6 @@ SRCS =	srcs/main.c \
 		srcs/parser/parse.c \
 		srcs/parser/parse_cmd.c \
 		srcs/parser/parse_utils.c \
-		srcs/execute/execute.c \
-		srcs/execute/exec_single_builtin.c \
-		srcs/execute/execute_multiple.c \
-		srcs/execute/execute_utils.c \
-		srcs/execute/ppline_build.c \
-		srcs/execute/ppline_new.c \
-		srcs/execute/cmd_path.c \
-		srcs/execute/cmd_redir_all.c \
-		srcs/execute/cmd_redir_in.c \
-		srcs/execute/cmd_redir_out.c \
-		srcs/execute/cmd_redir_append.c \
-		srcs/execute/cmd_hdoc.c \
-		srcs/execute/cmd_word.c \
 		srcs/built_in/builtin.c \
 		srcs/built_in/builtin_utils.c \
 		srcs/built_in/cd.c \
@@ -94,6 +81,20 @@ SRCS =	srcs/main.c \
 		srcs/built_in/export.c \
 		srcs/built_in/pwd.c \
 		srcs/built_in/unset.c \
+		srcs/execute/ppline_build.c \
+		srcs/execute/ppline_new.c \
+		srcs/execute/cmd_word.c \
+		srcs/execute/cmd_redir_all.c \
+		srcs/execute/cmd_redir_in.c \
+		srcs/execute/cmd_redir_out.c \
+		srcs/execute/cmd_redir_append.c \
+		srcs/execute/cmd_heredoc.c \
+		srcs/execute/cmd_find_path.c \
+		srcs/execute/execute.c \
+		srcs/execute/exec_single_builtin.c \
+		srcs/execute/execute_heredoc.c \
+		srcs/execute/execute_multiple.c \
+		srcs/execute/execute_utils.c \
 		srcs/print/print_token.c \
 		srcs/print/print_cmd.c \
 		srcs/print/print_env.c \
