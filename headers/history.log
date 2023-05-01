@@ -1,0 +1,30 @@
+cd headers/
+norminette
+cd headers/
+norminnette
+norminette
+norminnette constants.h 
+norminette constants.h 
+norminnette minishell.h 
+norminette minishell.h 
+norminette minishell.h 
+norminette minishell.h 
+norminette minishell.h 
+norminette minishell.h 
+norminette minishell.h 
+norminette minishell.h 
+norminette minishell.h 
+norminette minishell.h 
+norminette minishell.h 
+norminette minishell.h 
+norminette minishell.h 
+norminette minishell.h 
+norminette minishell.h 
+norminette structure.h 
+cd headers/
+norminette minishell.h 
+norminette structure.h 
+norminette structure.h 
+echo $?
+ech helo
+echo $?

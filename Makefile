@@ -6,16 +6,9 @@ FLAGS = -Wall -Werror -Wextra
 FLAGS += -g
 FLAGS += ${SANITIZE}
 
-#RLIB = -L/opt/homebrew/Cellar/readline/8.2.1/lib -lreadline
-# RLIB = -L/Users/$(USER)/.brew/Cellar/readline/8.2.1/lib -lreadline
-# RINC = -I.brew/Cellar/readline/8.2.1/include/readline
-RLIB = -L$(HOME)/.brew/opt/readline/lib -lreadline
-RINC = -I$(HOME)/.brew/opt/readline/include
-
-ifeq ($(shell echo $(USER)), mac)
-	RLIB = -L/usr/local/Cellar/readline/8.2.1/lib -lreadline
-	RINC = -I/usr/local/Cellar/readline/8.2.1/include
-endif
+# RLIB = -L/opt/homebrew/Cellar/readline/8.2.1/lib -lreadline
+RLIB = -L/Users/$(USER)/.brew/Cellar/readline/8.2.1/lib -lreadline
+RINC = -I.brew/Cellar/readline/8.2.1/include/readline
 LIBFT = libft/libft.a
 
 # << HEADERS >> #
@@ -50,7 +43,7 @@ DIR_OBJS = ./objs
 OBJS = ${addprefix ${DIR_OBJS}/, ${notdir ${SRCS:.c=.o}}}
 
 SRCS =	srcs/main.c \
-		srcs/sig_handler/signal_handler.c \
+		srcs/sig_handler/signal_handler_new.c \
 		srcs/init/envnode_init.c \
 		srcs/init/token_init.c \
 		srcs/init/parse_init.c \
@@ -83,6 +76,7 @@ SRCS =	srcs/main.c \
 		srcs/built_in/unset.c \
 		srcs/execute/ppline_build.c \
 		srcs/execute/ppline_new.c \
+		srcs/execute/ppline_utils.c \
 		srcs/execute/cmd_word.c \
 		srcs/execute/cmd_redir_all.c \
 		srcs/execute/cmd_redir_in.c \
@@ -90,10 +84,11 @@ SRCS =	srcs/main.c \
 		srcs/execute/cmd_redir_append.c \
 		srcs/execute/cmd_heredoc.c \
 		srcs/execute/cmd_find_path.c \
+		srcs/execute/init_pipes.c \
 		srcs/execute/execute.c \
-		srcs/execute/exec_single_builtin.c \
 		srcs/execute/execute_heredoc.c \
 		srcs/execute/execute_multiple.c \
+		srcs/execute/execute_kid.c \
 		srcs/execute/execute_utils.c \
 		srcs/print/print_token.c \
 		srcs/print/print_cmd.c \
@@ -104,6 +99,8 @@ SRCS =	srcs/main.c \
 		srcs/error/ft_error.c \
 		srcs/free/free_token.c \
 		# srcs/sig_handler/signal_handler2.c \
+		# srcs/sig_handler/signal_handler.c \
+
 
 
 DFILES = srcs/${addprefix ${DIR_OBJS}/, ${notdir ${SRCS:.c=.d}}}

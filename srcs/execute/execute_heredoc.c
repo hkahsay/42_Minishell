@@ -1,5 +1,60 @@
 #include "../../headers/minishell.h"
 
+// int execute_heredoc(t_ppline *ppline)
+// {
+//     printf(LBLUE "\nheredoc\n\n");
+//     int pipefd[2];
+//     pid_t pid = 0;
+//     char buf[1024];
+//     int status;
+
+//     if ((ppline)->pp_heredoc_status == 1)
+// 	{
+//         printf("CMD: %s\n", (ppline)->pp_first_cmd);
+//         printf("Command arguments:\n");
+//         int i = 0;
+//         while ((ppline)->ppline_cmd[i] != NULL)
+// 		{
+//             printf("%s\n", (ppline)->ppline_cmd[i]);
+//             i++;
+//         }
+//         printf("EOF: %s\n", (ppline)->pp_heredoc_eof);
+
+//         if (pipe(pipefd) == -1)
+//             msg_error("open pipe", errno);
+
+//         pid = fork();
+//         if (pid == -1)
+//             msg_error("fork", errno);
+
+//         if (pid == 0)
+// 		{ // child process
+//             close(pipefd[1]); // close write end of pipe
+//             dup2(pipefd[0], STDIN_FILENO); // redirect stdin to read end of pipe
+//             close(pipefd[0]); // close read end of pipe
+//             // execute_pipe_cmd(ppline); // read input from the pipeline
+//             exit(0);
+//         } else
+// 		{ // parent process
+//             close(pipefd[0]); // close read end of pipe
+//             while (fgets(buf, sizeof(buf), stdin))
+// 			{
+//                 if (strcmp(buf, (ppline)->pp_heredoc_eof) == 0)
+//                     break; // stop reading input if EOF marker is encountered
+//                 write(pipefd[1], buf, strlen(buf));
+//             }
+//             close(pipefd[1]); // close write end of pipe
+//             if (waitpid(pid, &status, 0) == -1)
+//                 msg_error("waitpid", errno);
+//             if (WIFEXITED(status))
+//                 (ppline)->pp_exit = WEXITSTATUS(status);
+//         }
+//     }
+//     (ppline)->pp_heredoc_status = 0;
+//     return (1);
+// }
+
+
 // int	execute_heredoc(t_ppline *ppline) //, t_token **ptr_cmd_red
 // {
 // 	printf(LBLUE "\nheredoc\n\n");

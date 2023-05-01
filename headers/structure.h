@@ -11,13 +11,12 @@ typedef struct s_envnode
 	char				*content;
 	struct s_envnode	*prev;
 	struct s_envnode	*next;
-} t_envnode;
+}	t_envnode;
 
 typedef struct s_prompt
 {
 	int		nbr_elm;
 	char	*str;
-	// t_envnode	*m_env;
 }	t_prompt;
 
 //-------------------LEXER------------------------
@@ -48,14 +47,14 @@ typedef	struct s_delim
 	char		*delim_str;
 	int			delim_len;
 	t_toktype	delim_type;
-} t_delim;
+}	t_delim;
 
 typedef	struct s_quote
 {
 	char		*quote_str;
 	int			quote_len;
 	t_toktype	quote_type;
-} t_quote;
+}	t_quote;
 
 typedef struct s_token
 {
@@ -73,7 +72,7 @@ typedef struct s_cmd
 	t_token			*cmd_word;  // linked list of command arguments
 	t_token			*cmd_red;  // linked list of redirections
 	struct s_cmd	*next; // pointer to the next command in a pipeline
-} t_cmd;
+}	t_cmd;
 
 // typedef struct s_malloc
 // {
@@ -93,7 +92,7 @@ typedef struct s_builtin
     const char		*name;
     builtin_func	func;
 	// t_ppline *ppline;
-} t_builtin;
+}	t_builtin;
 
 typedef struct	s_ppline
 {
@@ -117,34 +116,7 @@ typedef struct	s_ppline
 	t_envnode		*pp_list_env;
 	t_builtin		*builtin;
 	struct s_ppline	*next;
-} t_ppline;
+	struct s_ppline	*first;
+}	t_ppline;
 
 #endif
-// typedef struct	s_base
-// {
-// 	t_envnode		*mini_env;
-
-// 	t_malloc		*malloc_head;
-
-// }	t_base;
-
-//-------------------INFO------------------------------
-
-// typedef struct s_tok_io
-// {
-// 	t_envnode		*mini_envp;
-// 	t_prompt		*prompt;
-// 	t_token			*token;
-// 	t_token			**tok_pp_li;
-// 	t_cmd			*cmd;
-// 	int				cmd_num;
-	// t_builtin_ptr	builtin[7];
-	// char			reserved_words[7]; //builtins
-	// char			**mini_envp;
-	// struct s_token	*envp_list;
-	// char			envp_flag;
-	// char			exit_flag;
-	// int				status;
-
-// }t_tok_io;
-

@@ -145,14 +145,15 @@
 // 	char	*cmd_path;
 // 	// int		exit_code;
 
-	cmd_path = NULL;
-	// exit_code = 0;
-	printf(PURPLE "Execution single_cmd\n" RS);
-	printf(PURPLE "Execution single_cmd pp_red_status: %d\n" RS, ppline->pp_red_status);
-
-	if (ppline->pp_red_status == 0)
-	{
-		execute_builtin(&ppline);
+// 	cmd_path = NULL;
+// 	// exit_code = 0;
+// 	printf(PURPLE "Execution single_cmd\n" RS);
+// 	printf(PURPLE "Execution single_cmd pp_red_status: %d\n" RS, ppline->pp_red_status);
+// 	signal(SIGINT, sig_quit_handler);
+// 	signal(SIGQUIT, sig_quit_handler);
+// 	if (ppline->pp_red_status == 0)
+// 	{
+// 		execute_builtin(&ppline);
 		// if (execute_builtin(&ppline) == -1) //->ppline_cmd[0], ppline->pp_list_env
 		// {
 		// 	printf("NOT builtin\n");
