@@ -2,19 +2,13 @@
 
 char	*find_path(char **mini_env_array)
 {
-	printf(SILVER "Find path\n" RS);
-	// print_mini_env_array(new_ppline->pp_arr_env);
 	while (ft_strncmp("PATH", *mini_env_array, 4))
 		mini_env_array++;
-	// printf(SILVER "Found path\n" RS);
-	// if (mini_env_array == NULL)
-	// 	return (NULL);
 	return (*mini_env_array + 5);
 }
 
-int	search_path(t_ppline *ppline, char **cmd_path) //, char **mini_env_array
+int	search_path(t_ppline *ppline, char **cmd_path)
 {
-	printf(SILVER "Search path\n" RS);
 	char	**path_array;
 	int		i;
 	char	*temp;
@@ -22,7 +16,6 @@ int	search_path(t_ppline *ppline, char **cmd_path) //, char **mini_env_array
 	i = 0;
 	// print_mini_env_array(ppline->pp_arr_env);
 	*cmd_path = find_path(ppline->pp_arr_env);
-	printf(R "*cmd_path: %s\n" RS, *cmd_path);
 	path_array = ft_split(*cmd_path, ':');
 	i = 0;
 	while (path_array[i])
@@ -36,6 +29,5 @@ int	search_path(t_ppline *ppline, char **cmd_path) //, char **mini_env_array
 		}
 		i++;
 	}
-	printf(R "*cmd_path OK: %s\n" RS, *cmd_path);
 	return (0);
 }

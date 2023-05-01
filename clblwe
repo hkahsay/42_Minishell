@@ -1,3 +1,12 @@
+[0m[38;2;255;255;0mExecution kid no_builtin path_cmd
+
+[0m[38;2;230;65;0mEXECUTE KID: forked path_cmd ppline->pp_first_cmd cat
+[0m[38;2;128;0;128mkid_pid before waitpid: 88308
+[0mprocess
+[38;2;192;192;192mSearch path
+[0m[38;2;192;192;192mFind path
+[0m[38;2;255;0;0m*cmd_path: /opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin:/opt/homebrew/sbin
+[0m[38;2;128;0;128mcmd_path: /bin/cat
 NAME = minishell
 
 SANITIZE = #-fsanitize=address
@@ -130,3 +139,4 @@ fclean: clean
 re: fclean all
 
 .PHONY: all re clean fclean
+[0m

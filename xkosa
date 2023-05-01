@@ -1,0 +1,10 @@
+[0mi = 1
+[38;2;230;65;0mECHO: ppline->ppline_cmd[0] echo
+[0m[38;2;230;65;0mECHO: ppline->ppline_cmd[1] adals
+
+adals
+[0m[38;2;255;0;0mECHO exit_status: 0
+[0m[38;2;255;255;0mPIPE PARENT PID: 0
+[0m[38;2;255;255;0mPIPE PARENT PID: 0
+[0m[?2004h[38;2;0;128;0mminishell_VH>> [0m[?2004l
+exit
