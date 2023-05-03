@@ -136,4 +136,7 @@ int	print_and_return(t_ppline **ppline, int flag_echo, int flag_n)
 		}
 	return (EXIT_SUCCESS); //g_exit_status
 }
-
+// if (g_exit_status == EXIT_SUCCESS)
+					// 	return (EXIT_SUCCESS);
+					// else
+					// 	return(EXIT_FAILURE);

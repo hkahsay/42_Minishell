@@ -9,8 +9,8 @@
 # include <fcntl.h>
 # include <signal.h>
 # include <sys/ioctl.h>
-#include <termios.h>
-#include <dirent.h>
+# include <termios.h>
+# include <dirent.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <sys/types.h>
@@ -21,16 +21,21 @@
 # include "constants.h"
 
 /*PROMPT*/
-void		prompt(char	*line, struct termios *saved, t_envnode *mini_env);
+void		prompt(char	*line, t_envnode *mini_env);
 
 /*----------------------signals-----------------*/
-void 	sig_handlers(void);
-void	sigint_handler(int	sig_num);
-void	sig_quit_handler(int sig_num);
-void	sig_do_nothing(int sig_num);
-void	rl_replace_line(const char *text, int clear_undo);
-void	ter_attr_handler(struct termios *save);
-void	handle_signal(struct termios *saved);
+void		sig_handlers(void);
+void		sigint_handler(int sig_num);
+void		sig_quit_handler(int sig_num);
+void		sig_do_nothing(int sig_num);
+void		rl_replace_line(const char *text, int clear_undo);
+// void	ter_attr_handler(struct termios *save);
+void		ter_attr_handler_on(void);
+void		ter_attr_handler_off(void);
+void		signal_handler2(int sig);
+void		signals_default(void);
+void		signal_at_beginning(void);
+void		handle_signal(struct termios *saved);
 
 /*INIT*/
 t_envnode	*init_envnode(void);
@@ -43,9 +48,9 @@ t_ppline	*init_ppline(void);
 /*MINI_ENV*/
 t_envnode	*duplicate_env(char **envp);
 t_envnode	*create_mini_envvar_node(char *key, char *value, char *content);
-void 		update_env_var(char *key, char *value);
+void		update_env_var(char *key, char *value);
 void		ft_add_envlist(t_envnode *new_node, t_envnode **env);
-int 		ft_setenv(char *name, char *value, char *content, t_envnode **env);
+int			ft_setenv(char *name, char *value, char *content, t_envnode **env);
 t_envnode	*find_env_var(char *key, t_envnode **current_dir);
 char		*find_env_var2(char *key, t_envnode **current_dir);
 void		ft_envnode_sort(t_envnode **mini_env);
@@ -65,8 +70,9 @@ int			ft_mini_strncmp(const char *str1, const char *str2, size_t n);
 
 //-----------sort--------
 void		merge_sort_env(t_envnode **head_ref);
-t_envnode*	sorted_merge_env(t_envnode* a, t_envnode* b);
-void		front_back_split(t_envnode* source, t_envnode** front_ref, t_envnode** back_ref);
+t_envnode	*sorted_merge_env(t_envnode *a, t_envnode *b);
+void		front_back_split(t_envnode *source, t_envnode \
+**front_ref, t_envnode **back_ref);
 
 void		ft_putchar(char c);
 int			ft_putstr(char *str);
@@ -108,7 +114,7 @@ void		*parse(t_token **token_head, t_envnode *mini_env);
 void		*build_cmd_list(t_token **tok_cmd_list);
 
 int			ft_token_list_size(t_token **tok_h);
-int 		ft_count_pipes(t_token **tok_h);
+int			ft_count_pipes(t_token **tok_h);
 // t_ppline		*create_array(t_cmd **cmd_head, int cmd_n);
 int			ft_list_size(t_cmd *node);
 void		ft_token_list_addback(t_token **head, t_token *new);
@@ -131,7 +137,6 @@ int			find_flag(char *cmd);
 int			print_and_return(t_ppline **ppline, int flag_echo, int flag_n);
 int			ft_error_print(char **arg);
 
-
 // typedef int(*t_builtin_ptr)(t_llist *, t_info *);
 // int			mini_pwd2(t_envnode *env_list);
 
@@ -144,8 +149,8 @@ void		print_token_list(t_token *token_list);
 void		print_tok_cmd_list(t_token **tok_pp_list);
 
 void		print_cmd_list(t_cmd *cmd_list);
-void 		print_mini_envp(t_envnode *temp);
-void 		print_ex_envp(t_envnode *temp);
+void		print_mini_envp(t_envnode *temp);
+void		print_ex_envp(t_envnode *temp);
 void		print_ex_sorted_envp(t_envnode *mini_env); //, char **cmd_arg
 void		print_mini_env_array(char **mini_env_array);
 // void		print_cmd(t_cmd *cmd);
@@ -191,8 +196,7 @@ void		free_ppline(t_ppline **new_ppline, int *i);
 
 int			ft_bool_strcspn(const char *str, const char *charset);
 void		print_one_ppline(t_ppline *ppline);
-void		print_ppline_list(t_ppline *ppline_list, int ppline_idx); //, int ppline_idx)
-
+void		print_ppline_list(t_ppline *ppline_list, int ppline_idx);
 
 /*ERROR*/
 void		handle_input_error(t_token **token_head);
@@ -204,5 +208,7 @@ void		msg_error(char *error, int errnum);
 void		free_mini_envp(t_envnode *head);
 void		free_token_list(t_token *tokens);
 // void*		my_my_malloc(t_ppline *ppline, size_t size);
+
+void		print_all_pipeline(t_ppline *line);
 
 #endif

@@ -15,11 +15,12 @@ int	execute_kid(t_ppline *ppline)
 		dup2(ppline->pp_outfile, STDOUT_FILENO);
 		close(ppline->pp_outfile);
 	}
+	// close_fds(&(ppline->first));
 	if (check_if_builtin(ppline->pp_first_cmd) == 0)
 	{
 		ppline->pp_exit = execute_builtin(&ppline);
 		return (ppline->pp_exit);
-		// exit(0);
+		exit(0);
 	}
 	else
 	{
@@ -32,5 +33,6 @@ int	execute_kid(t_ppline *ppline)
 		if (!execve(cmd_path, (ppline)->ppline_cmd, (ppline)->pp_arr_env))
 			msg_error("error execution: ", errno);
 	}
-	return (EXIT_SUCCESS);
+	// return (EXIT_SUCCESS);
+	exit(0);
 }

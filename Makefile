@@ -43,7 +43,7 @@ DIR_OBJS = ./objs
 OBJS = ${addprefix ${DIR_OBJS}/, ${notdir ${SRCS:.c=.o}}}
 
 SRCS =	srcs/main.c \
-		srcs/sig_handler/signal_handler.c \
+		srcs/sig_handler/signal_handler_new.c \
 		srcs/init/envnode_init.c \
 		srcs/init/token_init.c \
 		srcs/init/parse_init.c \
@@ -99,6 +99,8 @@ SRCS =	srcs/main.c \
 		srcs/error/ft_error.c \
 		srcs/free/free_token.c \
 		# srcs/sig_handler/signal_handler2.c \
+		# srcs/sig_handler/signal_handler.c \
+
 
 
 DFILES = srcs/${addprefix ${DIR_OBJS}/, ${notdir ${SRCS:.c=.d}}}
