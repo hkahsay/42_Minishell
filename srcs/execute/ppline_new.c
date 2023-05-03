@@ -1,6 +1,6 @@
 #include "../../headers/minishell.h"
 
-t_ppline	*ft_new_ppline(void) //t_cmd **cmd_ptr, 
+t_ppline	*ft_new_ppline(void) //t_cmd **cmd_ptr,
 {
 	t_ppline	*new_ppline = NULL;
 	new_ppline = (t_ppline *)malloc(sizeof(t_ppline));

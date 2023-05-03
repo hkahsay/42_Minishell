@@ -166,7 +166,7 @@ t_ppline	*build_ppline_array(t_cmd **cmd_head, int cmd_n, t_envnode *mini_env);
 void		*init_pipe(t_ppline **ppline, int *num_pipes);
 void		execute(t_cmd *cmd, int cmd_num, t_envnode *mini_env);
 int			execute_single_builtin(t_ppline *ppline); //, char **mini_env_arr, char **cmd_path , char *cmd_path
-int			execute_multi_cmd(t_ppline *ppline); //, char **mini_env_arr , char *cmd_path
+int			execute_pipe_loop(t_ppline *ppline); //, char **mini_env_arr , char *cmd_path
 int			execute_kid(t_ppline *ppline);
 int			execute_path_cmd(t_ppline *ppline);
 int			execute_heredoc(t_ppline *ppline);

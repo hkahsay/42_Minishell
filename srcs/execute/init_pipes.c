@@ -1,19 +1,5 @@
 #include "../../headers/minishell.h"
 
-/*
-int **init_pipes(int nb_pipes)
-{
-	int pipes[nb_pipes][2];
-
-	int i = 0;
-	while (i < nb_pipes)
-	{
-		pipe(pipes[i]);
-		++i;
-	}
-	return pipes;
-}
-*/
 
 void	*init_pipe(t_ppline **ppline, int *num_pipes) //, int *num_pipes
 {
@@ -21,6 +7,7 @@ void	*init_pipe(t_ppline **ppline, int *num_pipes) //, int *num_pipes
 	int		fd[2];
 
 	pp_curr = *ppline;
+	// pp_curr->pp_infile = STDIN_FILENO;
 	while (pp_curr->next)
 	{
 		if (pipe(fd) == -1)
@@ -37,7 +24,7 @@ void	*init_pipe(t_ppline **ppline, int *num_pipes) //, int *num_pipes
 		pp_curr = pp_curr->next;
 		(*num_pipes)++;
 	}
-	if (pp_curr->pp_outfile == 0)
+	if (!pp_curr->pp_outfile)
 		pp_curr->pp_outfile = STDOUT_FILENO;
 	return (0);
 }
