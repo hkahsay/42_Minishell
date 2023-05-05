@@ -24,6 +24,7 @@ int ft_handle_redir_out(t_ppline **new_ppline, t_token **ptr_cmd_red)
 	// else
 	// 	return (0);
 	(*new_ppline)->pp_outfile = fd_out;
+	//  close((*new_ppline)->pp_outfile);
 	printf("FD pp_outfile after open outfile: %d\n", (*new_ppline)->pp_outfile);
 	return (1);
 }

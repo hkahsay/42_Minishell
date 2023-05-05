@@ -16,7 +16,7 @@ void	prompt(char	*line, t_envnode *mini_env) // struct termios *saved,  t_envnod
 	// cmd = NULL;
 	// pipeline = NULL;
 
-	// if (tcgetattr(STDIN_FILENO, &saved) == -1) 
+	// if (tcgetattr(STDIN_FILENO, &saved) == -1)
     // 	perror("tcgetattr"); // handle error and return or exit as appropriate
 	signal_at_beginning();
 	ter_attr_handler_off();
@@ -27,7 +27,7 @@ void	prompt(char	*line, t_envnode *mini_env) // struct termios *saved,  t_envnod
 	// index = getpid();
 	if (!line)
 	{
-		printf("exit\n");	
+		printf("exit\n");
 		// free(line);
 		destroy_all();
 		// free_mini_envp(mini_env);
@@ -42,6 +42,7 @@ void	prompt(char	*line, t_envnode *mini_env) // struct termios *saved,  t_envnod
 		// tcsetattr(STDIN_FILENO, TCSANOW, saved);
 		add_history(line);
 		fd = open("history.log", O_CREAT | O_WRONLY | O_APPEND, 0777);
+		// printf("1\n");
 		ft_putstr_fd(line, fd);
 		ft_putstr_fd("\n", fd);
 		close(fd);
@@ -66,7 +67,7 @@ int main(int argc, char **argv, char **envp)
 	line = NULL;
 	mini_envp = NULL;
 	// temp = NULL;
-	if (tcgetattr(STDIN_FILENO, &saved) == -1) 
+	if (tcgetattr(STDIN_FILENO, &saved) == -1)
     	perror("tcgetattr"); // handle error and return or exit as appropriate
 	if (argc != 1 || !argv || !envp)
 	{

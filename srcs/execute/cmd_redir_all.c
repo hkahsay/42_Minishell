@@ -1,5 +1,21 @@
 #include "../../headers/minishell.h"
 
+static int	ft_red_list_size(t_token **ptr_cmd_red)
+{
+	t_token *red;
+	int		size;
+
+	red = *ptr_cmd_red;
+	size = 0;
+	while (red != NULL)
+	{
+		if (red != NULL && (red->id == TOK_REDIR_IN || red->id == TOK_REDIR_OUT || red->id == TOK_REDIR_OUT_APPEND || red->id == TOK_HEREDOC))
+			size++;
+		red = red->next;
+	}
+	return (size);
+}
+
 int	ft_handle_redir_all(t_ppline **new_ppline, t_token *ptr_cmd_red)
 {
 	printf(GOLD "Redir_all\n" RS);
@@ -11,7 +27,13 @@ int	ft_handle_redir_all(t_ppline **new_ppline, t_token *ptr_cmd_red)
 
 	//count redir list size and make an array of redir
 	//check permissions of opened files
-	int	red_list_size = ft_token_list_size(&red_ptr);
+	int	red_list_size = ft_red_list_size(&red_ptr);
+	(*new_ppline)->ppline_red = (char **)malloc(sizeof(char *) * (red_list_size + 1));
+	if ((*new_ppline)->ppline_red == NULL)
+	{
+		free(new_ppline);
+		return NULL;
+	}
 	printf(GOLD "Redir_list size: %d\n" RS, red_list_size);
 	if (red_ptr->id == TOK_REDIR_OUT)
 	{

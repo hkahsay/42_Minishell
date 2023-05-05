@@ -65,6 +65,7 @@ int ft_echo(t_ppline **ppline) //char **args, t_envnode **env_var
 	// printf("flag_n: %d\n", flag_n);
 	(*ppline)->pp_exit = print_and_return(ppline, flag_echo, flag_n);
 	printf(R "ECHO exit_status: %d\n" RS, (*ppline)->pp_exit );
+	// close((*ppline)->pp_outfile);
 	return (EXIT_SUCCESS);
 }
 
@@ -91,7 +92,7 @@ int	print_and_return(t_ppline **ppline, int flag_echo, int flag_n)
 			}
 			else
 			{
-				printf("i = i + 2\n");
+				// printf("i = i + 2\n");
 				i = i + 2;
 				// ft_putstr_fd((*ppline)->ppline_cmd[i + 2], STDOUT_FILENO);
 				// if ((*ppline)->ppline_cmd[i + 1])

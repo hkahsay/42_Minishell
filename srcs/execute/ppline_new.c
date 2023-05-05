@@ -8,13 +8,16 @@ t_ppline	*ft_new_ppline(void) //t_cmd **cmd_ptr,
 		return NULL;
 	new_ppline->pp_first_cmd = NULL;
 	new_ppline->ppline_cmd = NULL;
+	new_ppline->ppline_red = NULL;
 	new_ppline->pp_arr_env = NULL;
 	// new_ppline->ppline_idx = cmd_index;
 	new_ppline->pp_red_status = 0;
-	new_ppline->pp_pipe[0] = -1;
-	new_ppline->pp_pipe[1] = -1;
+	// new_ppline->pp_pipe[0] = -1;
+	// new_ppline->pp_pipe[1] = -1;
 	new_ppline->pp_infile = 0;
+	// printf (YELS"new_ppline->pp_infile: %d\n" RS, new_ppline->pp_infile);
 	new_ppline->pp_outfile = 1;
+	// printf (YELS"new_ppline->pp_outfile: %d\n" RS, new_ppline->pp_outfile);
 	new_ppline->pp_heredoc_status = 0;
 	new_ppline->pp_heredoc_eof = NULL;
 	new_ppline->pp_heredoc_fd[0] = -1;

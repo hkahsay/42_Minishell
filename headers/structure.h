@@ -99,9 +99,10 @@ typedef struct	s_ppline
 	char			*pp_first_cmd;
 	// char			*pp_first_cmd_path;
 	char			**ppline_cmd;
+	char			**ppline_red;
 	char			**pp_arr_env;
 	int				ppline_idx;
-	int				pp_pipe[2];
+	// int				pp_pipe[2];
 	int				pp_pid;
 	int				pp_builtin_status;
 	int				pp_red_status;

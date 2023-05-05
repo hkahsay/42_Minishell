@@ -1,7 +1,5 @@
 #include "../../headers/minishell.h"
 
-<<<<<<< HEAD
-=======
 // int execute_heredoc(t_ppline *ppline)
 // {
 //     printf(LBLUE "\nheredoc\n\n");
@@ -57,7 +55,6 @@
 // }
 
 
->>>>>>> 2c2bc03f749f7ae5ffba470ed7dd5fb6abeb3ea4
 // int	execute_heredoc(t_ppline *ppline) //, t_token **ptr_cmd_red
 // {
 // 	printf(LBLUE "\nheredoc\n\n");

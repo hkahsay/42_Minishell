@@ -22,8 +22,8 @@ void print_ppline_list(t_ppline *ppline, int ppline_idx)
 		// print_mini_env_array(current->pp_arr_env);
 		// print_mini_envp(current->pp_list_env);
 		printf("Redirections_status: %d\n", current->pp_red_status);
-		printf("Pp_pipe[0]: %d\n", current->pp_pipe[0]);
-		printf("Pp_pipe[1]: %d\n", current->pp_pipe[1]);
+		// printf("Pp_pipe[0]: %d\n", current->pp_pipe[0]);
+		// printf("Pp_pipe[1]: %d\n", current->pp_pipe[1]);
 		printf("Input file: %d\n", current->pp_infile);
 		printf("Output file: %d\n", current->pp_outfile);
 		printf("Heredoc_status: %d\n", current->pp_heredoc_status);

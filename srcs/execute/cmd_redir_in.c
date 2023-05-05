@@ -26,7 +26,7 @@ int ft_handle_redir_in(t_ppline **new_ppline, t_token **ptr_cmd_red)
 	// else
 	// 	return (0);
 	(*new_ppline)->pp_infile = fd_in;
-	printf("FD pp_infile after open infile: %d\n", (*new_ppline)->pp_infile);
+	printf("FD pp_infile after open infile: %d\n\n" RS, (*new_ppline)->pp_infile);
 	// dup2((*new_ppline)->pp_infile, STDIN_FILENO);
 	// close((*new_ppline)->pp_infile);
 	// execve((*new_ppline)->pp_first_cmd, (*new_ppline)->ppline_cmd, (*new_ppline)->ppline_env);
