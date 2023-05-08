@@ -51,11 +51,14 @@ void	execute_parent(t_ppline **ppline)
 		// printf(LB"PPCURR: %d\n" RS, pp_curr->pp_pid);
 		if (pp_curr->pp_pid != 0)
 		{
-			waitpid(pp_curr->pp_pid, &g_exit_status, 0);
-			if (WIFSIGNALED(g_exit_status))
-				g_exit_status = 128 + g_exit_status;
-			if (WIFEXITED(g_exit_status))
-				g_exit_status = WEXITSTATUS(g_exit_status);
+			waitpid(pp_curr->pp_pid, &pp_curr->pp_exit, 0);
+			int signal_number = WTERMSIG(pp_curr->pp_exit);
+    			printf("Child process terminated by signal: %d\n", signal_number);
+			// if (WIFSIGNALED(pp_curr->pp_exit))
+				// g_exit_status = pp_curr->pp_exit;
+				g_exit_status = signal_number;
+			if (WIFEXITED(pp_curr->pp_exit))
+				g_exit_status = WEXITSTATUS(pp_curr->pp_exit);
 		}
 		if (pp_curr->next)
 		{
