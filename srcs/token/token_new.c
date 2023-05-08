@@ -15,3 +15,10 @@ t_token *new_token(char *content, t_toktype type)
 	new_token->next = NULL;
 	return (new_token);
 }
+
+// // Add this function to free the token
+// void free_token(t_token *token)
+// {
+// 	my_free(token->content);
+// 	my_free(token);
+// }

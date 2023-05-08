@@ -4,7 +4,7 @@ void	ft_strdel(char **as)
 {
 	if (as && *as)
 	{
-		free(*as);
+		my_free(*as);
 		*as = NULL;
 	}
 }

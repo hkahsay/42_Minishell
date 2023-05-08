@@ -267,7 +267,7 @@ int	execute_multi_cmd(t_ppline *ppline) //, char **mini_env_arr
 			close(pp_curr->pp_pipe[0]);
 			char *heredoc_text = readline("heredoc> ");
 			write(ppline->pp_pipe[1], heredoc_text, ft_strlen(heredoc_text));
-			free(heredoc_text);
+			my_free(heredoc_text);
 			close(ppline->pp_pipe[1]);
 		}
 		if (pp_curr->next)

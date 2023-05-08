@@ -15,7 +15,10 @@ void	*merge_tokens(t_token **token_head)
 		{
 			char *merged = ft_strjoin(curr->content, curr->next->content);
 			if (!merged)
+			{
+				free_token_list(*token_head);
 				return (NULL);
+			}
 			// printf(PURPLE "TOKEN before merge: %s=%d\n" RS, curr->content, curr->id);
 			curr->content = merged;
 			// printf(PURPLE "TOKEN after merge: %s=%d\n" RS, curr->content, curr->id);

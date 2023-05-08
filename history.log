@@ -37,3 +37,13 @@ cat | cat | cat |ls
 cat | cat | ls
 cat | cat| ls
 make fclean
+helo
+echo
+echo hello
+cat Makefile 
+ls
+cat | ls | cat Makefile |wc -l
+cat | ls | cat Makefile |wc -l
+cat | ls | cat Makefile |wc -l
+echo heelo | cat Makefile 
+echo heelo | cat Makefile 

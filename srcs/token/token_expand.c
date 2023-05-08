@@ -60,7 +60,9 @@ char	*expand_token(char **content, t_envnode *mini_env)
 		else
 			p++;
 	}
-	return (ft_strjoin_free(expanded_content, *content));
+	ft_strdel(&prefix);
+	return (expanded_content);
+	// return (ft_strjoin_free(expanded_content, *content));
 }
 
 void    *expand_token_list(t_token **token_head, t_envnode *mini_env)
@@ -89,12 +91,16 @@ void    *expand_token_list(t_token **token_head, t_envnode *mini_env)
 			{
 				exp_content = expand_token(&curr->content, mini_env);
 				curr->content = ft_strdup(exp_content);
+				my_free(exp_content);
 			}
 			// if (ft_strncmp(curr->content, "$?", 2) == 0)
 			// 	exp_content = curr->content;
 			// printf(LB "EXPAND_TOKEN_LIST: curr->content %s\n" RS, curr->content);
 			if (exp_content == NULL)
+			{
+				free_token_list(*token_head);
 				return (NULL);
+			}
 		}
 		if (curr->id == TOK_S_QUOTE)
 		{
@@ -107,3 +113,16 @@ void    *expand_token_list(t_token **token_head, t_envnode *mini_env)
 	}
 	return (*token_head);
 }
+
+// void free_token_list(t_token *head)
+// {
+// 	t_token	*tmp;
+
+// 	while (head != NULL)
+// 	{
+// 		tmp = head;
+// 		head = head->next;
+// 		my_free(tmp->content);
+// 		my_free(tmp);
+// 	}
+// }
