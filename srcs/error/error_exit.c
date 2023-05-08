@@ -43,12 +43,12 @@ void	msg_error(char *error, int errnum)
 
 	// print the exit status to STDERR
 	ft_putstr_fd("Exit status: ", STDERR_FILENO);
-	ft_putnbr_fd(errnum, STDERR_FILENO);
+	ft_putnbr_fd(g_exit_status, STDERR_FILENO);
 	ft_putchar_fd('\n', STDERR_FILENO);
 	// printf("errno: %d\n", errno);
 
 
-	exit(errnum);
+	exit(g_exit_status);
 }
 
 int	error_msg(const char *msg)

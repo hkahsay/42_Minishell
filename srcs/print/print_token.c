@@ -21,7 +21,7 @@ void	print_token_list(t_token *token_list)
 		if (token_list->id == TOK_PIPE)
 			break;
 		if (token_list->id == TOK_ERROR)
-			break;	
+			break;
 		printf(YELS "%s " RS, token_list->content);
 		token_list = token_list->next;
 	}
@@ -33,7 +33,7 @@ void	print_cmd_list1(t_token **cmd_list)
 	int i = 0;
 	while (cmd_list[i] != NULL)
 	{
-		printf("cmd %d:\n", i);
+		// printf("cmd %d:\n", i);
 		print_token(cmd_list[i]);
 		i++;
 	}

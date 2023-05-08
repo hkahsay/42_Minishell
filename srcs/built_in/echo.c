@@ -58,13 +58,20 @@ int ft_echo(t_ppline **ppline) //char **args, t_envnode **env_var
 	{
 		flag_echo = 1;
 		(*ppline)->pp_exit = print_and_return(ppline, flag_echo, flag_n);
+		free((*ppline)->pp_first_cmd);
+		free((*ppline)->ppline_cmd[0]);
+		free((*ppline)->ppline_cmd[1]);
 		return (EXIT_SUCCESS);
 	}
 	if (find_flag((*ppline)->ppline_cmd[1]) == 0)
 		flag_n = 1;
 	// printf("flag_n: %d\n", flag_n);
 	(*ppline)->pp_exit = print_and_return(ppline, flag_echo, flag_n);
-	printf(R "ECHO exit_status: %d\n" RS, (*ppline)->pp_exit );
+	// printf(R "ECHO exit_status: %d\n" RS, (*ppline)->pp_exit );
+	// close((*ppline)->pp_outfile);
+	free((*ppline)->pp_first_cmd);
+	free((*ppline)->ppline_cmd[0]);
+	free((*ppline)->ppline_cmd[1]);
 	return (EXIT_SUCCESS);
 }
 
@@ -91,7 +98,7 @@ int	print_and_return(t_ppline **ppline, int flag_echo, int flag_n)
 			}
 			else
 			{
-				printf("i = i + 2\n");
+				// printf("i = i + 2\n");
 				i = i + 2;
 				// ft_putstr_fd((*ppline)->ppline_cmd[i + 2], STDOUT_FILENO);
 				// if ((*ppline)->ppline_cmd[i + 1])
@@ -111,15 +118,15 @@ int	print_and_return(t_ppline **ppline, int flag_echo, int flag_n)
 		}
 		else
 		{
-			printf("i = 1\n");
+			// printf("i = 1\n");
 			i = 1;
 			while ((*ppline)->ppline_cmd[i])
 			{
-				printf(ORS "ECHO: ppline->ppline_cmd[0] %s\n" RS, (*ppline)->ppline_cmd[0]);
-				printf(ORS "ECHO: ppline->ppline_cmd[1] %s\n\n" RS, (*ppline)->ppline_cmd[1]);
+				// printf(ORS "ECHO: ppline->ppline_cmd[0] %s\n" RS, (*ppline)->ppline_cmd[0]);
+				// printf(ORS "ECHO: ppline->ppline_cmd[1] %s\n\n" RS, (*ppline)->ppline_cmd[1]);
 				if (ft_strncmp((*ppline)->ppline_cmd[i], "$?", 2) == 0)
 				{
-					printf(R "ECHO$? (*ppline)->pp_exit: %d\n" RS, (*ppline)->pp_exit);
+					// printf(R "ECHO$? (*ppline)->pp_exit: %d\n" RS, (*ppline)->pp_exit);
 					printf(R "ECHO$? g_exit_status: %d\n" RS, g_exit_status);
 					ft_putnbr_fd(g_exit_status, STDOUT_FILENO);
 					ft_putchar_fd('\n', STDOUT_FILENO);

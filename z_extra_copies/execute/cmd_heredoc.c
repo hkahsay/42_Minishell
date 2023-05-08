@@ -22,7 +22,7 @@ int	ft_handle_heredoc(t_ppline **new_ppline, t_token **ptr_cmd_red)
 		return (0);
 	// printf("Heredoc EOF (*ptr_cmd_red)->content: %s\n" RS, (*ptr_cmd_red)->next->content);
 	(*new_ppline)->pp_heredoc_eof = ft_strdup((*ptr_cmd_red)->next->content);
-	// printf("Heredoc EOF (*new_ppline)->pp_heredoc_eof: %s\n" RS, (*new_ppline)->pp_heredoc_eof);
+	printf("Heredoc EOF (*new_ppline)->pp_heredoc_eof: %s\n" RS, (*new_ppline)->pp_heredoc_eof);
 	// pipe(fd);
 	// while (1)
 	// {

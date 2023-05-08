@@ -8,7 +8,7 @@ static int is_home_set(t_ppline *ppline)
     home = ppline->pp_list_env;
     while (home != NULL)
     {
-        if (strcmp(home->key, "HOME") == 0 && home->value != NULL)
+        if (ft_strcmp(home->key, "HOME") == 0 && home->value != NULL)
             return (1);
         home = home->next;
     }
@@ -24,12 +24,12 @@ static char *get_directory(t_ppline *ppline)
 
     home = NULL;
     dir = ppline->ppline_cmd[1];
-    if (dir == NULL || strcmp(dir, "~") == 0)
+    if (dir == NULL || ft_strcmp(dir, "~") == 0)
     {
         home = ppline->pp_list_env;
         while (home != NULL)
         {
-            if (strcmp(home->key, "HOME") == 0 && home->value != NULL)
+            if (ft_strcmp(home->key, "HOME") == 0 && home->value != NULL)
                 return home->value;
             home = home->next;
         }
@@ -53,7 +53,7 @@ static int change_directory(char *dir, t_ppline *ppline)
     pwd = ppline->pp_list_env;
     while (pwd != NULL)
     {
-        if (strcmp(pwd->key, "PWD") == 0)
+        if (ft_strcmp(pwd->key, "PWD") == 0)
         {
             ft_setenv("OLDPWD", pwd->value, pwd->content, &ppline->pp_list_env);
             break ;
@@ -72,7 +72,7 @@ static int change_to_previous_directory(t_ppline *ppline)
     oldpwd = ppline->pp_list_env;
     while (oldpwd != NULL)
     {
-        if (strcmp(oldpwd->key, "OLDPWD") == 0 && oldpwd->value != NULL)
+        if (ft_strcmp(oldpwd->key, "OLDPWD") == 0 && oldpwd->value != NULL)
             break;
         oldpwd = oldpwd->next;
     }
@@ -103,7 +103,7 @@ int ft_cd(t_ppline **ppline)
         // fprintf(stderr, "cd: directory not found\n");
         return (EXIT_FAILURE);
     }
-    if (strcmp(dir, "-") == 0)
+    if (ft_strcmp(dir, "-") == 0)
         return (change_to_previous_directory(*ppline));
     return (change_directory(dir, *ppline));
 }

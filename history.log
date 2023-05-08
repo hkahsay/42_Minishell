@@ -1,500 +1,316 @@
-cd ..
-cat Makefile | wc -l
-cat Makefile | wc -l
-pwd
-pwd
-ech fgds
- /Users/hkahsay/.vscode/extensions/vadimcn.vscode-lldb-1.9.1/adapter/codelldb terminal-agent --connect=51654 
-ech hello
-ech hf
-echo helo << EOF
-echo helo << EOF
-echo helo << EOF
-echo hello << hermon
-echo hello << hermon
-echo hello << hermon
-mk
-make
-echo hello << hermon
-echo hello << hermon
-ech fds
-echo $?
-ecd gds
-echo $?
-echo sl
-echo sdf
-echo sdfsd >output
-echo wefwe>outfile
-echo sdf>oupou
-echo sdfs
-echo -n dsfsd
-echo -n sdfsd
-echo sfas
-echo sdfs
-echo sdfa
-echo sdf
-echo sdf >wefwe
-echos df>outfile
-echo sdf >blue
-echo sdf
-echo asda >outfile
-echo sdfs>utur
-echo sdkfl >oihew
-echo sdkf >hwfeoif
-echo sdfs >woueoiwhe
-echo sdfs >woueoiwhe
-echo sdfs >woueoiwhe
-echo sdfs >woueoiwhe
-echo sdfs>outfile
-echo sdfs>outfile
-echo adha >blafile
-echo adha >blafile
-echo adha >blafile
-echo adha >blafile
-echo sdl>lolo
-echo sdl>lolo
-echo sdl>lolo
-echo sdl>lolo
-echo sdks >popwerw[e
-echo sdks >popwerw[e
-echo sdfs >pahdpwe
-echo sdfs >pahdpwe
-echo sdfs >pahdpwe
-echo sdfs >pahdpwe
-echo sdf>outfile
-echo sdf>outfile
-echo hwiehw >OUTFILE
-echo hwiehw >OUTFILE
-echo dssd>jweodjew
-echo dsf >jdewedd
-echo dsf >jdewedd
-echo sdfsd
-echo -n
-echo sdf
-echo sdfsd
-echo sdfsd
-echo sdfsd
-echo sdfs
-echo sdfs
-echo sdfsd
-echo sdfsd
-echo sdfs
-echo sdfs
-echo sdfs
-pwd
-pwd
-export
-echo asdihadx
-echo sdfsd
-echo sdfs
-echo sdfd
-echo sdpocw
-echo sdfsd
-echo
-env
-env
-export
-echo wfwe
-ls
-echo
-ls
-echo
-echo
-echo
-ls
-echo bla | grep "b"
-echo sdfsd
-echo
-echo sdfs
-export
-env
-env
-echo
-cat
-echo
-echos dfd
-env
-echo
-echo sdfsd
-echo sdfs
-echo
-echo sdsdf
-echo sdfsd
-ech
-env
-export
-unset
-en
-echo sdfs
-cat objs/
-echo hsdlfh
-export
-echo sfdsd
-echo sfdsd | grep "sdf"
-echo | grep
-cat
-echo | grep
-echo | sdf
-echo | egrecph
-o | grep
-echo bla | grep "b"
-echo bla | grep "b"
-cat objs/
-cat test_copy.c 
-ls
-cat README.md 
-ls
-ls
-cat README.md 
-cat README.md 
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-t Makefile 
-t Makefile 
-cat Makefile 
-ls
-ls
-ls > output
+echo sd >g
+echo sd >a
+cat < a
+echo sd >d
+cat d
+cat < d
+cat < d | wc
+echo sd | wc
+cat < d | wc
+echo sd | wc
+echo sd >d
+echo sd >k
+cat k
+cat <k
+<k cat
+echo sd >d
+cat d
+cat <d
+echo sd >b |cat <d
+echo sd >b |cat <d
+echo sd >d
+<<d
+cat <<d
+cat <<d
+<<d
+cat <<d
+<<d
+cat <<d
+<<s
+cat <<s
+<<d
+cat <<d
+<<d
+cat <<d
 cat | cat | ls
-cho bla |grep "bl"
-ls
+echo asd|cat b
+echo asd|cat b > f
+<<d
+cat <<d
+<<d
+cat <<d
+<<d
+cat <<d
+<<d
+cat <<d
+<<d
+cat <<d
+<<d
+cat <<d
+<<d
+<<s
+s
+,,d
+<<d
+<<d
+cat <<d
+<<e
+cat <<e
+cat <<d
+cat <<d | wc
+echo sds >b
+echo ssds>b
+<b cat
+<b cat | wc
+<b cat | wc
+<b cat | wc
+<b cat
+<b cat | wc
+echo sdf >a
+cat <a
+cat <a | wc
+cat <a | grep "s" | wc
+cat <a | wc
 cat | cat | ls
-echtest 
-echo test | ls
-echo test | ls
-echo ls
-echo tst | ls
-echo tst | ls
-ls
-ls
-ls
-ls | cat
-echo test
-ls 
-os
-ps
-ls 
-ps
-cat Makefile | grep N
-ps
-cat Makefile | grep "N"
-ps
-ls
-ls
-ps
-clean
-echo asda
-echo dsfos >asidhfai
-ps
-echo dsfos >out > klo
-ps
-echo sdhfls >outfile >outfile2
-ps
-echo sldkf
-echo sldkf sdfsdfs sdfs
-echo -n sldkf sdfsdfs sdfs
-echo dasfj
-echo -n dasfj
-echo -nnnnnnnn dasfj
-echo $?
-ps
-echo $?
-echo $?
-echo $?sdf
-echo ?sjpfsd
-echo $?
-echo $?
-echo $?
-echo sdk
-echo $?
-ps
-kill 43611
-ps
-ps
-ls
-ps
-ls
-ls
-cat Makefile 
-ls
-cat Makefile 
-ls
-ls
-ls
-ls
-ls
-echo dscasd
-ps
-ps
-echo asbdfsa
-ps
-ps
-ls
-ps
-echo af
-ls
-ls
-ls > outfile
-cat Makefile | grep "NAME"
-ps | grep "./minishell"
-ps
-ls
-ps | ls
-< output cat
-< output cat > bla
-echo laksdjas csd | grep "csd"
-echos dfs
-echo kdas > blux
-echo kdas grep | "k"
-ls
-ls | ls
-echo kjsdha | ls
-echo nsld | grep "n"
-echo nsld | grep "n"
-echo nsld | grep "n"
-echo nsld | grep "n"
-echo nsld | grep "n"
-echo nsld | grep "n"
-echo nsld | grep n
-echo nsld | grep "n"
-echo nsld | grep "n"
-echo nsld | grep "n"
-echo nsld | grep "n"
-cho nsld | grep "n"
-ls
-ld
-echo $?
-echo nsld | grep "n"
-ls
-ps
+cat <a
+cat <b
+cat <b | wc
+cat <f |wc
+cat <<e
+cat <f
+cat <f | wc
+cat <f | grep "s" |wc -l
+cat <<e | wc -l
+echo sdf>g
+echo sdf>g | wc
+echo sdf>g | wc
+cat <g| echo sdf>g
+cat <g| ls
+echo sda>d | wc
+export |wc
+export >d|wc
+export >c
+export >>c
+wc <c
+export >>c | wc <c
+export >e|wc
+export >a | wc
+export >b | wc
+export >a | wc
+export >x | wc
+export >a | wc
+export > a|wc
+export >a | wc
+export >a | wc
+export >z | wc
+export >1|wc
+export >2|wc
+export >3|wc
+export >a | wc
+export >b|wc
+export > c|wc
+export >d|wc
+export >e|wc
+export >f | wc
+export >g|wc
+cat <g | wc
+echo ewc>h | wc
+export > h| wc
+echo h > h| wc
+cat <d | wc
+echo sdgdefd | cat <a
+echo sds
+echo sd
+echo sd
+echo sd
+echo asddfa
+echo asddfa | wc
+echo asddfa | wc -l
 echo
-echo sdhfsd
-echo sdhfsd | grep "s"
-ls 
-ls
-ls | grep a
-ls >> test
-ls
-ls 
-ls | grep "test"
-ls | grep
-ls | grep "a"
-cd test | ls
-ls | grep "test"
-ls | grep "t"
-echo sdfs | grep "s"
-ls | grep "s"
-echo sdfsd
-echo sdfsd | grep "s"
-echo sdfsd | grep "s"
-ls
-cat Makefile 
-ps
-ls
-cat Makefile 
-cat Makefile | grep "clean"
-echos dfsd
-echo dfsd
-cat Makefile |grep "clean"
-kill 618
-kill 618
-echo sdfsd
-echo sdfsd | grep "s"
-echo sdfs
-ls | grep Makefile 
-eco slkc
-echo wfwe
-echo sdfsd
-ls
-ls
-ls | grep "M"
-echo sdfs
-ls
-ls
-ls
-ls
-ls
-ls
-ls
-cat Makefile 
-echo sdf
-ls
-cat Makefile
-ls | grep "M"
-ls
-ls | grep "M"
-grep
-grep "M"
-ls
-ls | grep "R"
-ls | grep "L"
-ls
-ls
-ls | grep "L"
-echo lskdlf | grep "L"
-echo lskdlf | grep "L"
-ls
-ls > outfile
-<outfile cat
-ls >> outfile
-echo sdf
-ls > output
-ls > output
-ls > output
-ls > output
-echo sdfs
-echo sdflsk>blup
-echo sdflsk>blup
-cat Makefile | grep "M"
-cat Makefile 
-cat Makefile 
-cat Makefile | grep "M"
-echo sfds
-cat Makefile | grep "M"
-echo sdkls > jwpeofjwpe
-echo sdkls > jwpeofjwpe
-cat Makefile
-cat Makefile | grep "M"
-cat Makefile
-cat Makefile | grep "M"
-cat Makefile
-cat Makefile | grep
-cat Makefile | grep "M"
-echo m
-echo m > klklk
-echo m > klklk
-<kklca t
-<kklca c
-<l  atechoechoca
-echo sdfsd
-cat Makefile 
-cat Minishell
-cat Makefile 
-cat Makefile 
-cat Minishell
-cat Makefile 
-cat Makefile > oupoups
-<oupoups cat
-cat < oupoups 
-cat < oupoups | grep "re"
-cat Makefile 
-cat Makefile | ls
-cat Makefile
-ps
-ps
-cat Makefile 
-cat Makefile | ls
-cat Makefile | grep "M"
-echoe sclhdos ls l|d selc h|o  epc
-ho p
-echo sldsl | echo p
-echo sldsl | echo p
-echo sdfs
-cat Makefile
-cat Makefile | ls
-cat Makefile 
-cat Makefile | ls
-cat Makefile > blahdfpoawjd
-<blahdfpoawjd cat
-cat blahdfpoawjd | wc -l
-echos dfs
-echo sdfs
-cat Makefile | wc -l
-cat Makefile 
-cat Makefile 
-cat Makefile | grep "M"
-cat Makefile 
-cat Makefile | grep "M"
-echo adfas
-cat Makefile 
-cat Makefile | grep "M"
-cat Makefile 
-cat Makefile 
-cat Makefile | grep "M"
-cat Makefile 
-cat Makefile | wc  -l
-cat Makefile | wc  -l
-cat Makefile 
-cat Makefile | wc -l
-cat Makefile 
-cat Makefile 
-cat Makefile | wc -l
-cat Makefile > outfile
-cat Makefile 
-cat Makefile | wc -l
-cat Makefile 
-cat Makefile | wc -l
-cat Makefile 
-CAT Makefile 
-cat Makefile | wc -l
-cat Makefile 
-cat Makefile 
-cat Makefile 
-cat Makefile 
-cat Makefile | wc -l
-cat Makefile 
-cat Makefile | wc -l
-cat Makefile 
-cat Makefile | wc -l
-cat Makefile | wc -l
-cat Makefile | wc -l
-cat Makefile | wc -l
-cat Makefile 
-cat Makefile | wc -l
-cat Makefile | wc -l
-cat Makefile 
-cat Makefile | wc -l
-cat Makefile 
-cat Makefile | wc -l
-cat Makefile 
-cat Makefile | wc -l
-cat Makefile | wc -l
-cat Makefile | wc -l
-cat Makefile | wc -l
-cat Makefile | wc -l
-cat Makefile | wc -l
-cat Makefile | wc -l
-cat Makefile 
-echo sdfa
-echo sdfa > outcsdjbcds
-echo sdfa > outcsdjbcds
-echo adals>xkosa
-echo adals>xkosa
-cat Makefile 
-cat Makefile | wc -l
-cat Makefile | wc -l
-cat Makefile | wc -l
-cat Makefile 
-cat Makefile | wc -l
-cat Makefile 
-cat Makefile | wc -l
-cat Makefile | wc -l
-cat Makefile | wc -l
-cat Makefile | wc -l
-cat Makefile | wc -l
-cat Makefile | wc -l
-cat Makefile | wc -l
-cat Makefile | wc -l
-cat Makefile 
-cat Makefile | wc -l
-echo $?
-cat Makefile > clblwe
-<Makefile cat
+echo
+echo
+echo sds | wc
+echo sdssefddw | wc
+env | wc -l
+export |wc
+env | wc
+env
+echo jhz|wc
+echo |wc
+echo sdc
+echo sdc |wc
+echo sdc |wc -l
+echo sdcsde |wc -l
+echo sdcsde |wc
 echo sda
-cat Makefile | wc -l
-cat Makefile 
-cat Makefile 
-cat Makefile | wc -l
-cat Makefile 
-cat Makefile | wc -l
-cat Makefile 
-cat Makefile | wc -l
-cat Makefile 
-cat Makefile | wc -l
+echo sda | wc
+echo sda | wc
+echo sds
+echo sds | wc
+echo hk
+echo hk | wc
+echo hk | wc
+echo hk
+echo sd
+echo sd |wc
+echo sd|wc
+echo sd
+echo sd |wc
+echo sd |wc
+echo sd |wc
+echo sd |wc
+echo sd
+echo sd | wc
+echo sd
+echo sd | wc
+echo sd
+echo sd >r
+echo sd
+echo sd >s
+echo sd |wc
+echo sd |wc
+echo sd |wc
+echo sd |wc
+echo sd >s
+echo sd
+echo sd|wc
+env
+env | wc
+echo sds
+echo sds |wc
+echo -n sds |wc
+echo -n sds |wc -l
+env |wc -l
+env
+export |wc
+minishell
+./minishell
+./minishell
+echos dsf
+echo dsf
+echo dsf | wc
+minishell
+echos
+echo sds
+export
+export | wc
+export var=w| wc
+export
+export var=w| wc
+export var=w| cat
+export var=r |wc
+export var=r 
+export
+export |wc -l
+unset var
+export |wc -l
+env
+unset var=r
+env
+unset
+env
+export
+export var=d
+export
+unset var
+unset var
+export
+unset LESS
+unset LANG
+env
+export
+export var=d
+env
+unset var
+export var=d
+unset var=d
+export var=f
+unset var
+env
+export ds
+export
+unset ds
+export
+env
+export ds=we
+env
+export
+unset ds
+export
+env
+echo sds|wc
+cat <<e| wc-l
+cat <<e| wc -l
+echo $?
+cat <<e| wc-l
+echo $?
+cat <<e| wc-l
+echo $?
+g_exit_status
+cat <<e | wc
+cat <<e | wc-l
+echo $?
+cat <<s
+cat <<s |wc-l
+cat <<s |wc-l
+ehco $?
+echo $?
+cat <<s |wc-l
+echo $?
+cat <<e |wc-l
+wc-l
+minishell
+./minishell
+pwd
+ls
+minishell
+./minishell
+pwd
+ls
+cat minishell 
+./minishell
+ls
+cat <<e
+cat <<e
+ls
+ls -la
+ls
+ls
+ls
+ls |wc
+./minishell
+./minishell
+./minishell
+./minishell
+./minishell
+./minishell
+./minishell
+./minishell
+./minishell
+./minishell
+./minishell
+./minishell
+./minishell
+./minishell
+./minishell
+./minishell
+./minishell
+./minishell
+env
+export
+env
+./minishell
+export
+./minishell
+env
+|
+echo $?
+echo $?
+echo $?
+|
+echo $?
+||
+echo $?
+echo $?
+|
+echo $?
