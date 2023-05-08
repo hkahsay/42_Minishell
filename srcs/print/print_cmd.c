@@ -6,7 +6,8 @@ void	print_cmd_list(t_cmd *cmd_list)
 	while (cmd_list != NULL)
 	{
 		printf("Command [%d]:\n", i);
-		printf(YELS "%s\n" RS, cmd_list->cmd_word->content);
+		if (cmd_list->cmd_word)
+			printf(YELS "%s\n" RS, cmd_list->cmd_word->content);
 		printf("Command word:\n");
 		if (cmd_list)
 			print_token_list(cmd_list->cmd_word);

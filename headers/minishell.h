@@ -162,22 +162,21 @@ void		print_mini_env_array(char **mini_env_array);
 
 /*EXECUTER*/
 t_ppline	*ft_new_ppline(void); //t_cmd **cmd_head,
-t_ppline	*build_ppline_array(t_cmd **cmd_head, \
-int cmd_n, t_envnode *mini_env);
-void		*init_pipe(t_ppline **ppline, int *num_pipes);
+t_ppline	*build_ppline_array(t_cmd **cmd_head, int cmd_n, t_envnode *mini_env);
+// int		**init_pipe(int ppline_idx);
 void		execute(t_cmd *cmd, int cmd_num, t_envnode *mini_env);
-// int			execute_single_builtin(t_ppline *ppline);
+int			execute_single_builtin(t_ppline *ppline); //, char **mini_env_arr, char **cmd_path , char *cmd_path
 int			execute_multi_cmd(t_ppline *ppline);
+// int			execute_pipe_loop(t_ppline *ppline); //, char **mini_env_arr , char *cmd_path
 int			execute_kid(t_ppline *ppline);
 int			execute_path_cmd(t_ppline *ppline);
-
-int			execute_pipe_cmd(t_ppline *ppline);
-
-// int			execute_heredoc(t_ppline *ppline);
+int			execute_to_builtin(t_ppline *ppline);
+int			execute_heredoc(t_ppline *ppline);
 void		wait_execution(t_ppline **ppline);
 void		close_fds(t_ppline **ppline);
+void	close_red_fds(t_ppline **ppline);
 
-int			search_path(t_ppline *ppline, char **cmd_path);
+int			search_path(t_ppline *ppline, char **cmd_path); //, char **mini_env_array
 char		*find_path(char **mini_env_array);
 
 void		*ft_handle_word(t_ppline **new_ppline, t_token *cmd_word);
@@ -185,12 +184,12 @@ int			ft_count_args_cmd_word(t_token *ptr_cmd_word);
 int			ft_handle_redir_all(t_ppline **new_ppline, t_token *ptr_cmd_red);
 int			ft_handle_heredoc(t_ppline **new_ppline, t_token **ptr_cmd_red);
 int			ft_handle_redir_in(t_ppline **new_ppline, t_token **ptr_cmd_red);
-int			ft_handle_redir_append(t_ppline **new_ppline, \
-t_token **ptr_cmd_red);
+int			ft_handle_redir_append(t_ppline **new_ppline, t_token **ptr_cmd_red);
 int			ft_handle_redir_out(t_ppline **new_ppline, t_token **ptr_cmd_red);
 
 // void		*init_pipe(t_ppline **ppline, int *num_pipes); //, int *num_pipes
 void		close_fd(t_ppline **ppline);
+void		close_all_fds(t_ppline **ppline);
 void		wait_status(t_ppline *ppline);
 
 void		free_ppline(t_ppline **new_ppline, int *i);

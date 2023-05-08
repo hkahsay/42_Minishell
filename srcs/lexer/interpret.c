@@ -17,7 +17,7 @@ t_token    *lexer(char *input_str)
     while (p && *p)
     {
 		if (ft_isspace(*p))
-			add_token(&head, space, TOK_SPACE);	
+			add_token(&head, space, TOK_SPACE);
 		p = skip_spaces(p);
 		if (!*p)
 			break;
@@ -52,8 +52,9 @@ void interp(char *line, t_envnode *mini_env)
 	token_head = lexer(line);
 	if (!token_head)
 		return ;
-	// print_token(token_head);	
-	// free_token_list(token_head);	
+	// free(line);
+	// print_token(token_head);
+	// free_token_list(token_head);
 	expand_token_list(&token_head, mini_env);
 	if (!token_head)
 		return ;
@@ -69,4 +70,4 @@ void interp(char *line, t_envnode *mini_env)
 		parse(&token_head, mini_env);
 	}
 }
-      
+

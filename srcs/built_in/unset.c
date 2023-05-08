@@ -4,6 +4,7 @@ int	ft_unset(t_ppline **ppline)
 {
 	int i;
 	char    *res;
+	// t_ppline *curr = *ppline;
 
 	i = 1;
 	// (*mini_env)->content = my_malloc(sizeof(t_envnode) + 1);
@@ -11,13 +12,16 @@ int	ft_unset(t_ppline **ppline)
 	// printf("my content: %s\n", args[0]);
 	if ((*ppline)->ppline_cmd[i] == NULL)
 		return(0);
+	// print_mini_envp(curr->pp_list_env);
+	// printf("(*ppline)->ppline_cmd[i]: %s\n", (*ppline)->ppline_cmd[i]);
 	while ((*ppline)->ppline_cmd[i])
 	{
 		res = check_if_in_env((*ppline)->pp_list_env, (*ppline)->ppline_cmd[i]);
-		if (res != NULL)
+		// printf("res: %s\n", res);
+		if (res == NULL)
 		{
-			printf("1\n");
-			printf("(*ppline)->ppline_cmd[i]1 %s\n", (*ppline)->ppline_cmd[i]);
+			// printf("1\n");
+			// printf("(*ppline)->ppline_cmd[i]1 %s\n", (*ppline)->ppline_cmd[i]);
 			// return (0);
 			remove_from_list((*ppline)->pp_list_env, (*ppline)->ppline_cmd[i]);
 		}

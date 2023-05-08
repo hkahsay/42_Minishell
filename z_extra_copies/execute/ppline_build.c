@@ -3,9 +3,9 @@
 void	free_ppline(t_ppline **new_ppline, int *i)
 {
 	for (int j = 0; j < *i; j++)
-		my_free((*new_ppline)->ppline_cmd[j]);
-	my_free((*new_ppline)->ppline_cmd);
-	my_free((*new_ppline));
+		free((*new_ppline)->ppline_cmd[j]);
+	free((*new_ppline)->ppline_cmd);
+	free((*new_ppline));
 	// return (0);
 }
 
