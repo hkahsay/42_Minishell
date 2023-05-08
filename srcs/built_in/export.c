@@ -5,12 +5,12 @@ static int	ft_export_noargs(t_envnode **mini_env, t_envnode *new_env)
 	new_env = export_no_cmd(mini_env);
 	if (!new_env)
 	{
-		printf(YELLOW"new_env\n"RS);
+		// printf(YELLOW"new_env\n"RS);
 		return (-1);
 	}
-	printf("content beginning: %s\n", (new_env)->content);
+	// printf("content beginning: %s\n", (new_env)->content);
 	ft_envnode_sort(&new_env);
-	printf(YELLOW"only expo\n"RS);
+	// printf(YELLOW"only expo\n"RS);
 	print_ex_sorted_envp(new_env);
 	return (1);
 }

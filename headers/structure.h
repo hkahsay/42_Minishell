@@ -101,7 +101,7 @@ typedef struct	s_ppline
 	char			**ppline_cmd;
 	char			**pp_arr_env;
 	int				ppline_idx;
-	int				pp_pipe[2];
+	// int				pp_pipe[2];
 	int				pp_pid;
 	int				pp_builtin_status;
 	int				pp_red_status;
@@ -109,7 +109,8 @@ typedef struct	s_ppline
 	int				pp_outfile;
 	int				pp_heredoc_status;
 	char			*pp_heredoc_eof;
-	int				pp_heredoc_fd[2];
+	int				pp_fd_in;
+	int				pp_fd_out;
 	int				pp_append_fd;
 	int				pp_exit;
 	// t_malloc		*malloc_head;
@@ -117,6 +118,7 @@ typedef struct	s_ppline
 	t_builtin		*builtin;
 	struct s_ppline	*next;
 	struct s_ppline	*first;
+	// struct s_ppline	*second;
 }	t_ppline;
 
 #endif

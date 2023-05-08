@@ -1,39 +1,240 @@
-cd ..
-cat Makefile | wc -l
-cat Makefile | wc -l
-pwd
-pwd
-ech fgds
- /Users/hkahsay/.vscode/extensions/vadimcn.vscode-lldb-1.9.1/adapter/codelldb terminal-agent --connect=51654 
-ech hello
-ech hf
-echo helo << EOF
-echo helo << EOF
-echo helo << EOF
-echo hello << hermon
-echo hello << hermon
-echo hello << hermon
-mk
-make
-echo hello << hermon
-echo hello << hermon
-ech fds
-echo $?
-ecd gds
-echo $?
-echo $?
-ecfd ffg
-echo $?
-cat | cat | cat | ls
-cat Makefile | wc -l
-cat | cat Makefile | wc -l
-cat | cat | cat | ls
+echo sd >g
+echo sd >a
+cat < a
+echo sd >d
+cat d
+cat < d
+cat < d | wc
+echo sd | wc
+cat < d | wc
+echo sd | wc
+echo sd >d
+echo sd >k
+cat k
+cat <k
+<k cat
+echo sd >d
+cat d
+cat <d
+echo sd >b |cat <d
+echo sd >b |cat <d
+echo sd >d
+<<d
+cat <<d
+cat <<d
+<<d
+cat <<d
+<<d
+cat <<d
+<<s
+cat <<s
+<<d
+cat <<d
+<<d
+cat <<d
 cat | cat | ls
-cat Makefile 
-cat Makefile | cat |ls
-cat Makefile | wc -l
+echo asd|cat b
+echo asd|cat b > f
+<<d
+cat <<d
+<<d
+cat <<d
+<<d
+cat <<d
+<<d
+cat <<d
+<<d
+cat <<d
+<<d
+cat <<d
+<<d
+<<s
+s
+,,d
+<<d
+<<d
+cat <<d
+<<e
+cat <<e
+cat <<d
+cat <<d | wc
+echo sds >b
+echo ssds>b
+<b cat
+<b cat | wc
+<b cat | wc
+<b cat | wc
+<b cat
+<b cat | wc
+echo sdf >a
+cat <a
+cat <a | wc
+cat <a | grep "s" | wc
+cat <a | wc
 cat | cat | ls
-cat | cat | cat |ls
-cat | cat | ls
-cat | cat| ls
-make fclean
+cat <a
+cat <b
+cat <b | wc
+cat <f |wc
+cat <<e
+cat <f
+cat <f | wc
+cat <f | grep "s" |wc -l
+cat <<e | wc -l
+echo sdf>g
+echo sdf>g | wc
+echo sdf>g | wc
+cat <g| echo sdf>g
+cat <g| ls
+echo sda>d | wc
+export |wc
+export >d|wc
+export >c
+export >>c
+wc <c
+export >>c | wc <c
+export >e|wc
+export >a | wc
+export >b | wc
+export >a | wc
+export >x | wc
+export >a | wc
+export > a|wc
+export >a | wc
+export >a | wc
+export >z | wc
+export >1|wc
+export >2|wc
+export >3|wc
+export >a | wc
+export >b|wc
+export > c|wc
+export >d|wc
+export >e|wc
+export >f | wc
+export >g|wc
+cat <g | wc
+echo ewc>h | wc
+export > h| wc
+echo h > h| wc
+cat <d | wc
+echo sdgdefd | cat <a
+echo sds
+echo sd
+echo sd
+echo sd
+echo asddfa
+echo asddfa | wc
+echo asddfa | wc -l
+echo
+echo
+echo
+echo sds | wc
+echo sdssefddw | wc
+env | wc -l
+export |wc
+env | wc
+env
+echo jhz|wc
+echo |wc
+echo sdc
+echo sdc |wc
+echo sdc |wc -l
+echo sdcsde |wc -l
+echo sdcsde |wc
+echo sda
+echo sda | wc
+echo sda | wc
+echo sds
+echo sds | wc
+echo hk
+echo hk | wc
+echo hk | wc
+echo hk
+echo sd
+echo sd |wc
+echo sd|wc
+echo sd
+echo sd |wc
+echo sd |wc
+echo sd |wc
+echo sd |wc
+echo sd
+echo sd | wc
+echo sd
+echo sd | wc
+echo sd
+echo sd >r
+echo sd
+echo sd >s
+echo sd |wc
+echo sd |wc
+echo sd |wc
+echo sd |wc
+echo sd >s
+echo sd
+echo sd|wc
+env
+env | wc
+echo sds
+echo sds |wc
+echo -n sds |wc
+echo -n sds |wc -l
+env |wc -l
+env
+export |wc
+minishell
+./minishell
+./minishell
+echos dsf
+echo dsf
+echo dsf | wc
+minishell
+echos
+echo sds
+export
+export | wc
+export var=w| wc
+export
+export var=w| wc
+export var=w| cat
+export var=r |wc
+export var=r 
+export
+export |wc -l
+unset var
+export |wc -l
+env
+unset var=r
+env
+unset
+env
+export
+export var=d
+export
+unset var
+unset var
+export
+unset LESS
+unset LANG
+env
+export
+export var=d
+env
+unset var
+export var=d
+unset var=d
+export var=f
+unset var
+env
+export ds
+export
+unset ds
+export
+env
+export ds=we
+env
+export
+unset ds
+export
+env
