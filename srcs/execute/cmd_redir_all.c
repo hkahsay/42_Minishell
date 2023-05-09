@@ -47,5 +47,6 @@ int	ft_handle_redir_all(t_ppline **new_ppline, t_token *ptr_cmd_red)
 			(*new_ppline)->pp_heredoc_status = 1;
 			ft_handle_heredoc(new_ppline, &ptr_cmd_red);
 		}
+	free_token_list(ptr_cmd_red);
 	return (1);
 }

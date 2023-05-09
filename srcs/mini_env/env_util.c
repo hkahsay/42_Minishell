@@ -9,7 +9,7 @@ t_envnode *find_env_var(char *key, t_envnode **current_dir)
 	while (current != NULL)
 	{
 		if (ft_strcmp(current->key, key) == 0)
-			return current;
+			return (current);
 		current = current->next;
 	}
 
@@ -27,7 +27,7 @@ void update_env_var(char* key, char* value)
 	if (var != NULL)
 	{
 		my_free(var->value);
-		var->value = strdup(value);
+		var->value = ft_strdup(value);
 	}
 }
 

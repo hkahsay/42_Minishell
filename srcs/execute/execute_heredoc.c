@@ -85,7 +85,7 @@
 // 			close(pipefd[0]);
 // 			heredoc_text = readline("heredoc> ");
 // 			write(pipefd[1], heredoc_text, ft_strlen(heredoc_text));
-// 			free(heredoc_text);
+// 			my_free(heredoc_text);
 // 			close(pipefd[1]);
 // 			if (waitpid(pid, &status, 0) == -1)
 // 				msg_error("waitpid", errno);
@@ -163,7 +163,7 @@
 // 			close(pipefd[0]);
 // 			heredoc_text = readline("heredoc> ");
 // 			write(pipefd[1], heredoc_text, ft_strlen(heredoc_text));
-// 			free(heredoc_text);
+// 			my-free(heredoc_text);
 // 			close(pipefd[1]);
 // 			if (waitpid(pid, &status, 0) == -1)
 // 				msg_error("waitpid", errno);
@@ -214,7 +214,7 @@
 //             close(pipefd[0]);
 //             char *heredoc_text = readline("heredoc> ");
 //             write(pipefd[1], heredoc_text, strlen(heredoc_text));
-//             free(heredoc_text);
+//             my_free(heredoc_text);
 //             close(pipefd[1]);
 
 //             int status;

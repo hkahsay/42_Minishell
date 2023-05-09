@@ -15,6 +15,8 @@ static void	*build_word_red_cmd(t_cmd **new_cmd, t_token *tok_h)
 				break ;
 			}
 			ft_token_list_addback(&(*new_cmd)->cmd_red, new_token(tok_h->content, tok_h->id));
+			printf(YELLOW "(*new_cmd)->cmd_red %p \n" RS, (*new_cmd)->cmd_red);
+			// my_free(tok_h->content);
 			ft_token_list_addback(&(*new_cmd)->cmd_red, new_token(tok_h->next->content, TOK_WORD));
 			tok_h = tok_h->next; // skip the word that follows the redirection token
 		}
@@ -22,6 +24,8 @@ static void	*build_word_red_cmd(t_cmd **new_cmd, t_token *tok_h)
 		{
 			// add token to cmd_word list
 			ft_token_list_addback(&(*new_cmd)->cmd_word, new_token(tok_h->content, tok_h->id));
+			printf(YELLOW "(*new_cmd)->cmd_word %p \n" RS, (*new_cmd)->cmd_word);
+			// my_free(tok_h->content);
 		}
 
 		tok_h = tok_h->next;
@@ -42,6 +46,7 @@ void	*build_cmd_list(t_token **tok_cmd_list)
 		tok_h = tok_cmd_list[i];
 		new_cmd = init_cmd();
 		build_word_red_cmd(&new_cmd, tok_h);
+		// my_free(tok_h);
 		if (cmd_list == NULL) {
 			cmd_list = new_cmd;
 			cmd_tail = new_cmd;

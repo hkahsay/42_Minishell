@@ -6,6 +6,7 @@ t_envnode *create_mini_envvar_node(char *key, char *value, char *content)//, int
 
 	// my_node = init_envnode();
 	my_node = my_malloc(sizeof(t_envnode) * 1);
+	printf("my_node %p \n", my_node);
 	if (!my_node)
 		return (NULL);
 	my_node->key = ft_strdup(key);
@@ -34,10 +35,14 @@ t_envnode *create_mini_envvar_node(char *key, char *value, char *content)//, int
 		my_node->value = NULL;
 	}
 	else
+	{
 		my_node->value = ft_strdup(value);
+		// printf("my_node->value %p, %s  \n", my_node->value, my_node->value);
+	}
 	// printf("nodes OK %s = %s\n", my_node->key, my_node->value);
 	if (!my_node->value)
 	{
+		printf("my_node->value %p, %s  \n", my_node->value, my_node->value);
 		my_free(my_node->value);
 		my_free(my_node);
 		return (NULL);

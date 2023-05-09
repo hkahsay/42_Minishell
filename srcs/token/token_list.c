@@ -35,11 +35,12 @@ void	ft_token_list_addback(t_token **head, t_token *new)
 
 void	add_token(t_token **head, char *content, t_toktype type)
 {
-	t_token *token;
+	t_token *token = NULL;
 	t_token *curr;
 
 	curr = NULL;
 	token = new_token(content, type);
+
 	// if (!token)
 	// 	return (0);
 	if (*head == NULL)
@@ -64,6 +65,7 @@ t_token *last_token(t_token *token_list)
 	curr = token_list;
 	while (curr->next != NULL)
 		curr = curr->next;
+	// free(curr);
 	return (curr);
 }
 

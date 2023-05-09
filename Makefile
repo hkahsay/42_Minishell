@@ -1,8 +1,8 @@
 NAME = minishell
 
-SANITIZE = #-fsanitize=address
+SANITIZE = #-fsanitize=address #-fsanitize=leak 
 CC = gcc
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra 
 FLAGS += -g
 FLAGS += ${SANITIZE}
 

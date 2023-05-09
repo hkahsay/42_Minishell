@@ -194,6 +194,7 @@ void		close_all_fds(t_ppline **ppline);
 void		wait_status(t_ppline *ppline);
 
 void		free_ppline(t_ppline **new_ppline, int *i);
+void		free_one_ppline(t_ppline **new_ppline);
 
 // void		execute(t_token **tok_cmd, t_envnode *mini_env);
 // void		execute1(t_pline *pline, t_envnode *mini_env);

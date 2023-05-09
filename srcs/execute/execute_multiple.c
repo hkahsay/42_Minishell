@@ -206,12 +206,12 @@ int	execute_multi_cmd(t_ppline *ppline)
 
 				if (line == NULL || ft_strcmp(ppline->pp_heredoc_eof, line) == 0)
 				{
-					free(line);
+					my_free(line);
 					break;
 				}
 
 				ft_putendl_fd(line, fd[1]);
-				free(line);
+				my_free(line);
 			}
 
 			if (ppline->pp_first_cmd)

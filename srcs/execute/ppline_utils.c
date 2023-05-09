@@ -42,5 +42,6 @@ char	**ft_mini_env_array(t_envnode *mini_env, int size)
 	// printf("i: %d\n", i);
 	// printf(LIME "mini_env_array\n" RS);
 	// print_mini_env_array(mini_env_array);
+	// my_free(mini_env_array);
 	return (mini_env_array);
 }

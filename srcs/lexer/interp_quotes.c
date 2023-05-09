@@ -57,5 +57,7 @@ char *check_quotes(char **p, t_token **head)
 		return (*p);
 	}
 	else
+	{
 		return (*p);
+	}
 }

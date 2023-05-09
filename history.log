@@ -317,3 +317,179 @@ echo $?
 |
 echo $?
 |
+cat Makefile
+cat Makefile 
+cat Makefile 
+cat Makefile 
+cat Makefile 
+echo $HOME
+cat Makefile 
+echo $HOME
+cat Makefile 
+cat Makefile 
+./minishell
+./minishell
+cat Makefile 
+cat Makefile 
+cat Makefile 
+cat Makefile 
+cat Makefile 
+cat Makefile
+ls
+cat Makefile 
+cat Makefile 
+cat Minishell
+cat Makefile 
+cat Makefile 
+cat Makefile 
+cat Makefile |grep "f"
+cat Makefile |grep "f" | wc
+cat Makefile
+echo "csdh"
+echo $HOME
+echo "sfsd"dfsdsd
+cat Makefile 
+cat Makefile |grep "f" | wc
+cat Makefile
+cat Makefile 
+cat Makefile 
+cat Makefile 
+cat Makefile 
+cat Makefile 
+cat Makefile 
+cat Makefile 
+cat Makefile 
+cat Makefile 
+cat Makefile |grep "f" |wc
+echo sdfs
+echo $HOME
+echo "$HOME"
+cat Makefile 
+cat Makefile 
+cat | cat | cat | ls
+cat Makefile | grep "f" | wc -l
+cat Makefile | grep "f" | ls
+cat Makefile | grep "f" | ls
+echo hello
+cat Makefile | grep "g" | ls
+./minishell 
+cat Makefile | grep "g" | ls
+cat Makefile | grep "g" | ls
+cat Makefile | grep "g"
+cat Makefile | grep "g" | wc -l | ls
+cat Makefile | grep "g" | ls
+cat Makefile | grep "g" | ls | wc -l
+cat Makefile | grep "g" | wc -l
+cat | cat Makefile | grep "g" | ls
+cat | cat | cat | cat Makefile | grep "g" | ls
+cat Makefile | cat
+echo
+cat Makefile | ls
+ls
+ls
+ls
+
+ÐŽÀñ»
+cat Makefile | grep "g"
+`Bðuô
+cat Makefile | grep "g"
+cat Makefile | grep "g" | ls
+cat Makefile | grep "g" | ls
+cat Makefile | grep "g" | ls
+cat Makefile | grep "g" | ls
+ls
+cat Makefile | grep "g" | ls
+cat Makefile | grep "g" | ls
+export hello=world
+pwd
+	my_free(new_ppline);
+
+cat Makefile | grep "g" | ls
+pwd
+cat Makefile | grep "g" | ls
+cat Makefile | grep "g" | ls
+l
+pwd
+pwd
+pwd
+pwd
+pwd
+pwd
+cat Makefile | grep "g" | ls
+cat | cat | cat Makefile | ls
+pwd
+pwd
+pwd
+pwd
+pwd
+pwd
+export helo=fsf
+pwd
+pwd
+pwd
+pwd
+pwd
+pwd
+pwd
+pwd
+pwd
+unset PATH
+pwd
+pwd
+pwd
+pwd
+pwd
+pwd
+pwd
+cat Makefile | grep "g" | ls
+pwd
+pwd
+pwd
+find . -type f -name "*.txt" -exec grep "example" {} \; | sort | uniq > example_files.txt
+
+[200~find . -type f -name "*.txt" -exec grep "example" {} \; | sort | uniq > example_files.txt
+find . -type f -name "*.txt" -exec grep "example" {} \; | sort | uniq > example_files.txt
+
+echo $?
+cat example_files.txt 
+cat | cat | cat| ls
+pwd
+pwd
+pwd
+./minishell
+pwd
+pwd
+pwd
+./minishell
+pwd
+pwd
+pwd
+pwd
+pwd
+pwd
+pwd
+pwd
+pwd
+env
+pwd
+pwd
+pwd
+pwd
+env
+pwd
+cd -
+pwd
+env
+pwd
+en
+env
+env
+ /Users/hkahsay/.vscode/extensions/vadimcn.vscode-lldb-1.9.1/adapter/codelldb terminal-agent --connect=51813 
+pwd
+pwd
+pwd
+pwd
+pwd
+env
+env | wc -l
+env | wc -l

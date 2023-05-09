@@ -3,17 +3,17 @@
 t_token    *lexer(char *input_str)
 {
     char *p;
-    t_token *token;
+    // t_token *token;
     t_token *head;
 	char	*space;
 	char  	*current;
 
-    token = NULL;
+    // token = NULL;
     head = NULL;
 	current = NULL;
     p = input_str;
 	space = " ";
-    init_token(token);
+    // init_token(token);
     while (p && *p)
     {
 		if (ft_isspace(*p))
@@ -47,7 +47,7 @@ t_token    *lexer(char *input_str)
 
 void interp(char *line, t_envnode *mini_env)
 {
-	t_token	*token_head;
+	t_token	*token_head = NULL;
 
 	token_head = lexer(line);
 	if (!token_head)

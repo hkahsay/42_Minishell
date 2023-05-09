@@ -53,6 +53,7 @@ static int change_directory(char *dir, t_ppline *ppline)
     pwd = ppline->pp_list_env;
     while (pwd != NULL)
     {
+        printf("pwd->key %s \n", pwd->key);
         if (ft_strcmp(pwd->key, "PWD") == 0)
         {
             ft_setenv("OLDPWD", pwd->value, pwd->content, &ppline->pp_list_env);

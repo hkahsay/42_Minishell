@@ -11,6 +11,8 @@ static t_cmd	*parse_commands(t_token **tok_head, int	cmd_num)
 	i = 0;
 	// print_token(*tok_head);
 	tok_cmd_list = my_malloc(sizeof(t_token *) * (cmd_num + 1));
+	printf("tok_cmd_list %p \n", tok_cmd_list);
+
 	if (!tok_cmd_list)
 		return (0);
 	tok_cmd_list[cmd_num] = 0;
@@ -49,7 +51,7 @@ void	*parse(t_token **token_head, t_envnode *mini_env)
 	// printf("cmd_index %d\n", cmd_num);
 	cmd_list = parse_commands(token_head, cmd_num);
 	free_token_list(*token_head);
-	// printf("STDOUT: %d\n", STDOUT_FILENO);
+	 printf("STDOUT: %d\n", STDOUT_FILENO);
 	execute(cmd_list, cmd_num, mini_env);
 	return (0);
 }

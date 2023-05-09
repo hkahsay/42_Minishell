@@ -7,6 +7,7 @@ int	g_exit_status;
 typedef struct s_envnode
 {
 	char				*key;
+	// free_one_ppline(ppline);
 	char				*value;
 	char				*content;
 	struct s_envnode	*prev;

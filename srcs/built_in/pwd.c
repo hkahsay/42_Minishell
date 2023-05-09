@@ -1,10 +1,5 @@
 #include"../../headers/minishell.h"
 
-//The buffer size of 4096 is commonly used as
-//a default value for storing the current working directory
-// path because it is a multiple of the typical filesystem
-//block size (e.g., 512 or 1024 bytes), and it is a power of two.
-
 int ft_pwd(t_ppline **ppline) //char **args, t_envnode **mini_env
 {
 	t_envnode	*curr_var;
@@ -27,18 +22,21 @@ int ft_pwd(t_ppline **ppline) //char **args, t_envnode **mini_env
 			if(ft_strcmp(curr_var->value, cwd) == 0)
 			{
 				printf("%s\n", curr_var->value);
+				free(cwd);
 				return (EXIT_SUCCESS);
 			}
 			else
 			{
 				my_free(curr_var->value);
-				curr_var->value = strdup(cwd);
-				printf("%s\n", curr_var->value);
+				curr_var->value = ft_strdup(cwd);
+				printf("curr_var->value %s\n", curr_var->value);
+				free(cwd); //TODO: FREE
 				return(0);
 			}
 		}
 		curr_var = curr_var->next;
 	}
+	free(cwd);
 	return (EXIT_SUCCESS);
 }
 

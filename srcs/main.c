@@ -28,31 +28,24 @@ void	prompt(char	*line, t_envnode *mini_env) // struct termios *saved,  t_envnod
 	if (!line)
 	{
 		printf("exit\n");
-		// free(line);
-		destroy_all();
-		// free_mini_envp(mini_env);
+		free(line);
 		exit(0);
 		return ;
 	}
 	if (ft_strlen(line) > 0)
 	{
-		// printf("propmt line: %s\n", line);
 		interp(line, mini_env);
 		signal(SIGINT, signal_handler2);
-		// tcsetattr(STDIN_FILENO, TCSANOW, saved);
 		add_history(line);
 		fd = open("history.log", O_CREAT | O_WRONLY | O_APPEND, 0777);
 		// printf("1\n");
 		ft_putstr_fd(line, fd);
 		ft_putstr_fd("\n", fd);
+		free(line);
 		close(fd);
-		// return ;
-		// printf("\nMAIN: OK head is back\n");
-		// cmd = parse(line, cmd);
-
 	}
 	else
-		my_free(line);
+		free(line);
 }
 
 int main(int argc, char **argv, char **envp)
@@ -89,12 +82,14 @@ int main(int argc, char **argv, char **envp)
 		// handle_signal(&saved);
 		// sig_handlers();
 		prompt(line, mini_envp); //my_envp,
+		// free(line);
 	}
 	// free_mini_envp(mini_envp);
 	// my_free_all(t_malloc **head);
 	// return (0);
 	write(1, "exit\n", 6);
-	exit (g_exit_status);
+	free(line);
+	exit (0);
 }
 
 // ft_cd(built, my_envp);

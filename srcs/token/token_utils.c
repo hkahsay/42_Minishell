@@ -4,7 +4,7 @@ void	ft_strdel(char **as)
 {
 	if (as && *as)
 	{
-		free(*as);
+		my_free(*as);
 		*as = NULL;
 	}
 }
@@ -20,6 +20,7 @@ char	*ft_strjoin_free(char *s1, char *s2)
 	else
 	{
 		result = (char *)my_malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+		printf("result %p \n", result);
 		if (!result)
 			return (NULL);
 		ft_strlcpy(result, s1, ft_strlen(s1) + 1);

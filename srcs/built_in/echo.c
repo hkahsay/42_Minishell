@@ -58,9 +58,9 @@ int ft_echo(t_ppline **ppline) //char **args, t_envnode **env_var
 	{
 		flag_echo = 1;
 		(*ppline)->pp_exit = print_and_return(ppline, flag_echo, flag_n);
-		free((*ppline)->pp_first_cmd);
-		free((*ppline)->ppline_cmd[0]);
-		free((*ppline)->ppline_cmd[1]);
+		my_free((*ppline)->pp_first_cmd);
+		my_free((*ppline)->ppline_cmd[0]);
+		my_free((*ppline)->ppline_cmd[1]);
 		return (EXIT_SUCCESS);
 	}
 	if (find_flag((*ppline)->ppline_cmd[1]) == 0)
@@ -69,9 +69,9 @@ int ft_echo(t_ppline **ppline) //char **args, t_envnode **env_var
 	(*ppline)->pp_exit = print_and_return(ppline, flag_echo, flag_n);
 	// printf(R "ECHO exit_status: %d\n" RS, (*ppline)->pp_exit );
 	// close((*ppline)->pp_outfile);
-	free((*ppline)->pp_first_cmd);
-	free((*ppline)->ppline_cmd[0]);
-	free((*ppline)->ppline_cmd[1]);
+	my_free((*ppline)->pp_first_cmd);
+	my_free((*ppline)->ppline_cmd[0]);
+	my_free((*ppline)->ppline_cmd[1]);
 	return (EXIT_SUCCESS);
 }
 
