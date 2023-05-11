@@ -103,6 +103,8 @@ typedef struct	s_ppline
 	int				ppline_idx;
 	// int				pp_pipe[2];
 	int				pp_pid;
+	int				saved_stdin;
+	int				saved_stdout;
 	int				pp_builtin_status;
 	int				pp_red_status;
 	int				pp_infile;

@@ -48,6 +48,8 @@ void	*parse(t_token **token_head, t_envnode *mini_env)
 	cmd_num = ft_count_pipes(token_head) + 1;
 	// printf("cmd_index %d\n", cmd_num);
 	cmd_list = parse_commands(token_head, cmd_num);
+	if (!cmd_list)
+		return (0);
 	free_token_list(*token_head);
 	// printf("STDOUT: %d\n", STDOUT_FILENO);
 	execute(cmd_list, cmd_num, mini_env);

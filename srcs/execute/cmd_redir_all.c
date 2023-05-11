@@ -19,33 +19,32 @@ static int	ft_red_list_size(t_token **tok_head)
 
 int	ft_handle_redir_all(t_ppline **new_ppline, t_token *ptr_cmd_red)
 {
-	t_token *red_ptr;
-	red_ptr = ptr_cmd_red;
+	int	i;
 
-	int	red_list_size = ft_red_list_size(&red_ptr);
-	(void)red_list_size;
-	// printf(GOLD "Redir_list size: %d\n" RS, red_list_size);
-
-		if (red_ptr->id == TOK_REDIR_OUT)
-		{
-			// printf(GOLD "Redir_out\n" RS);
+	i = 0;
+	int	red_list_size = ft_red_list_size(&ptr_cmd_red);
+	while (ptr_cmd_red && i < red_list_size)
+	{
+		if (ptr_cmd_red->id == TOK_REDIR_OUT)
 			ft_handle_redir_out(new_ppline, &ptr_cmd_red);
-		}
-		if (red_ptr->id == TOK_REDIR_OUT_APPEND)
-		{
-			// printf(GOLD "Redir_out_append\n" RS);
+		if (ptr_cmd_red->id == TOK_REDIR_OUT_APPEND)
 			ft_handle_redir_append(new_ppline, &ptr_cmd_red);
-		}
-		if (red_ptr->id == TOK_REDIR_IN)
+		if (ptr_cmd_red->id == TOK_REDIR_IN)
 		{
-			// printf(GOLD "Redir_in\n" RS);
 			ft_handle_redir_in(new_ppline, &ptr_cmd_red);
+
+			// if (ft_handle_redir_in(new_ppline, &ptr_cmd_red) == 0)
+			// 	return (1);
+			// return (0);
 		}
-		if (red_ptr->id == TOK_HEREDOC)
+		if (ptr_cmd_red->id == TOK_HEREDOC)
 		{
-			// printf(GOLD "Redir_heredoc\n" RS);
 			(*new_ppline)->pp_heredoc_status = 1;
 			ft_handle_heredoc(new_ppline, &ptr_cmd_red);
 		}
+		if (ptr_cmd_red->next->next)
+			ptr_cmd_red = ptr_cmd_red->next->next;
+		i++;
+	}
 	return (1);
 }

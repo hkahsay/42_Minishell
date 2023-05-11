@@ -64,7 +64,8 @@ void interp(char *line, t_envnode *mini_env)
 	// free_token_list(token_head);
 	delete_tok_spaces(&token_head);
 	// printf(GREEN "returned delete_tok_spaces\n" RS);
-	handle_input_error(&token_head);
+	if (handle_input_error(&token_head) == 1)
+		return ;
 	if (token_head)
 	{
 		parse(&token_head, mini_env);

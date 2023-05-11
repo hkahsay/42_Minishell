@@ -1,319 +1,737 @@
-echo sd >g
-echo sd >a
-cat < a
-echo sd >d
-cat d
-cat < d
-cat < d | wc
-echo sd | wc
-cat < d | wc
-echo sd | wc
-echo sd >d
-echo sd >k
-cat k
-cat <k
-<k cat
-echo sd >d
-cat d
-cat <d
-echo sd >b |cat <d
-echo sd >b |cat <d
-echo sd >d
-<<d
-cat <<d
-cat <<d
-<<d
-cat <<d
-<<d
-cat <<d
-<<s
-cat <<s
-<<d
-cat <<d
-<<d
-cat <<d
-cat | cat | ls
-echo asd|cat b
-echo asd|cat b > f
-<<d
-cat <<d
-<<d
-cat <<d
-<<d
-cat <<d
-<<d
-cat <<d
-<<d
-cat <<d
-<<d
-cat <<d
-<<d
-<<s
-s
-,,d
-<<d
-<<d
-cat <<d
-<<e
-cat <<e
-cat <<d
-cat <<d | wc
-echo sds >b
-echo ssds>b
-<b cat
-<b cat | wc
-<b cat | wc
-<b cat | wc
-<b cat
-<b cat | wc
-echo sdf >a
-cat <a
-cat <a | wc
-cat <a | grep "s" | wc
-cat <a | wc
-cat | cat | ls
-cat <a
-cat <b
-cat <b | wc
-cat <f |wc
-cat <<e
-cat <f
-cat <f | wc
-cat <f | grep "s" |wc -l
-cat <<e | wc -l
-echo sdf>g
-echo sdf>g | wc
-echo sdf>g | wc
-cat <g| echo sdf>g
-cat <g| ls
-echo sda>d | wc
-export |wc
-export >d|wc
-export >c
-export >>c
-wc <c
-export >>c | wc <c
-export >e|wc
-export >a | wc
-export >b | wc
-export >a | wc
-export >x | wc
-export >a | wc
-export > a|wc
-export >a | wc
-export >a | wc
-export >z | wc
-export >1|wc
-export >2|wc
-export >3|wc
-export >a | wc
-export >b|wc
-export > c|wc
-export >d|wc
-export >e|wc
-export >f | wc
-export >g|wc
-cat <g | wc
-echo ewc>h | wc
-export > h| wc
-echo h > h| wc
-cat <d | wc
-echo sdgdefd | cat <a
-echo sds
-echo sd
-echo sd
-echo sd
-echo asddfa
-echo asddfa | wc
-echo asddfa | wc -l
-echo
-echo
-echo
-echo sds | wc
-echo sdssefddw | wc
+cat >history.log 
+cat <history.log 
+cat <dss
+cat <sdfsd
+cat <sfd
+cat <history.log 
+cat <sdf
+cat <sdfe
+cat <sdfsd
+cat <sdfd
+cat <dss
+cat <sd
+cat sfe
+cat <sfe
+cat sdfs
+cat <sdfs
+cat <sdsf
+cat skfd
+cat <skfd
+cat dff
+cat <dff
+cat <df
+cat <history.log 
+cat <history.log |wc
+cat <sdfs
+cat <sdf
+cat <history.log 
+cat <sdfsd
+cat <sdff
+cat <sdf
+cat <sdf
+cat <sfd
+cat <sfd
+cat ,dfsd
+cat <dfsd
+cat <sdf
+cat <history.log |grep"e"|wc
+cat <history.log |wc
+echo edwe>a
+echo edwe>a |wc
+cat hsi
+cat <hufe
+cat <sdfsd
+export >dfd| wc
+echo sd>aa
+echo sd>aa | wc
+echo >aa|wc
+echo sdsf>aa|wc
+echo >sdf
+echo >sdf | wc
+echo sdfs>a
+echo sdfs>a | wc
+echo dsf>c
+echo dsf>c |wc
+echo sdf>d
+echo sdf>d |wc
+echo sd>a
+echo sdfwewe>a
+echo sdfwewe>a |wc
+echo syujt>a
+echo syujt>a |wc
+echo syujt>a
+echo syujt>a |wc
 env | wc -l
+export | wc -l
+env |wc
+echo sdfs>e
+echo sdfs>e |wc
+echos df>df
+echos df>a
+echo df>a
+echo sdf>a
+echo sdf>
+echo sdf>2
+echo sdf>
+echo $?
+echo sdf>
+echo sd>
+echo sd>
+echo sd.s
+echo sd.s>
+echo sd.s><
+echo sd.s>|
+echo sd.s>s
+echo sd.s>s | wc
+echo sd>sd
+echo sd>sd |wc
+cat <<e
+cat <<e | cat -n
+cat <<e >out
+cat out
+echo sd>a | ls
+echo sd>a
+echo sd>a 
+echo sd>a
+env
+env |wc
+env |wc
+env|wc
+env|wc
+env>a|wc
+echo sd>a
+echo sd>a | wc
+echo sd>a
+echo sd>a |ls
+echo sds>a
+echo sds>a|ls
+echo sd>a
+echo sd>a|ls
+cat | 
+echo sd>a
+echo sd>a|wc
+echo sd>a
+echo sd>a |wc
+echo sd>a
+echo sd>a |ls
+echo sd>a|ls
+echo sd>a
+echo sd>a | ls
+env |wv
+env |wc
+cat sdfsdfsd
+cat <sdfsdfsd
+cat <sdfsdf
+cat <sdfsdf
+cat <sdfsdf
+cat <sdfsdf
+cat <sdfsdf
+cat <sdfsdf
+cat <sdfsf
+cat <sdsf
+cat <sdfs
+cat <sdfsdf
+cat <sdfsdf
+cat <sdfsd
+cat <sdfsd
+cat <sdfsdf
+cat <sdfsdf
+cat <dfgdfd
+cat <dfgdfd
+cat <sfdds
+cat <sdd
+cat <sdfs
+cat <sfsd
+cat <sdfsd
+cat <sdfsd
+cat <sdfs
+cat <sfd
+cat <sdfs
+cat <sdfs
+cat <sdsf
+cat <sdife
+cat <sdfs
+cat <sdfsd
+cat <sdf
+cat <sdfdf
+cat <sdf
+cat <sdffs
+cat <sdfsds
+cat <sfdsds
+cat <sdfds
+cat <sfddfg
+cat <sfddfg
+cat <sdfdfg
+env |wc
+env |wc |ls
+env |wc |ls |grep "a"
+env |wc |ls |grep "a" |wc -l
+env |wc |ls |grep "a" |wc -l >aaaaa
+echo sdfs>a
+echo sdfs>a
+cat | cat ls
+cat | cat |ls
 export |wc
+cat <<e
+cat <<e >b
+export > e | wc
+echo sffs>a|wc
+export>e|wc
+export >a |wc
+export >a |wc
+cat a
+export >a |wc
+export>ea|wc
+cat ea
+echo sds>a|wc
+cat a
+echo sds>a|wc
+cat a
+echo sds>a|wc
+cat a
+echo sds>a
+echo sds>a |wc
+cat a
+export>e|wc
+cat ea
+export >a
+export >a
+export>e
+export>e
+export
+export>e
+export>e|wc
+export>e
+cat e
+export>e
+cat e
+export > c |wc
+export > c |wc
+export>a|wc
+export>a|sort
+export | sort
+export
+env
+env | sort
+env>t|sort
+export > aaa|wc
+cat|cat|ls
+cat<<<end
+cat <<< end
+cat<<end
+cat<<end>bla
+cat bla
+bla>cat
+<bla cat
+<bla cat >bla2
+cat bla2
+<bla3 cat
+echo >d>f>g
+echo sesefesf>d>f>g
+chmod -w f
+echo $HOME
+echo sdf>a 
+echo sdf>a | wc
+export>b
+export>b |grep "T" |wc
+export |grep "T" |wc
+cat <asdsa
+cat <asdsa
+cat <ads
+cat <sdwedw
+cat <ashdwehd
+dsds
+cat <dwewe
+dwewe
+cat dwewe
+export >a
+cat a
+chmod -w a
+ls -la
+chmod -r a
+ls -la
+cat a
+cat b
+cat <b
+cat b
+cat <sds
+cat wdwe
+cat <wdwe
+cat <<e
+w
+cat <<e
+cat <<e >b
+cat b
+cat <bas
+cat bas
+echo sdfsd
+echo sdfsd>a
+echo sdfsd>a | wc
+export | wc
+export > b| wc
+export > b| cat <b | wc
+cat b
+export >b
+export >b | cat b
+cat b
+export >b | cat b
+export >b | cat <b
+export >b
+export >b |wc
+export >b |cat
+export >b |cat <b
+export >b
+export >b | wc
+export >b | cat b
+export >b | cat <b
+export >b | wc
+export >b | cat b
+export >b | cat <b
+export >b | cat b
+export >b | cat <b
+export >b | cat b
+export >b | cat <b
+export >b | cat b
+cat <<s | cat -e
+cat <<s | cat >b
+cat b
+cat <<s | cat >b | cat b
+export >b | cat b
+cat <<s | cat >b | cat b
+export >b | cat b
+export >b | cat b
+export >b | cat b
+export >b | cat <b
+export >b | cat <b
+export >b | cat b
+export >b|cat b
+export >b|cat b
+export >b|cat b
+echo sdd>b
+echo sdd>b |wc
+echo sdd>b |cat <a
+cat a
+cat a|cat b
+cat <a|cat <b
+export >b|wc
+export >b|cat b
+export >b|cat <b
+cat b
+cat <b
+export >b|cat <b
+export >b|cat <b
+export >b|wc
+export >b|cat <b
+export >b|cat <b
+export >b|cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export
+export > b | cat < b
+export > b
+export > b | wc
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+export > b | cat < b
+echo dfd>a|wc
+export >b |cat b
+export >b |cat <b
+ export >b|cat <b
+ export >b|cat <b
+ export >b|cat <b
+ export >b|cat <b
+ export >b|cat <b
+export >b
+export >b | cat b
+export >b | cat <b
+export >b | cat <b
+export >b | cat <b
+export >b | cat <b
+export >b|cat <b
+export >b|cat <b
+echo sdfs>c|wc
+echo sdfs>c|wc
+export >b|cat <b
+export >b|cat <b
+export >b
+export >b
+export >b
+export >b | wc
+export >b | cat a
+export >b | cat a
+export >b | cat b
+export >b | export >a | cat b
+export >b | cat <b
+export >b|cat <b
+close_all_fds(&pplin
+export >b|cat <b
+export >b
+echo sds>b
+echo sds>b | wc
+echo sds>b | wc
+export >b|cat <b
+export >b
+export >b |wc
+export >b |cat b
+export >b|cat <b
+echo sds>a
+echo sds>b
+echo sds>b
+echo sdssds>b
+echo sds>b
+echo sds>b
+echo sd>b
+echo sddfsas>b
+echo sddfsas>b |wc
+echo sdfwed>b
+echo sdfwed>b | wc
+echo sd >b
+echo sd >b | wc
+echo sd >b
+echo sd>b
+echo sd>b |wc
+echo sds>b
+echo sdssd>b
+echo sdssd>b | wc
+echo sdsff>b
+echo sdsff>b | wc
+export >b|cat <b
+cat | cat |ls
+cat | cat | ls
+export >b
+cat | cat | ls
+export >b
+export >>b
+export >b | cat b
+export >b | cat b
+export >b | cat <b
+cat | cat | ls
+cat | cat |ls
+echo sdds
+echo sdds >b
+echo sdds >b | wc
+echo sdds >b | wc | ls
+echo sdds >b | cat b
+echo sdds >b | cat <b
+echo sdds >b | cat b
+export >b | cat b
+export >b | cat b
+echo sdds >b | cat b
+export >b | cat b
+export >b | cat <b
+cat | cat |ls
+cat b
+export >b
+cat b
+cat <b
+cat <b
+<b cat
+cat <b
+cat <b
+cat <b
+export >b|cat b
+export >b|cat <b
+export >b
+export >b | ls
+export >b | cat >c
+export >b | cat <c
+export >c
+export >b | cat <c
+export >b | cat <b
+export >b | cat <b
+export >b | cat <b
+export >b | cat <b
+export >b | cat <b
+export >b | cat <b
+export >b | cat <b
+export >b | cat <c
+export >b | wc
+export >b | wc
+export >b | cat <c
+export >b | cat
+export >b | cat <c
+cat <c
+export >c |cat <c 
+export >b |cat <c 
+export >c |cat <c 
+export >c
+export >b
+export >b | cat <b
+export >c
+export >b
+export >b | cat <b
+export >b | cat <b
+export >b | cat <b
+export >b | cat <b
+echo sfdds
+echo sds>b
+echo sds>b | cat <c
+echo sds>b | cat c
+echo sds>b | cat <b
+echo sds>b | cat <c
+echo sds>b | cat <b
+echo sds>b | cat <b
+export>b | cat <b
+echo sds>b | cat <b
+env>b | cat <b
+export >b
+export >b | cat <b
+env >b | cat <b
+env >b | cat <b
+echo sds >b | cat <b
+echo sdssdsdsd >b | cat <b
+export >b | cat <b
+cat <<e
+cat <<e >a
+cat a
+cat | cat | wc
+cat | cat | ls
+export > b
+export > b
+export > b | cat b
+env >b|cat <b
+export >b|cat <b
+export
+export >b|cat < b
+export >b|cat < b
+export >b|cat < b
+export >b|cat < b
+export >b|cat <b
+env >b | cat <b
+cat | cat | ls
+cat <<e
+cat <<e > b
+cat b
+export 
+export | wc
+echo cs|wc
+export
+export >b
 env | wc
 env
-echo jhz|wc
-echo |wc
-echo sdc
-echo sdc |wc
-echo sdc |wc -l
-echo sdcsde |wc -l
-echo sdcsde |wc
-echo sda
-echo sda | wc
-echo sda | wc
-echo sds
-echo sds | wc
-echo hk
-echo hk | wc
-echo hk | wc
-echo hk
-echo sd
-echo sd |wc
-echo sd|wc
-echo sd
-echo sd |wc
-echo sd |wc
-echo sd |wc
-echo sd |wc
-echo sd
-echo sd | wc
-echo sd
-echo sd | wc
-echo sd
-echo sd >r
-echo sd
-echo sd >s
-echo sd |wc
-echo sd |wc
-echo sd |wc
-echo sd |wc
-echo sd >s
-echo sd
-echo sd|wc
+export var=sfsd
 env
+export
+export >b
+export >b | cat <b
+env >b|cat b
+export | wc
+export > b
+env > b
+echo >b
 env | wc
-echo sds
-echo sds |wc
-echo -n sds |wc
-echo -n sds |wc -l
-env |wc -l
-env
-export |wc
-minishell
-./minishell
-./minishell
-echos dsf
-echo dsf
-echo dsf | wc
-minishell
-echos
-echo sds
+export | wc
 export
 export | wc
-export var=w| wc
-export
-export var=w| wc
-export var=w| cat
-export var=r |wc
-export var=r 
-export
-export |wc -l
-unset var
-export |wc -l
-env
-unset var=r
-env
-unset
-env
-export
-export var=d
-export
-unset var
-unset var
-export
-unset LESS
-unset LANG
-env
-export
-export var=d
-env
-unset var
-export var=d
-unset var=d
-export var=f
-unset var
-env
-export ds
-export
-unset ds
-export
-env
-export ds=we
-env
-export
-unset ds
-export
-env
-echo sds|wc
-cat <<e| wc-l
-cat <<e| wc -l
-echo $?
-cat <<e| wc-l
-echo $?
-cat <<e| wc-l
-echo $?
-g_exit_status
-cat <<e | wc
-cat <<e | wc-l
-echo $?
-cat <<s
-cat <<s |wc-l
-cat <<s |wc-l
-ehco $?
-echo $?
-cat <<s |wc-l
-echo $?
-cat <<e |wc-l
-wc-l
-minishell
-./minishell
-pwd
-ls
-minishell
-./minishell
-pwd
-ls
-cat minishell 
-./minishell
-ls
-cat <<e
-cat <<e
-ls
-ls -la
-ls
-ls
-ls
-ls |wc
-./minishell
-./minishell
-./minishell
-./minishell
-./minishell
-./minishell
-./minishell
-./minishell
-./minishell
-./minishell
-./minishell
-./minishell
-./minishell
-./minishell
-./minishell
-./minishell
-./minishell
-./minishell
-env
-export
-env
-./minishell
-export
-./minishell
-env
-|
-echo $?
-echo $?
-echo $?
-|
-echo $?
-||
-echo $?
-echo $?
-|
-echo $?
-|
-echo $?
-|
+export >b| wc
+export >b| cat <b
+env >b| cat <b
+echo dfsd >b| cat <b
