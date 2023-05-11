@@ -46,5 +46,6 @@ int	ft_handle_redir_all(t_ppline **new_ppline, t_token *ptr_cmd_red)
 			ptr_cmd_red = ptr_cmd_red->next->next;
 		i++;
 	}
+	free_token_list(ptr_cmd_red);
 	return (1);
 }

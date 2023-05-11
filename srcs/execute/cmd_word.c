@@ -23,17 +23,17 @@ void	*ft_handle_word(t_ppline **new_ppline, t_token *cmd_word)
 
 	i = 0;
 	word_ptr = cmd_word;
-	(*new_ppline)->ppline_cmd = (char **)malloc(sizeof(char *) * (ft_count_args_cmd_word(cmd_word) + 1));
+	(*new_ppline)->ppline_cmd = (char **)my_malloc(sizeof(char *) * (ft_count_args_cmd_word(cmd_word) + 1));
 	if ((*new_ppline)->ppline_cmd == NULL)
 	{
-		free(new_ppline);
+		my_free(new_ppline);
 		return NULL;
 	}
 	i = 0;
 	while (word_ptr != NULL && i < ft_count_args_cmd_word(cmd_word))
 	{
 		// printf(BLUE "word_ptr->content: %s\n" RS, word_ptr->content);
-		(*new_ppline)->ppline_cmd[i] = strdup(word_ptr->content);
+		(*new_ppline)->ppline_cmd[i] = ft_strdup(word_ptr->content);
 		// printf(LBLUE "new_ppline->ppline_cmd[%d]: %s\n" RS, i, (*new_ppline)->ppline_cmd[i]);
 		if ((*new_ppline)->ppline_cmd[i] == NULL)
 		{
@@ -46,15 +46,18 @@ void	*ft_handle_word(t_ppline **new_ppline, t_token *cmd_word)
 	(*new_ppline)->ppline_cmd[i] = NULL;
 	if (i > 0)
 	{
-		(*new_ppline)->pp_first_cmd = strdup((*new_ppline)->ppline_cmd[0]);
+		(*new_ppline)->pp_first_cmd = ft_strdup((*new_ppline)->ppline_cmd[0]);   //TODO : FREE
+		
 		// printf(ORS "i > 0 create ppline->ppline_cmd[0] %s\n", (*new_ppline)->ppline_cmd[0]);
 	}
 	if (i == 1)
 	{
-		(*new_ppline)->pp_first_cmd = strdup((*new_ppline)->ppline_cmd[0]);
+		(*new_ppline)->pp_first_cmd = ft_strdup((*new_ppline)->ppline_cmd[0]);  //TODO : FREE
+		
 		// printf(ORS "i == 1 create (*new_ppline)->pp_first_cmd %s\n", (*new_ppline)->pp_first_cmd);
 		// break;
 	}
+	free_token_list(cmd_word);
 	return (0);
 }
 

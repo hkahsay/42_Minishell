@@ -60,6 +60,7 @@ void	*my_malloc(unsigned long size)
 		exit (1);
 	}
 	new_elem->content = buffer;
+	// printf("new_elem->content %p\n", new_elem->content);
 	new_elem->next = 0;
 	ft_lstadd_back(finder(), new_elem);
 	return (buffer);

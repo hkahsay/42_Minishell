@@ -11,12 +11,12 @@ static char	*get_current_directory(void)
 {
 	char *cwd;
 
-	cwd = (char *)malloc(PATH_MAX * sizeof(char));
+	cwd = (char *)my_malloc(PATH_MAX * sizeof(char));
 	if (cwd != NULL)
 	{
 		if (getcwd(cwd, PATH_MAX) == NULL)
 		{
-			free(cwd);
+			printf("1. if getcwd get_current_directory: cwd %s\n", cwd);
 			cwd = NULL;
 		}
 	}
@@ -56,6 +56,7 @@ int	search_path(t_ppline *ppline, char **cmd_path)
 		if (find_current_directory(&minishell_path) == 0)
 		{
 			*cmd_path = ft_strdup(minishell_path);
+			printf("4. cmd_path %s\n", *cmd_path);
 			if (!access(*cmd_path, F_OK) && !access(*cmd_path, X_OK))
 				return (-1);
 		}
@@ -68,7 +69,6 @@ int	search_path(t_ppline *ppline, char **cmd_path)
 	{
 		temp = ft_strjoin(path_array[i], "/");
 		*cmd_path = ft_strjoin(temp, ppline->ppline_cmd[0]);
-		my_free(temp);
 		if (!access(*cmd_path, F_OK))
 			return (-1);
 		i++;

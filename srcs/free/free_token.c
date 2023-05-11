@@ -2,8 +2,8 @@
 
 void	free_token_list(t_token *tokens)
 {
-	t_token *cur;
-	t_token *next;
+	t_token	*cur;
+	t_token	*next;
 
 	cur = tokens;
 	next = NULL;

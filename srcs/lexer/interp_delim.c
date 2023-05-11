@@ -1,5 +1,13 @@
 #include "../../headers/minishell.h"
 
+// t_delim delimiters[] = {
+//     {">>", 2, TOK_REDIR_OUT_APPEND},
+//     {"<<", 2, TOK_HEREDOC},
+// 	{">", 1, TOK_REDIR_OUT},
+//     {"<", 1, TOK_REDIR_IN},
+//     {"|", 1, TOK_PIPE}
+// 	};
+
 int	is_delim_char(char c)
 {
 	if ((c == '>' || c == '<' || c == '|'))
@@ -7,38 +15,40 @@ int	is_delim_char(char c)
 	return (0);
 }
 
-char *check_delim(char **p, t_token **head)
+char	*check_delim(char **p, t_token **head)
 {
-	t_delim *delim;
-    unsigned long i = 0;
-	t_delim delimiters[] = {
-    {">>", 2, TOK_REDIR_OUT_APPEND},
-    {"<<", 2, TOK_HEREDOC},
-	{">", 1, TOK_REDIR_OUT},
-    {"<", 1, TOK_REDIR_IN},
-    {"|", 1, TOK_PIPE}
-	};
+	t_delim			*delim;
+	t_delim			delimiters[5];
+	unsigned long	i;
 
+	i = 0;
+	delimiters[0] = (t_delim){">>", 2, TOK_REDIR_OUT_APPEND};
+	delimiters[1] = (t_delim){"<<", 2, TOK_HEREDOC};
+	delimiters[2] = (t_delim){">", 1, TOK_REDIR_OUT};
+	delimiters[3] = (t_delim){"<", 1, TOK_REDIR_IN};
+	delimiters[4] = (t_delim){"|", 1, TOK_PIPE};
 	delim = delimiters;
 	while (delim->delim_str && (i < sizeof(delimiters) / sizeof(t_delim)))
 	{
-		if (**p == *delim->delim_str && (delim->delim_len == 1 || strncmp(*p, delim->delim_str, delim->delim_len) == 0))
+		if (**p == *delim->delim_str && (delim->delim_len == 1 \
+		|| strncmp(*p, delim->delim_str, delim->delim_len) == 0))
 		{
 			add_token(head, delim->delim_str, delim->delim_type);
 			if (ft_strlen(*p) - (size_t)delim->delim_len >= 0)
 			{
 				*p = *p + (delim->delim_len);
-				break;		
+				break ;
 			}
 			if (is_quote(**p) == 1)
 				return (*p);
 			else
-				break;
+				break ;
 		}
 		++delim;
 		i++;
-		if (delim->delim_str == NULL && i < sizeof(delimiters) / sizeof(t_delim))
-			break;
+		if (delim->delim_str == NULL \
+		&& i < sizeof(delimiters) / sizeof(t_delim))
+			break ;
 	}
 	return (*p);
 }

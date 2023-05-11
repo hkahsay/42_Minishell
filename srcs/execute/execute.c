@@ -5,8 +5,7 @@ void execute(t_cmd *cmd, int cmd_num, t_envnode *mini_env)
 	t_ppline	*ppline;
 
 	ppline = build_ppline_array(&cmd, cmd_num, mini_env);
-	if (!ppline)
-		return ;
+	my_free(cmd);
 	ter_attr_handler_off();
 	signals_default();
 	if (ppline->ppline_idx == 1 && ppline->pp_red_status == 0 && check_if_builtin(ppline->pp_first_cmd) == 0)
