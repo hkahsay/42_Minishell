@@ -735,3 +735,10 @@ export >b| wc
 export >b| cat <b
 env >b| cat <b
 echo dfsd >b| cat <b
+echo hello
+export
+echo hello
+export
+env
+echo helo; |
+echo $?

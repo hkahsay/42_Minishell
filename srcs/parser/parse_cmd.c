@@ -49,20 +49,12 @@ void	*build_cmd_list(t_token **tok_cmd_list)
 	{
 		tok_h = tok_cmd_list[i];
 		new_cmd = init_cmd();
-<<<<<<< HEAD
 		if (build_word_red_cmd(&new_cmd, tok_h) == -1)
 			return (0);
 		if (cmd_list == NULL) {
-=======
-		build_word_red_cmd(&new_cmd, tok_h);
-		if (cmd_list == NULL)
-		{
->>>>>>> 8de5586d89308bcb734ad3cb024c1eabfc2a30b3
 			cmd_list = new_cmd;
 			cmd_tail = new_cmd;
-		}
-		else
-		{
+		} else {
 			cmd_tail->next = new_cmd;
 			cmd_tail = new_cmd;
 		}
