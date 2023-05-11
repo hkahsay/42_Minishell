@@ -5,6 +5,9 @@ void execute(t_cmd *cmd, int cmd_num, t_envnode *mini_env)
 	t_ppline	*ppline;
 
 	ppline = build_ppline_array(&cmd, cmd_num, mini_env);
+	if (ppline == NULL)
+		return ;
+	// print_ppline_list(ppline, ppline->ppline_idx);
 	my_free(cmd);
 	ter_attr_handler_off();
 	signals_default();

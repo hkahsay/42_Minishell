@@ -21,6 +21,59 @@ void	free_one_ppline(t_ppline **new_ppline)
 	// return (0);
 }
 
+// static t_ppline *build_ppline_list(t_ppline **ppline, t_ppline *new_ppline)
+// {
+// 	// t_ppline	*ppline = NULL;
+// 	t_ppline	*ppline_tail = NULL;
+// 	printf("4new_pppline init\n");
+
+// 	printf(R"cmd: %s\n"RS, new_ppline->pp_first_cmd);
+// 	if ((*ppline) == NULL)
+// 	{
+// 		printf("5new_pppline init\n");
+// 		(*ppline) = (new_ppline);
+// 		ppline_tail = (new_ppline);
+// 	}
+// 	else
+// 	{
+// 		printf("6new_pppline init\n");
+// 		ppline_tail->next = (new_ppline);
+// 		ppline_tail = (new_ppline);
+// 	}
+// 	printf("7new_pppline init\n");
+// 	return ((*ppline));
+// }
+
+static void append_ppline(t_ppline **ppline, t_ppline *new_ppline, t_ppline **ppline_tail)
+{
+    if (*ppline == NULL)
+    {
+        *ppline = new_ppline;
+        *ppline_tail = new_ppline;
+    }
+    else
+    {
+        (*ppline_tail)->next = new_ppline;
+        *ppline_tail = new_ppline;
+    }
+}
+
+static int handle_redirection(t_ppline *new_ppline, t_token *cmd_red)
+{
+	if (ft_handle_redir_all(&new_ppline, cmd_red) == 1)
+	{
+		new_ppline->pp_red_status = 1;
+		return (1);
+	}
+	else
+	{
+		ft_putstr_fd("minishell_VH: ", STDERR_FILENO);
+		ft_putstr_fd(cmd_red->next->content, STDERR_FILENO);
+		ft_putstr_fd(": No such file or directory\n", STDERR_FILENO);
+		return (0);
+	}
+}
+
 t_ppline	*build_ppline_array(t_cmd **cmd_head, int cmd_n, t_envnode *mini_env)
 {
 	t_ppline	*ppline = NULL;
@@ -42,28 +95,22 @@ t_ppline	*build_ppline_array(t_cmd **cmd_head, int cmd_n, t_envnode *mini_env)
 			ft_handle_word(&new_ppline, cmd_ptr->cmd_word);
 		if (cmd_ptr->cmd_red)
 		{
-			if (ft_handle_redir_all(&new_ppline, cmd_ptr->cmd_red))
-				new_ppline->pp_red_status = 1;
-			else
-			{
-				ft_putstr_fd("minishell_VH: ", STDERR_FILENO);
-				ft_putstr_fd(cmd_ptr->cmd_red->next->content, STDERR_FILENO);
-				ft_putstr_fd(": No such file or directory\n", STDERR_FILENO);
-				return (NULL);
-			}
+			if (!handle_redirection(new_ppline, cmd_ptr->cmd_red))
+                return NULL;
+			// if (ft_handle_redir_all(&new_ppline, cmd_ptr->cmd_red) == 1)
+			// 	new_ppline->pp_red_status = 1;
+			// else
+			// {
+			// 	ft_putstr_fd("minishell_VH: ", STDERR_FILENO);
+			// 	ft_putstr_fd(cmd_ptr->cmd_red->next->content, STDERR_FILENO);
+			// 	ft_putstr_fd(": No such file or directory\n", STDERR_FILENO);
+			// 	return (NULL);
+			// }
 		}
-		if (ppline == NULL)
-		{
-			ppline = new_ppline;
-			ppline_tail = new_ppline;
-		}
-		else
-		{
-			ppline_tail->next = new_ppline;
-			ppline_tail = new_ppline;
-		}
+		append_ppline(&ppline, new_ppline, &ppline_tail);
 		cmd_ptr = cmd_ptr->next;
 		cmd_n--;
 	}
 	return (ppline);
 }
+

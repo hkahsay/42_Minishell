@@ -9,10 +9,8 @@ int ft_handle_redir_out(t_ppline **new_ppline, t_token **ptr_cmd_red)
 	{
 		if (access((*ptr_cmd_red)->next->content, F_OK) == 0)
 		{
-			// File exists
 			if (access((*ptr_cmd_red)->next->content, W_OK) != 0)
 			{
-				// File does not have write permissions
 				ft_putstr_fd("minishell_VH: ", STDERR_FILENO);
 				ft_putstr_fd((*ptr_cmd_red)->next->content, STDERR_FILENO);
 				ft_putstr_fd(": Permission denied\n", STDERR_FILENO);
@@ -24,6 +22,5 @@ int ft_handle_redir_out(t_ppline **new_ppline, t_token **ptr_cmd_red)
 			return (-1);
 	}
 	(*new_ppline)->pp_fd_out = fd_out;
-	printf(LB"create redir_out: (*new_ppline)->pp_fd_out: %d\n"RS, (*new_ppline)->pp_fd_out);
 	return (1);
 }

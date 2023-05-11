@@ -20,7 +20,7 @@ static char	*mini_getenv(char *var_name, int var_len, t_envnode *mini_env)
 char	*expand_token(char **content, t_envnode *mini_env)
 {
 	char	*p;
-	int		var_len;
+	// int		var_len;
 	char	*var_name;
 	char	*var_value;
 	char	*prefix;
@@ -34,29 +34,19 @@ char	*expand_token(char **content, t_envnode *mini_env)
 		if (*p == '$' && p[1])
 		{
 			prefix = ft_substr(*content, 0, p - *content);
-			printf(LB "EXPAND: prefix %s\n" RS, prefix);
-			var_len = ft_strcspn(p + 1, " $;|&><\n");
-			var_name = ft_substr(p + 1, 0, var_len);
-			printf(LB "EXPAND: var_name %s\n" RS, var_name);
-			var_value = mini_getenv(var_name, var_len, mini_env);
-			printf(LB "EXPAND: var_value %s\n" RS, var_value);
+			// var_len = ft_strcspn(p + 1, " $;|/&><\n");
+			var_name = ft_substr(p + 1, 0, ft_strcspn(p + 1, " $;|/&><\n"));
+			var_value = mini_getenv(var_name, ft_strcspn(p + 1, " $;|/&><\n"), mini_env);
 			if (!var_value)
 				var_value = "";
 			ft_strdel(&var_name);
 			expanded_content = ft_strjoin_free(expanded_content, prefix);
-			printf(LB "EXPAND: expanded_content %s\n" RS, expanded_content);
 			expanded_content = ft_strjoin_free(expanded_content, var_value);
-			printf(LB "EXPAND: expanded_content %s\n" RS, expanded_content);
-			*content = p + var_len + 1;
-			printf(LB "EXPAND: *content %s\n" RS, *content);
+			*content = p + ft_strcspn(p + 1, " $;|/&><\n") + 1;
 			ft_strdel(&prefix);
 			if (*content == p + 1)
-			{
 				expanded_content = ft_strjoin_free(expanded_content, "$");
-				printf(LB "EXPAND: expanded_content %s\n" RS, expanded_content);
-			}
 			p = *content;
-			printf(LB "EXPAND: p %s\n" RS, p);
 		}
 		else
 			p++;
