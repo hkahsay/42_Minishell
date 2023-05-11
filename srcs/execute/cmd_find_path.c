@@ -41,7 +41,7 @@ static int	find_current_directory(char **path)
 	return (0);
 }
 
-int	search_path(t_ppline *ppline, char **cmd_path)
+int	search_path(t_ppl *ppl, char **cmd_path)
 {
 	char	**path_array;
 	char 	*instance = NULL;
@@ -51,7 +51,7 @@ int	search_path(t_ppline *ppline, char **cmd_path)
 
 	i = 0;
 	instance = "./minishell";
-	if (ft_strncmp(instance, ppline->pp_first_cmd, ft_strlen(instance)) == 0)
+	if (ft_strncmp(instance, ppl->pp_first_cmd, ft_strlen(instance)) == 0)
 	{
 		if (find_current_directory(&minishell_path) == 0)
 		{
@@ -62,13 +62,13 @@ int	search_path(t_ppline *ppline, char **cmd_path)
 		}
 		return (0);
 	}
-	*cmd_path = find_path(ppline->pp_arr_env);
+	*cmd_path = find_path(ppl->pp_arr_env);
 	path_array = ft_split(*cmd_path, ':');
 	i = 0;
 	while (path_array[i])
 	{
 		temp = ft_strjoin(path_array[i], "/");
-		*cmd_path = ft_strjoin(temp, ppline->ppline_cmd[0]);
+		*cmd_path = ft_strjoin(temp, ppl->ppl_cmd[0]);
 		if (!access(*cmd_path, F_OK))
 			return (-1);
 		i++;

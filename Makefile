@@ -76,9 +76,9 @@ SRCS =	srcs/main.c \
 		srcs/built_in/export.c \
 		srcs/built_in/pwd.c \
 		srcs/built_in/unset.c \
-		srcs/execute/ppline_build.c \
-		srcs/execute/ppline_new.c \
-		srcs/execute/ppline_utils.c \
+		srcs/execute/ppl_build.c \
+		srcs/execute/ppl_new.c \
+		srcs/execute/ppl_utils.c \
 		srcs/execute/cmd_word.c \
 		srcs/execute/cmd_redir_all.c \
 		srcs/execute/cmd_redir_in.c \
@@ -95,11 +95,12 @@ SRCS =	srcs/main.c \
 		srcs/print/print_token.c \
 		srcs/print/print_cmd.c \
 		srcs/print/print_env.c \
-		srcs/print/print_ppline.c \
+		srcs/print/print_ppl.c \
 		srcs/error/error_exit.c \
 		srcs/error/error_input.c \
 		srcs/error/ft_error.c \
 		srcs/free/free_token.c \
+		srcs/free/free_ppl.c \
 		# srcs/sig_handler/signal_handler2.c \
 		# srcs/sig_handler/signal_handler.c \
 

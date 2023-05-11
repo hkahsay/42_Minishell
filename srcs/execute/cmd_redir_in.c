@@ -1,6 +1,6 @@
 #include "../../headers/minishell.h"
 
-int ft_handle_redir_in(t_ppline **new_ppline, t_token **ptr_cmd_red)
+int ft_handle_redir_in(t_ppl **new_ppl, t_token **ptr_cmd_red)
 {
 	int	fd_in;
 
@@ -26,7 +26,7 @@ int ft_handle_redir_in(t_ppline **new_ppline, t_token **ptr_cmd_red)
 		}
 		
 	}
-	(*new_ppline)->pp_fd_in = fd_in;
-	printf("FD pp_infile after open infile: %d\n\n" RS, (*new_ppline)->pp_fd_in);
+	(*new_ppl)->pp_fd_in = fd_in;
+	printf("FD pp_infile after open infile: %d\n\n" RS, (*new_ppl)->pp_fd_in);
 	return (1);
 }

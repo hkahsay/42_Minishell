@@ -1,32 +1,32 @@
 #include "../../headers/minishell.h"
 
-void	*init_pipe(t_ppline **ppline, int ppline_idx)
+void	*init_pipe(t_ppl **ppl, int ppl_idx)
 {
 	int		pipes[2];
 	int		i;
 
-	t_ppline *first;
-	first = *ppline;
+	t_ppl *first;
+	first = *ppl;
 	i = 0;
-	if (ppline_idx == 1)
+	if (ppl_idx == 1)
 	 	return (0);
-	while ((*ppline)->next && i < ppline_idx)
+	while ((*ppl)->next && i < ppl_idx)
 	{
 		if (pipe(pipes) == -1)
 			 msg_error("minishell_VH: failed to create pipe", errno);
-		if ((*ppline)->pp_outfile == 1)
+		if ((*ppl)->pp_outfile == 1)
 		{
-			(*ppline)->pp_outfile = pipes[1];
-			(*ppline)->next->pp_infile = pipes[0];
+			(*ppl)->pp_outfile = pipes[1];
+			(*ppl)->next->pp_infile = pipes[0];
 		}
 		else
 		{
-			close((*ppline)->next->pp_infile);
-			close((*ppline)->pp_outfile);
+			close((*ppl)->next->pp_infile);
+			close((*ppl)->pp_outfile);
 		}
-		*ppline = (*ppline)->next;
+		*ppl = (*ppl)->next;
 		i++;
 	}
-	*ppline = first;
+	*ppl = first;
 	return (0);
 }

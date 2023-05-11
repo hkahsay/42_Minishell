@@ -1,11 +1,11 @@
 #include"../../headers/minishell.h"
 
 // Check if HOME environment variable is set
-static int	is_home_set(t_ppline *ppline)
+static int	is_home_set(t_ppl *ppl)
 {
 	t_envnode	*home;
 
-	home = ppline->pp_list_env;
+	home = ppl->pp_list_env;
 	while (home != NULL)
 	{
 		if (ft_strcmp(home->key, "HOME") == 0 && home->value != NULL)
@@ -17,16 +17,16 @@ static int	is_home_set(t_ppline *ppline)
 }
 
 // Get the directory to change to
-static char	*get_directory(t_ppline *ppline)
+static char	*get_directory(t_ppl *ppl)
 {
 	t_envnode	*home;
 	char		*dir;
 
 	home = NULL;
-	dir = ppline->ppline_cmd[1];
+	dir = ppl->ppl_cmd[1];
 	if (dir == NULL || ft_strcmp(dir, "~") == 0)
 	{
-		home = ppline->pp_list_env;
+		home = ppl->pp_list_env;
 		while (home != NULL)
 		{
 			if (ft_strcmp(home->key, "HOME") == 0 && home->value != NULL)
@@ -39,7 +39,7 @@ static char	*get_directory(t_ppline *ppline)
 }
 
 // Change directory to the specified directory
-static int	change_directory(char *dir, t_ppline *ppline)
+static int	change_directory(char *dir, t_ppl *ppl)
 {
 	t_envnode	*pwd;
 
@@ -50,26 +50,26 @@ static int	change_directory(char *dir, t_ppline *ppline)
 		fprintf(stderr, "cd: %s: %s\n", dir, strerror(errno));
 		return (EXIT_FAILURE);
 	}
-	pwd = ppline->pp_list_env;
+	pwd = ppl->pp_list_env;
 	while (pwd != NULL)
 	{
 		if (ft_strcmp(pwd->key, "PWD") == 0)
 		{
-			ft_setenv("OLDPWD", pwd->value, pwd->content, &ppline->pp_list_env);
+			ft_setenv("OLDPWD", pwd->value, pwd->content, &ppl->pp_list_env);
 			break ;
 		}
 		pwd = pwd->next;
 	}
-	ft_setenv("PWD", dir, pwd->content, &ppline->pp_list_env);
+	ft_setenv("PWD", dir, pwd->content, &ppl->pp_list_env);
 	return (EXIT_SUCCESS);
 }
 
 // Change directory to the previous directory
-static int	change_to_previous_directory(t_ppline *ppline)
+static int	change_to_previous_directory(t_ppl *ppl)
 {
 	t_envnode	*oldpwd;
 
-	oldpwd = ppline->pp_list_env;
+	oldpwd = ppl->pp_list_env;
 	while (oldpwd != NULL)
 	{
 		if (ft_strcmp(oldpwd->key, "OLDPWD") == 0 && oldpwd->value != NULL)
@@ -81,21 +81,21 @@ static int	change_to_previous_directory(t_ppline *ppline)
 		fprintf(stderr, "cd: OLDPWD not set\n");
 		return (EXIT_FAILURE);
 	}
-	if (change_directory(oldpwd->value, ppline) == -1)
+	if (change_directory(oldpwd->value, ppl) == -1)
 		return (-1);
 	printf("%s\n", oldpwd->value);
 	return (EXIT_SUCCESS);
 }
 
 // Change the current working directory
-int	ft_cd(t_ppline **ppline)
+int	ft_cd(t_ppl **ppl)
 {
 	char	*dir;
 
 	dir = NULL;
-	if (!is_home_set(*ppline))
+	if (!is_home_set(*ppl))
 		return (-1);
-	dir = get_directory(*ppline);
+	dir = get_directory(*ppl);
 	if (dir == NULL)
 	{
 		ft_putstr_fd("minishell: ", STDERR_FILENO);
@@ -103,6 +103,6 @@ int	ft_cd(t_ppline **ppline)
 		return (EXIT_FAILURE);
 	}
 	if (ft_strcmp(dir, "-") == 0)
-		return (change_to_previous_directory(*ppline));
-	return (change_directory(dir, *ppline));
+		return (change_to_previous_directory(*ppl));
+	return (change_directory(dir, *ppl));
 }

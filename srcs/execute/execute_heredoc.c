@@ -1,6 +1,6 @@
 #include "../../headers/minishell.h"
 
-int execute_heredoc(t_ppline **ppline)
+int execute_heredoc(t_ppl **ppl)
 {
 	int		fd[2];
 	char	*line;
@@ -11,7 +11,7 @@ int execute_heredoc(t_ppline **ppline)
 	while (1)
 	{
 		line = readline("> ");
-		if (line == NULL || ft_strcmp((*ppline)->pp_heredoc_eof, line) == 0)
+		if (line == NULL || ft_strcmp((*ppl)->pp_heredoc_eof, line) == 0)
 		{
 			free(line);
 			break;
@@ -19,7 +19,7 @@ int execute_heredoc(t_ppline **ppline)
 		ft_putendl_fd(line, fd[1]);
 		free(line);
 	}
-	if ((*ppline)->pp_first_cmd)
+	if ((*ppl)->pp_first_cmd)
 	{
 		dup2(fd[0], STDIN_FILENO);
 		close(fd[0]);

@@ -1,6 +1,6 @@
 #include "../../headers/minishell.h"
 
-int	ft_mini_env_size(t_envnode *mini_env_head)
+int	mini_env_size(t_envnode *mini_env_head)
 {
 	t_envnode *mini_temp;
 	int		size;
@@ -16,7 +16,7 @@ int	ft_mini_env_size(t_envnode *mini_env_head)
 	return (size);
 }
 
-char	**ft_mini_env_array(t_envnode *mini_env, int size)
+char	**mini_env_arr(t_envnode *mini_env, int size)
 {
 	char	**mini_env_array;
 	int		i;

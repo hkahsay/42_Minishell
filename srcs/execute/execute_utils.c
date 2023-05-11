@@ -1,10 +1,10 @@
 #include "../../headers/minishell.h"
 
-// void	close_all_fds(t_ppline **ppline)
+// void	close_all_fds(t_ppl **ppl)
 // {
-// 	t_ppline	*pp_curr;
+// 	t_ppl	*pp_curr;
 
-// 	pp_curr = *ppline;
+// 	pp_curr = *ppl;
 // 	while (pp_curr)
 // 	{
 // 		if (pp_curr->pp_infile != STDIN_FILENO)

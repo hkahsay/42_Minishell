@@ -1,18 +1,18 @@
 #include"../../headers/minishell.h"
 
-int	ft_unset(t_ppline **ppline)
+int	ft_unset(t_ppl **ppl)
 {
 	int		i;
 	char	*res;
 
 	i = 1;
-	if ((*ppline)->ppline_cmd[i] == NULL)
+	if ((*ppl)->ppl_cmd[i] == NULL)
 		return (0);
-	while ((*ppline)->ppline_cmd[i])
+	while ((*ppl)->ppl_cmd[i])
 	{
-		res = check_if_in_env((*ppline)->pp_list_env, (*ppline)->ppline_cmd[i]);
+		res = check_if_in_env((*ppl)->pp_list_env, (*ppl)->ppl_cmd[i]);
 		if (res == NULL)
-			remove_from_list((*ppline)->pp_list_env, (*ppline)->ppline_cmd[i]);
+			remove_from_list((*ppl)->pp_list_env, (*ppl)->ppl_cmd[i]);
 		i++;
 	}
 	return (EXIT_SUCCESS);

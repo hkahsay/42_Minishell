@@ -849,3 +849,76 @@ env >b |cat <b | wc -l
 echo $PATH | wc | cat <b
 echo $PATH | wc 
 echo $PATH | wc | cat <b
+env >b
+echo sdfs>b
+env >b
+env >b | cat <b
+env >b | cat <b | wc
+env >b | cat <b | grep "F"|wc
+env >b | cat <b | grep "F"|wc
+cat <<e
+cat <<e >b
+cat <<e
+cat <<e | cat >b
+cat <<e >b
+cat <<e >c
+ls -la
+cat <<e >b
+cat <<e >b | cat <b
+cat <<e >c | cat <c
+cat <<e >b | cat <b
+cat <<e > b
+cat <<e > b | cat <b
+cat <<e > b | cat <b
+cat <<e > c|cat <c
+cat <<e > c|cat <c
+cat <<e > b|cat <b
+echo sdsd|wc
+cat <<e > b|cat <b
+cat <<e >b | cat <b
+cat b
+cat <b
+cat <b | wc
+cat<<e  >b | wc
+cat<<e  >c | cat<c| wc
+cat<<e  >b | cat<b| wc
+env | wc
+export >v | cat <v
+export >v | cat <b
+export >v | cat <v
+env >v | cat <v
+cat<<e  >c | cat<c| wc
+cat<<e  >b | cat<b| wc
+export >b | cat <b
+export >b | cat<b 
+export >c | cat<c 
+export <b | cat >b
+cat b
+export >b | cat <b
+export >b|cat <b
+cat b
+export >c|cat <b
+export >c|cat <c
+export >c|cat <b
+export >c|cat <c
+cat <<e >b |cat <b
+cat <<e >b |cat <b
+export >b | cat <b | wc
+export >b | cat <c | wc
+echo "$HOME"
+echo "$HOMEds"
+echo ""$HOME""
+echo "'$HOME'"
+echo "'$HOME'"
+echo "'$HOME'"
+if (curr->id == TOK_S_QUOTE)
+		{
+			printf("ok\n");
+			s_trimmed = ft_strtrim(curr->content, "\'");
+			my_free(curr->content);
+			curr->content = s_trimmed;
+			my_free(s_trimmed);
+			curr->id = TOK_S_QUOTE;
+		}
+echo "'$HOME'"
+echo "'$HOME'"

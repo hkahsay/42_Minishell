@@ -64,7 +64,7 @@ void	*expand_token_list(t_token **token_head, t_envnode *mini_env)
 	curr = *token_head;
 	while (curr != NULL)
 	{
-		if (curr->id == TOK_WORD || curr->id == TOK_D_QUOTE)
+		if (curr->id == TOK_WORD || curr->id == TOK_D_QUOTE || curr->id == TOK_S_QUOTE)
 		{
 			if (curr->id == TOK_D_QUOTE)
 			{
@@ -72,6 +72,15 @@ void	*expand_token_list(t_token **token_head, t_envnode *mini_env)
 				my_free(curr->content);
 				curr->content = d_trimmed;
 				curr->id = TOK_D_QUOTE;
+			}
+			if (curr->id == TOK_S_QUOTE)
+			{
+				printf("ok\n");
+				s_trimmed = ft_strtrim(curr->content, "\'");
+				my_free(curr->content);
+				curr->content = s_trimmed;
+				my_free(s_trimmed);
+				curr->id = TOK_S_QUOTE;
 			}
 			if (ft_strncmp(curr->content, "$?", 2) != 0)
 			{
@@ -87,6 +96,7 @@ void	*expand_token_list(t_token **token_head, t_envnode *mini_env)
 		}
 		if (curr->id == TOK_S_QUOTE)
 		{
+			printf("ok\n");
 			s_trimmed = ft_strtrim(curr->content, "\'");
 			my_free(curr->content);
 			curr->content = s_trimmed;

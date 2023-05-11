@@ -1,9 +1,9 @@
 #include "../../headers/minishell.h"
-void	close_all_fds(t_ppline **ppline)
+void	close_all_fds(t_ppl **ppl)
 {
-	t_ppline	*pp_curr;
+	t_ppl	*pp_curr;
 
-	pp_curr = *ppline;
+	pp_curr = *ppl;
 	while (pp_curr)
 	{
 		if (pp_curr->pp_infile != STDIN_FILENO)
@@ -14,38 +14,38 @@ void	close_all_fds(t_ppline **ppline)
 	}
 }
 
-void	close_fds(t_ppline **ppline)
+void	close_fds(t_ppl **ppl)
 {
-	if (*ppline)
+	if (*ppl)
 	{
-		if ((*ppline)->pp_outfile != STDOUT_FILENO)
-			close((*ppline)->pp_outfile);
-		if ((*ppline)->pp_infile != STDIN_FILENO)
-			close((*ppline)->pp_infile);
+		if ((*ppl)->pp_outfile != STDOUT_FILENO)
+			close((*ppl)->pp_outfile);
+		if ((*ppl)->pp_infile != STDIN_FILENO)
+			close((*ppl)->pp_infile);
 	}
 }
 
-void	close_red_fds(t_ppline **ppline)
+void	close_red_fds(t_ppl **ppl)
 {
-	// if ((*ppline)->pp_fd_out != STDOUT_FILENO)
-	// 	close((*ppline)->pp_fd_out);
-	// if ((*ppline)->pp_fd_in != STDIN_FILENO)
-	// 	close((*ppline)->pp_fd_in);
-	if ((*ppline)->pp_fd_out != STDOUT_FILENO && (*ppline)->pp_fd_out != (*ppline)->pp_outfile)
-        close((*ppline)->pp_fd_out);
-    if ((*ppline)->pp_fd_in != STDIN_FILENO && (*ppline)->pp_fd_in != (*ppline)->pp_infile)
-        close((*ppline)->pp_fd_in);
+	// if ((*ppl)->pp_fd_out != STDOUT_FILENO)
+	// 	close((*ppl)->pp_fd_out);
+	// if ((*ppl)->pp_fd_in != STDIN_FILENO)
+	// 	close((*ppl)->pp_fd_in);
+	if ((*ppl)->pp_fd_out != STDOUT_FILENO && (*ppl)->pp_fd_out != (*ppl)->pp_outfile)
+        close((*ppl)->pp_fd_out);
+    if ((*ppl)->pp_fd_in != STDIN_FILENO && (*ppl)->pp_fd_in != (*ppl)->pp_infile)
+        close((*ppl)->pp_fd_in);
 }
 
-void	execute_parent(t_ppline **ppline)
+void	execute_parent(t_ppl **ppl)
 {
-	t_ppline	*pp_curr;
+	t_ppl	*pp_curr;
 	int			i;
 
 	i = 0;
-	pp_curr = *ppline;
-	close_all_fds(ppline);
-	while (pp_curr && i < pp_curr->ppline_idx)
+	pp_curr = *ppl;
+	close_all_fds(ppl);
+	while (pp_curr && i < pp_curr->ppl_idx)
 	{
 		// waitpid(pp_curr->pp_pid, &(pp_curr->pp_exit), 0);
 		// printf(LB"PPCURR: %d\n" RS, pp_curr->pp_pid);
@@ -73,103 +73,103 @@ void	execute_parent(t_ppline **ppline)
 	}
 }
 
-void	dup_fds(t_ppline **ppline)
+void	dup_fds(t_ppl **ppl)
 {
 	// printf("1ok\n");
-	if((*ppline)->pp_infile != STDIN_FILENO)
-		dup2((*ppline)->pp_infile, STDIN_FILENO);
+	if((*ppl)->pp_infile != STDIN_FILENO)
+		dup2((*ppl)->pp_infile, STDIN_FILENO);
 	// printf("2ok\n");
-	if((*ppline)->pp_outfile != STDOUT_FILENO)
+	if((*ppl)->pp_outfile != STDOUT_FILENO)
 	{
 		// printf("3ok\n");
-		dup2((*ppline)->pp_outfile, STDOUT_FILENO);
+		dup2((*ppl)->pp_outfile, STDOUT_FILENO);
 	}
 	// printf("4ok\n");
-	close_fds(ppline);
+	close_fds(ppl);
 }
 
-int	execute_path_cmd(t_ppline *ppline)
+int	execute_path_cmd(t_ppl *ppl)
 {
 	char	*cmd_path;
 	// t_cmd	*cmd;
 
 	cmd_path = NULL;
-	ppline->pp_pid = fork();
-	if (ppline->pp_pid == 0)
+	ppl->pp_pid = fork();
+	if (ppl->pp_pid == 0)
 	{
-		if (check_if_builtin(ppline->pp_first_cmd) == 0)
+		if (check_if_builtin(ppl->pp_first_cmd) == 0)
 		{
-			if (ppline->pp_outfile != STDOUT_FILENO)
-				dup2(ppline->pp_outfile, STDOUT_FILENO);
-			if (ppline->pp_infile != STDIN_FILENO)
-				dup2(ppline->pp_infile, STDIN_FILENO);
-			close_all_fds(&ppline);
-			if (ppline->pp_outfile != ppline->pp_fd_out)
-				close(ppline->pp_fd_out);
-            close_red_fds(&ppline);
-            // close_all_fds(&ppline);
-			ppline->pp_exit = execute_builtin(&ppline);
-			// lose_all_fds(&ppline);
-			exit(ppline->pp_exit);
+			if (ppl->pp_outfile != STDOUT_FILENO)
+				dup2(ppl->pp_outfile, STDOUT_FILENO);
+			if (ppl->pp_infile != STDIN_FILENO)
+				dup2(ppl->pp_infile, STDIN_FILENO);
+			close_all_fds(&ppl);
+			if (ppl->pp_outfile != ppl->pp_fd_out)
+				close(ppl->pp_fd_out);
+            close_red_fds(&ppl);
+            // close_all_fds(&ppl);
+			ppl->pp_exit = execute_builtin(&ppl);
+			// lose_all_fds(&ppl);
+			exit(ppl->pp_exit);
 		}
-		if (!(search_path(ppline, &cmd_path))) //, mini_env_arr //
+		if (!(search_path(ppl, &cmd_path))) //, mini_env_arr //
 		{
-			ppline->pp_exit = 127;
-			// ft_putnbr_fd(ppline->pp_exit, STDERR_FILENO);
-			g_exit_status = ppline->pp_exit;
+			ppl->pp_exit = 127;
+			// ft_putnbr_fd(ppl->pp_exit, STDERR_FILENO);
+			g_exit_status = ppl->pp_exit;
 			// ft_putnbr_fd(g_exit_status, STDERR_FILENO);
 			ft_putstr_fd("minishell: ", STDERR_FILENO);
-			msg_error(ft_strjoin(ppline->pp_first_cmd, ": command not found"), errno);
+			msg_error(ft_strjoin(ppl->pp_first_cmd, ": command not found"), errno);
 		}
-		if (ppline->pp_outfile != STDOUT_FILENO)
-			dup2(ppline->pp_outfile, STDOUT_FILENO);
-		if (ppline->pp_infile != STDIN_FILENO)
-			dup2(ppline->pp_infile, STDIN_FILENO);
-		close_red_fds(&ppline);
-		close_all_fds(&ppline);
-		execve(cmd_path, (ppline)->ppline_cmd, (ppline)->pp_arr_env);
-		// if (execve(cmd_path, (ppline)->ppline_cmd, (ppline)->pp_arr_env) == -1)
+		if (ppl->pp_outfile != STDOUT_FILENO)
+			dup2(ppl->pp_outfile, STDOUT_FILENO);
+		if (ppl->pp_infile != STDIN_FILENO)
+			dup2(ppl->pp_infile, STDIN_FILENO);
+		close_red_fds(&ppl);
+		close_all_fds(&ppl);
+		execve(cmd_path, (ppl)->ppl_cmd, (ppl)->pp_arr_env);
+		// if (execve(cmd_path, (ppl)->ppl_cmd, (ppl)->pp_arr_env) == -1)
 			msg_error("error execution: ", errno);
 	}
 	else
-		close_fds(&ppline);
+		close_fds(&ppl);
 	return (0);
 }
 
-int	execute_to_builtin(t_ppline *ppline)
+int	execute_to_builtin(t_ppl *ppl)
 {
-		dup_fds(&ppline);
-		ppline->pp_exit = execute_builtin(&ppline);
-		close_fds(&ppline);
+		dup_fds(&ppl);
+		ppl->pp_exit = execute_builtin(&ppl);
+		close_fds(&ppl);
 	return (0);
 }
 
-static void	*init_pipe(t_ppline **ppline, int ppline_idx) //, int *num_pipes
+static void	*init_pipe(t_ppl **ppl, int ppl_idx) //, int *num_pipes
 {
 	int		pipes[2];
 	int		i;
 
-	t_ppline *first;
-	first = *ppline;
+	t_ppl *first;
+	first = *ppl;
 	i = 0;
-	if (ppline_idx == 1)
+	if (ppl_idx == 1)
 	 	return (0);
-	while ((*ppline)->next && i < ppline_idx)
+	while ((*ppl)->next && i < ppl_idx)
 	{
 		if (pipe(pipes) == -1)
 			 msg_error("Failed to create pipe", errno);
-		(*ppline)->pp_outfile = pipes[1];
-		(*ppline)->next->pp_infile = pipes[0];
-		// (*ppline)->pp_fd_out = pipes[1];
-		// (*ppline)->next->pp_fd_in = pipes[0];
-		*ppline = (*ppline)->next;
+		(*ppl)->pp_outfile = pipes[1];
+		(*ppl)->next->pp_infile = pipes[0];
+		// (*ppl)->pp_fd_out = pipes[1];
+		// (*ppl)->next->pp_fd_in = pipes[0];
+		*ppl = (*ppl)->next;
 		i++;
 	}
-	*ppline = first;
+	*ppl = first;
 	return (0);
 }
 
-int	execute_multi_cmd(t_ppline *ppline)
+int	execute_multi_cmd(t_ppl *ppl)
 {
 	int	i;
 	int	saved_stdin;
@@ -179,32 +179,32 @@ int	execute_multi_cmd(t_ppline *ppline)
 
 	saved_stdin = dup(STDIN_FILENO);
 	saved_stdout = dup(STDOUT_FILENO);
-	init_pipe(&ppline, ppline->ppline_idx);
+	init_pipe(&ppl, ppl->ppl_idx);
 	i = 0;
-	t_ppline *first = ppline;
-	while (i < ppline->ppline_idx)
+	t_ppl *first = ppl;
+	while (i < ppl->ppl_idx)
 	{
-		// if (ppline->ppline_cmd)
+		// if (ppl->ppl_cmd)
 		// {
 		// 	printf("DISPLAY COMMAND execute_multi_cmd\n");
-		// 	for (int i = 0; ppline->ppline_cmd[i]; i++)
-		// 		printf("%s\n", ppline->ppline_cmd[i]);
+		// 	for (int i = 0; ppl->ppl_cmd[i]; i++)
+		// 		printf("%s\n", ppl->ppl_cmd[i]);
 		// 	printf("=================\n");
 		// }
-		if (ppline->pp_infile < 0 || ppline->pp_outfile < 0)
+		if (ppl->pp_infile < 0 || ppl->pp_outfile < 0)
 		{
-			ppline = ppline->next;
+			ppl = ppl->next;
 			continue ;
 		}
 		
-		if (ppline->pp_heredoc_status == 1)
+		if (ppl->pp_heredoc_status == 1)
 		{
 			pipe(fd);
 			while (1)
 			{
 				line = readline("> ");
 
-				if (line == NULL || ft_strcmp(ppline->pp_heredoc_eof, line) == 0)
+				if (line == NULL || ft_strcmp(ppl->pp_heredoc_eof, line) == 0)
 				{
 					my_free(line);
 					break;
@@ -214,7 +214,7 @@ int	execute_multi_cmd(t_ppline *ppline)
 				my_free(line);
 			}
 
-			if (ppline->pp_first_cmd)
+			if (ppl->pp_first_cmd)
 			{
 				dup2(fd[0], STDIN_FILENO);
 				close(fd[0]);
@@ -222,40 +222,40 @@ int	execute_multi_cmd(t_ppline *ppline)
 
 			close(fd[1]);
 		}
-		if (ppline->pp_red_status == 1)
+		if (ppl->pp_red_status == 1)
 		{
-			if (ppline->pp_fd_out != STDOUT_FILENO)
+			if (ppl->pp_fd_out != STDOUT_FILENO)
 			{
-				dup2(ppline->pp_fd_out, STDOUT_FILENO);
+				dup2(ppl->pp_fd_out, STDOUT_FILENO);
 			}
-			if (ppline->pp_fd_in != STDIN_FILENO)
+			if (ppl->pp_fd_in != STDIN_FILENO)
 			{
-				dup2(ppline->pp_fd_in, STDIN_FILENO);
+				dup2(ppl->pp_fd_in, STDIN_FILENO);
 			}
-			// close_red_fds(&ppline);
-			// if (ppline->pp_outfile != ppline->pp_fd_out)
-				close(ppline->pp_fd_out);
+			// close_red_fds(&ppl);
+			// if (ppl->pp_outfile != ppl->pp_fd_out)
+				close(ppl->pp_fd_out);
 				close(STDOUT_FILENO);
 				dup2(saved_stdout, STDOUT_FILENO);
 				// close(STDIN_FILENO);
 				// dup2(saved_stdin, STDIN_FILENO);
 
-			// 	dup2(ppline->pp_outfile, ppline->pp_fd_out);
-			// if (ppline->pp_infile != ppline->pp_fd_in)
-				close(ppline->pp_fd_in);
-			// 	dup2(ppline->pp_infile, ppline->pp_fd_in);
-			// close_fds(&ppline);
+			// 	dup2(ppl->pp_outfile, ppl->pp_fd_out);
+			// if (ppl->pp_infile != ppl->pp_fd_in)
+				close(ppl->pp_fd_in);
+			// 	dup2(ppl->pp_infile, ppl->pp_fd_in);
+			// close_fds(&ppl);
 		}
-		if (execute_path_cmd(ppline)) //execute_path_cmd
+		if (execute_path_cmd(ppl)) //execute_path_cmd
 			msg_error("error executing path_cmd: ", errno);
-		if (ppline->next)
-			ppline = ppline->next;
+		if (ppl->next)
+			ppl = ppl->next;
 		i++;
 	}
-	ppline = first;
-	execute_parent(&ppline);
+	ppl = first;
+	execute_parent(&ppl);
 	close(STDOUT_FILENO);
-	close_fds(&ppline);
+	close_fds(&ppl);
 	dup2(saved_stdout, STDOUT_FILENO);
 	dup2(saved_stdin, STDIN_FILENO);
 	close(saved_stdin);
@@ -263,11 +263,11 @@ int	execute_multi_cmd(t_ppline *ppline)
 	return (EXIT_SUCCESS);
 }
 
-void	print_all_pipeline(t_ppline *line)
+void	print_all_pipeline(t_ppl *line)
 {
 	while(line)
 	{
-		printf(OR "cmd: %s in: %d out: %d\n" RS, line->ppline_cmd[0], line->pp_infile, line->pp_outfile);
+		printf(OR "cmd: %s in: %d out: %d\n" RS, line->ppl_cmd[0], line->pp_infile, line->pp_outfile);
 		line = line->next;
 	}
 }

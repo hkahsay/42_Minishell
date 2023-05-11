@@ -1,6 +1,6 @@
 #include "../../headers/minishell.h"
 
-int ft_handle_redir_out(t_ppline **new_ppline, t_token **ptr_cmd_red)
+int ft_handle_redir_out(t_ppl **new_ppl, t_token **ptr_cmd_red)
 {
 	int	fd_out;
 
@@ -21,6 +21,6 @@ int ft_handle_redir_out(t_ppline **new_ppline, t_token **ptr_cmd_red)
 		if (fd_out == -1)
 			return (-1);
 	}
-	(*new_ppline)->pp_fd_out = fd_out;
+	(*new_ppl)->pp_fd_out = fd_out;
 	return (1);
 }

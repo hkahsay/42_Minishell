@@ -1,27 +1,27 @@
 #include"../../headers/minishell.h"
 
-void	print_ppline_list(t_ppline *ppline, int ppline_idx)
+void	print_ppl_list(t_ppl *ppl, int ppl_idx)
 {
 	int			i;
-	t_ppline	*current;
+	t_ppl	*current;
 
 	i = 1;
-	current = ppline;
-	while (current != NULL && 0 < ppline_idx)
+	current = ppl;
+	while (current != NULL && 0 < ppl_idx)
 	{
 		i = 1;
-		printf("PPLINE_list_idx: %d\n", ppline_idx);
+		printf("ppl_list_idx: %d\n", ppl_idx);
 		printf("Command: %s\n", current->pp_first_cmd);
 		printf("Command arguments:\n");
-		if (current->ppline_cmd)
+		if (current->ppl_cmd)
 		{
-			while (current->ppline_cmd[i] != NULL)
+			while (current->ppl_cmd[i] != NULL)
 			{
-				printf("%s\n", current->ppline_cmd[i]);
+				printf("%s\n", current->ppl_cmd[i]);
 				i++;
 			}
 		}	
-		printf("PPline_index: %d\n", current->ppline_idx);
+		printf("ppl_index: %d\n", current->ppl_idx);
 		printf("Redirections_status: %d\n", current->pp_red_status);
 		printf("Input file: %d\n", current->pp_infile);
 		printf("Output file: %d\n", current->pp_outfile);
@@ -32,6 +32,7 @@ void	print_ppline_list(t_ppline *ppline, int ppline_idx)
 		printf("EXIT_status: %d\n", current->pp_exit);
 		printf("\n");
 		current = current->next;
-		ppline_idx--;
+		ppl_idx--;
 	}
 }
+
