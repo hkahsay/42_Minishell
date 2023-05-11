@@ -6,7 +6,6 @@ void	free_ppline(t_ppline **new_ppline, int *i)
 		free((*new_ppline)->ppline_cmd[j]);
 	free((*new_ppline)->ppline_cmd);
 	free((*new_ppline));
-	// return (0);
 }
 
 t_ppline	*build_ppline_array(t_cmd **cmd_head, int cmd_n, t_envnode *mini_env)
@@ -22,7 +21,7 @@ t_ppline	*build_ppline_array(t_cmd **cmd_head, int cmd_n, t_envnode *mini_env)
 	{
 		new_ppline = ft_new_ppline();
 		if (new_ppline == NULL)
-			return NULL;
+			return (NULL);
 		new_ppline->pp_arr_env = ft_mini_env_array(mini_env, ft_mini_env_size(mini_env)); // env_size
 		new_ppline->pp_list_env = mini_env;
 		new_ppline->ppline_idx = pp_idx;
@@ -32,6 +31,13 @@ t_ppline	*build_ppline_array(t_cmd **cmd_head, int cmd_n, t_envnode *mini_env)
 		{
 			if (ft_handle_redir_all(&new_ppline, cmd_ptr->cmd_red))
 				new_ppline->pp_red_status = 1;
+			else
+			{
+				ft_putstr_fd("minishell_VH: ", STDERR_FILENO);
+				ft_putstr_fd(cmd_ptr->cmd_red->next->content, STDERR_FILENO);
+				ft_putstr_fd(": No such file or directory\n", STDERR_FILENO);
+				return (NULL);
+			}
 		}
 		if (ppline == NULL)
 		{
@@ -46,6 +52,5 @@ t_ppline	*build_ppline_array(t_cmd **cmd_head, int cmd_n, t_envnode *mini_env)
 		cmd_ptr = cmd_ptr->next;
 		cmd_n--;
 	}
-	// print_ppline_list(new_ppline, new_ppline->ppline_idx);
 	return (ppline);
 }

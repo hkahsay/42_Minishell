@@ -87,7 +87,7 @@ SRCS =	srcs/main.c \
 		srcs/execute/init_pipes.c \
 		srcs/execute/execute.c \
 		srcs/execute/execute_heredoc.c \
-		srcs/execute/execute_multiple.c \
+		srcs/execute/execute_multi_cmd.c \
 		srcs/execute/execute_kid.c \
 		srcs/execute/execute_utils.c \
 		srcs/print/print_token.c \

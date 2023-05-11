@@ -27,12 +27,13 @@
 
 void	msg_error(char *error, int errnum)
 {
+	g_exit_status %= 256;
 	if (error)
 	{
 		ft_putstr_fd(error, STDERR_FILENO);
 		ft_putchar_fd('\n', STDERR_FILENO);
 		// printf("errno: %d\n", errno);
-		exit(EXIT_FAILURE);
+		exit(g_exit_status);
 	}
 	else
 	{
@@ -47,7 +48,7 @@ void	msg_error(char *error, int errnum)
 	ft_putchar_fd('\n', STDERR_FILENO);
 	// printf("errno: %d\n", errno);
 
-
+	
 	exit(g_exit_status);
 }
 

@@ -1,6 +1,6 @@
 #include "../../headers/minishell.h"
 
-static void	*build_word_red_cmd(t_cmd **new_cmd, t_token *tok_h)
+static int	build_word_red_cmd(t_cmd **new_cmd, t_token *tok_h)
 {
 	while (tok_h != NULL)
 	{
@@ -11,8 +11,13 @@ static void	*build_word_red_cmd(t_cmd **new_cmd, t_token *tok_h)
 		{
 			if (tok_h->next == NULL || tok_h->next->id != TOK_WORD)
 			{
-				ft_putstr_fd(R "ERROR input REDIR\n" RS, STDERR_FILENO);
-				break ;
+				ft_putstr_fd("minishell_VH: syntax error near unexpected token `newline'\n", STDERR_FILENO);
+				// ft_putstr_fd(R "ERROR input REDIR\n" RS, STDERR_FILENO);
+				// ft_putstr_fd("ERROR input PIPE 2\n", STDERR_FILENO);
+				g_exit_status = 258;
+			// msg_error("error near unexpected token", 258); //syntax error (near unexpected token `|')
+			// tok_h->id = TOK_ERROR;
+				return (-1);
 			}
 			ft_token_list_addback(&(*new_cmd)->cmd_red, new_token(tok_h->content, tok_h->id));
 			ft_token_list_addback(&(*new_cmd)->cmd_red, new_token(tok_h->next->content, TOK_WORD));
@@ -41,7 +46,8 @@ void	*build_cmd_list(t_token **tok_cmd_list)
 	{
 		tok_h = tok_cmd_list[i];
 		new_cmd = init_cmd();
-		build_word_red_cmd(&new_cmd, tok_h);
+		if (build_word_red_cmd(&new_cmd, tok_h) == -1)
+			return (0);
 		if (cmd_list == NULL) {
 			cmd_list = new_cmd;
 			cmd_tail = new_cmd;
