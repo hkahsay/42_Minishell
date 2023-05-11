@@ -3,11 +3,12 @@
 int	get_wordlen(char *p)
 {
 	int	len;
-	
+
 	len = 0;
-	while (p && *p) //important order
+	while (p && *p)
 	{
-		if (ft_isspace(*p) || *p == '>' || *p == '<' || *p == '|' || is_quote(*p))
+		if (ft_isspace(*p) || *p == '>' \
+		|| *p == '<' || *p == '|' || is_quote(*p))
 			return (len);
 		len++;
 		p++;

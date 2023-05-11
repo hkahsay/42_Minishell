@@ -2,7 +2,7 @@
 
 int	ft_token_list_size(t_token **tok_head)
 {
-	t_token *tok_h;
+	t_token	*tok_h;
 	int		size;
 
 	tok_h = *tok_head;
@@ -35,14 +35,12 @@ void	ft_token_list_addback(t_token **head, t_token *new)
 
 void	add_token(t_token **head, char *content, t_toktype type)
 {
-	t_token *token = NULL;
-	t_token *curr;
+	t_token	*token;
+	t_token	*curr;
 
+	token = NULL;
 	curr = NULL;
 	token = new_token(content, type);
-
-	// if (!token)
-	// 	return (0);
 	if (*head == NULL)
 		*head = token;
 	else
@@ -51,12 +49,11 @@ void	add_token(t_token **head, char *content, t_toktype type)
 		while (curr->next != NULL)
 			curr = curr->next;
 		curr->next = token;
-		// token->prev = curr;
 		token->next = NULL;
 	}
 }
 
-t_token *last_token(t_token *token_list)
+t_token	*last_token(t_token *token_list)
 {
 	t_token	*curr;
 
@@ -65,8 +62,5 @@ t_token *last_token(t_token *token_list)
 	curr = token_list;
 	while (curr->next != NULL)
 		curr = curr->next;
-	// free(curr);
 	return (curr);
 }
-
-

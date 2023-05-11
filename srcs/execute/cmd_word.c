@@ -24,7 +24,6 @@ void	*ft_handle_word(t_ppline **new_ppline, t_token *cmd_word)
 	i = 0;
 	word_ptr = cmd_word;
 	(*new_ppline)->ppline_cmd = (char **)my_malloc(sizeof(char *) * (ft_count_args_cmd_word(cmd_word) + 1));
-	printf("(*new_ppline)->ppline_cmd %p \n", (*new_ppline)->ppline_cmd);
 	if ((*new_ppline)->ppline_cmd == NULL)
 	{
 		my_free(new_ppline);

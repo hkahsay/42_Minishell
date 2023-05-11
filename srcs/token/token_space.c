@@ -1,10 +1,10 @@
 #include "../../headers/minishell.h"
 
-void *delete_tok_spaces(t_token **token_head)
+void	*delete_tok_spaces(t_token **token_head)
 {
-	t_token *curr;
-	t_token *prev;
-	t_token *temp;
+	t_token	*curr;
+	t_token	*prev;
+	t_token	*temp;
 
 	curr = *token_head;
 	prev = NULL;

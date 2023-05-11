@@ -44,10 +44,12 @@ OBJS = ${addprefix ${DIR_OBJS}/, ${notdir ${SRCS:.c=.o}}}
 
 SRCS =	srcs/main.c \
 		srcs/sig_handler/signal_handler_new.c \
+		srcs/sig_handler/sig_termios.c \
 		srcs/init/envnode_init.c \
 		srcs/init/token_init.c \
 		srcs/init/parse_init.c \
 		srcs/mini_env/free_mini_env.c \
+		srcs/mini_env/duplicate_envp.c \
 		srcs/mini_env/env_util.c \
 		srcs/mini_env/create_envnode.c \
 		srcs/mini_env/setenv.c \

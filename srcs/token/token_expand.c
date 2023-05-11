@@ -7,9 +7,10 @@ static char	*mini_getenv(char *var_name, int var_len, t_envnode *mini_env)
 
 	temp = mini_env;
 	empty = "";
-	while(temp)
+	while (temp)
 	{
-		if (ft_strncmp(var_name, temp->key, var_len) == 0  && (int)ft_strlen(temp->key) == var_len)
+		if (ft_strncmp(var_name, temp->key, var_len) \
+		== 0 && (int)ft_strlen(temp->key) == var_len)
 			return (temp->value);
 		temp = temp->next;
 	}
@@ -33,7 +34,6 @@ char	*expand_token(char **content, t_envnode *mini_env)
 		if (*p == '$' && p[1])
 		{
 			prefix = ft_substr(*content, 0, p - *content);
-			// my_free(*content);
 			printf(LB "EXPAND: prefix %s\n" RS, prefix);
 			var_len = ft_strcspn(p + 1, " $;|&><\n");
 			var_name = ft_substr(p + 1, 0, var_len);
@@ -64,7 +64,7 @@ char	*expand_token(char **content, t_envnode *mini_env)
 	return (ft_strjoin_free(expanded_content, *content));
 }
 
-void    *expand_token_list(t_token **token_head, t_envnode *mini_env)
+void	*expand_token_list(t_token **token_head, t_envnode *mini_env)
 {
 	t_token	*curr;
 	char	*exp_content;
@@ -72,40 +72,32 @@ void    *expand_token_list(t_token **token_head, t_envnode *mini_env)
 	char	*s_trimmed;
 
 	curr = *token_head;
-	// d_quote = "\"";
-	// s_quote = "\'";
 	while (curr != NULL)
 	{
 		if (curr->id == TOK_WORD || curr->id == TOK_D_QUOTE)
 		{
 			if (curr->id == TOK_D_QUOTE)
 			{
-				d_trimmed = ft_strtrim(curr->content, "\""); //d_quote
+				d_trimmed = ft_strtrim(curr->content, "\"");
 				my_free(curr->content);
-				curr->content = d_trimmed; //ft_strdup(d_trimmed)
-				// my_free(d_trimmed);
+				curr->content = d_trimmed;
 				curr->id = TOK_D_QUOTE;
 			}
-			// printf(LB "EXPAND_TOKEN_LIST: curr->content %s\n" RS, curr->content);
 			if (ft_strncmp(curr->content, "$?", 2) != 0)
 			{
 				exp_content = expand_token(&curr->content, mini_env);
-				if (exp_content == NULL) // if expand_token failed, return NULL
-                    return (NULL);
-                my_free(curr->content);
-                // curr->content = exp_content;
+				if (exp_content == NULL)
+					return (NULL);
+				my_free(curr->content);
 				curr->content = ft_strdup(exp_content);
 				my_free(exp_content);
 			}
-			// if (ft_strncmp(curr->content, "$?", 2) == 0)
-			// 	exp_content = curr->content;
-			// printf(LB "EXPAND_TOKEN_LIST: curr->content %s\n" RS, curr->content);
 			if (exp_content == NULL)
 				return (NULL);
 		}
 		if (curr->id == TOK_S_QUOTE)
 		{
-			s_trimmed = ft_strtrim(curr->content, "\'"); //s_quote
+			s_trimmed = ft_strtrim(curr->content, "\'");
 			my_free(curr->content);
 			curr->content = s_trimmed;
 			my_free(s_trimmed);

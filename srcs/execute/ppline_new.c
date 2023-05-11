@@ -4,7 +4,6 @@ t_ppline	*ft_new_ppline(void) //t_cmd **cmd_ptr,
 {
 	t_ppline	*new_ppline = NULL;
 	new_ppline = (t_ppline *)my_malloc(sizeof(t_ppline));
-	printf(LB "new_ppline %p \n" RS, new_ppline);
 	if (new_ppline == NULL)
 		return NULL;
 	new_ppline->pp_first_cmd = NULL;
