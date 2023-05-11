@@ -1,33 +1,30 @@
 #include "../../headers/minishell.h"
 
-t_token    *lexer(char *input_str)
+t_token	*lexer(char *input_str)
 {
-    char *p;
-    t_token *token;
-    t_token *head;
+	char	*p;
+	t_token	*head;
 	char	*space;
-	char  	*current;
+	char	*current;
 
-    token = NULL;
-    head = NULL;
+	head = NULL;
 	current = NULL;
-    p = input_str;
+	p = input_str;
 	space = " ";
-    init_token(token);
-    while (p && *p)
-    {
+	while (p && *p)
+	{
 		if (ft_isspace(*p))
 			add_token(&head, space, TOK_SPACE);
 		p = skip_spaces(p);
 		if (!*p)
-			break;
+			break ;
 		if (is_delim_char(*p))
 			check_delim(&p, &head);
 		else if (is_quote(*p))
 		{
 			check_quotes(&p, &head);
 			if (*p == '\0')
-			 	return (head);
+				return (head);
 		}
 		else
 		{
@@ -40,35 +37,30 @@ t_token    *lexer(char *input_str)
 				break ;
 			}
 		}
-    }
-	// print_token(head);
-    return(head);
+	}
+	return (head);
 }
 
-void interp(char *line, t_envnode *mini_env)
+void	interp(char *line, t_envnode *mini_env)
 {
 	t_token	*token_head;
 
+	token_head = NULL;
 	token_head = lexer(line);
 	if (!token_head)
 		return ;
-	// free(line);
-	// print_token(token_head);
-	// free_token_list(token_head);
 	expand_token_list(&token_head, mini_env);
 	if (!token_head)
 		return ;
-	// printf(GREEN "token_head\n" RS);
-	// print_token(token_head);
 	merge_tokens(&token_head);
-	// free_token_list(token_head);
 	delete_tok_spaces(&token_head);
+<<<<<<< HEAD
 	// printf(GREEN "returned delete_tok_spaces\n" RS);
 	if (handle_input_error(&token_head) == 1)
 		return ;
+=======
+	handle_input_error(&token_head);
+>>>>>>> 8de5586d89308bcb734ad3cb024c1eabfc2a30b3
 	if (token_head)
-	{
 		parse(&token_head, mini_env);
-	}
 }
-

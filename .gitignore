@@ -3,4 +3,6 @@
 .DS_Store
 unwanted
 objs
+history.log
 libft/
+ignore

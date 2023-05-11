@@ -2,7 +2,9 @@
 
 void	print_cmd_list(t_cmd *cmd_list)
 {
-	int i = 0;
+	int	i;
+
+	i = 0;
 	while (cmd_list != NULL)
 	{
 		printf("Command [%d]:\n", i);

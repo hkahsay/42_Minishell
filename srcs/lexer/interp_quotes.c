@@ -9,7 +9,7 @@ int	is_quote(char c)
 	return (0);
 }
 
-int eval_quote_type(char *q)
+int	eval_quote_type(char *q)
 {
 	if (*q == '\"')
 		return (TOK_D_QUOTE);
@@ -18,11 +18,11 @@ int eval_quote_type(char *q)
 	return (0);
 }
 
-char *check_quotes(char **p, t_token **head)
+char	*check_quotes(char **p, t_token **head)
 {
-	char *ptr_quote;
-	int	quote_status;
-	int quote_len;
+	char	*ptr_quote;
+	int		quote_status;
+	int		quote_len;
 
 	ptr_quote = *p;
 	quote_status = 0;
@@ -34,7 +34,8 @@ char *check_quotes(char **p, t_token **head)
 			quote_status = OPEN;
 			ptr_quote++;
 			quote_len++;
-			while (*ptr_quote && (!(is_quote(*ptr_quote)) || ((eval_quote_type(*p)) + (eval_quote_type(ptr_quote))) % 2))
+			while (*ptr_quote && (!(is_quote(*ptr_quote)) \
+			|| ((eval_quote_type(*p)) + (eval_quote_type(ptr_quote))) % 2))
 			{
 				ptr_quote++;
 				quote_len++;
@@ -45,7 +46,8 @@ char *check_quotes(char **p, t_token **head)
 			quote_status = CLOSED;
 			quote_len++;
 			if (((eval_quote_type(*p)) + (eval_quote_type(ptr_quote))) % 2 == 0)
-				add_token(head, ft_substr(*p, 0, quote_len), eval_quote_type(*p));
+				add_token(head, ft_substr(*p, 0, quote_len), \
+				eval_quote_type(*p));
 			*p += quote_len;
 			return (*p);
 		}
@@ -57,5 +59,7 @@ char *check_quotes(char **p, t_token **head)
 		return (*p);
 	}
 	else
+	{
 		return (*p);
+	}
 }

@@ -23,14 +23,12 @@
 
 /*PROMPT*/
 void		prompt(char	*line, t_envnode *mini_env);
-
 /*----------------------signals-----------------*/
 void		sig_handlers(void);
 void		sigint_handler(int sig_num);
 void		sig_quit_handler(int sig_num);
 void		sig_do_nothing(int sig_num);
 void		rl_replace_line(const char *text, int clear_undo);
-// void	ter_attr_handler(struct termios *save);
 void		ter_attr_handler_on(void);
 void		ter_attr_handler_off(void);
 void		signal_handler2(int sig);
@@ -58,13 +56,12 @@ void		ft_envnode_sort(t_envnode **mini_env);
 int			home_not_set(char *home, char *pwd);
 t_envnode	*create_fuck(char *key);
 t_envnode	*ft_join_env(t_envnode **mini_env);
-// t_envnode	*create_mini_envvar_node(char *key, char *value);
-// int			ft_setenv(char *name, char *value, t_envnode **env);
-// t_envnode	*sort_envnode(t_envnode *lst);
 
 int			ft_mini_env_size(t_envnode *mini_env_head);
 char		**ft_mini_env_array(t_envnode *mini_env, int size);
 char		*check_if_in_env(t_envnode *mini_env, char *arg);
+char		*get_env_key(char *env_var);
+char		*get_env_value(char *env_var);
 
 int			find_env_key1(char *new_key, t_envnode *mini_env);
 int			ft_mini_strncmp(const char *str1, const char *str2, size_t n);
@@ -89,8 +86,7 @@ int			is_quote(char c);
 int			eval_quote_type(char *q);
 int			get_wordlen(char *p);
 void		*expand_token_list(t_token **token_head, t_envnode *mini_env);
-// t_token	*create_list_token(char  *epline); //, int id
-// t_token 	*init_token_redirect(char *epline, int *i);
+
 
 /*TOKEN*/
 t_token		*new_token(char *content, t_toktype type);
@@ -100,6 +96,7 @@ char		*get_next_token(t_token *token, char *temp);
 char		*expand_token(char **content, t_envnode *mini_env);
 void		*merge_tokens(t_token **token_head);
 void		*delete_tok_spaces(t_token **token_head);
+void		ft_export_args(char *cmd, t_envnode **env_lst);
 
 /*UTILES*/
 void		ft_strdel(char **as);
@@ -116,7 +113,6 @@ void		*build_cmd_list(t_token **tok_cmd_list);
 
 int			ft_token_list_size(t_token **tok_h);
 int			ft_count_pipes(t_token **tok_h);
-// t_ppline		*create_array(t_cmd **cmd_head, int cmd_n);
 int			ft_list_size(t_cmd *node);
 void		ft_token_list_addback(t_token **head, t_token *new);
 
@@ -134,12 +130,8 @@ int			get_dir(char *arg, char *home, t_ppline **ppline);
 t_envnode	*export_no_cmd(t_envnode **mini_env);
 
 int			find_flag(char *cmd);
-// int	print_and_return(t_ppline **ppline, int i, int option);
 int			print_and_return(t_ppline **ppline, int flag_echo, int flag_n);
 int			ft_error_print(char **arg);
-
-// typedef int(*t_builtin_ptr)(t_llist *, t_info *);
-// int			mini_pwd2(t_envnode *env_list);
 
 void		remove_from_list(t_envnode *mini_env, char *key);
 int			delete_first_node(t_envnode **head, t_envnode *curr, char *key);
@@ -152,23 +144,16 @@ void		print_tok_cmd_list(t_token **tok_pp_list);
 void		print_cmd_list(t_cmd *cmd_list);
 void		print_mini_envp(t_envnode *temp);
 void		print_ex_envp(t_envnode *temp);
-void		print_ex_sorted_envp(t_envnode *mini_env); //, char **cmd_arg
+void		print_ex_sorted_envp(t_envnode *mini_env);
 void		print_mini_env_array(char **mini_env_array);
-// void		print_cmd(t_cmd *cmd);
-// void		print_cmd_list1(t_token **cmd_list);
-// void		print_array(char **array);
-////----print_env_dif_level-----------
-// void 		print_envp_nvalue(t_envnode *mini_env);
-// void 		print_ex_no_value(t_envnode *mini_env);
 
 /*EXECUTER*/
 t_ppline	*ft_new_ppline(void); //t_cmd **cmd_head,
 t_ppline	*build_ppline_array(t_cmd **cmd_head, int cmd_n, t_envnode *mini_env);
 void		*init_pipe(t_ppline **ppline, int ppline_idx);
 void		execute(t_cmd *cmd, int cmd_num, t_envnode *mini_env);
-int			execute_single_builtin(t_ppline *ppline); //, char **mini_env_arr, char **cmd_path , char *cmd_path
+int			execute_single_builtin(t_ppline *ppline);
 int			execute_multi_cmd(t_ppline *ppline);
-// int			execute_pipe_loop(t_ppline *ppline); //, char **mini_env_arr , char *cmd_path
 int			execute_kid(t_ppline *ppline);
 int			execute_path_cmd(t_ppline *ppline);
 int			execute_to_builtin(t_ppline *ppline);
@@ -177,27 +162,25 @@ void		wait_execution(t_ppline **ppline);
 void		close_fds(t_ppline **ppline);
 void		close_red_fds(t_ppline **ppline);
 
-int			search_path(t_ppline *ppline, char **cmd_path); //, char **mini_env_array
+int			search_path(t_ppline *ppline, char **cmd_path);
 char		*find_path(char **mini_env_array);
 
 void		*ft_handle_word(t_ppline **new_ppline, t_token *cmd_word);
 int			ft_count_args_cmd_word(t_token *ptr_cmd_word);
 int			ft_handle_redir_all(t_ppline **new_ppline, t_token *ptr_cmd_red);
 int			ft_handle_heredoc(t_ppline **new_ppline, t_token **ptr_cmd_red);
-int			ft_handle_redir_in(t_ppline **new_ppline, t_token **ptr_cmd_red);
-int			ft_handle_redir_append(t_ppline **new_ppline, t_token **ptr_cmd_red);
+int			ft_handle_redir_in(t_ppline **new_ppline, \
+t_token **ptr_cmd_red);
+int			ft_handle_redir_append(t_ppline **new_ppline, \
+t_token **ptr_cmd_red);
 int			ft_handle_redir_out(t_ppline **new_ppline, t_token **ptr_cmd_red);
 
-// void		*init_pipe(t_ppline **ppline, int *num_pipes); //, int *num_pipes
 void		close_fd(t_ppline **ppline);
 void		close_all_fds(t_ppline **ppline);
 void		wait_status(t_ppline *ppline);
 
 void		free_ppline(t_ppline **new_ppline, int *i);
-
-// void		execute(t_token **tok_cmd, t_envnode *mini_env);
-// void		execute1(t_pline *pline, t_envnode *mini_env);
-// void		execute(t_pipeline *pipeline);
+void		free_one_ppline(t_ppline **new_ppline);
 
 int			ft_bool_strcspn(const char *str, const char *charset);
 void		print_one_ppline(t_ppline *ppline);
@@ -212,7 +195,6 @@ void		msg_error(char *error, int errnum);
 /*FREE*/
 void		free_mini_envp(t_envnode *head);
 void		free_token_list(t_token *tokens);
-// void*		my_my_malloc(t_ppline *ppline, size_t size);
 
 void		print_all_pipeline(t_ppline *line);
 

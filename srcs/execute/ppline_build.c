@@ -2,10 +2,23 @@
 
 void	free_ppline(t_ppline **new_ppline, int *i)
 {
+	printf("%p\n", &((*new_ppline)->pp_first_cmd));
+	my_free((*new_ppline)->pp_first_cmd);
 	for (int j = 0; j < *i; j++)
-		free((*new_ppline)->ppline_cmd[j]);
-	free((*new_ppline)->ppline_cmd);
-	free((*new_ppline));
+		my_free((*new_ppline)->ppline_cmd[j]);
+	my_free((*new_ppline)->ppline_cmd);
+	my_free((*new_ppline));
+	// return (0);
+}
+
+void	free_one_ppline(t_ppline **new_ppline)
+{
+	printf("%p\n", &((*new_ppline)->pp_first_cmd));
+	my_free((*new_ppline)->pp_first_cmd);
+	my_free((*new_ppline)->ppline_cmd[0]);
+	my_free((*new_ppline)->ppline_cmd);
+	my_free((*new_ppline));
+	// return (0);
 }
 
 t_ppline	*build_ppline_array(t_cmd **cmd_head, int cmd_n, t_envnode *mini_env)

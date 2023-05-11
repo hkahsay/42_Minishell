@@ -7,7 +7,6 @@ t_token	*init_token(t_token	*token)
 		return (0);
 	token->content = NULL;
 	token->id = 0;
-	// token->prev = NULL;
 	token->next = NULL;
 	return (token);
 }

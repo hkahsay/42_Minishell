@@ -1,8 +1,8 @@
 #include "../../headers/minishell.h"
 
-int ft_count_pipes(t_token **tok_head)
+int	ft_count_pipes(t_token **tok_head)
 {
-	t_token *tok_h;
+	t_token	*tok_h;
 	int		size;
 
 	tok_h = *tok_head;
