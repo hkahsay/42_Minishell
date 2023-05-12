@@ -1,13 +1,13 @@
 #include"../../headers/minishell.h"
 
-int	ft_exit(t_ppline **ppline)
+int	ft_exit(t_ppl **ppl)
 {
 	int	i;
 
 	i = 0;
-	if ((*ppline)->ppline_cmd != NULL)
+	if ((*ppl)->ppl_cmd != NULL)
 	{
-		i = ft_atoi(*(*ppline)->ppline_cmd);
+		i = ft_atoi(*(*ppl)->ppl_cmd);
 		printf("exit\n");
 		destroy_all();
 		exit (i);

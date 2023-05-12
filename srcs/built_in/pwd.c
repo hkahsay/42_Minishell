@@ -23,13 +23,13 @@ static int	cmp_pwd(t_envnode *curr_var, char *cwd)
 	return (0);
 }
 
-int	ft_pwd(t_ppline **ppline)
+int	ft_pwd(t_ppl **ppl)
 {
 	t_envnode	*curr_var;
 	char		*cwd;
 
 	cwd = getcwd(NULL, 0);
-	curr_var = (*ppline)->pp_list_env;
+	curr_var = (*ppl)->pp_list_env;
 	while (curr_var != 0)
 	{
 		cmp_pwd(curr_var, cwd);

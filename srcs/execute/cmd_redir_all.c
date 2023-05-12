@@ -17,7 +17,7 @@ static int	ft_red_list_size(t_token **tok_head)
 	return (size);
 }
 
-int	ft_handle_redir_all(t_ppline **new_ppline, t_token *ptr_cmd_red)
+int	ft_handle_redir_all(t_ppl **new_ppl, t_token *ptr_cmd_red)
 {
 	int	i;
 
@@ -26,21 +26,27 @@ int	ft_handle_redir_all(t_ppline **new_ppline, t_token *ptr_cmd_red)
 	while (ptr_cmd_red && i < red_list_size)
 	{
 		if (ptr_cmd_red->id == TOK_REDIR_OUT)
-			ft_handle_redir_out(new_ppline, &ptr_cmd_red);
+			ft_handle_redir_out(new_ppl, &ptr_cmd_red);
 		if (ptr_cmd_red->id == TOK_REDIR_OUT_APPEND)
-			ft_handle_redir_append(new_ppline, &ptr_cmd_red);
+			ft_handle_redir_append(new_ppl, &ptr_cmd_red);
 		if (ptr_cmd_red->id == TOK_REDIR_IN)
 		{
-			ft_handle_redir_in(new_ppline, &ptr_cmd_red);
-
-			// if (ft_handle_redir_in(new_ppline, &ptr_cmd_red) == 0)
+			// ft_handle_redir_in(new_ppl, &ptr_cmd_red);
+			if (ft_handle_redir_in(new_ppl, &ptr_cmd_red) == 1)
+				return (1);
+			else
+			{
+				printf(GREEN "error\n" RS);
+				return (-1);
+			}
+			// if (ft_handle_redir_in(new_ppl, &ptr_cmd_red) == 0)
 			// 	return (1);
 			// return (0);
 		}
 		if (ptr_cmd_red->id == TOK_HEREDOC)
 		{
-			(*new_ppline)->pp_heredoc_status = 1;
-			ft_handle_heredoc(new_ppline, &ptr_cmd_red);
+			(*new_ppl)->pp_heredoc_status = 1;
+			ft_handle_heredoc(new_ppl, &ptr_cmd_red);
 		}
 		if (ptr_cmd_red->next->next)
 			ptr_cmd_red = ptr_cmd_red->next->next;

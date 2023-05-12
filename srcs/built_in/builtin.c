@@ -42,7 +42,7 @@ int	check_if_builtin(char *first_cmd)
 	return (EXIT_FAILURE);
 }
 
-int	execute_builtin(t_ppline **ppline)
+int	execute_builtin(t_ppl **ppl)
 {
 	size_t		i;
 	t_builtin	builtin_cmds[11];
@@ -62,8 +62,8 @@ int	execute_builtin(t_ppline **ppline)
 	while (builtin_cmds[i].name != NULL && i < \
 	sizeof(builtin_cmds) / sizeof(t_builtin))
 	{
-		if (strcmp(builtin_cmds[i].name, (*ppline)->pp_first_cmd) == 0)
-			return (builtin_cmds[i].func(ppline));
+		if (strcmp(builtin_cmds[i].name, (*ppl)->pp_first_cmd) == 0)
+			return (builtin_cmds[i].func(ppl));
 		i++;
 	}
 	return (EXIT_FAILURE);

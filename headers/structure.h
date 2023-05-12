@@ -75,9 +75,9 @@ typedef struct s_cmd
 
 //-------------------EXECUTER------------------------------
 
-typedef struct s_ppline	t_ppline;
+typedef struct s_ppl	t_ppl;
 
-typedef int	(*builtin_func)(t_ppline **);
+typedef int	(*builtin_func)(t_ppl **);
 
 typedef struct s_builtin
 {
@@ -85,12 +85,12 @@ typedef struct s_builtin
 	builtin_func	func;
 }	t_builtin;
 
-typedef struct	s_ppline
+typedef struct	s_ppl
 {
 	char			*pp_first_cmd;
-	char			**ppline_cmd;
+	char			**ppl_cmd;
 	char			**pp_arr_env;
-	int				ppline_idx;
+	int				ppl_idx;
 	int				pp_pid;
 	int				saved_stdin;
 	int				saved_stdout;
@@ -107,8 +107,8 @@ typedef struct	s_ppline
 	t_envnode		*pp_list_env;
 	t_builtin		*builtin;
 	t_cmd			*cmd;
-	struct s_ppline	*next;
-	struct s_ppline	*first;
-}	t_ppline;
+	struct s_ppl	*next;
+	struct s_ppl	*first;
+}	t_ppl;
 
 #endif

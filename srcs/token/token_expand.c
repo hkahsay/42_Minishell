@@ -144,11 +144,12 @@ void	*expand_token_list(t_token **token_head, t_envnode *mini_env)
 		}
 		if (curr->id == TOK_S_QUOTE)
 		{
+			printf("ok\n");
 			s_trimmed = ft_strtrim(curr->content, "\'");
-			my_free(curr->content);
+			// my_free(curr->content);
 			curr->content = s_trimmed;
-			my_free(s_trimmed);
-			curr->id = TOK_S_QUOTE;
+			// my_free(s_trimmed);
+			curr->id = TOK_WORD;
 		}
 		curr = curr->next;
 	}

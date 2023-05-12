@@ -57,72 +57,72 @@ static int	export_key(t_envnode **mini_env, char **cmd_args)
 	return (1);
 }
 
-static int	export_command(t_ppline **ppline, int k)
+static int	export_command(t_ppl **ppl, int k)
 {
-	t_envnode	*new_env_var;
+	// t_envnode	*new_env_var;
 
-	new_env_var = NULL;
-	if ((*ppline)->ppline_cmd[k] && ft_strchr((*ppline)->ppline_cmd[k], '='))
+	// new_env_var = NULL;
+	if ((*ppl)->ppl_cmd[k] && ft_strchr((*ppl)->ppl_cmd[k], '='))
 	{
-		if (!export_key_value(&(*ppline)->pp_list_env, \
-		&(*ppline)->ppline_cmd[k]))
+		if (!export_key_value(&(*ppl)->pp_list_env, \
+		&(*ppl)->ppl_cmd[k]))
 			return (-1);
 	}
-	if ((*ppline)->ppline_cmd[k] && !ft_strchr((*ppline)->ppline_cmd[k], '='))
+	if ((*ppl)->ppl_cmd[k] && !ft_strchr((*ppl)->ppl_cmd[k], '='))
 	{
-		if (!export_key(&(*ppline)->pp_list_env, &(*ppline)->ppline_cmd[k]))
+		if (!export_key(&(*ppl)->pp_list_env, &(*ppl)->ppl_cmd[k]))
 			return (-1);
 	}
 	return (0);
 }
 
-int	ft_export(t_ppline **ppline)
+int	ft_export(t_ppl **ppl)
 {
 	t_envnode	*new_env_var;
 	int			k;
 
 	new_env_var = NULL;
 	k = 0;
-	if ((*ppline)->ppline_cmd[1] == NULL && (*ppline)->pp_list_env)
+	if ((*ppl)->ppl_cmd[1] == NULL && (*ppl)->pp_list_env)
 	{
-		if (!ft_export_noargs(&(*ppline)->pp_list_env, new_env_var))
+		if (!ft_export_noargs(&(*ppl)->pp_list_env, new_env_var))
 			return (-1);
 		return (EXIT_SUCCESS);
 	}
-	while ((*ppline)->ppline_cmd[++k])
+	while ((*ppl)->ppl_cmd[++k])
 	{
-		if (export_command(ppline, k) == -1)
+		if (export_command(ppl, k) == -1)
 			return (-1);
 	}
 	return (EXIT_SUCCESS);
 }
 
-// int	ft_export(t_ppline **ppline)
+// int	ft_export(t_ppl **ppl)
 // {
 // 	t_envnode	*new_env_var;
 // 	int			k;
 
 // 	new_env_var = NULL;
 // 	k = 0;
-// 	if ((*ppline)->ppline_cmd[1] == NULL && (*ppline)->pp_list_env)
+// 	if ((*ppl)->ppl_cmd[1] == NULL && (*ppl)->pp_list_env)
 // 	{
-// 		if (!ft_export_noargs(&(*ppline)->pp_list_env, new_env_var))
+// 		if (!ft_export_noargs(&(*ppl)->pp_list_env, new_env_var))
 // 			return (-1);
 // 		return (EXIT_SUCCESS);
 // 	}
-// 	while ((*ppline)->ppline_cmd[++k])
+// 	while ((*ppl)->ppl_cmd[++k])
 // 	{
-// 		if ((*ppline)->ppline_cmd[k]
-// 			&& ft_strchr((*ppline)->ppline_cmd[k], '='))
+// 		if ((*ppl)->ppl_cmd[k]
+// 			&& ft_strchr((*ppl)->ppl_cmd[k], '='))
 // 		{
-// 			if (!export_key_value(&(*ppline)->pp_list_env,
-// 					&(*ppline)->ppline_cmd[k]))
+// 			if (!export_key_value(&(*ppl)->pp_list_env,
+// 					&(*ppl)->ppl_cmd[k]))
 // 				return (-1);
 // 		}
-// 		if ((*ppline)->ppline_cmd[k]
-// 			&& !ft_strchr((*ppline)->ppline_cmd[k], '='))
+// 		if ((*ppl)->ppl_cmd[k]
+// 			&& !ft_strchr((*ppl)->ppl_cmd[k], '='))
 // 		{
-// 			if (!export_key(&(*ppline)->pp_list_env, &(*ppline)->ppline_cmd[k]))
+// 			if (!export_key(&(*ppl)->pp_list_env, &(*ppl)->ppl_cmd[k]))
 // 				return (-1);
 // 		}
 // 		// ft_export_args()

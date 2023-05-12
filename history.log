@@ -742,3 +742,201 @@ export
 env
 echo helo; |
 echo $?
+cd $HOME/Document
+echo $HOME
+ls
+cat | cat | ls
+env >b
+env >b | ls
+env >b | wc
+env >b | cat <b
+env >b | cat <b | wc
+env >b | cat <b | grep "V"| wc
+env >b | cat <b | grep "V"| wc -l
+cat <<e
+<<e
+echo $?
+cat | cat | ls
+echo $?
+echos $?
+echos $?
+echo $?
+ct <sd
+echo $?
+cat <sdfsd
+cat <dfgdfgd
+cat <sdfsd
+ct <sdds
+cat <erwed
+ct <b
+cat <b
+cat <b
+cat <b
+cat <b
+cat <v
+cat <b
+cat <b
+cat <v
+ct <b
+ct <v
+cat | cat | ls
+echo sdfsd
+echo sdf
+echo sd
+cat
+echo sdfs
+echo sdfsdf
+echo sdfsdf >b
+cat b
+echo sfsd>b
+cat b
+cat b | wc
+cat <b | wc
+echo sdfsd
+ls
+echo sdfsd>b
+cat b
+echo sdfsdfsd>b
+cat b
+cat b | wc
+cat b | wc | ls
+cat b
+cat <<e
+cat <<e | wc
+cat <<e | wc | cat > c | cat <c
+cat > c | cat <c
+echo sdfsd
+echo sdfsd
+echo sdf
+echo sdf > b
+cat b
+echo sds
+echo sdfs
+echo sdsd
+echo sdsd | wc
+echo sdsd | wc > b
+echo sdsd | wc > b|cat <b
+cat <<e
+cat <<e >b
+cat b
+cat <<e >b | cat <b
+cat b
+cat <<e >b | cat b
+cat <<e >b
+cat b
+cat <<e >b | cat <b
+cat | cat | ls
+echo sdfsds>b | cat <b
+echo sdfsds>b
+cat b
+cat <b
+echo sdfsds>b | cat <b
+cat dsfef>b | cat b
+cat dsfef>b | cat <b
+env >b | cat <b
+cat dsfef>b | cat <b
+cat | cat | ls
+cat <sodjfs
+cat <b
+env >b | cat <b
+env >b | wc| cat <b
+env>b | cat <b
+pwd
+env >b |cat <b
+env >b |cat b
+env >b |cat b | wc -l
+env >b |cat <b | wc -l
+echo $PATH | wc | cat <b
+echo $PATH | wc 
+echo $PATH | wc | cat <b
+env >b
+echo sdfs>b
+env >b
+env >b | cat <b
+env >b | cat <b | wc
+env >b | cat <b | grep "F"|wc
+env >b | cat <b | grep "F"|wc
+cat <<e
+cat <<e >b
+cat <<e
+cat <<e | cat >b
+cat <<e >b
+cat <<e >c
+ls -la
+cat <<e >b
+cat <<e >b | cat <b
+cat <<e >c | cat <c
+cat <<e >b | cat <b
+cat <<e > b
+cat <<e > b | cat <b
+cat <<e > b | cat <b
+cat <<e > c|cat <c
+cat <<e > c|cat <c
+cat <<e > b|cat <b
+echo sdsd|wc
+cat <<e > b|cat <b
+cat <<e >b | cat <b
+cat b
+cat <b
+cat <b | wc
+cat<<e  >b | wc
+cat<<e  >c | cat<c| wc
+cat<<e  >b | cat<b| wc
+env | wc
+export >v | cat <v
+export >v | cat <b
+export >v | cat <v
+env >v | cat <v
+cat<<e  >c | cat<c| wc
+cat<<e  >b | cat<b| wc
+export >b | cat <b
+export >b | cat<b 
+export >c | cat<c 
+export <b | cat >b
+cat b
+export >b | cat <b
+export >b|cat <b
+cat b
+export >c|cat <b
+export >c|cat <c
+export >c|cat <b
+export >c|cat <c
+cat <<e >b |cat <b
+cat <<e >b |cat <b
+export >b | cat <b | wc
+export >b | cat <c | wc
+echo "$HOME"
+echo "$HOMEds"
+echo ""$HOME""
+echo "'$HOME'"
+echo "'$HOME'"
+echo "'$HOME'"
+if (curr->id == TOK_S_QUOTE)
+		{
+			printf("ok\n");
+			s_trimmed = ft_strtrim(curr->content, "\'");
+			my_free(curr->content);
+			curr->content = s_trimmed;
+			my_free(s_trimmed);
+			curr->id = TOK_S_QUOTE;
+		}
+echo "'$HOME'"
+echo "'$HOME'"
+echo "$HOME"
+echo ""$HOME""
+echo '""$HOME""'
+echo '""$HOME""'
+echo '""$HOME""'
+echo '""$HOME""'
+pected end of file
+bash-3.2$ 
+echo "$H'OME"
+echo "$H"
+'$HOME'
+echo '$HOME'
+echo "$HOME"
+echo 'sdds'
+echo '$HOME'
+echo '$HOME'
+echo "'$HOME'"
+echo '$HOME'
