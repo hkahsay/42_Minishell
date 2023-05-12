@@ -15,7 +15,7 @@ int	eval_quote_type(char *q)
 		return (TOK_D_QUOTE);
 	else if (*q == '\'')
 		return (TOK_S_QUOTE);
-	return (0);
+	return (0);		
 }
 
 char	*check_quotes(char **p, t_token **head)

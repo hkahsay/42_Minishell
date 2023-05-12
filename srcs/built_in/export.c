@@ -59,9 +59,9 @@ static int	export_key(t_envnode **mini_env, char **cmd_args)
 
 static int	export_command(t_ppl **ppl, int k)
 {
-	t_envnode	*new_env_var;
+	// t_envnode	*new_env_var;
 
-	new_env_var = NULL;
+	// new_env_var = NULL;
 	if ((*ppl)->ppl_cmd[k] && ft_strchr((*ppl)->ppl_cmd[k], '='))
 	{
 		if (!export_key_value(&(*ppl)->pp_list_env, \

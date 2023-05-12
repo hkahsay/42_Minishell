@@ -922,3 +922,21 @@ if (curr->id == TOK_S_QUOTE)
 		}
 echo "'$HOME'"
 echo "'$HOME'"
+echo "$HOME"
+echo ""$HOME""
+echo '""$HOME""'
+echo '""$HOME""'
+echo '""$HOME""'
+echo '""$HOME""'
+pected end of file
+bash-3.2$ 
+echo "$H'OME"
+echo "$H"
+'$HOME'
+echo '$HOME'
+echo "$HOME"
+echo 'sdds'
+echo '$HOME'
+echo '$HOME'
+echo "'$HOME'"
+echo '$HOME'
