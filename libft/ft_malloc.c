@@ -1,36 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_malloc.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hkahsay <hkahsay@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/15 14:44:35 by vgejno            #+#    #+#             */
+/*   Updated: 2023/05/15 18:06:38 by hkahsay          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
-
-// void* my_my_malloc( size_t size)
-// {
-// 	void*		addr;
-// 	t_list*	node;
-
-// 	addr = my_malloc(size);
-// 	if (addr == NULL)
-// 	{
-// 		printf("Memory allocation failed!\n");
-// 		exit(1);
-// 	}
-// 	node = my_malloc(sizeof(t_list));
-// 	node->addr = addr;
-// 	node->next = ppline->my_malloc_head;
-// 	ppline->my_malloc_head = node;
-// 	return (addr);
-// }
-
-// void my_free_all(t_list **head)
-// {
-// 	t_list	*node;
-
-// 	node = *head;
-// 	while (*head != NULL)
-// 	{
-// 		node = *head;
-// 		*head = (*head)->next;
-// 		free(node->addr);
-// 		free(node);
-// 	}
-// }
 
 static t_list	**finder(void)
 {
@@ -44,25 +24,39 @@ void	*my_malloc(unsigned long size)
 	char	*buffer;
 	t_list	*new_elem;
 
+	printf("My malloc 1\n");
 	buffer = malloc(size);
+	printf("My malloc 2\n");
 	if (!buffer)
 	{
+		printf("My malloc 3\n");
 		destroy_all();
+		printf("My malloc 4\n");
 		ft_putstr("ERROR my_malloc\n");
+		printf("My malloc 5\n");
 		exit (1);
 	}
+	printf("My malloc 6\n");
 	new_elem = malloc(sizeof(t_list));
+	printf("My malloc 7\n");
 	if (!new_elem)
 	{
+		printf("My malloc 8\n");
 		free(buffer);
+		printf("My malloc 9\n");
 		destroy_all();
+		printf("My malloc 10\n");
 		ft_putstr("ERROR my_malloc\n");
+		printf("My malloc 11\n");
 		exit (1);
 	}
+	printf("My malloc 12\n");
 	new_elem->content = buffer;
-	// printf("new_elem->content %p\n", new_elem->content);
+	printf("My malloc 13\n");
 	new_elem->next = 0;
+	printf("My malloc 14\n");
 	ft_lstadd_back(finder(), new_elem);
+	printf("My malloc 15\n");
 	return (buffer);
 }
 
@@ -79,7 +73,6 @@ int	my_free(void *ptr)
 	while (current)
 	{
 		next = current->next;
-		// printf("current->content%s\n", current->content);
 		if (current->content == ptr)
 		{
 			free(ptr);
@@ -107,29 +100,9 @@ void	destroy_all(void)
 	while (current)
 	{
 		next = current->next;
-		// printf("current->content22%s\n", current->content);
 		free(current->content);
 		free(current);
 		current = next;
 	}
 	*wrstart = 0;
-}
-
-
-void ft_putchar(char c)
-	{
-	write(1, &c, 1);
-	}
-
-int    ft_putstr(char *str)
-{
-	int i;
-
-	i = 0;
-	while (str[i])
-	{
-		ft_putchar(str[i]);
-		i++;
-	}
-	return(i);
 }

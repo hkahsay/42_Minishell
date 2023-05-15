@@ -13,9 +13,9 @@ void	print_token_list(t_token *token_list)
 {
 	while (token_list != NULL)
 	{
-		if (token_list->id == TOK_PIPE)
+		if (token_list->id == T_PP)
 			break ;
-		if (token_list->id == TOK_ERROR)
+		if (token_list->id == T_ERR)
 			break ;
 		printf(YELS "%s " RS, token_list->content);
 		token_list = token_list->next;

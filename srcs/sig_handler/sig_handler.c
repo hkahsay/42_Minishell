@@ -12,7 +12,6 @@ void	signals_default(void)
 	signal(SIGQUIT, SIG_DFL);
 }
 
-// static mode
 void	sigint_handler(int sig_num)
 {
 	if (sig_num == SIGINT)
@@ -25,7 +24,6 @@ void	sigint_handler(int sig_num)
 	}
 }
 
-// interactive mode
 void	signal_handler2(int sig)
 {
 	if (sig == SIGINT)

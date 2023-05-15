@@ -24,35 +24,35 @@ typedef struct s_prompt
 # define CLOSED 0
 # define OPEN 1
 
-//assigning integer value to tokens = enumeration
-typedef enum	e_toktype
+// assigning integer value to tokens = enumeration
+typedef enum e_toktype
 {
-	TOK_ERROR,
-	TOK_WORD,
-	TOK_D_QUOTE,
-	TOK_S_QUOTE,
-	TOK_REDIR_OUT,
-	TOK_REDIR_IN,
-	TOK_REDIR_OUT_APPEND,
-	TOK_HEREDOC,
-	TOK_PIPE,
-	TOK_SPACE,
-	TOK_ERRQUOTE,
-	TOK_EMPTY,
+	T_ERR,
+	T_W,
+	T_DQ,
+	T_SQ,
+	T_RO,
+	T_RI,
+	T_ROA,
+	T_RHD,
+	T_PP,
+	T_SP,
+	T_ERQ,
+	T_EMPTY,
 	TOK_NONE
 }	t_toktype;
 
-typedef struct s_delim
+typedef struct s_lim
 {
-	char		*delim_str;
-	int			delim_len;
-	t_toktype	delim_type;
-}	t_delim;
+	char		*lim_str;
+	int			lim_len;
+	t_toktype	lim_type;
+}	t_lim;
 
 typedef struct s_quote
 {
 	char		*quote_str;
-	int			quote_len;
+	int			q_len;
 	t_toktype	quote_type;
 }	t_quote;
 
@@ -62,8 +62,6 @@ typedef struct s_token
 	t_toktype		id;
 	struct s_token	*next;
 }	t_token;
-	// struct s_token	*prev;
-
 //-------------------PARSER------------------------------
 
 typedef struct s_cmd
@@ -76,8 +74,7 @@ typedef struct s_cmd
 //-------------------EXECUTER------------------------------
 
 typedef struct s_ppl	t_ppl;
-
-typedef int	(*builtin_func)(t_ppl **);
+typedef int				(*builtin_func)(t_ppl **);
 
 typedef struct s_builtin
 {
@@ -85,7 +82,7 @@ typedef struct s_builtin
 	builtin_func	func;
 }	t_builtin;
 
-typedef struct	s_ppl
+typedef struct s_ppl
 {
 	char			*pp_first_cmd;
 	char			**ppl_cmd;
@@ -110,5 +107,4 @@ typedef struct	s_ppl
 	struct s_ppl	*next;
 	struct s_ppl	*first;
 }	t_ppl;
-
 #endif

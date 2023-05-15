@@ -2,8 +2,8 @@
 
 int	mini_env_size(t_envnode *mini_env_head)
 {
-	t_envnode *mini_temp;
-	int		size;
+	t_envnode	*mini_temp;
+	int			size;
 
 	mini_temp = mini_env_head;
 	size = 0;
@@ -18,11 +18,12 @@ int	mini_env_size(t_envnode *mini_env_head)
 
 char	**mini_env_arr(t_envnode *mini_env, int size)
 {
-	char	**mini_env_array;
-	int		i;
-	t_envnode	*cur = mini_env;
+	char		**mini_env_array;
+	int			i;
+	t_envnode	*cur;
 
 	i = 0;
+	cur = mini_env;
 	mini_env_array = (char **)my_malloc(sizeof(char *) * (size + 1));
 	if (!mini_env_array)
 		return (NULL);

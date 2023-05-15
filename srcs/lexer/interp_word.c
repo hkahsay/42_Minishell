@@ -8,7 +8,7 @@ int	get_wordlen(char *p)
 	while (p && *p)
 	{
 		if (ft_isspace(*p) || *p == '>' \
-		|| *p == '<' || *p == '|' || is_quote(*p))
+		|| *p == '<' || *p == '|' || is_q(*p))
 			return (len);
 		len++;
 		p++;

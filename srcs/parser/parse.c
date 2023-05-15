@@ -1,5 +1,18 @@
 #include "../../headers/minishell.h"
 
+static void	*manage_tok_next(t_token **tok_h)
+{
+	while ((*tok_h)->next && (*tok_h)->id != T_PP)
+	{
+		(*tok_h) = (*tok_h)->next;
+		if ((*tok_h)->id == T_PP)
+			break ;
+	}
+	if ((*tok_h)->id == T_PP)
+		(*tok_h) = (*tok_h)->next;
+	return (0);
+}
+
 static t_cmd	*parse_commands(t_token **tok_head, int cmd_num)
 {
 	t_token	*tok_h;
@@ -16,14 +29,7 @@ static t_cmd	*parse_commands(t_token **tok_head, int cmd_num)
 	while (tok_h && i < cmd_num)
 	{
 		tok_cmd_list[i] = tok_h;
-		while (tok_h->next && tok_h->id != TOK_PIPE)
-		{
-			tok_h = tok_h->next;
-			if (tok_h->id == TOK_PIPE)
-				break ;
-		}
-		if (tok_h->id == TOK_PIPE)
-			tok_h = tok_h->next;
+		manage_tok_next(&tok_h);
 		i++;
 	}
 	cmd_list = build_cmd_list(tok_cmd_list);
@@ -41,7 +47,6 @@ void	*parse(t_token **token_head, t_envnode *mini_env)
 	if (!cmd_list)
 		return (0);
 	free_token_list(*token_head);
-	printf("STDOUT: %d\n", STDOUT_FILENO);
 	execute(cmd_list, cmd_num, mini_env);
 	return (0);
 }

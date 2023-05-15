@@ -18,9 +18,9 @@ void	print_mini_envp(t_envnode *temp)
 
 void	print_ex_sorted_envp(t_envnode *mini_env)
 {
-	int	i;
+	// int	i;
 
-	i = 0;
+	// i = 0;
 	while (mini_env)
 	{
 		if (ft_strchr(mini_env->content, '=') \
@@ -33,18 +33,18 @@ void	print_ex_sorted_envp(t_envnode *mini_env)
 		}
 		else
 			printf("declare -x %s=\"%s\"\n", mini_env->key, mini_env->value);
-		i++;
+		// i++;
 		mini_env = mini_env->next;
 	}
 }
 
-void	print_mini_env_array(char **mini_env_array)
-{
-	int	i;
+// void	print_mini_env_array(char **mini_env_array)
+// {
+// 	int	i;
 
-	i = 0;
-	while (mini_env_array[i])
-	{
-		printf(PURPLE "mini_env_array %s\n", mini_env_array[i++]);
-	}
-}
+// 	i = 0;
+// 	while (mini_env_array[i])
+// 	{
+// 		printf(PURPLE "mini_env_array %s\n", mini_env_array[i++]);
+// 	}
+// }

@@ -2,10 +2,12 @@
 
 t_ppl	*ft_new_ppl(void)
 {
-	t_ppl	*new_ppl = NULL;
+	t_ppl	*new_ppl;
+
+	new_ppl = NULL;
 	new_ppl = (t_ppl *)my_malloc(sizeof(t_ppl));
 	if (new_ppl == NULL)
-		return NULL;
+		return (NULL);
 	new_ppl->pp_first_cmd = NULL;
 	new_ppl->ppl_cmd = NULL;
 	new_ppl->pp_arr_env = NULL;

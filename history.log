@@ -940,3 +940,1543 @@ echo '$HOME'
 echo '$HOME'
 echo "'$HOME'"
 echo '$HOME'
+echo "$HOME"
+echo '$HOME'
+echo '$HOME'
+echo '$HOME'
+echo "'$HOME'"
+echo '"$HOME"'
+echo "'"$HOME"'"
+echo "'$HOME'"
+echo "'"$HOME"'"
+echo "'$HOME'"
+echo "'$HOME'"
+echo "'$$HOME'"
+echo $$HOME
+echo $
+echo "$$HOME"
+echo '$$HOME'
+echo $HOME$HOME$LESS
+echo "'$HOME'"
+echo "'$HOME'$PATH"
+echo "'$HOME'$PATH
+echo "hcdsch
+echo 'hcdsch
+echo "sds
+echo "sds
+|
+||
+<<<
+<<<>>
+>>>
+>>
+echo cuwco>>>>
+echo cuwco>>>> dwwe
+echo cuwco>>>> |
+echo sdjfs
+echo sdjfs"
+echo sdjfs'
+echo sdjfs'"'
+echo sdjfs'"'"
+echo s>
+echo s>>
+echo s>>>
+echo s>>> |
+echo >>> |
+echo >>>|
+echo >>>
+echo >>>
+echo >>>|
+echo >>>
+echo <<<<
+echo >>>
+echo >>> |
+echo > |
+echo > wde|
+echo > wde
+echo edfwe> wde
+echo edfwe>>wde
+>>>
+>>> |
+echo >>>
+echo >>>
+echo >>>>
+echo >>>>>>>
+echo <<<<<
+echo <<<<<>>>
+echo <<<<<>>> |
+echo >>>
+echo >>> |
+|
+>>>|
+echo >>
+>>
+<<
+cat <<
+cat <<
+echo >>
+echo >>|
+>>>
+....
+<<<
+<<<|
+|
+||||
+||
+|>
+echo $?
+||
+echo $?
+<<<
+echo $?
+echo "$HOME"
+echo "$HOME"
+echo ""$HOME""
+echo "'$HOME'"
+echo >>>>
+|
+echo "dsfsd
+cat | cat |ls
+echo dss
+echo dss>b
+cat b
+export
+echo salut | ls | cat <gjdgs
+echo "sds'
+cat <<e cat >b
+|||
+>>|
+echo "$HOME"
+echo "'$HOME'"
+echo "'$HOME'" | wc
+./minishell
+./minishell
+./minishell
+cat <b
+cat <b | wc
+cat <b | wc |ls
+cat <b | wc |ls | cat >b|cat <b
+echo dsad
+echo dsad$HOME
+echo dsad$HOME | wc -l
+echo dsad$HOME"
+echo adsas
+echo adsas>b
+echo adsas>b|cat b
+echo adsas>b|cat <b
+env >b | cat <b | wc
+env >b | cat <b | wc | ls
+./minishell
+echo asda
+echo "asda"
+echo "$asda"
+echo $asda
+cat | cat | ls
+cat | cat | ls
+echo sds$jsdfs
+cat <<s >b | cat <b
+sa
+cat <<s >b | cat <b
+cat dsfd
+cat <dsfd
+cat <b
+cat <history.log 
+cat <history.log | wc
+|
+>>>>
+cat|ls
+./minishell
+./minishell
+cat | cat|ls|echo asdsa
+cat <<e >b|cat <b
+env
+./minishell
+env
+export var
+env
+export
+unset var
+export
+env
+env | wc
+export var=dbfwe
+export var=dbfwe sd
+export
+export var=dbfwe sd
+env
+cat | cat | ls
+echo sdfs>b
+echo sdfs>b|cat <b
+echo sdfs>b|cat <b|export
+echo sdfs>b|cat <b|export | wc
+cat <<e >b | cat <b
+cat <<e >b | cat <c
+cat | cat | ls
+echo asd
+echo asd>b
+echo asd>b | wc
+cat | cat \LS
+ECHO DSASDA
+echo asa| env
+echo asa| env | wc
+echo asa| env | wc |cat >b
+echo asa| env | wc |cat >b | cat <b
+cat | cat | ls
+echo asad
+echo $asad
+echo $?
+echo $
+export >b
+export >b|cat <c
+export >b|cat <c | wc
+cat sdfs
+cat ,b
+cat <b
+cat <b |wc
+|
+echo ada
+echo $HOME
+echo sds
+echo asda>b
+\
+|
+cat nfwe
+cat nfwe |ls
+cat <<e
+cat <<e|wc
+echo dsfs>b
+echo dsfs>b |cat <b
+echo dsfs>b |cat <b |wc
+cat <<e >b
+cat <<e >b | cat <c
+cat sdksld>b
+cat <<e
+cat <<e >b |cat <c |wc
+cat | cat | ls
+cat | cat |ls
+echo sdkks
+echo sdkks| wc
+env
+env>b | cat <b |wc
+echo asda>b
+echo asda>b | cat <b
+env | wc
+env | wc |ls
+cat <<e >B | CAT <B
+echo sdfdas>b
+cat <b
+cat | cat | ls
+ls | wc
+|
+cat <b
+cat <c | wc
+cat | cat \ls
+cat | cat |ls
+echo $HOME
+echo "$HOME"
+cat <<e
+cat <<e>b | cat <c
+cat <<e
+cat | cat | ls
+cat | cat | ls | wc
+export
+export var
+cat | cat | ls
+echo sdlsja
+echo sdlsja$HOME
+env
+env | sort | grep "F" | wc
+env | sort | grep "F" | wc > b| cat <b
+env | sort | grep "F" | wc > b| cat <c
+env | sort | grep "F" | wc > c| cat <b
+cat | cat | cat | ls
+env >b | cat b
+export >b | cat b
+echo sdfs>b
+cat b
+cat <b | wc
+cat <<e
+cat <<e >b | cat <c | wc
+cat c
+export
+export >b | env | wc
+cat <b
+cat <b | grep "V" |wc 
+cat <b | grep "V" |wc | ls
+cat <c
+cat <<e >b | cat <c | export 
+cat <<e >b | cat <c | export >b | ls | wc
+cat <<e >b | cat <c | env >b | ls | wc
+cat <<e >b | cat <c | env >b | ls | wc
+cat <<e >b | cat <c | env >b | ls | wc
+cat <<e >b | cat <c | env >b | ls | wc
+cat <<e >b | cat <c | env >b | ls | wc
+cat <<e >b | cat <c | env >b | ls | wc
+norminette
+cat <<e >b | cat <c | env >b | ls | wc
+echo sdsd
+echo sdsd$HOME
+echo sdsd$HOME"$HOME"
+echo sdsd$HOME"$HOME" | env >b|cat <b
+cat <<e >b | cat <c | env >b | ls | wc
+export>b |grep "T" |wc
+echo '""$HOME""'
+echo "'$HOME'"
+echo "'$HOME'$PATH"
+echo <<<<<>>> |
+echos dsd>a>b>c>d
+echo dsd>a>b>c>d
+cat a
+cat b
+cat c
+cat d
+echos dsd>a>b>c>d
+echos dsd>a>b>c>d
+cat d
+echo dsd>a>b>c>d
+cat d
+cat <d
+echo "'$HOME'$PATH"
+echo "'$HOME'"
+echo "'$HOME'$PATH"
+echo "'$HOME'"
+echo "'$HOME'"
+echo '$HOME'
+echo '$HOME'
+echo "'$HOME'"
+echo "'$HOME'"
+echo "'$HOME'"
+echo "'$HOME'$PATH"
+echo '""$HOME""'
+cat <<e >b | cat <c | env >b | ls | wc
+cat <<e >b | cat <c | env >b | ls | wc
+echo "'$HOME'"
+echo "'$HOME'$PATH"
+echo "'$HOME'$PATH"
+cat <<e >b | cat <c | env >b | ls | wc
+env >b | cat <b | wc | ls
+"'$HOME'"
+cat "'$HOME'"
+echo "'$HOME'"
+echo "'$HOME'$PATH"
+cat <<e >b | cat <c | env >b | ls | wc
+env | sort | grep "F" | wc > c| cat <b
+cat | cat | ls
+echos dsd>a>b>c>d
+echo dsd>a>b>c>d
+cat d
+cat a
+cat b
+cat <<e >b | cat <c | env >b | ls | wc
+echo "'$HOME'$PATH"
+echo "'$HOME'$PATH"
+echo "'$HOME'$PATH"
+echo "'$HOME'"
+cho '""$HOME""'
+echo '""$HOME""'
+e"cho" $HOME
+e'cho' $HOME
+e'c'"ho" $HOME
+e'c' "ho" $HOME
+ehco sd
+echo sd
+echo sd >b | cat b
+echo sd >b | cat <b
+env |wc |ls |grep "a" |wc -l >aaaaa
+cat <aaaaa
+export > c |wc
+
+
+
+
+echo "'$HOME'$PATH"
+echo "'$HOME'"
+echo "$H'OME"
+>>>>
+echo asa| env | wc |cat >b | cat <b
+echo asa| env | wc |cat >b 
+cat b
+cat "$HOME"
+echo "$HOME"
+echo sdsas
+echo $
+echo $
+echo $dcswe
+echo $hfovihd
+echo $hsdoic
+echo $HOME
+echo "$HOME"
+echo "'$HOME'"
+echo $?
+ct dasds
+echo $?
+echo $Fgj
+echo $?
+echo asa| env | wc |cat >b | cat <b
+echo asa| env | wc |cat >b
+cat <b
+echo $HOME
+echo $?
+echo asa| env | wc |cat >b
+cat <b
+echo $?
+cat ,b
+cat <<e >b |cat <c |wc
+echo $?
+cat ,b
+echo $?
+env | sort | grep "F" | wc > c| cat <b
+echos dsd>a>b>c>d
+echo dsd>a>b>c>d
+cat d
+echo $?
+echo $?
+cat <<e >b | cat <c | env >b | ls | wc
+echo "'$HOME'$PATH"
+cat <<e >b | cat <c | env >b | ls | wc
+echo $?
+./minishell 
+echo $?
+>>
+ls
+echo "'$HOME'$PATH"
+echo $?
+echo $?
+echo adas>a
+cat a
+echo $?
+cat <<e >b | cat <c | env >b | ls | wc
+cat <<e >b | cat <c | env >b | ls | wc
+echos dsd>a>b>c>d | cat <d
+echos dsd>a>b>c>d | cat <d
+echo $?
+echos dsd>a>b>c>d | cat <d
+echos dsd>a>b>c>d
+echo $?
+echos dsd>a>b>c>d | cat <d
+echo $?
+echos dsd>a>b>c>d
+echo $?
+exprt
+echo $?
+echos dfg
+echo $?
+echo "'$HOME'$PATH"
+echo $?
+echos dvfd
+echo $?
+echo s
+echo $?
+echos wedwe
+echo $?
+echo $?
+echo s
+echo $?
+echos ds
+echo $?
+echos dsdf
+echo $?
+echo $?
+cat ;fdwe
+echo $?
+echo $?
+echo "'$HOME'$PATH"
+echo dsd>a>b>c>d | cat <d
+echo $?
+echo "'$HOME'$PATH"
+echo $?
+cat <<e >b | cat <c | env >b | ls | wc
+cat | cat | ls
+echos dsdf
+echo $?
+cat c
+cat <<e >c | cat <c | env >b | ls | wc
+cat c
+echo sdsd$HOME"$HOME"
+export>b |grep "T" |wc
+echo "'$HOME'$PATH"
+echo sdsd$HOME"$HOME"
+echo $?
+cat "'$HOME'"
+echo $?
+echo "'$HOME'"
+echo $?
+echo "'$HOME'$PATH"
+echo $?
+cat <<e >b | cat <c | env >b | ls | wc
+echo $?
+echo "'$HOME'"
+echo "'$HOME'$PATH"
+echo $?
+e'c'"ho" $HOME
+echo $?
+ct sds
+echo $?
+echo "'$HOME'$PATH"
+echo $?
+echo "'$HOME'$PATH
+echo "sds"
+echo "sds"'
+echo "sdfs
+echo "sds
+echo "sds"
+echo "sds
+echo "sds'
+echo "sds'
+echo "sds
+echo $?
+echo "sds
+echo "sds
+echo $?
+echo "sdds
+echo $?
+echo "$HOME"
+echo "'$HOME'"
+echo "sds
+echo $?
+echo "'$HOME'"
+cat <<e >b | cat <c | env >b | ls | wc
+echo "sdds
+echo $?
+echo "$HOME"
+echo $?
+echo "sdf
+echo $?
+echo "sds
+echo "$sds
+echo $?
+echo "das"
+echo "$das"
+echo "sds
+echo"$HOME"
+echo "$HOME"
+echo "sdfs
+echo $?
+echo "sdfs"
+echo sdfs"
+echo sdfs
+echo "sdfs"
+echo "sds
+echo "sds"
+echo "$HOME"
+echo "sds
+echo "$HOME"
+echo $?
+echo "'$PATH'"
+echo "'$PATH'
+echo $?
+cat <b
+cat <b
+env |wc |ls |grep "a" |wc -l >aaaaa
+env |wc |ls |grep "a" |wc -l >aaaaa
+cat <aaaaa $
+cat <aaaaa
+cat <aaaaa $
+cat <<< end
+echo $?
+env >b | cat <b | grep "V"| wc -l
+echo ""$HOME""
+echo >>>|
+echo $?
+env >b | cat <b | wc | ls
+echo "'$HOME'$PATH"
+echo $?
+echo "'$HOME'$PATH"
+echo sdsd$HOME"$HOME" | env >b|cat <b
+cat <<e >b | cat <c | env >b | ls | wc
+echos dsd>a>b>c>d
+echo $?
+echo dsd>a>b>c>d
+cat <d
+echo $?
+e'c'"ho" $HOME
+echos dsdf
+echos dsdf"
+echo $?
+echos 'dsdf"
+echo "'$HOME'$PATH"
+echo $?
+echos dsd>a>b>c>d | cat <d
+echo $?
+echos dsd>a>b>c>d | cat <d
+echo $?
+cat
+echo $?
+ct
+echo $?
+echo $?
+echo "dsx
+echo $?
+echo "'$HOME'$PATH"
+echo $?
+echo "'$HOME'$PATH"
+echos dsd>a>b>c>d | cat <d
+echo $?
+echos dsd>a>b>c>d
+echo $?
+cat <<e >b | cat <c | env >b | ls | wc
+cat | cat | ls
+echo "ndsc
+echo "'$HOME'$PATH"
+echos dsd>a>b>c>d
+echo £?
+echo "HDIDWE"
+echo "$HOME"
+echo $?
+ct <a
+echo $?
+cat <<e >b | cat <c | env >b | ls | wc
+echo $?
+<<<
+echo dcsd
+echo dcsd c
+echo -n dcsd c
+echo -nw dcsd c
+echo -nnnnnnnn dcsd c
+e'c'"ho" $HOME
+echo dsd>a>b>c>d
+cat d
+export > c |wc
+echo $?
+cat <<e >b | cat <c | env >b | ls | wc
+echo sdcsd
+echo sdcsd"
+echo $?
+echo "sdcsd"
+echo "sdcsd"£HOME
+echo "sdcsd"$HOME
+echo "sdcsd"'$HOME'
+cat <<e >b | cat <c | env >b | ls | wc
+cat <b | grep "V" |wc | ls
+echo "sdcsd"'$HOME'
+echo $?
+ct >>>>
+echo $?
+|
+cat | cat | ls
+cat
+cat | cat | ls
+cat | cat | ls
+cat <<e >b | cat <c | env >b | ls | wc
+echo sdsd$HOME"$HOME"
+>>>>
+echo $?
+echo $?
+echo "'$HOME'$PATH"
+echo "'$PATH'"
+echo $?
+echo "'$PATH'
+echo $?
+echo sds d     dwe | cat     <b
+echo sds d     dwe | cat     <b       ||
+echo $?
+echo "'$PATH'"
+echo "'$PATH'
+echo $?
+echo $?
+cat <<e >b | cat <c | env >b | ls | wc
+cat <<e >b | cat <c | env >b | ls | wc
+ct
+echo sds d     dwe | cat     <b
+echo $?
+echo sds d     dwe | cat     <b
+cat | cat | ls
+echo sdfdsa
+echo sdfdsa >a
+cat <a
+echo sdfdsa >a | cat <a | cat >b | cat >a | cat <a
+echo "$HOME"
+echo "'$HOME'"
+echo "'$HOME'
+echo $?
+echo $?
+ech sdfs
+echo $?
+echo $?
+cat | cat | ls
+export var=sd
+export
+env
+env
+./minishell
+echo adad
+echo "adad"
+echo "adad"'sdf'
+echo "adad" 'sdf'
+echo "'adad'"'sdf'
+echo "'adad'"'sdf'"$HOME"
+echo "'adad'"'sdf'$HOME
+echo "$HOME"
+echo "'adad'"'sdf'"$HOME"
+char	*ft_strjoin_free(char *s1, char *s2)
+{
+	char	*result;
+
+	if (!s1 && !s2)
+		return (NULL);
+	else if (!s1 || !s2)
+		result = ft_strdup(s1 ? s1 : s2);
+	else
+	{
+		result = (char *)my_malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+		if (!result)
+			return (NULL);
+		ft_strlcpy(result, s1, ft_strlen(s1) + 1);
+		ft_strlcat(result, s2, ft_strlen(s1) + ft_strlen(s2) + 1);
+	}
+	ft_strdel(&s1);
+	return (result);
+}
+echo "'adad'"'sdf'"$HOME"
+echo "'adad'"'sdf'"$HOME"
+echo ad;SL;H'VR
+echo ad;SL;HVR
+echo $ad;SL;HVR
+ECHO $;
+ECHO $;S
+ECHO $;SL
+ECHO $>SL
+ECHO $&SL
+$HOME/
+cat $HOME/
+echo sdfsadf
+export>b |grep "T" |wc
+export >a
+cat a
+export>b |grep "T" |wc
+export>b |grep "T" |wc
+export |grep "T" |wc
+echo sesefesf>d>f>g
+cat d
+cat f
+cat g
+export > b | cat < b
+cat < b
+export > b | cat < b
+export > b | cat < f
+export > b | cat < g
+env > b | cat < b
+echo "'$HOME'"
+echo "'$HOME'"'$HOME"
+echo $?
+echo "'$HOME'"'$HOME'
+echo $?
+echo "$?"
+echo sdsd$HOME"$HOME" | env >b|cat <b
+>>>>
+cat <<e >b | cat <c | env >b | ls | wc
+cat <<e >b | cat <c | env >b | ls | wc
+cat <<e >b | cat <c 
+e
+e
+cat <<e >b | cat <c 
+cat <horo
+cat <sdfjsdfd
+echo $?
+cat <adaaf
+echo $?
+echo $?
+echo $?
+cat <<e >b | cat <sdfsjkdfs | env >b | ls | wc
+cat <sdfsfsd
+cat <sdfsfsd
+env |wc |ls |grep "a" |wc -l >aaaaa
+env |wc |ls |grep "a" |wc -l >aaaaa | cat <aaaaa
+cat <<e >b | cat <c | env >b | ls | wc
+cat <<e >b | cat <xcsdds | env >b | ls | wc
+echo $?
+echo $?
+||
+echo $?
+echo $?
+>>>|
+|
+>>>>
+>>>>|
+ECHO $?
+ECHO $?
+cat 
+ECHO $?
+echo sadfsa
+echo sadfsaecho "$HOME"
+kcegiuw|
+echo $?
+cat <<e >b | cat <c | env >b | ls | wc
+echo sadfsaecho "$HOME"
+echo sadfsa
+echo $?
+echo $?
+cat <<e >b | cat <b | env >b | ls | wc
+echo sdf"
+echo $?
+echo sdf'
+echo $?
+echo $?
+<<<<
+echo $?
+echo $?
+<<<|
+echo $?
+echo $?
+|
+echo $?
+echo $?
+||
+echo $?
+echo $?
+bcekwce|
+echo $?
+echo $?
+|
+echo $?
+echo $?
+<<<
+echo $?
+<<<|
+echo $?
+echo $?
+bcwde|
+echo $?
+echo $?
+echo nclsc"
+echo $?
+echo $?
+echo 'ad
+echo $?
+echo $?
+|
+echo $?
+echo $?
+>>>>
+echo $?
+echo $?
+neioiwhe|
+echo $?
+echo $?
+ncwp>
+echo $?
+echo $?
+cat >cwoei
+<<efwe
+cat <<e >b | cat <c | env >b | ls | wc
+cat >cwoei
+cat >cwoei
+cat <sdfs
+cat <<e >b | cat <c | env >b | ls | wc
+cat <sdfs
+echo $?
+echo $?
+....
+echo $?
+echo $?
+>>
+echo $?
+echo $?
+|
+echo $?
+echo $?
+cowhe|
+echo $?
+echo $?
+ct cowe
+echo $?
+echo $?
+cat <<e >b | cat <c | env >b | ls | wc
+echo $?
+echo $?
+cat <<e >b | cat <c | env >b | ls | wc
+cat <<e >b | cat <b | env >b | ls | wc
+echo "$HOME"'sdfsd'
+echo "$HOME"'sdfsd
+echo $?
+cat <<e >b | cat <c | env >b | ls | wc
+echo $?
+echo $?
+echo sdfdsa >a | cat <a | cat >b | cat >a | cat <a
+echo sdfdsa >a | cat <a | cat >b | cat >a | cat <a
+echo $?
+|
+echo $?
+echo sdsd$HOME"$HOME"
+echo $?
+echo "'$PATH'"
+echo $?
+echo "'$PATH'
+echo $?
+echo $?
+env |wc |ls |grep "a" |wc -l >aaaaa | cat <aaaaa
+env |wc |ls |grep "a" |wc -l >aaaaa | cat <aaaaa
+cat aaaaa 
+env |wc |ls |grep "a"
+env |wc |ls |grep "a" |wc -l >aaaaa | cat <aaaaa
+cat <aaaaa 
+echo $?
+echo sdsd$HOME"$HOME" | env >b|cat <b
+|
+echo $?
+echo $?
+<<<
+echo $?
+<<<
+ncwioce|
+echo $?
+echo $?
+||
+echo $?
+echo $?
+cat $HOME/
+cat <<e >b | cat <c | env >b | ls | wc
+echo $?
+ls -l | cat -e | cat -e | cat -e
+dsadsa
+dsadasdsa
+dsads
+ls -la
+ls -la
+dsadsadsadsad
+sadsadsa
+cat <<e >b | cat <c | env >b | ls | wc
+cat <<e >b | cat <c | env >b | ls | wc
+cat <<e >b | cat <c
+dsadsadsadsa
+cat <<
+ls | cat
+cat
+cat
+cat
+cat
+cat
+<<
+cat
+cat
+<< cd
+<< sd
+cat
+cat
+cat
+cat
+<< sd
+ls
+ls
+ls
+ls
+cat << sd
+cat << sd
+cat << s | cat << b
+cat << s | cat << b
+cat << s | cat << b
+cat <<e | cat <<b
+export
+echo $PATH
+unset PATH
+echo $PATH
+set PATH="dsadsa"
+echo $PATH
+export PATH="dsadsad"
+echo $env | grep "PATH"
+echo $ENV | grep "PATH"
+env | grep "PATH
+env | grep "PATH"
+grep a
+grep a
+grep a
+grep a
+grep a
+grep a
+env | grep "PATH"
+unset PATH
+env | grep "PATH"
+export PATH="Ddsadsa"
+env | grep "PATH"
+env
+export PATH=dsadsadasdddddd
+echo $PATH
+env
+cd -
+ls
+ls
+./minishell 
+env
+./minishell 
+unset env
+unset path
+env
+env | grep "PATH"
+unset PATH
+env | grep \PATH
+env | grep PATH
+env
+env | grep PATH
+env
+env | grep PATH
+./minishell 
+ls | cat << test
+ls | cat <g
+ls | << test cat
+<< a
+dsadsadsa
+dasdsadasd
+as
+sd
+as
+as
+ab
+zzzz
+zzz
+<< a
+dsadsadsa
+dsadsa
+<< a
+cat << a
+ls | cat << a
+ls |cat <<e 
+cat <<e | cat <<f
+ls |cat <<e
+ls |cat <<e
+cat <<a |cat <<e
+ls | cat <<e
+ls | wc | cat <<e
+cat <<e
+ls |cat <<e
+cat <<e | cat << c
+ls | cat <<e
+ls | cat <<e
+cat <<e | cat <<d
+cat <<e 
+cat <<e | cat <<r
+ls | cat <<e
+cat <<e | cat <<r
+cat <<e
+ls | cat <<e
+cat <<d | cat <<e
+cat <<e | ls
+cat <<e
+cat <<e |ls
+cat <<e | cat <<d
+ls | cat <<e
+cat | cat | ls
+cat <<e
+ls | cat <<e
+cat <<e >b
+cat <b
+cat <<e >b | cat <b
+cat <b
+cat <<e | cat <<f
+cat <<e | cat <<d
+ls | cat <<d
+cat <<e | cat <<d
+cat <<e | cat <<d
+cat <<e
+ls | cat <<e
+ls | cat <<e | ls
+cat <<e
+cat <<e
+cat <<e
+cat <<e
+cat <<e
+cat <<e
+cat <<e
+ls | cat <<e
+cat <<d
+ls | cat <<e
+ls | cat <<e | ls
+cat <<e
+ls | cat <<e
+ls | cat <<e >b
+cat b
+ls | cat <<e >b | cat <<r
+cat <<e
+ls | cat <<e
+cat <<e
+ls | cat <<e
+cat <<e | ls
+cat <,e
+cat <<e
+cat <,e
+cat <<e
+ls | cat <<e
+cat <<e | ls
+cat <<e
+ls |cat <<e
+cat <<e | ls
+cat <<e >b | ls
+cat <<e >b | ls | cat b
+cat <<e
+ls |cat <<e 
+ls>b |cat <<e 
+cat b
+cat <<e |ls 
+cat <<e
+ls | cat <<e
+cat <<e >b
+cat <<e >b | cat b
+cat <<e  | cat<< b
+cat <<e
+cat <<e
+ls | cat <<e
+cat <,e
+s
+cat <<e
+ls | cat <<e
+cat <<e | cat <<c
+cat <<e
+cat <<e 
+cat <<e
+cat <<e
+cat <<e
+cat <<e >b
+cat <<E
+cat <<e
+cat <<E
+cat <<e
+cat <<e
+cat <<e
+cat <<e
+cat <<e
+cat <<e
+ls | cat <<e
+ls | cat <<e >b
+ cat <<e
+ cat <<e | ls
+ cat <<e >b| ls
+cat b
+cat <<e
+cat <<e | ls
+ls | cat <<e
+ls | cat <<e >b
+cat >>e
+cat <<e
+cat <<e >b
+cat b
+cat <<e >b | cat <b
+cat b
+cat <<e >c | cat <b
+cat <<e >c | cat <b
+cat c
+ls |cat <<e >c | cat <b
+cat c
+ls |cat <<e >c | cat <b | cat <c
+cat b
+cat c
+cat <<e | cat <<f
+cat <<e | ls |cat <<f
+cat <<e
+cat <<e
+ls | cat <<e
+ls | cat <<e | ls
+ls | cat <<e > b| ls
+ls | cat <<e > b| ls | cat <b
+ls | cat <<e > b| cat <<t | ls | cat <b
+cat <<e
+cat <<e | cat <<h
+cat <<e
+cat <<e >b
+cat B
+cat b
+ls | cat <<e
+cat <<e | cat <<f
+cat <<e
+ls | cat <<e
+ls | cat <<e | ls
+ls | cat <<e | ls | cat <<t
+cat | cat | ls
+cat <<e
+ls | cat <<e
+ls | cat <<e | ls
+cat <<e
+cat <<e | ls
+cat <<e >d| ls
+cat <<e >d| ls | cat <d
+echo sdfs| cat <<e >d| ls | cat <d
+echo sdfs| cat <<e >d| ls 
+echo "$HOME"
+echo "$HOME"'$PATH'
+echo "$HOME"'"$PATH"'
+echo "$HOME""'"$PATH"'"
+cat <<e
+ls 
+ls |cat <<e
+ls |cat <<e | ls
+cat <<e
+ls | cat <<e
+ls | cat <<e | env
+ls | cat <<e | env | wc -l
+"
+echo $?
+echo $?
+>>>
+echo $?
+echo $?
+|
+sdf
+|
+echo $?
+cat <<e | ls
+echo "$$HOME"
+echo $
+echo $$
+echo $$$$$
+ls | cat <<e
+ls | cat <<e | ls
+export
+env >b | cat <d
+echo $?
+echo "DSH"
+echo "$DSH"
+echo "$"
+echo "$HOME"
+echo "$HOME""
+echo $?
+echo "$HOME""ssfds"'$PAT'
+echo "$HOME""ssfds"'$PATH'
+echo "$HOME""ssfds"'$PATH' dsfds
+echo -n "$HOME""ssfds"'$PATH' dsfds
+echo -n"$HOME""ssfds"'$PATH' dsfds
+echo -nnnnnnnn "$HOME""ssfds"'$PATH' dsfds
+echo -nnnnnnnn "$HOME""ssfds"'$PATH' dsfds -n
+echo $?
+echo "$HOME"
+echo "$HOME"'
+echo "$HOME"'$PATH'
+echo "$HOME"'$PATH'ccoe
+ls | cat <<E | ls
+ls | cat <<E | ls
+"
+'
+|
+cat <<e
+cat <<e | ls
+ls | cat <<e
+cat <<e |ls
+cat <,e
+cat <<e
+cat <<e
+cat <<e
+ls | cat <<e
+ls | cat <<e | ls
+cat <<e | cat <<e
+cat | cat | ls
+cat <<e
+ls | cat <<e
+ls | cat <<e | ls
+cat <<e | cat <<v
+cat <<e
+cat <<e | cat <<f
+cat <<e | ls
+ls |cat <<e | ls
+ls |cat <<e >b
+ls |cat <<e >b | cat <b
+cat b
+ls | cat <<e 
+ls | cat <<e >b
+ls | cat <<e >b | cat <b
+cat <<e
+ls | cat <<e
+ls | cat <<e | ls
+ls | cat <<e >b| ls | cat <b
+ls | cat <<e >b| ls 
+cat <<e | cat <<g
+cat <<e
+cat <<e | cat <<e
+cat <<e
+cat <<e|cat <<r
+cat <<e|cat <<r
+cat <<e|cat <<t
+ls |cat <<e
+ls |cat <<e | ls | cat <<y
+ls |cat <<e | ls 
+ls |cat <<e | cat <<t
+cat <<e
+ls | cat <<e
+ls | cat <<e | ls
+ls | cat <<e | cat <<k
+cat <<e | cat <<k
+cat <<e|cat <<h
+cat <<e|cat
+cat <<e|cat <<y
+cat <<e|ls
+ls | cat <<e
+ls | cat <<e >b
+cat <<d | cat <<h
+<< a | grep "e"
+cat << a | grep "e"
+cat << a << b | grep "e"
+cat <<e | cat <<r
+cat <<e | cat <<r
+cat <<e | cat <<h
+cat << e | cat << s
+cat << e | cat << r
+cat <<e
+cat << e
+cat << e
+echo "hello 'how are you'" 'fine and you' "$HOME"
+echo "hello 'how are you'" 'fine and you' "$HOME"'$HOME'
+echo "hello 'how are you'" 'fine and you' "$HOME"'$HOME'
+echo "hello 'how are you'" 'fine and you' "$HOME"'$HOME
+echo "hello 'how are you'" 'fine and you' "$HOME"'$HOME-
+echo "hello 'how are you'" 'fine and you' "$HOME"'$HOME'
+exit\
+echo "hello 'how are you'" 'fine and you' "$HOME"'$HOME'
+echo "hello 'how are you'" 'fine and you' "$HOME"'$HOME
+echo '
+cat <<e
+cat <<e | cat <<r
+cat <<e
+cat <<e
+cat <<e | cat <<y
+cat <<e |ls
+ls | cat <<e
+ls | cat <<e
+cat << e | cat << r
+cat << e | cat << r >b
+cat b
+cat << e | cat << r >b | cat <b
+mkdir a
+pwd
+mkdir a
+cd ..
+pwd
+mkdir a
+chmod 000 a
+ls -la
+cd a
+echo hello > a/a
+chmod 777 a
+ls -la
+echo hello > a/a
+ls a
+cat a/a
+chmod 000 a
+echo hello > a/a
+chmod 000 a
+echo hello > a
+cat <a
+echo hello > a
+echo sdfsd >a
+cat <a
+echo hello >a
+echo hsdjkfh>a
+echo hsdjkfh> a/a
+echo sdjf>>a
+echo $?
+echo $?
+echo sdjf >> a
+echo sdjf >> a/a
+cat <sudigfohio
+echo sdjf >> a/a
+echo sdjf >> a/a 2> a
+cat a
+unset $HOME
+echo $HOME
+unset HOME
+echo $HOME
+pwd
+cd
+export HOME=/Users/vgejno
+export a+a=1
+export
+echo $a+a
+export a+a=1
+export
+echo $HOME+fghfg
+export $a+a
+export
+export $a+a=3
+export
+echo $1
+export Z=1
+export
+export $z=2
+export
+unset a+a
+unset HOME USER _ Z ZSH
+export
+unset Z
+unset _
+export
+export SHELL
+unset SHELL
+unset TERM
+export
+export | awk '1==1{print $3}'
+env | awk '1==1{print $3}'
+env
+export | awk '1==1{print $3}' > export
+unset +a COLORTERM COMMAND_MODE GIT_ASKPASS HOMEBREW_CACHE HOMEBREW_TEMP LANG LESS LOGNAME LSCOLORS LS_COLORS LaunchInstanceID OLDPWD ORIGINAL_XDG_CURRENT_DESKTOP PAGER PATH PWD SECURITYSESSIONID SHLVL SSH_AUTH_SOCK TERM TERM_PROGRAM_VERSION TMPDIR VSCODE_GIT_ASKPASS_EXTRA_ARGS VSCODE_GIT_ASKPASS_MAIN VSCODE_GIT_ASKPASS_NODE VSCODE_GIT_IPC_HANDLE XPC_FLAGS
+export
+unset XPC_SERVICE_NAME
+unset TERM
+export
+unset 
+export
+export A=B
+export
+export $A=C
+export
+export A=C
+export
+eche $A
+ech 
+ct
+export
+echo $ZSH
+export A=B
+export $A=C
+echo $B
+echo $A
+ecg
+export
+export A=B
+export $A=C
+export A=B
+export $A=C
+export
+export
+export A=B
+clear
+export
+export $A=C
+clear
+export
+echo $A
+echo $A=C
+echo $A
+echo =
+echo =C
+echo $A=C
+echo $A=ZSH
+echo $a
+echo $A
+export A=B
+export $A=C
+echo $B
+echo $A
+env
+env > env
+unset SECURITYSESSIONID USER COMMAND PATH HOME SHELL Launch __CF_USER_TEXT_ENCODING XPC SSH XPC LOGNAME TMPDIR ORIGINAL SHLVL PWD OLDPWD ZSH PAGER LESS LSCOLORS LS HOMEBREW HOMEBREW TERM TERM LANG COLORTERM VSCODE VSCODE VSCODE VSCODE GIT TERM
+export
+unset SECURITYSESSIONID _
+export
+unse
+unset SECURITYSESSIONID=
+unset SECURITYSESSIONID
+export
+export A=B
+export
+unset SECURITYSESSIONID
+export
+export SECURITYSESSIONID=123
+export
+unset SECURITYSESSIONID
+export
+unset SECURITYSESSIONID
+export
+export
+unset SECURITYSESSIONID
+echo $SECURITYSESSIONID
+unset COLORTERM COMMAND_MODE GIT_ASKPASS HOME HOMEBREW_CACHE HOMEBREW_TEMP LANG LESS LOGNAME LSCOLORS LS_COLORS LaunchInstanceID OLDPW ORIGINAL_XDG_CURRENT_DESKTOP PAGER PATH PWD SECURITYSESSIONID SHELL SHLVL SSH_AUTH_SOCK TERM TERM_PROGRAM TERM_PROGRAM_VERSION TMPDIR USER VSCODE_GIT_ASKPASS_EXTRA_ARGS VSCODE_GIT_ASKPASS_MAIN VSCODE_GIT_ASKPASS_NODE VSCODE_GIT_IPC_HANDLE XPC_FLAGS XPC_SERVICE_NAME ZSH _ __CF_USER_TEXT_ENCODING 
+export
+env
+env
+env
+export
+env
+enset 
+unset SECURITYSESSIONID
+export
+export
+env >n
+unset SECURITYSESSIONID USER COMMAND_MODE PATH HOME SHELL LaunchInstanceID __CF_USER_TEXT_ENCODING XPC_SERVICE_NAME SSH_AUTH_SOCK XPC_FLAGS LOGNAME TMPDIR ORIGINAL_XDG_CURRENT_DESKTOP SHLVL PWD OLDPWD ZSH PAGER LESS LSCOLORS LS_COLORS HOMEBREW_CACHE HOMEBREW_TEMP TERM_PROGRAM TERM_PROGRAM_VERSION LANG COLORTERM VSCODE_GIT_IPC_HANDLE VSCODE_GIT_ASKPASS_NODE VSCODE_GIT_ASKPASS_EXTRA_ARGS VSCODE_GIT_ASKPASS_MAIN GIT_ASKPASS TERM _
+env
+unset SECURITYSESSIONID USER COMMAND_MODE PATH HOME SHELL LaunchInstanceID __CF_USER_TEXT_ENCODING XPC_SERVICE_NAME SSH_AUTH_SOCK XPC_FLAGS LOGNAME TMPDIR ORIGINAL_XDG_CURRENT_DESKTOP SHLVL PWD OLDPWD ZSH PAGER LESS LSCOLORS LS_COLORS HOMEBREW_CACHE HOMEBREW_TEMP TERM_PROGRAM TERM_PROGRAM_VERSION LANG COLORTERM VSCODE_GIT_IPC_HANDLE VSCODE_GIT_ASKPASS_NODE VSCODE_GIT_ASKPASS_EXTRA_ARGS VSCODE_GIT_ASKPASS_MAIN GIT_ASKPASS TERM _ 
+export
+unset SECURITYSESSIONID
+export
+exxit
+envv
+exxit
+unset PATH
+ls
+env
+env
+unset SECURITYSESSIONID USER COMMAND_MODE PATH HOME SHELL LaunchInstanceID __CF_USER_TEXT_ENCODING XPC_SERVICE_NAME SSH_AUTH_SOCK XPC_FLAGS LOGNAME TMPDIR ORIGINAL_XDG_CURRENT_DESKTOP SHLVL PWD OLDPWD ZSH PAGER LESS LSCOLORS LS_COLORS HOMEBREW_CACHE HOMEBREW_TEMP TERM_PROGRAM TERM_PROGRAM_VERSION LANG COLORTERM VSCODE_GIT_IPC_HANDLE VSCODE_GIT_ASKPASS_NODE VSCODE_GIT_ASKPASS_EXTRA_ARGS VSCODE_GIT_ASKPASS_MAIN GIT_ASKPASS TERM _
+env
+unset SECURITYSESSIONID USER COMMAND_MODE PATH HOME SHELL LaunchInstanceID __CF_USER_TEXT_ENCODING XPC_SERVICE_NAME SSH_AUTH_SOCK XPC_FLAGS LOGNAME TMPDIR ORIGINAL_XDG_CURRENT_DESKTOP SHLVL PWD OLDPWD ZSH PAGER LESS LSCOLORS LS_COLORS HOMEBREW_CACHE HOMEBREW_TEMP TERM_PROGRAM TERM_PROGRAM_VERSION LANG COLORTERM VSCODE_GIT_IPC_HANDLE VSCODE_GIT_ASKPASS_NODE VSCODE_GIT_ASKPASS_EXTRA_ARGS VSCODE_GIT_ASKPASS_MAIN GIT_ASKPASS TERM _ 
+export
+unset void remove_from_list(t_envnode 
+unset SECURITYSESSIONID USER COMMAND_MODE PATH HOME SHELL LaunchInstanceID __CF_USER_TEXT_ENCODING XPC_SERVICE_NAME SSH_AUTH_SOCK XPC_FLAGS LOGNAME TMPDIR ORIGINAL_XDG_CURRENT_DESKTOP SHLVL PWD OLDPWD ZSH PAGER LESS LSCOLORS LS_COLORS HOMEBREW_CACHE HOMEBREW_TEMP TERM_PROGRAM TERM_PROGRAM_VERSION LANG COLORTERM VSCODE_GIT_IPC_HANDLE VSCODE_GIT_ASKPASS_NODE VSCODE_GIT_ASKPASS_EXTRA_ARGS VSCODE_GIT_ASKPASS_MAIN GIT_ASKPASS TERM _ 
+env
+cat <<e
+cat <<e|cat <<e
+unset SECURITYSESSIONID USER COMMAND_MODE PATH HOME SHELL LaunchInstanceID __CF_USER_TEXT_ENCODING XPC_SERVICE_NAME SSH_AUTH_SOCK XPC_FLAGS LOGNAME TMPDIR ORIGINAL_XDG_CURRENT_DESKTOP SHLVL PWD OLDPWD ZSH PAGER LESS LSCOLORS LS_COLORS HOMEBREW_CACHE HOMEBREW_TEMP TERM_PROGRAM TERM_PROGRAM_VERSION LANG COLORTERM VSCODE_GIT_IPC_HANDLE VSCODE_GIT_ASKPASS_NODE VSCODE_GIT_ASKPASS_EXTRA_ARGS VSCODE_GIT_ASKPASS_MAIN GIT_ASKPASS TERM _ 
+env
+env >m
+cat m
+unset USER MallocNanoZone PATH LOGNAME SSH_AUTH_SOCK HOME SHELL __CF_USER_TEXT_ENCODING TMPDIR XPC_SERVICE_NAME XPC_FLAGS ORIGINAL_XDG_CURRENT_DESKTOP SHLVL PWD OLDPWD ZSH PAGER LESS LSCOLORS LS_COLORS P9K_SSH HOMEBREW_CACHE HOMEBREW_TEMP TERM_PROGRAM TERM_PROGRAM_VERSION LANG COLORTERM GIT_ASKPASS VSCODE_GIT_ASKPASS_NODE VSCODE_GIT_ASKPASS_EXTRA_ARGS VSCODE_GIT_ASKPASS_MAIN VSCODE_GIT_IPC_HANDLE VSCODE_INJECTION ZDOTDIR USER_ZDOTDIR TERM P9K_TTY _P9K_TTY _ 
+export
+env
+env
+unset USER MallocNanoZone PATH LOGNAME SSH_AUTH_SOCK HOME SHELL __CF_USER_TEXT_ENCODING TMPDIR XPC_SERVICE_NAME XPC_FLAGS ORIGINAL_XDG_CURRENT_DESKTOP SHLVL PWD OLDPWD ZSH PAGER LESS LSCOLORS LS_COLORS P9K_SSH HOMEBREW_CACHE HOMEBREW_TEMP TERM_PROGRAM TERM_PROGRAM_VERSION LANG COLORTERM GIT_ASKPASS VSCODE_GIT_ASKPASS_NODE VSCODE_GIT_ASKPASS_EXTRA_ARGS VSCODE_GIT_ASKPASS_MAIN VSCODE_GIT_IPC_HANDLE VSCODE_INJECTION ZDOTDIR USER_ZDOTDIR TERM P9K_TTY _P9K_TTY _ 
+USER MallocNanoZone PATH LOGNAME SSH_AUTH_SOCK HOME SHELL __CF_USER_TEXT_ENCODING TMPDIR XPC_SERVICE_NAME XPC_FLAGS ORIGINAL_XDG_CURRENT_DESKTOP SHLVL PWD OLDPWD ZSH PAGER LESS LSCOLORS LS_COLORS P9K_SSH HOMEBREW_CACHE HOMEBREW_TEMP TERM_PROGRAM TERM_PROGRAM_VERSION LANG COLORTERM GIT_ASKPASS VSCODE_GIT_ASKPASS_NODE VSCODE_GIT_ASKPASS_EXTRA_ARGS VSCODE_GIT_ASKPASS_MAIN VSCODE_GIT_IPC_HANDLE VSCODE_INJECTION ZDOTDIR USER_ZDOTDIR TERM P9K_TTY _P9K_TTY _ 
+env
+env
+unset USER
+env
+unset USER
+unset USER
+unset USER
+unset USER
+env
+env
+env
+unset USER
+export
+env
+export
+env
+unset USER
+unset USER
+export
+unset USER
+unset USER
+env
+unset USER
+unset USER
+unset USER
+unset USER
+unset USER
+unset USER
+unset USER
+unset USER
+export
+make
+unset USER
+unset USER
+unset USER
+expor
+unset USER
+unset USER
+unset USER
+unset USER
+export
+unset USER
+unset USER
+export
+unset USER
+export
+unset USER
+unset USER
+export
+export
+export
+unset USER
+env
+unset USER
+export
+unset 		printf("removed\n");
+
+env >m
+env
+env
+unset USER
+env >b

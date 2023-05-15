@@ -1,35 +1,36 @@
 #include "../../headers/minishell.h"
 
+static void	assign_merged(t_token **temp, t_token **c)
+{
+	(*temp) = (*c)->next;
+	(*c)->next = (*temp)->next;
+	my_free((*temp)->content);
+	my_free((*temp));
+}
+
 void	*merge_tokens(t_token **token_head)
 {
-	t_token	*curr;
+	t_token	*c;
 	t_token	*temp;
 	char	*merged;
 
-	curr = NULL;
-	curr = *token_head;
-	while (curr != NULL)
+	c = NULL;
+	c = *token_head;
+	while (c != NULL)
 	{
-		if (curr->next && (curr->id == TOK_WORD \
-		|| curr->id == TOK_D_QUOTE || curr->id == TOK_S_QUOTE) \
-		&& (curr->next->id == TOK_WORD || curr->next->id \
-		== TOK_D_QUOTE || curr->next->id == TOK_S_QUOTE))
+		if (c->next && (c->id == T_W || c->id == T_DQ || c->id == T_SQ) && \
+		(c->next->id == T_W || c->next->id == T_DQ || c->next->id == T_SQ))
 		{
-			merged = ft_strjoin(curr->content, curr->next->content);
+			merged = ft_strjoin(c->content, c->next->content);
 			if (!merged)
 				return (NULL);
-			curr->content = merged;
-			curr->id = TOK_WORD;
-			if (curr->next)
-			{
-				temp = curr->next;
-				curr->next = temp->next;
-				my_free(temp->content);
-				my_free(temp);
-			}			
+			c->content = merged;
+			c->id = T_W;
+			if (c->next)
+				assign_merged(&temp, &c);
 		}
 		else
-			curr = curr->next;
+			c = c->next;
 	}
 	return (NULL);
 }

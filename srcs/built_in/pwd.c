@@ -29,6 +29,8 @@ int	ft_pwd(t_ppl **ppl)
 	char		*cwd;
 
 	cwd = getcwd(NULL, 0);
+	if (!cwd)
+		return (1);
 	curr_var = (*ppl)->pp_list_env;
 	while (curr_var != 0)
 	{
@@ -42,23 +44,38 @@ t_envnode	*envdup(t_envnode *prev, t_envnode **mini_env)
 {
 	t_envnode	*node;
 
+	// printf("ENV 0\n");
 	if (!(*mini_env))
 		return (NULL);
+	// printf("ENV 1\n");
 	node = create_mini_envvar_node((*mini_env)->key, (*mini_env)->value,
 			(*mini_env)->content);
+			// printf("ENV 2\n");
 	if (!node)
 		return (NULL);
+		// printf("ENV 3\n");
 	node->prev = prev;
+	// printf("ENV 4\n");
 	if ((*mini_env)->next)
 	{
+		// printf("ENV 5\n");
 		node->next = envdup(node, &(*mini_env)->next);
+		// printf("ENV 6\n");
 		if (!node->next)
 		{
+			// printf("ENV 7\n");
 			while (node->prev)
+			{
+				// printf("ENV 8\n");
 				node = node->prev;
+				// printf("ENV 9\n");
+			}
+			// printf("ENV 10\n");
 			return (NULL);
 		}
+		// printf("ENV 11\n");
 	}
+	// printf("ENV 12\n");
 	return (node);
 }
 

@@ -70,9 +70,9 @@ static void	print_echo_arg(t_ppl *ppl)
 	{
 		if (ft_strncmp(ppl->ppl_cmd[i], "$?", 2) == 0)
 		{
-			printf(R "ECHO$? g_exit_status: %d\n" RS, g_exit_status);
 			ft_putnbr_fd(g_exit_status, STDOUT_FILENO);
 			ft_putchar_fd('\n', STDOUT_FILENO);
+			g_exit_status = 0;
 			return ;
 		}
 		ft_putstr_fd(ppl->ppl_cmd[i], STDOUT_FILENO);

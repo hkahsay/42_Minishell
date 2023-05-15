@@ -23,7 +23,6 @@ void	prompt(char	*line, t_envnode *mini_env)
 		printf("exit\n");
 		free(line);
 		exit(0);
-		return ;
 	}
 	if (ft_strlen(line) > 0)
 	{
@@ -49,6 +48,7 @@ int	main(int argc, char **argv, char **envp)
 	if (argc != 1 || !argv || !envp)
 	{
 		printf("Error arguments\n");
+		g_exit_status = 1;
 		return (-1);
 	}
 	mini_envp = duplicate_env(envp);

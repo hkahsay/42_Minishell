@@ -6,14 +6,11 @@ FLAGS = -Wall -Werror -Wextra
 FLAGS += -g
 FLAGS += ${SANITIZE}
 
-RLIB = -L/opt/homebrew/Cellar/readline/8.2.1/lib -lreadline
-# RLIB = -L/Users/$(USER)/.brew/Cellar/readline/8.2.1/lib -lreadline
+# RLIB = -L/opt/homebrew/Cellar/readline/8.2.1/lib -lreadline
+RLIB = -L/Users/$(USER)/.brew/Cellar/readline/8.2.1/lib -lreadline
 RINC = -I.brew/Cellar/readline/8.2.1/include/readline
 LIBFT = libft/libft.a
 
-# << HEADERS >> #
-#DIR_SRCS = ./srsc
-#DIR_OBJS = ./objs
 DIR_INCS = ./headers/
 INCS = ${DIR_INCS}/minishell.h
 INCS += ${DIR_INCS}/structure.h
@@ -21,7 +18,6 @@ INCS += ${DIR_INCS}/structure.h
 MAKE = make -s
 RM = rm -rf
 
-# << SOURCES >> #
 DIR_SRCS = ./srcs
 DIR_SRCS += ./srcs/sig_handler
 DIR_SRCS += ./srcs/init
@@ -34,16 +30,14 @@ DIR_SRCS += ./srcs/execute
 DIR_SRCS += ./srcs/print
 DIR_SRCS += ./srcs/error
 DIR_SRCS += ./srcs/free
-#DIR_SRCS += ./srcs/parser
-SRCS = ${DIR_SRCS}/main.c
-#SRCS += ${DIR_SRCS}/..
 
-# << OBJECTS >> #
+SRCS = ${DIR_SRCS}/main.c
+
 DIR_OBJS = ./objs
 OBJS = ${addprefix ${DIR_OBJS}/, ${notdir ${SRCS:.c=.o}}}
 
 SRCS =	srcs/main.c \
-		srcs/sig_handler/signal_handler_new.c \
+		srcs/sig_handler/sig_handler.c \
 		srcs/sig_handler/sig_termios.c \
 		srcs/init/envnode_init.c \
 		srcs/init/token_init.c \
@@ -54,11 +48,13 @@ SRCS =	srcs/main.c \
 		srcs/mini_env/create_envnode.c \
 		srcs/mini_env/setenv.c \
 		srcs/lexer/interpret.c \
-		srsc/lexer/interp_delim.c \
+		srsc/lexer/interp_lim.c \
 		srcs/lexer/interp_quotes.c \
+		srcs/lexer/interp_quotes_is.c \
 		srcs/lexer/interp_word.c \
 		srcs/lexer/interp_space.c \
 		srcs/token/token_list.c \
+		srcs/token/token_expand_list.c \
 		srcs/token/token_expand.c \
 		srcs/token/token_space.c \
 		srcs/token/token_merge.c \
@@ -80,31 +76,29 @@ SRCS =	srcs/main.c \
 		srcs/execute/ppl_new.c \
 		srcs/execute/ppl_utils.c \
 		srcs/execute/cmd_word.c \
-		srcs/execute/cmd_redir_all.c \
-		srcs/execute/cmd_redir_in.c \
-		srcs/execute/cmd_redir_out.c \
-		srcs/execute/cmd_redir_append.c \
-		srcs/execute/cmd_heredoc.c \
-		srcs/execute/cmd_find_path.c \
+		srcs/execute/cmd_red_all.c \
+		srcs/execute/cmd_red_in.c \
+		srcs/execute/cmd_red_out.c \
+		srcs/execute/cmd_red_append.c \
+		srcs/execute/cmd_red_heredoc.c \
+		srcs/execute/cmd_path_find.c \
+		srcs/execute/cmd_path_search.c \
 		srcs/execute/init_pipes.c \
 		srcs/execute/execute.c \
 		srcs/execute/execute_heredoc.c \
-		srcs/execute/execute_multi_cmd.c \
-		srcs/execute/execute_kid.c \
-		srcs/execute/execute_utils.c \
+		srcs/execute/execute_cmd.c \
+		srcs/execute/execute_dup.c \
+		srcs/execute/execute_close_fds.c \
+		srcs/execute/execute_finish.c \
 		srcs/print/print_token.c \
 		srcs/print/print_cmd.c \
 		srcs/print/print_env.c \
-		srcs/print/print_ppl.c \
 		srcs/error/error_exit.c \
 		srcs/error/error_input.c \
+		srcs/error/error_input_msg.c \
 		srcs/error/ft_error.c \
 		srcs/free/free_token.c \
 		srcs/free/free_ppl.c \
-		# srcs/sig_handler/signal_handler2.c \
-		# srcs/sig_handler/signal_handler.c \
-
-
 
 DFILES = srcs/${addprefix ${DIR_OBJS}/, ${notdir ${SRCS:.c=.d}}}
 
@@ -130,7 +124,6 @@ clean:
 fclean: clean
 	${MAKE} fclean -C libft
 	${RM} ${NAME}
-
 
 re: fclean all
 

@@ -11,23 +11,26 @@ int	ft_unset(t_ppl **ppl)
 	while ((*ppl)->ppl_cmd[i])
 	{
 		res = check_if_in_env((*ppl)->pp_list_env, (*ppl)->ppl_cmd[i]);
-		if (res == NULL)
-			remove_from_list((*ppl)->pp_list_env, (*ppl)->ppl_cmd[i]);
+		if (res != NULL)
+		{
+			if (!remove_from_list(&(*ppl)->pp_list_env, (*ppl)->ppl_cmd[i]))
+				ft_exit(ppl);
+		}
 		i++;
 	}
 	return (EXIT_SUCCESS);
 }
 
-void	remove_from_list(t_envnode *mini_env, char *key)
+int remove_from_list(t_envnode **mini_env, char *key)
 {
-	t_envnode	*curr;
-	t_envnode	*temp;
-	int			len;
+	t_envnode *curr = *mini_env;
+	t_envnode *temp;
+	int len = ft_strlen(key);
 
-	curr = mini_env;
-	len = ft_strlen((key) + 1);
-	if (delete_first_node(&mini_env, curr, key))
-		return ;
+	if (delete_first_node(&mini_env, key))
+	{
+		return (!!*mini_env);
+	}
 	while (curr && ft_strncmp(curr->key, key, len + 1))
 	{
 		temp = curr;
@@ -36,35 +39,32 @@ void	remove_from_list(t_envnode *mini_env, char *key)
 	if (curr && !ft_strncmp(curr->key, key, len + 1))
 	{
 		temp->next = curr->next;
-		my_free (curr->key);
-		my_free (curr->value);
-		curr->key = NULL;
-		curr->value = NULL;
-		my_free (curr);
-		curr = NULL;
+		my_free(curr->key);
+		my_free(curr->value);
+		my_free(curr);
 	}
-	else
-		return ;
+	return (1);
 }
 
-int	delete_first_node(t_envnode **head, t_envnode *curr, char *key)
+
+int delete_first_node(t_envnode ***hd, char *key)
 {
-	if (head == NULL || *head == NULL)
+	t_envnode *head = **hd;
+	if (head == NULL)
 	{
-		printf("env is empty. Cannot remove node.\n");
 		return (0);
 	}
-	if (ft_strcmp(curr->key, key) == 0)
+	if (ft_strcmp(head->key, key) == 0)
 	{
-		printf("are we here\n");
-		curr = *head;
-		(*head) = (*head)->next;
-		printf("curr->next->key------ %s\n", curr->next->key);
-		printf("head------ %s\n", (*head)->key);
+		**hd = head->next;
+		my_free(head->key);
+		my_free(head->value);
+		my_free(head);
 		return (1);
 	}
 	return (0);
 }
+
 
 char	*check_if_in_env(t_envnode *mini_env, char *arg)
 {

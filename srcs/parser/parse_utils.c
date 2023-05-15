@@ -9,7 +9,7 @@ int	ft_count_pipes(t_token **tok_head)
 	size = 0;
 	while (tok_h != NULL)
 	{
-		if (tok_h != NULL && tok_h->id == TOK_PIPE)
+		if (tok_h != NULL && tok_h->id == T_PP)
 			size++;
 		tok_h = tok_h->next;
 	}
